@@ -1,0 +1,4 @@
+<!--pages/tabBar/me/me.wxml-->
+<text>pages/tabBar/me/me.wxml</text>
+
+<tabBar  tabbar="{{tabbar}}"></tabBar>

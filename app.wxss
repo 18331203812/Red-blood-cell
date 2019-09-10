@@ -1,0 +1,22 @@
+@import "./utils/weui.wxss";
+page{
+   font-size: 32rpx;
+    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
+view{
+  box-sizing: border-box;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+.search-icon{
+  width: 30rpx;
+  height: 30rpx;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAh1BMVEUAAAAzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzO2t+7EAAAALHRSTlMAt96pC+NJB7EO2aWNeFw8LyL869PLm2pQQRQR9caShYB9dWRXNygaw7uelwFjUSUAAAEVSURBVCjPfZLZkoMgEEUBxbgbt7jHPev9/++bGSUWo1TOS0OdrqahIR9mz0w4T5wxJEcCCoDbvAZq57yTJxegflhaZVi0DFH2z+om7Hzb3T3gKtsnNEtOnxl6svGGtjvsxmBsXYFVZEcB+1OPIicHLhjWxRkPciSMbH1ZDBiJggeCJWq4qbSH9fJJXKq0AXeJnFkqHeC1RMYqlS7EyzX1XaV9eOKGgUq7mERaq9IsCtcBxbxSNU63Mt1Rp9tMyjia97aXhpgj3n2fDOlJfkCey1+rB55y9gBctgJTioSCWnKjKdB0U2GMrg04FXFAdcnrWQOBafwdoME8EZmz316unb+Md/GivhpRX42o/83rv5584/36ASExF4AKH/oKAAAAAElFTkSuQmCC) no-repeat center / 30rpx auto;
+}

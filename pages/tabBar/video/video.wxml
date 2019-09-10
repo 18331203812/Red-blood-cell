@@ -1,0 +1,5 @@
+<!--pages/tabBar/video/video.wxml-->
+<text>pages/tabBar/video/video.wxml</text>
+
+
+<tabBar  tabbar="{{tabbar}}"></tabBar>

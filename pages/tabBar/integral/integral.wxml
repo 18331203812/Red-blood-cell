@@ -1,0 +1,5 @@
+<!--pages/tabBar/integral/integral.wxml-->
+<text>pages/tabBar/integral/integral.wxml</text>
+
+
+<tabBar  tabbar="{{tabbar}}"></tabBar>

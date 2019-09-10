@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/tabBar/index/index",
+    "pages/tabBar/video/video",
+    "pages/tabBar/activity/activity",
+    "pages/tabBar/integral/integral",
+    "pages/tabBar/me/me",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ce131b",
+    "navigationBarTitleText": "红细胞",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar":{
+    "color": "#666666",
+    "selectedColor": "#ce131b",
+    "list":[
+      {
+        "pagePath":"pages/tabBar/index/index",
+        "text":"首页",
+        "iconPath":"/images/tabBar/index.png",
+        "selectedIconPath":"/images/tabBar/indexs.png"
+      },
+      {
+        "pagePath": "pages/tabBar/video/video",
+        "text": "视频",
+        "iconPath": "/images/tabBar/video.png",
+        "selectedIconPath": "/images/tabBar/videos.png"
+      },
+      {
+        "pagePath": "pages/tabBar/activity/activity",
+        "text": "活动",
+        "iconPath": "/images/tabBar/activity.png",
+        "selectedIconPath": "/images/tabBar/activitys.png"
+      },
+      {
+          "pagePath": "pages/tabBar/integral/integral",
+          "text": "兑换",
+          "iconPath": "/images/tabBar/integral.png",
+          "selectedIconPath": "/images/tabBar/integrals.png"
+      },
+      {
+        "pagePath": "pages/tabBar/me/me",
+        "text": "我的",
+        "iconPath": "/images/tabBar/me.png",
+        "selectedIconPath": "/images/tabBar/mes.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "plugins": {
+    "tencentvideo": {
+      "version": "1.2.4",
+      "provider": "wxa75efa648b60994b"
+    }
+  }
+}

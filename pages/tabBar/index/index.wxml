@@ -1,0 +1,31 @@
+<!-- 导航 -->
+<view class="Navs" style="height:{{navHeight}}px">
+  <view class="Navs-title">首页</view>
+   <view class="address">
+       <image class="address-img" mode="aspectFill" src="../../../images/index/address.png"></image>
+       苏州
+    </view>
+</view>
+<!-- tabbar -->
+<view class="nav" style="margin-top:{{navHeight}}px;">
+  <view class="tabbar">
+    <view class="tabbar-li tabBar-category">社群</view>
+    <view class="tabbar-li">街道</view>
+    <view class="tabbar-li">市</view>
+  </view>
+  <view class="search">
+    <input class="input" placeholder="搜索" placeholder-class="inputs"></input>
+    <view class="search-icon" ></view>
+  </view>
+</view>
+<!-- list 一张列表 -->
+<view class="li">
+  <view class="li-box">
+    <image class="li-box-img" src="https://cn.bing.com/th?id=OHR.MountFanjing_ZH-CN1999613800_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
+    <view class="li-con">
+      <view class="li-con-title">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海</view>
+      <view class="li-con-address">西西里小区管理委员会</view>
+    </view>
+  </view>
+</view>
+<tabBar  tabbar="{{tabbar}}"></tabBar>
