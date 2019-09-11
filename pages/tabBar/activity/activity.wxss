@@ -1,1 +1,55 @@
-/* pages/tabBar/activity/activity.wxss */
+.nav{
+  width: 100%;
+  background: #f6f6f7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32rpx;
+  height: 92rpx;
+}
+.tabbar{
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.tabbar-li{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  color: #666666;
+  margin: 0 29rpx;
+  font-weight: bold;
+}
+.search{
+  width: 267rpx;
+  height: 60rpx;
+  background: #fff;
+  border-radius: 30rpx;
+  padding: 0 27rpx ;
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.input{
+  width: 180rpx;
+}
+.inputs{
+  font-size: 30rpx;
+  color: #999999;
+}
+.tabBar-category{
+  color: #ce131b;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.search-icon{
+  position: absolute;
+  right: 20rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  width: 50rpx;
+  height: 100%;
+  z-index: 99;
+}

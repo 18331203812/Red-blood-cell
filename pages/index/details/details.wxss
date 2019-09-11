@@ -1,0 +1,129 @@
+.main{
+  padding: 0 30rpx;
+}
+.title{
+  padding: 20rpx 0;
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+}
+.nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-con{
+  width: 86%;
+}
+.nav-head{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.nav-title{
+  font-size: 28rpx;
+  color: #333;
+}
+.nav-time{
+  font-size: 24rpx;
+  color: #999;
+}
+.text{
+  padding: 30rpx;
+}
+.message-title{
+  font-size: 30rpx;
+  color: #333333;
+  background: #f2f3f5;
+  padding: 20rpx 30rpx;
+  font-weight: bold;
+}
+.message-li{
+  padding: 24rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.message-head{
+  width: 55rpx;
+  height: 55rpx;
+  border-radius: 50%;
+}
+.message-con{
+  width: 88%;
+}
+.con-title{
+  display: flex;
+  justify-content: space-between;
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bold;
+}
+.con-text{
+  font-size: 28rpx;
+  color: #666666;
+  padding: 10rpx 0;
+}
+.con-zan{
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999999;
+}
+.zan{
+  color: #e97228;
+}
+.con-time{
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.footer{
+  padding: 20rpx 30rpx;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.2);
+  width: 100%;
+  display: flex;
+}
+.footer-box{
+  display: flex;
+  align-items: center;
+  padding: 15rpx 23rpx;
+  background: #f2f3f5;
+  width: 80%;
+  border-radius: 10rpx;
+}
+.writing-icon{
+  width: 34rpx;
+  height: 39rpx;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAdCAMAAACHZFx5AAAATlBMVEUAAACZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZlpQKrPAAAAGXRSTlMA0swRvPp3VUVQ8zvX7JjgoTQMt6llLYoc7UsNQgAAAJdJREFUKM+t0ssSgyAMheFIjCUKXrDa5v1ftNS2MbCt/wZmvg3DHADvSExxgU+eJDgtCP3ECcPZIOO9H44rTVACfEWaGmDOUsMiM7zF14AUn/kYs5QAD+nbHFEN0EU5UjhLiBgUqprrATsTGtjEtBkAvmn856sSaskCi4kN7GurrfvVX6IrKZtId1XE4uwS7R69btdGzsMLnqwPU7ZqYNUAAAAASUVORK5CYII=) no-repeat center /100% auto;
+margin-right: 10rpx;
+}
+.footer-ul{
+  display: flex;
+  align-items: center;
+}
+.footer-li{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #999999;
+}
+.footer-inputs{
+  font-size: 28rpx;
+  color: #999999;
+}
+.submit{
+  width: 136rpx;
+  height: 60rpx;
+  background: #ce131b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  color: #fff;
+  margin-left: 20rpx;
+}

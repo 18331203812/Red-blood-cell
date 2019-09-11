@@ -1,0 +1,30 @@
+<view class='nav'>
+  <input class="nav-input" placeholder="搜索" placeholder-style="color:#999999;font-size:30rpx;"></input>
+  <view class="search-icon"></view>
+  <view class="search-box"></view>
+</view>
+
+<view class="main">
+  <view class="main-title">当前地址</view>
+  <view class="main-current">
+    <view class="con">新村2区社区</view>
+    <view class="con">
+      <view class="con-icon"></view>
+      重新定位
+    </view>
+  </view>
+</view>
+<view class="main">
+  <view class="main-title">常用地址</view>
+  <view class="main-ul">
+    <view class="main-li">新村2区社区</view>
+    <view class="main-li">新村2区社区</view>
+    <view class="main-li">新村2区社区</view>
+    <view class="main-li">新村2区社区</view>
+  </view>
+</view>
+
+<view class="li">爱上彩虹社区</view>
+<view class="li">爱上彩虹社区</view>
+<view class="li">爱上彩虹社区</view>
+<view class="li">爱上彩虹社区</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "integral":"../../../component/integral/integral"
+  },
+  "navigationBarTitleText": "新闻详情"
+}

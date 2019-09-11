@@ -1,0 +1,61 @@
+<view class="main">
+  <view class="title">强国图志——中国经济是一片大海强国图志中国经济是一片大海</view>
+  <view class="nav">
+    <image class="nav-head" src="https://cn.bing.com/th?id=OHR.TsavoGerenuk_ZH-CN2231549718_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
+    <view class="nav-con">
+      <view class="nav-title">西里里社区管理委员会</view>
+      <view class="nav-time">2019-08-28 10:09:06</view>
+    </view>
+  </view>
+  <view class="text">
+    <rich-text></rich-text>
+  </view>
+</view>
+<view class="message-title">26个人评价</view>
+  <view class="message-li">
+    <image class="message-head" src="https://cn.bing.com/th?id=OHR.TsavoGerenuk_ZH-CN2231549718_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
+    <view class="message-con">
+      <view class="con-title">
+        爱学习的boy
+        <view class="con-zan zan">
+          <view class="fabulou-icons"></view>
+          3333
+        </view>
+      </view>
+      <view class="con-text">这些迹象都表明着中国对于去美元化的布局。中国抛出千亿美债 全球开始去美元化 </view>
+      <view class="con-time">2019-03-02</view>
+    </view>
+  </view>
+  <view class="message-li">
+    <image class="message-head" src="https://cn.bing.com/th?id=OHR.TsavoGerenuk_ZH-CN2231549718_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
+    <view class="message-con">
+      <view class="con-title">
+        爱学习的boy
+        <view class="con-zan zan">
+          <view class="fabulou-icons"></view>
+          3333
+        </view>
+      </view>
+      <view class="con-text">这些迹象都表明着中国对于去美元化的布局。中国抛出千亿美债 全球开始去美元化 </view>
+      <view class="con-time">2019-03-02</view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <view class="footer-box">
+      <view class="writing-icon"></view>
+      <input class="footer-input" bindfocus='input' placeholder="我来说两句"  placeholder-class="footer-inputs"></input>
+    </view>
+    <view class="footer-ul">
+    <block wx:if="{{isShow}}">
+      <button class="submit">发送</button>
+    </block>
+    <block wx:else>
+      <view class="footer-li"><view class="comment-icon"></view>233</view>
+      <view class="footer-li"><view class="share-icon"></view>233</view>
+      <view class="footer-li"><view class="fa-icon"></view>233</view>
+    </block>
+    </view>
+  </view>
+  
+  <integral></integral>

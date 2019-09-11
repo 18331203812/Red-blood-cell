@@ -1,0 +1,63 @@
+<view class="cur">
+<block wx:if='{{status == "NoOneself"}}'>
+  <view class="box "style="padding-bottom: 50rpx;">
+    <image class="box-img" src="../../images/component/fail.png"></image>
+    <view class="title">您不是本小区居民</view>
+    <view class="text">去看看本小区的活动吧</view>
+    <view class="box-detele"></view>
+  </view>
+</block>
+<block wx:elif="{{status == 'Enough' }}">
+  <view class="box">
+    <image class="box-img" src="../../images/component/fail.png"></image>
+    <view class="title">您的积分不足</view>
+    <view class="text">去做任务赚积分吧</view>
+    <view class="but">
+      <button class="cancel">取消</button>
+      <button class="immediately">立即前往</button>
+    </view>
+  </view>
+</block>
+<block wx:elif="{{status == 'Unauthorized' }}">
+   <view class="box">
+    <image class="box-img" src="../../images/component/fail.png"></image>
+    <view class="title">未授权</view>
+    <view class="text">未授权查看不来呦</view>
+    <view class="but">
+      <button class="cancel">取消</button>
+      <button class="immediately">立即前往</button>
+    </view>
+  </view>
+</block>
+<block wx:elif="{{status == 'Personal' }}">
+  <view class="box">
+    <image class="box-img" src="../../images/component/fail.png"></image>
+    <view class="title">需要填写个人信息</view>
+    <view class="text">才能兑换商品呦</view>
+    <view class="but">
+      <button class="cancel">取消</button>
+      <button class="immediately">立即前往</button>
+    </view>
+  </view>
+</block>
+<block wx:elif="{{status == 'Sign' }}">
+  <view class="box">
+    <image class="box-img" src="../../images/component/success.png"></image>
+    <view class="title">签到成功</view>
+    <view class="text">参加活动+15积分</view>
+    <view class="but">
+      <button class="immediately actiy" >确定</button>
+    </view>
+  </view>
+</block>
+<block wx:elif="{{status == 'Exchange' }}">
+  <view class="box">
+    <image class="box-img" src="../../images/component/success.png"></image>
+    <view class="title">兑换成功</view>
+    <view class="text">还有更多好礼等着你</view>
+    <view class="but">
+      <button class="immediately actiy" >确定</button>
+    </view>
+  </view>
+</block>
+</view> 

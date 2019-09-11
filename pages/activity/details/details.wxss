@@ -1,0 +1,86 @@
+page{
+  background: #fff;
+}
+.banner{
+  width: 100%;
+  height: 422rpx;
+}
+.banner-img{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.main{
+  width: 100%;
+  padding: 25rpx 30rpx;
+  border-bottom: 10rpx solid #f6f6f6;
+}
+.title{
+  padding: 0 100rpx 0 0;
+  position: relative;
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+}
+.shares-icon{
+  width: 46rpx;
+  height: 50rpx;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAdCAMAAACDkYxEAAAAzFBMVEUAAAD1bkL/L3v+NXX7SGX/L3v5WlT/L3v3Z0j6TmD6UV36UV33Y0z+NXX8Qmr1b0L3X1D9O3H2aUf/L3v1bkP9PG/9PG/3YU7+NXX3YU71b0L3YU71b0H9OXH9PG/3YE7+PG/2Y0z6T1/+OHP8QWv4WlT6SGT9QWv4WlT2Z0n7R2T9OnD8Pm78Qmv4WVb2ZEv0bkL+NXb3ZUv5Vlf9OXL+NHf+M3f2YU75WlT7SGT+OXL8QGv/NHf3Yk72aUf6UVz5UVz9PW73ZUr4XlEnfZzwAAAAOHRSTlMA9PMl8r6+TCYS8/Lw7r6+sK+Era2efWZdV05NTUw+Gwb7+Pf39vLq6ejn19fW0L++vLyglYSETUOmYPUAAADiSURBVCjPfdDXloIwFIXhAyLCDCDYdcYyxd57DGgA3/+djFlZLkmiXy7/m5wNslxZ18s5UBU3olxVCxImAJlxYgyQfZKYIh9yafwixpf+sI6Sn5RyrGzo1f6w27AqmlYRSmeKcdWGJ4W8rucLYFeTZNaBZ/uICYbhf62XKW3MhZ44gBdycxANTpwhHx+T+yOK803ELaT0debQ1hZb6cJs+mjUFFurqGnFb7DM69XvglrdOTv1xzpZXT9Nl7uIOYCgOUaYa4vNnoScByLjzTqEiqk365iv1zkCJ61TAoXWiq0DNzBLMJBaUiViAAAAAElFTkSuQmCC) no-repeat center / 26rpx auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.con{
+  display: flex;
+  justify-content: space-between;
+  padding: 10rpx 0;
+}
+.con text{
+  font-size: 30rpx;
+  color: #ce131b;
+  font-weight: bold;
+}
+.enrolment{
+  font-size: 24rpx;
+  color: #666666;
+}
+.time{
+  font-size: 24rpx;
+  color: #666666;
+}
+.footer{
+  width: 100%;
+  height: 98rpx;
+  box-shadow: 0 0 8rpx rgba(0 , 0, 0, 0.23);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+}
+.footer-number{
+  font-size: 30rpx;
+  color: #ce131b;
+  font-weight: bold;
+  padding-left: 40rpx;
+}
+.footer-button{
+  width: 384rpx;
+  height: 97rpx;
+  background: #f62632;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 34rpx;
+  color: #fff;
+  border-radius: 0;
+}
+.footer-buttons{
+   background: #f2f3f5;
+   color: #333333;
+}
+.content{
+  padding: 30rpx;
+}

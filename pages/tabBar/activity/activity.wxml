@@ -1,4 +1,23 @@
+<view class="nav" >
+  <view class="tabbar">
+    <view class="tabbar-li tabBar-category">社群</view>
+    <view class="tabbar-li">街道</view>
+    <view class="tabbar-li">市</view>
+  </view>
+  <view class="search">
+    <input class="input" placeholder="搜索" placeholder-class="inputs"></input>
+    <view class="search-icon" ></view>
+  </view>
+</view>
 
-
+<view class="main">
+  <view class="li">
+    <view class="li-box">
+      <image class="li-img"  mode="aspectFill" src="https://cn.bing.com/th?id=OHR.TsavoGerenuk_ZH-CN2231549718_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
+    </view>
+    <view class="li-box-title">举办单位：西西里社区管理委员会</view>
+    <view class=""></view>
+  </view>
+</view>
 
 <tabBar  tabbar="{{tabbar}}"></tabBar>

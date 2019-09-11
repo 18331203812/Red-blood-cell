@@ -1,12 +1,14 @@
 {
   "pages": [
-    "pages/tabBar/index/index",
-    "pages/tabBar/video/video",
     "pages/tabBar/activity/activity",
+    "pages/activity/details/details",
+    "pages/tabBar/index/index",
+    "pages/index/address/address",
+    "pages/index/details/details",
+    "pages/login/login/login",
+    "pages/tabBar/video/video",
     "pages/tabBar/integral/integral",
-    "pages/tabBar/me/me",
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/tabBar/me/me"
   ],
   "window": {
     "backgroundTextStyle": "light",

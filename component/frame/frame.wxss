@@ -1,0 +1,81 @@
+.cur{
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box{
+  width: 472rpx;
+  /* height: 357rpx; */
+  background: #fff;
+  border-radius: 20rpx;
+  position: relative;
+  padding-top: 207rpx;
+}
+.box-img{
+  max-width: 351rpx;
+  max-height: 250rpx;
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin:  0 auto;
+  top: -30rpx;
+}
+.box-detele{
+  width: 52rpx;
+  height: 65rpx;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAABBCAMAAABct/wbAAAAz1BMVEUAAAACAgIAAAABAQEAAAAAAAAAAAAAAAAAAAABAQH5+fkAAAD9/f34+Pj6+vrq6uoAAADKysr9/f3Q0ND29vb9/f3u7u76+vrt7e3i4uL09PSTk5NiYmJgYGDi4uLS0tK7u7vb29tlZWX8/PzKysqBgYHj4+Px8fH6+vrV1dXv7+/m5ub39/erq6vCwsLU1NSJiYmhoaFycnJ+fn7x8fGAgIDQ0NAaGhoeHh54eHilpaWcnJz///9sbGzW1tZmZmb6+vr39/fx8fF5eXmSkpL1eCx3AAAAPHRSTlMABgsQGiIqFDw25Uj4zPTaMS/vtezn3tPSrJaCbWJTREI4E/a0W9TKv6ibm5qYiHt5d3Jva2ZcTkRRRD4wURc5AAACKElEQVRIx+3Vx3ajMBQG4EhIiOICxi1uKbbTe5+ZCxM7ef9nGi6cQYkiDEoW2eTf2Cy+8+sK6bBVnh5Ab+tTgTQ/8kd+hyQEJSGGKLw7O/JQekdnd2FdTvZGGZLxRnukhps1QZPmjFT1SafaTb1kfwQbMtonZTAcwMYMQqKHOx2oSGeHaLemAZVpzIimEWE1/dBKwg7USickyq4OoGYGuMMS0hOonRP6htJdMMgulZVW00Q2LVJUPoBRHqh5pSw1n1JOipWnoOR5BW+yegYlp3kpFT0VvsSJfEriF5X2BMVK+huUrOK/kibpwwqU/KEEF3sJapKcyr9qLnG5VGyDnpZD2BYo2SHoKf7qIRwyitIDPV0DrPUQPJQWn4Oevq7Xr3oIc2aRVAJG24qN+vAvScHnZTCOy2iHC5ReGUySMuqhtPhQD9GU0WE+52dOQi4vzE/fBUslZUvzE/8rP0N21/SWde1MCvvY9GYf2yK7ZXwJhllyCyVlwdAMDgNGU4mDXpvJa1vQFOJy3bYJbLvZYvPSexN5n+3s/9KoPoyKyqz0qV8X9p+KSixlwbRVD7amASsq8TRw97be1/7W5aKozN6p7YwbNeDYsfFdKvSqVbnUKwnlqCmd9is2Z5pCHPIjfVxsgtGjhCp1/Zt2mWvf+K4K5aw8cPxxW+vGvhNwOaNKRVrr+JNFV7nIi4nvpIUCYQm1GEfrT86jA68F0PIOovOJj44z6z38ByAGAOulJyBTAAAAAElFTkSuQmCC) no-repeat center / 100% auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto ;
+  bottom: -60rpx;
+}
+.title{
+  text-align: center;
+  font-size: 32rpx;
+  color: #333333;
+}
+.text{
+  text-align: center;
+  font-size: 26rpx;
+  color: #999999;
+}
+.but{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx 0;
+}
+.cancel{
+  width: 200rpx;
+  height: 65rpx;
+  border-radius: 32rpx;
+  border: 1rpx solid #ce131b;
+  font-size: 32rpx;
+  color: #ce131b;
+  display: flex;
+  justify-content: center;
+  background: #fff;
+  align-items: center;
+}
+.immediately{
+    width: 200rpx;
+  height: 65rpx;
+  border-radius: 32rpx;
+  background: #ce131b;
+  font-size: 32rpx;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.actiy{
+  width: 337rpx;
+}
