@@ -1,0 +1,29 @@
+<view class='main'>
+  <view class="li">
+    <view class="li-name">姓名</view>
+    <input class="li-input" disabled placeholder="周半仙" placeholder-class="li-input"></input>
+  </view>
+  <view class="li">
+    <view class="li-name">电话</view>
+    <input class="li-input" disabled placeholder="18356945623" placeholder-class="li-input"></input>
+  </view>
+  <view class="li">
+    <view class="li-name">身份</view>
+    <input class="li-input" disabled placeholder="党员" placeholder-class="li-input"></input>
+  </view>
+  <view class="li marginTop">
+    <view class="li-name">所在街道</view>
+    <input class="li-input" disabled placeholder="西山口街道" placeholder-class="li-input"></input>
+  </view>
+  <view class="li">
+    <view class="li-name">所在小区</view>
+    <input class="li-input" disabled placeholder="西西里社区" placeholder-class="li-input"></input>
+  </view>
+</view>
+
+<view class="footer">
+  <view class="footer-number">90积分</view>
+  <navigator url="/pages/activity/enterForSuccess/enterForSuccess" hover-class="none">
+   <button class="footer-button ">确认</button>
+  </navigator>
+</view>

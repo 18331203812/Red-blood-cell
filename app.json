@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/tabBar/activity/activity",
+    "pages/activity/enterForSuccess/enterForSuccess",
+    "pages/activity/enterFor/enterFor",
     "pages/activity/details/details",
     "pages/tabBar/index/index",
     "pages/index/address/address",

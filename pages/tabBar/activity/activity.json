@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "tabBar":"../../../component/tabBar/tabBar"
+    "tabBar":"../../../component/tabBar/tabBar",
+    "loadmore": "../../../component/loadmore/loadmore"
   }
 }

@@ -1,0 +1,52 @@
+
+<view class="head">
+  <view class="head-title">订单号：201909081123</view>
+  <view class="nav">
+    <view class="nav-box">
+      <image class="nav-box-img" mode="aspectFill" src="https://cn.bing.com/th?id=OHR.MilkyWayCanyonlands_ZH-CN2363274510_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"> </image>
+      <view class="nav-box-status">进行中</view>
+    </view>
+    <view class="nav-con">
+      <view class="nav-con-title">万人爱心长江行--西西里在行动万人爱心长江行--西西里万人爱心长江行--西西里在行动万人爱心长江行--西西里</view>
+      <view class="nav-con-text">举办单位：西西里社区管理委员会</view>
+      <view class="nav-con-text">剩余名额：36人</view>
+    </view>
+  </view>
+  <view class="head-footer">
+    <view class="head-footer-text">报名时间：即日起至8月27</view>
+    <view class="head-footer-text">西西里社区居委会</view>
+  </view>
+</view>
+
+
+<view class="main">
+  <view class="main-title">活动码</view>
+  <image class="main-img" mode="aspectFill" src="https://cn.bing.com/th?id=OHR.MilkyWayCanyonlands_ZH-CN2363274510_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
+  <view class="main-time">有效期至2019年12月30日</view>
+</view>
+
+<view class="main">
+  <view class="main-title">报名信息</view>
+  <view class="main-li">
+    <view class="li-name">姓名</view>
+    <input class="li-input" disabled  placeholder-class="li-input" placeholder="周半仙"></input>
+  </view>
+  <view class="main-li">
+    <view class="li-name">电话</view>
+    <input class="li-input" disabled  placeholder-class="li-input" placeholder="18356945623"></input>
+  </view>
+  <view class="main-li">
+    <view class="li-name">身份</view>
+    <input class="li-input" disabled  placeholder-class="li-input" placeholder="党员"></input>
+  </view>
+  <view class="main-li">
+    <view class="li-name">所在街道</view>
+    <input class="li-input" disabled  placeholder-class="li-input" placeholder="北部捷街道"></input>
+  </view>
+  <view class="main-li">
+    <view class="li-name">所在社区</view>
+    <input class="li-input" disabled  placeholder-class="li-input" placeholder="西溪里社区"></input>
+  </view>
+</view>
+
+<!-- <frame status='Sign'></frame> -->

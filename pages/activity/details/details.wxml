@@ -19,7 +19,9 @@
 
 <view class="footer">
   <view class="footer-number">90积分</view>
-  <button class="footer-button ">立即报名</button>
+  <navigator url="/pages/activity/enterFor/enterFor" hover-class="none">
+    <button class="footer-button ">立即报名</button>
+  </navigator>
     <!-- <button class="footer-button footer-buttons ">已报名</button> -->
 </view>
 
