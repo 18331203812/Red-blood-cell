@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "frame":"../../../component/frame/frame"
+  },
+  "navigationBarTitleText": "商品详情"
+}

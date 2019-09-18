@@ -1,4 +1,3 @@
-
 .nav-text{
   text-align: center;
   font-size: 24rpx;
@@ -52,46 +51,52 @@
   margin-right: 10rpx;
 }
 .main{
-  width: 100%;
-  border-top: 15rpx solid #f2f3f5;
+  padding: 0 30rpx;
 }
 .main-title{
+  padding: 26rpx 20rpx 0 20rpx;
+  position: relative;
   font-size: 32rpx;
   color: #333333;
   font-weight: bold;
-  padding: 20rpx 30rpx;
 }
-.main-ul{
-  width: 100%;
-  padding: 0 30rpx;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+.main-title::after{
+  content: '';
+  width: 8rpx;
+  height: 32rpx;
+  background: #ce131b;
+  border-radius: 4rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
 }
 .main-li{
-  width: 49%;
-  box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.3);
-  margin-bottom: 20rpx;
-  padding-bottom: 30rpx;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f2f3f5;
 }
-.main-li-img{
-  width: 100%;
-  height: 278rpx;
-}
-.main-li-title{
+.li-title{
+  display: flex;
+  justify-content: space-between;
   font-size: 32rpx;
   color: #333333;
   font-weight: bold;
-  padding: 0 20rpx;
-  text-align: center;
 }
-.main-integral{
-  text-align: center;
-  font-size: 28rpx;
-  color: #333333;
+.li-title text{
+  font-size: 36rpx;
+  color: #ce131b;
   font-weight: bold;
 }
-.main-integral text{
-  font-size: 28rpx;
-  color: #ce131b;
+.li-con{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20rpx;
+}
+.li-con text{
+  font-size: 24rpx;
+  color: #999999;
+}
+.li-cut{
+  color: #1e49b7 !important;
 }

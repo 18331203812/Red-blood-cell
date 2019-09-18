@@ -1,5 +1,46 @@
-<!--pages/tabBar/integral/integral.wxml-->
-<text>pages/tabBar/integral/integral.wxml</text>
+<view class="nav-integral">
+  <view class="nav-text">我的积分</view>
+  <view class="nav-number">1208</view>
+  <view class="nav-but">
+    <navigator url="/pages/integral/task/task" hover-class="none">
+      <view class="nav-but-li">积分说明</view>
+    </navigator>
+    <navigator url="/pages/integral/Mypoints/Mypoints" hover-class="none"> 
+      <view class="nav-but-li">我的积分</view>
+    </navigator>
+  </view>
+  <navigator url="/pages/integral/task/task" hover-class="none">
+    <view class="nav-article">
+      <view class="nav-price">￥</view>
+      签到领积分
+    </view>
+  </navigator>
+</view>
 
-
+<view class="main">
+  <view class="main-title">热门兑换</view>
+  <view class="main-ul">
+    
+      <view class="main-li">
+        <navigator url="/pages/integral/goods/goods" hover-class="none" style="display:block">
+          <image class="main-li-img" mode="aspectFill" src="https://cn.bing.com/th?id=OHR.Wachsenburg_ZH-CN5224299503_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
+          <view class="main-li-title">瑞士军刀双肩背包</view>
+          <view class="main-integral"><text>3000</text>积分</view>
+        </navigator>
+      </view>
+    
+    <view class="main-li">
+      <image class="main-li-img" mode="aspectFill" src="https://cn.bing.com/th?id=OHR.Wachsenburg_ZH-CN5224299503_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
+      <view class="main-li-title">瑞士军刀双肩背包</view>
+      <view class="main-integral"><text>3000</text>积分</view>
+    </view>
+    <view class="main-li">
+      <image class="main-li-img" mode="aspectFill" src="https://cn.bing.com/th?id=OHR.Wachsenburg_ZH-CN5224299503_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
+      <view class="main-li-title">瑞士军刀双肩背包</view>
+      <view class="main-integral"><text>3000</text>积分</view>
+    </view>
+  </view>
+</view>
+  <loadmore isShow='true' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+<view style="width:100%;height:100rpx;"></view>
 <tabBar  tabbar="{{tabbar}}"></tabBar>

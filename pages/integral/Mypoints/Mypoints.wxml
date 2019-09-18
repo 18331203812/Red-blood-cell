@@ -1,0 +1,38 @@
+<view class="nav-integral">
+  <view class="nav-text">我的积分</view>
+  <view class="nav-number">1208</view>
+  <view class="nav-but">
+    <view class="nav-but-li">积分说明</view>
+    <view class="nav-but-li">积分商城</view>
+  </view>
+  <navigator url="/pages/integral/task/task" hover-class="none">
+    <view class="nav-article">
+      <view class="nav-price">￥</view>
+      签到领积分
+    </view>
+  </navigator>
+</view>
+
+<view class="main">
+  <view class="main-title">积分记录</view>
+  <view class="main-li">
+    <view class="li-title">
+      文章点赞
+      <text class="">+30</text>
+    </view>
+    <view class="li-con">
+      <text>《你是我的盐水箱》</text>
+      <text>2019-09-21 12:23</text>
+    </view>
+  </view>
+  <view class="main-li">
+    <view class="li-title">
+      文章点赞
+      <text class="li-cut">-30</text>
+    </view>
+    <view class="li-con">
+      <text>《你是我的盐水箱》</text>
+      <text>2019-09-21 12:23</text>
+    </view>
+  </view>
+</view>

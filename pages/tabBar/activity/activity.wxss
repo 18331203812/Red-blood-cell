@@ -100,7 +100,7 @@
   font-size: 28rpx;
   height:50rpx;
   padding: 10rpx 20rpx;
-  color: #999999;
+  color: #666;
 }
 .li-box-status{
   font-size: 24rpx;

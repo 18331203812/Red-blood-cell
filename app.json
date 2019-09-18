@@ -1,5 +1,11 @@
 {
   "pages": [
+    "pages/tabBar/me/me",
+    "pages/me/ginseng/ginseng",
+    "pages/tabBar/integral/integral",
+    "pages/integral/task/task",
+    "pages/integral/Mypoints/Mypoints",
+    "pages/integral/goods/goods",
     "pages/tabBar/activity/activity",
     "pages/activity/enterForSuccess/enterForSuccess",
     "pages/activity/enterFor/enterFor",
@@ -8,9 +14,7 @@
     "pages/index/address/address",
     "pages/index/details/details",
     "pages/login/login/login",
-    "pages/tabBar/video/video",
-    "pages/tabBar/integral/integral",
-    "pages/tabBar/me/me"
+    "pages/tabBar/video/video"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -54,11 +58,6 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json",
-  "plugins": {
-    "tencentvideo": {
-      "version": "1.2.4",
-      "provider": "wxa75efa648b60994b"
-    }
-  }
+  "sitemapLocation": "sitemap.json"
+
 }

@@ -1,0 +1,86 @@
+<view class="nav-integral">
+  <view class="nav-text">我的积分</view>
+  <view class="nav-number">1208</view>
+    <view class="nav-box">
+    <view class="box-title">
+      <view class="box-title-icon-left"></view>
+      每天签到领积分
+      <view class="box-title-icon-right"></view>
+    </view>
+    <view class="box-text">连续签到七天有更多惊喜呦~</view>
+    <view class="box-ul">
+      <view class="box-li">
+        <view class="li-radius category">+5</view>
+        <view class="li-text">第2天</view>
+      </view>
+      <view class="box-li">
+        <view class="li-radius">+5</view>
+        <view class="li-text">第2天</view>
+      </view>
+      <view class="box-li">
+        <view class="li-radius border">
+          <view class="li-icon"></view>
+        </view>
+        <view class="li-text">第2天</view>
+      </view>
+      <view class="box-li">
+        <view class="li-radius">+5</view>
+        <view class="li-text">第2天</view>
+      </view>
+      <view class="box-li">
+        <view class="li-radius">+5</view>
+        <view class="li-text">第2天</view>
+      </view>
+      <view class="box-li">
+        <view class="li-radius">+5</view>
+        <view class="li-text">第2天</view>
+      </view>
+      <view class="box-li">
+        <view class="li-radius">+5</view>
+        <view class="li-text">第2天</view>
+      </view>
+    </view>
+    <button class="box-but">签到赢好礼</button>
+  </view>
+</view>
+
+
+<view class="main">
+   <view class="main-title">积分记录</view>
+   <view class="main-text">完成任务领取更多奖励</view>
+   <view class="main-li">
+    <view class="main-li-name">
+      <image class="main-li-img" src="../../../images/integral/wenzhang.png"></image>
+      浏览文章5分钟
+    </view>
+    <text>+10积分奖励</text>
+   </view>
+   <view class="main-li">
+    <view class="main-li-name">
+      <image class="main-li-img" src="../../../images/integral/zan.png"></image>
+      点赞
+    </view>
+    <text>+10积分奖励</text>
+   </view>
+   <view class="main-li">
+    <view class="main-li-name">
+      <image class="main-li-img" src="../../../images/integral/pingl.png"></image>
+      评论
+    </view>
+    <text>+10积分奖励</text>
+   </view>
+   <view class="main-li">
+    <view class="main-li-name">
+      <image class="main-li-img" src="../../../images/integral/fenxiang.png"></image>
+      分享
+    </view>
+    <text>+10积分奖励</text>
+   </view>
+   <view class="main-li">
+    <view class="main-li-name">
+      <image class="main-li-img" src="../../../images/integral/huodong.png"></image>
+      参加活动
+    </view>
+    <text>+10积分奖励</text>
+   </view>
+</view>
