@@ -74,6 +74,16 @@
   color: #ce131b;
   align-items: center;
 }
+.nav-con-img{
+  width: 27rpx;
+  height: 27rpx;
+  display: block;
+  margin-right: 10rpx;
+}
+.nav-cons{
+  display: flex;
+  align-items: center;
+}
 /* .nav-imgs{
  position: absolute;
  width: 84rpx;

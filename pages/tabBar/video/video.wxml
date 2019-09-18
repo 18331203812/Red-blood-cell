@@ -1,5 +1,40 @@
-<!--pages/tabBar/video/video.wxml-->
-<text>pages/tabBar/video/video.wxml</text>
+<!-- 视频 -->
 
+<view class="li">
+    <navigator url="/pages/index/details/details" hover-class="none">
+    <view class="li-box">
+      <view class="li-con-title">
+        强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海
+        <view class="heat-icon"></view>
+      </view>
+      <view class="li-time" style="padding-left: 10rpx;">17:26</view>
+    </view>
+    </navigator>
+    <view class="li-img">
+      <view class="item-box " wx:for="{{dataList}}" wx:key="item">
+        <!-- 视频图片层 -->
+        <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
+          <view class="video-cover-box">
+            <image class="video-image" src="{{item.cover}}" mode="aspectFit">
+            </image>
+          </view>
+          <!-- 视频按钮 -->
+          <image class="video-image-play" src="../../../images/icon_short.png" mode="scaleToFill"></image>
+        </view>
+        <!-- 视频播放层 -->
+        <video src="{{item.content}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='true' controls></video>
 
+        </view>
+    </view>
+      <view class="li-footer">
+        <view class="li-con-address">西西里小区管理委员会</view>
+        <view class="li-icon">
+          <view class="li-icon-list"><view class="see-icon"></view>1333</view>
+          <view class="li-icon-list"><view class="message-icon"></view>1333</view>
+          <view class="li-icon-list"><view class="fabulou-icons"></view>1333</view>
+        </view>
+      </view>
+</view>
+
+  <loadmore isShow='true' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
 <tabBar  tabbar="{{tabbar}}"></tabBar>

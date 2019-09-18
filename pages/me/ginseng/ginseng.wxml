@@ -1,0 +1,2 @@
+<activity></activity>
+  <loadmore isShow='true' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>

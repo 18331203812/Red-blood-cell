@@ -1,6 +1,42 @@
-view{
+.main{
   width: 100%;
   height: 100vh;
   background: #ce131b;
   position: relative;
+}
+.main-bac{
+  width: 100%;
+  height: 841rpx;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto 0;
+  z-index: 9;
+}
+.box{
+ position: fixed;
+ z-index: 10;
+ width: 100%;
+ left: 0;
+ top: 200rpx;
+}
+.head{
+  width: 134rpx;
+  height: 138rpx;
+  display: inherit;
+  margin:  32rpx auto;
+}
+.title{
+  width: 188rpx;
+  height: 55rpx;
+  display: inherit;
+  margin: 0 auto;
+}
+.but{
+  width: 354rpx;
+  height: 80rpx;
+  background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIYAAAAgCAMAAADg4vBQAAAAM1BMVEUAAADxJC/xJC/xJC/xJC/xJC/xJC/xJC/xJC/xJC/xJC/xJC/xJC/xJC/xJC/xJC/xJC+sPp2sAAAAEHRSTlMAwIBA8BDQMGCgIOCwkFBwjRfELgAABANJREFUWMOUkwmu6yAMRcGYGZK7/9X+GJIw9KvqO6qaWBHm2BgleDqS2kjBL3Ego37FkPoROwca0HPsQ8wABzUBgH7LrDUhtLfi1YI3GxVh1ahPEkOFcXOoQQt3piYWDBhZXRDYLxbYWWvTPfJnzFOuUjYNc1nSTAS/J0W642Qp45RdtyZb2oj/1dDoOCLjE3RSHxoGO09fjpErpxOclANiOov9MkOyftUI1XqjL5vQW1kB/tRQxhhEczMVk5Gp6bTDswxXgSih+4uGA5xNjCoRJ0kE+tCoQd7KdNZvwyVBXyafCRdBee72D1UvOACfo6VFryovb6f87RoRovnUt5YqHuxbNRLKiTQpbdSA8cE0Wgzk60GtL0llQPKlpwTMnMrBvh+iepE95eclaH2obnT019m4paTeAtCUIOhuCicvh9LPzXVAWJIKZpbnHn3XqGHTSChytL7UiGyVnYbcjR0ItZcPwKqJguHlGRf5B40IxFXjQGSQuZDHwe7dxU6FnnBjNCYiANY3jE60r+MXzkUjYoPTO42jUn+PTZTlL7YAjAXdUtT0zOAgi/DEMTRMjAxNLwVTtRVC7iL39iw6Dz63C7uQfEbX36H9Hj4aIrjecQ0+3iCjo618aXphTkUAH5rJTEQOtk4apGtIHxrWlUkDYDePnC/IfrsEJ/f+nEBqi8JoBZNVGjtBpcLmUWUAMd0aeXSR+h7/ai+3HQdhGIjm5lwp+P+/dmWmjYlpV9pKO6p4aAicjB07nNN9b9eApcXLBqsi/OrMDyEbk3IEuMRt6VumJ8ObAAwEtiaGMRV+P8SAlpYMu1YmfxIE1MjMiTZwmthGsxuNShZDgJEIKZfOSJm2j4MIJd1qiAKMECEtNpjxRwxH4lFHy3mQP6+I2Fp09/PpAbCaoN4pBijh+N8w0HoGdWSRdJwy416xYWf3Ca4gdLr41IFxzZXNWd1z423p3GWEs217TjFgxD7WbT1kdMGo4LxhWL2j8NiUvqIZ3zDU8DUkVZiAcW0YqbzBSDU+5eG40S6oWz/rhgfHDQOq9hU+04pBg1l+ZONOec7Uk5kKu3LsKF84GcQPGD2zcZy6WzBIGnxhXYuqTB/vZlAY2B+zihatZxajJp7tQ6UYmFxh2iifmkU0kJgGNL0N/7VKBiMidE1GUzuixQBnqnjUG987Mxc0pALnwmVkVENLflbKEgLqOvJnxLNeQZvF6B6NdHbdHMH/UmY+YqxyFWUtgwdv9Lq3za14pOd7AFTLYwjWk/dpSFkxKCRO12QWIQYfpZldXjjLCunIOH0JW44ycnQMYdiDQjG2xBzIqWSxFen3i7r9zt68wl34KByEz9Ff5FvkXMmmZHHfKOXdfa3u/k0/7s1RRagwMfgAAAAASUVORK5CYII=) no-repeat center / 134rpx 31rpx;
+  border-radius: 40rpx;
+  margin: 95rpx auto ;
 }

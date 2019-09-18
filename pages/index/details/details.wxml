@@ -1,4 +1,24 @@
+<view class="li-img">
+      <view class="item-box " wx:for="{{dataList}}" wx:key="item">
+        <!-- 视频图片层 -->
+        <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
+          <view class="video-cover-box">
+            <image class="video-image" src="{{item.cover}}" mode="aspectFit">
+            </image>
+          </view>
+          <!-- 视频按钮 -->
+          <image class="video-image-play" src="../../../images/icon_short.png" mode="scaleToFill"></image>
+        </view>
+        <!-- 视频播放层 -->
+        <video src="{{item.content}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='true' controls></video>
+
+        </view>
+</view>
 <view class="main">
+  
+
+
+
   <view class="title">强国图志——中国经济是一片大海强国图志中国经济是一片大海</view>
   <view class="nav">
     <image class="nav-head" src="https://cn.bing.com/th?id=OHR.TsavoGerenuk_ZH-CN2231549718_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
@@ -58,4 +78,4 @@
     </view>
   </view>
   
-  <integral></integral>
+  <!-- <integral></integral> -->

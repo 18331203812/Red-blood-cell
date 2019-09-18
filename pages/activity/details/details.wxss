@@ -84,3 +84,34 @@ page{
 .content{
   padding: 30rpx;
 }
+
+.curtain{
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9;
+}
+.curtain-box{
+  width: 690rpx;
+  height: 1000rpx;
+}
+.canvas{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.curtains{
+  display: none;
+}
+.box-share-img{
+  width: 32rpx;
+  height: 32rpx;
+  display: block;
+  margin-right: 10rpx;
+}

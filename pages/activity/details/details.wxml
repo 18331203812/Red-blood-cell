@@ -4,7 +4,7 @@
 <view class="main">
   <view class="title">
     万人爱心长江行--西西里在行动万人爱心长江行--西西里在行动
-    <view class="shares-icon"></view>
+    <view class="shares-icon" bindtap="Share"></view>
   </view>
   <view class="con">
     <text>90积分</text>
@@ -26,3 +26,10 @@
 </view>
 
 <!-- <frame status='NoOneself'></frame> -->
+
+<!-- 海报 -->
+<view class="{{curtain}}" catchtap="Cur">
+  <view class="curtain-box"  catchlongtap="saveImageToPhoto">
+     <canvas  canvas-id="myCanvas" class="canvas"></canvas>
+  </view>
+</view>

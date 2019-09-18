@@ -1,4 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "activity": "../../../component/activity/activity",
+    "loadmore": "../../../component/loadmore/loadmore"
+  },
   "navigationBarTitleText": "我的参与"
 }

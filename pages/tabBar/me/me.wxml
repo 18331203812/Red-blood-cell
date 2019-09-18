@@ -3,7 +3,7 @@
   <!-- <image class="nav-img" src='../../../images/login/head.png' mode="aspectFill"></image> -->
 
   <view class="head">
-    <image class="nav-imgs" src="https://cn.bing.com/th?id=OHR.Wachsenburg_ZH-CN5224299503_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
+    <image class="nav-imgs" src="https://cn.bing.com/th?id=OHR.Wachsenburg_ZH-CN5224299503_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" mode="aspectFill"></image>
   </view>
 
 
@@ -12,7 +12,11 @@
       用户名
       <view class="grant">去授权 <view class="more-icon"></view></view>
     </view>
-    <view class="nav-status">群众</view>
+    <view class="nav-cons">
+      <image class="nav-con-img" src="../../../images/me/party.png" mode="aspectFill"></image>
+      <view class="nav-status">群众</view>
+    </view>
+    
   </view>
 </view>
 <view class="main">
@@ -22,18 +26,24 @@
       <view class="go">去签到 <view class="more-icon"></view></view>
     </view>
   </navigator>
-  <view class="main-li">
-    我的参与
-    <view class="go" style="color:#333;">3 <view class="more-icon"></view></view>
-  </view>
-  <view class="main-li">
-    兑换记录
-    <view class="more-icon"></view>
-  </view>
-  <view class="main-li">
-    信息验证
-    <view class="more-icon"></view>
-  </view>
+  <navigator url="/pages/me/ginseng/ginseng" hover-class="none">
+    <view class="main-li">
+      我的参与
+      <view class="go" style="color:#333;">3 <view class="more-icon"></view></view>
+    </view>
+  </navigator>
+  <navigator url="/pages/me/record/record" hover-class="none">
+    <view class="main-li">
+      兑换记录
+      <view class="more-icon"></view>
+    </view>
+  </navigator>
+  <navigator url="/pages/me/personal/personal" hover-class="none">
+    <view class="main-li">
+      信息验证
+      <view class="more-icon"></view>
+    </view>
+  </navigator>
 </view>
 <!-- <frame status='Unauthorized'></frame> -->
 <tabBar  tabbar="{{tabbar}}"></tabBar>

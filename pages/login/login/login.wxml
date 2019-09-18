@@ -1,3 +1,10 @@
 <view class="main">
-  <image class="main-bac" src="../../../images/login/bac.jpg"></image>
+  <image class="main-bac" src="../../../images/login/bac.png" mode="aspectFill"></image>
+  <view class="box">
+    <image class="head" src="../../../images/login/logo.png" mode="aspectFill"></image>
+    <image class="title" src="../../../images/login/logo-title.png"></image>
+    <navigator url="/pages/me/personal/personal" hover-class="none">
+      <button class="but"></button>
+    </navigator>
+  </view>
 </view>

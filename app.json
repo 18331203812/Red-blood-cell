@@ -1,6 +1,12 @@
 {
   "pages": [
     "pages/tabBar/me/me",
+    "pages/login/login/login",
+    "pages/me/personal/personal",
+    "pages/me/phone/phone",
+    
+    "pages/me/recordDetails/recordDetails",
+    "pages/me/record/record",
     "pages/me/ginseng/ginseng",
     "pages/tabBar/integral/integral",
     "pages/integral/task/task",
@@ -13,7 +19,6 @@
     "pages/tabBar/index/index",
     "pages/index/address/address",
     "pages/index/details/details",
-    "pages/login/login/login",
     "pages/tabBar/video/video"
   ],
   "window": {
