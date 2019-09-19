@@ -1,4 +1,6 @@
-// pages/me/personal/personal.js
+import HTTP from "../../../utils/request.js";
+import utils from "../../../utils/util.js";
+var _http = new HTTP();
 Page({
 
   /**
@@ -7,14 +9,71 @@ Page({
   data: {
     currentTime:60,
     disabled:false,
-    time:"60秒后可重新获取"
+    time:"60秒后可重新获取",
+    isShow_08: false,
+    listData_08: [
+      {
+        "province_name": "江苏省",
+        "province_id": 320000,
+        "children": [
+          {
+            "cityname": "苏州市",
+            "city_id": 320500,
+            "children": [
+              {
+                "district_name": "虎丘区",
+                "district_id": 320505,
+                "children": [
+                  {
+                    "id": 2,
+                    "street_name": "狮山街道"
+                  }
+                ]
+              },
+              {
+                "district_name": "姑苏区",
+                "district_id": 320508,
+                "children": [
+                  {
+                    "id": 3,
+                    "street_name": "葑门街道"
+                  },
+                  {
+                    "id": 4,
+                    "street_name": "友新街道"
+                  }
+                ]
+              },
+              {
+                "district_name": "工业园区",
+                "district_id": 320587,
+                "children": [
+                  {
+                    "id": 1,
+                    "street_name": "斜塘街道"
+                  },
+                  {
+                    "id": 5,
+                    "street_name": "娄葑街道"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    picker_08_data: '', //点击确认的数据
+    defaultPickData_08: [
+      { id: 110000 }, { id: 110100 }, { id: 110101 }
+    ],// 选择显示所在
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.Province();
   },
   code(){
     this.setData({
@@ -38,6 +97,45 @@ Page({
       }
     }, 1000)
     
+  },
+  //获取省份的地址
+  Province(){
+    _http.request({
+      url:"/api/tag/getStreet",
+      method:"GET",
+    }).then(res=>{
+      console.log(res)
+      this.setData({
+        listData_08: res.data.list
+      })
+    })
+  },
+  /**
+   * 开启picker
+   */
+  showPicker: function (e) {
+    console.log(e)
+    this.setData({
+      isShow_08: true,
+      address: e.currentTarget.dataset.id
+    })
+  },
+  /**
+   * 确认picker
+   */
+  sureCallBack_08(e) {
+    this.setData({
+      isShow_08: false,
+      picker_08_data: e.detail.choosedData,
+    })
+  },
+  /**
+   * 取消picker
+   */
+  cancleCallBack_08() {
+    this.setData({
+      isShow_08: false,
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

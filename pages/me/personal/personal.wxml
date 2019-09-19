@@ -29,7 +29,7 @@
       </block>
     </view> -->
   </view>
-  <view class="li">
+  <view class="li" bindtap="showPicker">
     <view class="li-name">省份 <text>*</text></view>
     <view class="li-box">
       <view class="li-box-text">请选择所在省份/城市/区/街道</view>
@@ -52,3 +52,12 @@
     <button class="submit">提交</button>
   </view>
 </view>
+<picke
+	isShowPicker="{{isShow_08}}"
+	keyWordsOfShow="name"
+	defaultPickData="{{defaultPickData_08}}"
+	bindsure="sureCallBack_08"
+	bindcancle="cancleCallBack_08"
+	scrollType="link"
+	listData="{{listData_08}}"
+></picke>

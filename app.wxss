@@ -23,9 +23,16 @@ view{
 }
 /* 热 icon */
 .heat-icon{
-  width: 26rpx;
-  height: 32rpx;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAgCAMAAAA7dZg3AAAAtFBMVEUAAADoHij2JTHZFyDeGSLgGyT1JDDlHSfnHijfGiTQFBvYFyHUFR7iGyXvIS3YFx/4JjLpHyraGCLjHCbqICvbGSLRFBzkHSfwIy7sISz4JjLbGCLgGyXTFR3zJC/3JTLiHCbtISzmHij5JjPhHCXSFB3VFh7YFyDvIi3OExv4JzP4JzLmHijdGiTXFyDUFR7xIi3sICvmHSj3JTHhGyXdGiP0Iy/cGCHpHynYFx/SFBzVFR/VqzG2AAAAMHRSTlMAB8eTHLI/E/n28tJwUygO+vn47Oba1s/Dv76+oZ2ZmIOCeXdoXVNEL+vn5+DGOjO1m1DSAAABCklEQVQoz3XOV3aDMABE0RGdmOLee4mdDpgSYP/7ioQwsbF0D2g+HhzAPd8ZQ+z0VrxAhKyKQpLUQpZeiwoRpDFPGp6cy7Is6PUj+FKZl1R+AuOMCBqdnFNBrfL8G41+nTrsj+g6TSHZjQcssow+wvi6Br9JKtBnewZAvjIXJKEydtiamTALANskWQJ2cqNrfDWYdhwPCEZxQ+VzxJGNCz1uW0KPqAm2UdsEn9Xu3YiLmzSAVa21j9os9H4lehiGEkPMZGmGXRiETNAqwQ6XQOICTMVlCsAQJwPUOkjTtLqrg+8aDFFS5soPvgpBxVSuLYqJGtk8lg3BP0O5e8XAI+8w/+h23+cHD7U/3F1kbYBERboAAAAASUVORK5CYII=) no-repeat center / 26rpx auto ;
+  /* width: 47rpx; */
+  /* height: 25rpx; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20rpx;
+  color: #ce131b;
+  border: 1rpx solid #ce131b;
+  border-radius: 5rpx;
+  padding: 0 10rpx;
 }
 /* 查看 */
 .see-icon{

@@ -11,7 +11,20 @@ Page({
     navHeight: "", //导航高度
     tabbar: {},
     dataList: [{ "id": 6193654, "content": "http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400", "cover": "http://pic.rmb.bdstatic.com/mvideo/cde67c41211d7a46c1fb87138935b912" }],
-    _index:'6193654'
+    _index:'6193654',
+    list:[],
+    pagesize: 10,
+    page: 1,
+    type:1,
+    isMore:true,
+  },
+  Category(e){
+    this.setData({
+      type: Number(e.currentTarget.dataset.id),
+      page:1,
+      list:[]
+    })
+    this.List(1)
   },
   // 点击cover播放，其它视频结束
   videoPlay: function (e) {
@@ -36,7 +49,7 @@ Page({
     app.editTabbar();
     //导航高度
     this.Nav();
-    this.List();
+    this.List(1);
   },
   //计算导航高度
   Nav() {
@@ -69,17 +82,32 @@ Page({
     });
   },
   //列表
-  List(){
+  List(page){
     _http.request({
       url:"/api/news/index",
       method:"GET",
       data:{
-        page:1,
-        pagesize:10,
-        type:1
+        page:page,
+        pagesize: this.data.pagesize,
+        type:this.data.type
       }
     }).then(res=>{
       console.log(res)
+      if(res.data.list.length !== 0){
+        this.setData({
+          list: this.data.list.concat(res.data.list)
+        })
+        if (res.data.list.length < 9){
+          this.setData({
+            isMore: false
+          })
+        }
+      }else{
+        this.setData({
+          isMore:false
+        })
+      }
+      
     })
   },
   /**
@@ -114,7 +142,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.setData({
+      page:this.data.page+1
+    })
+    this.List(this.data.page)
   },
 
   /**

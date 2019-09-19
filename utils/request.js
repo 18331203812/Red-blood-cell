@@ -5,7 +5,7 @@ class HTTP {
     return new Promise((resolve, reject) => {
       let access_token = wx.getStorageSync('login').token || '';
       wx.request({
-        method: param.type || 'get',
+        method: param.method || 'get',
         url: baseUrl + param.url || '',
         data: param.data || null,
         header: access_token ? {

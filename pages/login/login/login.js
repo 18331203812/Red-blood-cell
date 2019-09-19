@@ -19,11 +19,40 @@ Page({
   //授权登录
   getPhoneNumber(){
     let that=this;
+    wx.showLoading({
+      title: '正在授权',
+      icon:"none"
+    })
     wx.login({
-      success:res=>{
-        console.log(res)
-        that.prom().then(variable=>{
-          console.log(variable)
+      success: res => {
+        setTimeout(function(){
+          that.prom().then(variable => {
+            let data = {};
+            data.data = JSON.stringify({
+              iv: encodeURIComponent(variable.iv),
+              code: res.code,
+              decode: encodeURIComponent(variable.encryptedData)
+            })
+            _http.request({
+              url: "/api/ssoauth/",
+              method: "POST",
+              data: data
+            }).then(res => {
+              wx.hideLoading();
+              wx.setStorageSync("login", res.data)
+              wx.navigateTo({
+                url: '/pages/me/personal/personal',
+              })
+            }).catch(res=>{
+              wx.hideLoading();
+            })
+          })
+        },500)
+      },
+      fail:()=>{
+        wx.showToast({
+          title: '授权失败',
+          icon:"none"
         })
       }
     })
