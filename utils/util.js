@@ -13,7 +13,26 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
-
+// 验证手机号码是否有效
+function isPhoneAvailable(phone) {
+  var myreg = /^1\d{10}$/;
+  if (!myreg.test(phone)) {
+    return false;
+  } else {
+    return true;
+  }
+}
+//小程序弹框提示
+function showToast(icon, msg, duration = 2000){
+  wx.showToast({
+    title: msg,
+    duration: duration,
+    icon: icon
+  })
+}
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  url:" https://mininews.51asx.com",
+  isPhoneAvailable: isPhoneAvailable,
+  showToast: showToast
 }

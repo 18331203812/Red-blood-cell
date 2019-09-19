@@ -1,6 +1,4 @@
-import HTTP from "../../../utils/request.js";
-import utils from "../../../utils/util.js";
-var _http=new HTTP();
+// pages/me/record/record.js
 Page({
 
   /**
@@ -16,27 +14,7 @@ Page({
   onLoad: function (options) {
 
   },
-  //授权登录
-  getPhoneNumber(){
-    let that=this;
-    wx.login({
-      success:res=>{
-        console.log(res)
-        that.prom().then(variable=>{
-          console.log(variable)
-        })
-      }
-    })
-  },
-  prom() {
-    return new Promise((reslove, rej) => {
-      wx.getUserInfo({
-        success: res => {
-          reslove(res)
-        }
-      })
-    })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

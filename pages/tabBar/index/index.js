@@ -1,4 +1,7 @@
 const app = getApp();
+import util from "../../../utils/util.js"
+import HTTP from "../../../utils/request.js"
+var _http = new HTTP();
 Page({
 
   /**
@@ -33,6 +36,7 @@ Page({
     app.editTabbar();
     //导航高度
     this.Nav();
+    this.List();
   },
   //计算导航高度
   Nav() {
@@ -64,7 +68,20 @@ Page({
       }
     });
   },
-
+  //列表
+  List(){
+    _http.request({
+      url:"/api/news/index",
+      method:"GET",
+      data:{
+        page:1,
+        pagesize:10,
+        type:1
+      }
+    }).then(res=>{
+      console.log(res)
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */

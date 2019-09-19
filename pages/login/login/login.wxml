@@ -3,8 +3,6 @@
   <view class="box">
     <image class="head" src="../../../images/login/logo.png" mode="aspectFill"></image>
     <image class="title" src="../../../images/login/logo-title.png"></image>
-    <navigator url="/pages/me/personal/personal" hover-class="none">
-      <button class="but"></button>
-    </navigator>
+      <button class="but" open-type='getUserInfo' bindgetuserinfo='getPhoneNumber'></button>
   </view>
 </view>

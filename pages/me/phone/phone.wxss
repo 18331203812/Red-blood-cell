@@ -1,0 +1,43 @@
+.main{
+  padding: 40rpx 30rpx;
+}
+.main-li{
+  display: flex;
+  align-items: center;
+  padding: 25rpx 0;
+  justify-content: space-between;
+}
+.li-code{
+  display: flex;
+  width: 530rpx;
+}
+.li-input{
+  width: 530rpx;
+}
+.li-code-but{
+  font-size: 28rpx;
+  color: #ce131b;
+}
+.li-con{
+  display: flex;
+  justify-content: space-between;
+}
+.li-con-text{
+  display: flex;
+  font-size: 24rpx;
+  color: #999999;
+  line-height: 26rpx;
+}
+.li-but{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36rpx;
+  color: #fff;
+  background: linear-gradient(to right ,#f1232a,#cd131b);
+  border: none;
+  border-radius: 0;
+  margin-top: 50rpx;
+  box-shadow: 0 0 27rpx rgba(57, 6, 6, 0.31);
+}

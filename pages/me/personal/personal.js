@@ -1,13 +1,13 @@
-import HTTP from "../../../utils/request.js";
-import utils from "../../../utils/util.js";
-var _http=new HTTP();
+// pages/me/personal/personal.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    currentTime:60,
+    disabled:false,
+    time:"60秒后可重新获取"
   },
 
   /**
@@ -16,26 +16,28 @@ Page({
   onLoad: function (options) {
 
   },
-  //授权登录
-  getPhoneNumber(){
-    let that=this;
-    wx.login({
-      success:res=>{
-        console.log(res)
-        that.prom().then(variable=>{
-          console.log(variable)
+  code(){
+    this.setData({
+      disabled: true
+    })
+    // 设置发送验证码按钮样式
+    let interval = null , _this=this;
+    let currentTime = _this.data.currentTime;
+    interval = setInterval(function () {
+      currentTime--;
+      _this.setData({
+        time: currentTime + '秒后可重新获取',
+      })
+      if (currentTime <= 0) {
+        clearInterval(interval)
+        _this.setData({
+          time: '60秒后可重新获取',
+          currentTime: 60,
+          disabled: false
         })
       }
-    })
-  },
-  prom() {
-    return new Promise((reslove, rej) => {
-      wx.getUserInfo({
-        success: res => {
-          reslove(res)
-        }
-      })
-    })
+    }, 1000)
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

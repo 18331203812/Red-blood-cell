@@ -1,10 +1,12 @@
 {
   "pages": [
-    "pages/tabBar/me/me",
     "pages/login/login/login",
+    "pages/tabBar/index/index",
+    "pages/index/address/address",
+    "pages/index/details/details",
+    "pages/tabBar/me/me",
     "pages/me/personal/personal",
     "pages/me/phone/phone",
-    
     "pages/me/recordDetails/recordDetails",
     "pages/me/record/record",
     "pages/me/ginseng/ginseng",
@@ -16,9 +18,7 @@
     "pages/activity/enterForSuccess/enterForSuccess",
     "pages/activity/enterFor/enterFor",
     "pages/activity/details/details",
-    "pages/tabBar/index/index",
-    "pages/index/address/address",
-    "pages/index/details/details",
+    
     "pages/tabBar/video/video"
   ],
   "window": {
