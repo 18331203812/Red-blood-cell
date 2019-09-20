@@ -11,19 +11,19 @@ Page({
     disabled:false,
     time:"60秒后可重新获取",
     isShow_08: false,
-    listData_08: [
+    columnsData: [
       {
         "province_name": "江苏省",
         "province_id": 320000,
-        "children": [
+        "city_list": [
           {
             "cityname": "苏州市",
             "city_id": 320500,
-            "children": [
+            "district_list": [
               {
                 "district_name": "虎丘区",
                 "district_id": 320505,
-                "children": [
+                "street_list": [
                   {
                     "id": 2,
                     "street_name": "狮山街道"
@@ -33,7 +33,7 @@ Page({
               {
                 "district_name": "姑苏区",
                 "district_id": 320508,
-                "children": [
+                "street_list": [
                   {
                     "id": 3,
                     "street_name": "葑门街道"
@@ -47,7 +47,7 @@ Page({
               {
                 "district_name": "工业园区",
                 "district_id": 320587,
-                "children": [
+                "street_list": [
                   {
                     "id": 1,
                     "street_name": "斜塘街道"
@@ -67,8 +67,17 @@ Page({
     defaultPickData_08: [
       { id: 110000 }, { id: 110100 }, { id: 110101 }
     ],// 选择显示所在
+    sureText:"确定",
+    cancelText:"取消",
+    value: [],
+    isOpen: true,
+    index:[0,0,0,0],
   },
-
+  _bindChange(e){
+    this.setData({
+      index: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -124,6 +133,7 @@ Page({
    * 确认picker
    */
   sureCallBack_08(e) {
+    console.log(e)
     this.setData({
       isShow_08: false,
       picker_08_data: e.detail.choosedData,
@@ -132,7 +142,8 @@ Page({
   /**
    * 取消picker
    */
-  cancleCallBack_08() {
+  cancleCallBack_08(e) {
+    console.log(e)
     this.setData({
       isShow_08: false,
     })

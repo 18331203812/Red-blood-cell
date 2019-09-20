@@ -20,12 +20,13 @@
 			indicator-style="{{indicatorStyle}}"
 			mask-style="{{maskStyle}}"
 		>
-			<picker-view-column wx:for="{{columnsData}}" wx:key="{{index}}">
+			<picker-view-column wx:for="{{columnsData}}" wx:for-item='item' wx:key="{{index}}">
 				<view wx:for="{{item}}" wx:for-item="itemIn" class="picker-line" wx:key="{{index}}">
         {{itemIn.region_name}}
 					<text class="line1" style="{{chooseItemTextStyle}}">{{isUseKeywordOfShow?itemIn[keyWordsOfShow]:itemIn}}</text>
 				</view>
 			</picker-view-column>
+
 		</picker-view>
 	</view>
 </view>

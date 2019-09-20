@@ -275,7 +275,7 @@ Component({
               lastValue.push(defaultPickData[tempI]);
               columnsData.push(this._getColumnData(listData))
                 listData = listData[defaultPickData[tempI]].children;
-              
+             
               tempI++;
             }while (listData)
             backData = columnsData.map((v, i) => v[defaultPickData[i]]);

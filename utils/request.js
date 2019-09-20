@@ -29,9 +29,9 @@ class HTTP {
         }),
         fail: (err => {
           if (err.responseJSON) {
-            reject(err.responseJSON.message)
+            // reject(err.responseJSON.message)
           } else {
-            reject(err);
+            // reject(err);
           }
         })
       });
