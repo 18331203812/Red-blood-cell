@@ -6,19 +6,19 @@
   </view>
   <view class="li">
     <view class="li-name">姓名 <text>*</text></view>
-    <input class="li-input" placeholder-style=" font-size: 28rpx; color: #999999;" placeholder="请输入姓名"></input>
+    <input class="li-input" placeholder-style="font-size: 28rpx; color: #999999;"  bindblur="Name" placeholder="请输入姓名"></input>
   </view>
   <view class="li">
     <view class="li-name">手机号 <text>*</text></view>
-    <navigator url="/pages/me/phone/phone" hover-class="none">
+    <!-- <navigator url="/pages/me/phone/phone" hover-class="none"> -->
       <view class="li-con">
-        <input class="li-input" placeholder-style="font-size: 28rpx; color: #999999;" placeholder="请输入手机号"></input>
-        <view class="li-con-text">
+        <input class="li-input" placeholder-style="font-size: 28rpx; color: #999999;" bindblur="Phone" placeholder="请输入手机号"></input>
+        <!-- <view class="li-con-text">
           修改手机号
           <view class="more-icon" style="transform:rotate(0deg);"></view>      
-        </view>
+        </view> -->
       </view>
-    </navigator>
+    <!-- </navigator> -->
     <!-- <view class="li-code">
       <input class="li-code-input" placeholder="请输入验证码" placeholder-style="font-size: 28rpx; color: #999999;"></input>
       <block wx:if='{{disabled}}'>
@@ -29,81 +29,80 @@
       </block>
     </view> -->
   </view>
+  <view class="li">
+    <view class="li-name">身份 <text>*</text></view>
+    <view class="li-boxs">
+    <block wx:for='{{categoryList}}' wx:key='index'>
+      <view class="box-li {{ids==item.id ? 'category' : ''}}" bindtap="Category" data-id="{{item.id}}">{{item.tag_name}}</view>
+    </block>
+    </view>
+  </view>
   <view class="li" bindtap="showPicker">
     <view class="li-name">省份 <text>*</text></view>
     <view class="li-box">
-      <view class="li-box-text">请选择所在省份/城市/区/街道</view>
+      <block wx:if='{{picker_08_data.length == 0}}'>
+        <view>请选择所在省份/城市/区/街道</view>
+      </block>
+      <block wx:else>
+         <view class="li-box-text" style="color:#333;">{{picker_08_data[0].province_name}} {{picker_08_data[1].cityname}} {{picker_08_data[2].district_name}} {{picker_08_data[3].street_name}}</view>
+      </block>
       <view class="more-icon"></view>
     </view>
   </view>
-  <view class="li">
+  <view class="li" bindtap="AddressPicker">
     <view class="li-name">地址 <text>*</text></view>
     <view class="li-box">
-      <view class="li-box-text">社区</view>
+      <block wx:if='{{addressdata.community_name}}'>
+        <view class="li-box-text" style="color:#333;">{{addressdata.community_name}}</view>
+      </block>
+      <block wx:else>
+        <view class="li-box-text">社区</view>
+      </block>
       <view class="more-icon"></view>
     </view>
   </view>
   <view class="Agreement">
-    <checkbox  checked color='#ce131b' class="checkbox" />
+    <checkbox-group bindchange="checkboxChange">
+      <checkbox  checked='{{checked}}' color='#ce131b' class="checkbox" />
+    </checkbox-group>
     同意《用户服务协议》及《隐私协议》
   </view>
   <view class="li-but">
     <button class="skip">跳过</button>
-    <button class="submit">提交</button>
+    <button class="submit" bindtap="Submit">提交</button>
   </view>
 </view>
 
-
-<!--picker/picker.wxml-->
-<view class="full-box {{isOpen?'cur':''}}">
-	<!--<view class="modal" bindtap="tapModal"></view>-->
+<picke
+	isShowPicker="{{isShow_08}}"
+	keyWordsOfShow="name"
+	defaultPickData="{{defaultPickData_08}}"
+	bindsure="sureCallBack_08"
+	bindcancle="cancleCallBack_08"
+	scrollType="link"
+></picke>
+<view class="full-box {{isShowPicker?'cur':''}}">
 	<view class="picker">
 		<view class="picker-header" style="{{pickerHeaderStyle}}">
 			<view bindtap="cancle" >
-				<text style="{{cancelStyle}}">{{cancelText}}</text>
+				<text style="{{cancelStyle}}">取消</text>
 			</view>
-			<text style="{{titleStyle}}">{{titleText}}</text>
+			<text style="{{titleStyle}}"></text>
 			<view bindtap="sure">
-				<text  style="{{sureStyle}}">{{sureText}}</text>
+				<text  style="{{sureStyle}}">确认</text>
 			</view>
 		</view>
 		<picker-view
-			value="{{value}}"
 			class="picker-content"
-			bindpickstart="_bindpickstart"
 			bindchange="_bindChange"
-			bindpickend="_bindpickend"
-			indicator-style="{{indicatorStyle}}"
-			mask-style="{{maskStyle}}"
       style="padding:0 20rpx;"
 		>
-			<picker-view-column wx:for="{{columnsData}}" wx:for-item='item' wx:key="{{index}}">
-				<view class="item">
-          {{item.province_name}}
-				</view>
-			</picker-view-column>
-      <picker-view-column wx:for="{{columnsData}}" wx:for-item='item' wx:key="indexs">
-				<block wx:for='{{item.city_list[index[1]]}}' wx:for-item='cityitem' wx:key="indexs">
+      <picker-view-column >
+        <block wx:for="{{addresstext}}" wx:for-item='item' wx:key="index">
           <view class="item">
-            {{cityitem.cityname}}
+            {{item.community_name}}
           </view>
-        </block>
-			</picker-view-column>
-      <picker-view-column wx:for="{{columnsData}}" wx:for-item='item' wx:key="indexs">
-
-          <block wx:for='{{item.city_list[index[1]].district_list}}'  wx:for-item='districtitem' wx:key="indexs">
-            <view class="item">
-              {{districtitem.district_name}}
-            </view>
-          </block>
-			</picker-view-column>
-      <picker-view-column wx:for="{{columnsData}}" wx:for-item='item' wx:key="indexs">
-    
-            <block wx:for='{{item.city_list[index[1]].district_list[index[2]].street_list}}'  wx:for-item='streetitem' wx:key="streeindex">
-              <view class="item">
-                {{streetitem.street_name}}
-              </view>
-        </block>
+         </block>
 			</picker-view-column>
 		</picker-view>
 	</view>

@@ -1,79 +1,68 @@
-<view class="li-img">
-      <view class="item-box " wx:for="{{dataList}}" wx:key="item">
+<!-- <view class="li-img">
+      <view class="item-box " wx:for="{{dataList}}" wx:key="item"> -->
         <!-- 视频图片层 -->
-        <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
+        <!-- <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
           <view class="video-cover-box">
             <image class="video-image" src="{{item.cover}}" mode="aspectFit">
             </image>
-          </view>
+          </view> -->
           <!-- 视频按钮 -->
-          <image class="video-image-play" src="../../../images/icon_short.png" mode="scaleToFill"></image>
-        </view>
+          <!-- <image class="video-image-play" src="../../../images/icon_short.png" mode="scaleToFill"></image> -->
+        <!-- </view> -->
         <!-- 视频播放层 -->
-        <video src="{{item.content}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='true' controls></video>
+        <!-- <video src="{{item.content}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='true' controls></video> -->
 
-        </view>
-</view>
+        <!-- </view> -->
+<!-- </view> -->
 <view class="main">
-  
 
-
-
-  <view class="title">强国图志——中国经济是一片大海强国图志中国经济是一片大海</view>
+  <view class="title">{{details.title}}</view>
   <view class="nav">
-    <image class="nav-head" src="https://cn.bing.com/th?id=OHR.TsavoGerenuk_ZH-CN2231549718_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
+    <image class="nav-head" src="{{details.avatar}}"></image>
     <view class="nav-con">
-      <view class="nav-title">西里里社区管理委员会</view>
-      <view class="nav-time">2019-08-28 10:09:06</view>
+      <view class="nav-title">{{details.street_title || "暂 无"}}</view>
+      <view class="nav-time">{{details.create_time}}</view>
     </view>
   </view>
   <view class="text">
-    <rich-text></rich-text>
+    <rich-text nodes='{{details.content}}'></rich-text>
   </view>
 </view>
-<view class="message-title">26个人评价</view>
-  <view class="message-li">
-    <image class="message-head" src="https://cn.bing.com/th?id=OHR.TsavoGerenuk_ZH-CN2231549718_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
-    <view class="message-con">
-      <view class="con-title">
-        爱学习的boy
-        <view class="con-zan zan">
-          <view class="fabulou-icons"></view>
-          3333
+<view class="message-title">{{messageList.comment_count}}个人评价</view>
+  <block wx:for='{{messageList.comment}}' wx:key='index' wx:for-item='item'>
+    <view class="message-li">
+      <image class="message-head" src="{{item.avatar}}"></image>
+      <view class="message-con">
+        <view class="con-title">
+          {{item.nickname}}
+          <view class="con-zan zan">
+            <view class="fabulou-icons"></view>
+            {{item.zan}}
+          </view>
         </view>
+        <view class="con-text">{{item.content}}</view>
+        <view class="con-time">{{item.create_time}}</view>
       </view>
-      <view class="con-text">这些迹象都表明着中国对于去美元化的布局。中国抛出千亿美债 全球开始去美元化 </view>
-      <view class="con-time">2019-03-02</view>
     </view>
-  </view>
-  <view class="message-li">
-    <image class="message-head" src="https://cn.bing.com/th?id=OHR.TsavoGerenuk_ZH-CN2231549718_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
-    <view class="message-con">
-      <view class="con-title">
-        爱学习的boy
-        <view class="con-zan zan">
-          <view class="fabulou-icons"></view>
-          3333
-        </view>
-      </view>
-      <view class="con-text">这些迹象都表明着中国对于去美元化的布局。中国抛出千亿美债 全球开始去美元化 </view>
-      <view class="con-time">2019-03-02</view>
-    </view>
-  </view>
-
+  </block>
+  <block wx:if='{{isContent}}'>
+    <view>暂无内容</view>
+  </block>
+  
+  <view style="width:100%;height:100rpx;"></view>
   <view class="footer">
     <view class="footer-box">
       <view class="writing-icon"></view>
-      <input class="footer-input" bindfocus='input' placeholder="我来说两句"  placeholder-class="footer-inputs"></input>
+      <input class="footer-input" bindfocus='input' bindblur="GetInputCon" placeholder="我来说两句"  placeholder-class="footer-inputs"  value="{{inputValue}}"></input>
     </view>
     <view class="footer-ul">
     <block wx:if="{{isShow}}">
-      <button class="submit">发送</button>
+      <button class="submit" bindtap="Submit">发送</button>
     </block>
     <block wx:else>
-      <view class="footer-li"><view class="comment-icon"></view>233</view>
-      <view class="footer-li"><view class="share-icon"></view>233</view>
-      <view class="footer-li"><view class="fa-icon"></view>233</view>
+      <view class="footer-li"><view class="comment-icon"></view>{{messageList.comment_count}}</view>
+      <view class="footer-li"><view class="share-icon"></view>{{messageList.share_count}}</view>
+      <view class="footer-li"><view class="fa-icon"></view>{{messageList.share_count}}</view>
     </block>
     </view>
   </view>

@@ -23,7 +23,7 @@ function isPhoneAvailable(phone) {
   }
 }
 //小程序弹框提示
-function showToast(icon, msg, duration = 2000){
+function showToast(msg, icon , duration = 2000){
   wx.showToast({
     title: msg,
     duration: duration,

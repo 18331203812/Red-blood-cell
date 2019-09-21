@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-  
+  "picke": "../../../component/picker/picker"
   },
   "navigationBarTitleText": "个人信息"
 }

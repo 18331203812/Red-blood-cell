@@ -1,5 +1,5 @@
-<!--picker/picker.wxml-->
-<view class="full-box {{isOpen?'cur':''}}">
+		<!--picker/picker.wxml-->
+<view class="full-box {{isShowPicker?'cur':''}}">
 	<!--<view class="modal" bindtap="tapModal"></view>-->
 	<view class="picker">
 		<view class="picker-header" style="{{pickerHeaderStyle}}">
@@ -11,6 +11,7 @@
 				<text  style="{{sureStyle}}">{{sureText}}</text>
 			</view>
 		</view>
+   
 		<picker-view
 			value="{{value}}"
 			class="picker-content"
@@ -19,14 +20,37 @@
 			bindpickend="_bindpickend"
 			indicator-style="{{indicatorStyle}}"
 			mask-style="{{maskStyle}}"
+      style="padding:0 20rpx;"
 		>
-			<picker-view-column wx:for="{{columnsData}}" wx:for-item='item' wx:key="{{index}}">
-				<view wx:for="{{item}}" wx:for-item="itemIn" class="picker-line" wx:key="{{index}}">
-        {{itemIn.region_name}}
-					<text class="line1" style="{{chooseItemTextStyle}}">{{isUseKeywordOfShow?itemIn[keyWordsOfShow]:itemIn}}</text>
+			<picker-view-column wx:for="{{listData}}" wx:for-item='item' wx:key="{{index}}">
+				<view class="item">
+          {{item.province_name}}
 				</view>
 			</picker-view-column>
+      <picker-view-column wx:for="{{listData}}" wx:for-item='item' wx:key="indexs">
+				<block wx:for='{{item.city_list}}' wx:for-item='cityitem' wx:key="indexs">
+          <view class="item">
+            {{cityitem.cityname}}
+          </view>
+        </block>
+			</picker-view-column>
+      <picker-view-column wx:for="{{listData}}" wx:for-item='item' wx:key="indexs">
+          <block wx:for='{{item.city_list[district].district_list}}'  wx:for-item='districtitem' wx:key="indexs">
+            <view class="item">
+              {{districtitem.district_name}}
+            </view>
+          </block>
+			</picker-view-column>
 
+      <picker-view-column wx:for="{{listData}}" wx:for-item='item' wx:key="indexs">
+            <block wx:for='{{item.city_list[district].district_list[street].street_list}}'  wx:for-item='streetitem' wx:key="streeindex">
+              <view class="item">
+                {{streetitem.street_name}}
+              </view>
+            </block>
+			</picker-view-column>
+      
 		</picker-view>
 	</view>
 </view>
+

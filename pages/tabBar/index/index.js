@@ -12,11 +12,12 @@ Page({
     tabbar: {},
     dataList: [{ "id": 6193654, "content": "http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400", "cover": "http://pic.rmb.bdstatic.com/mvideo/cde67c41211d7a46c1fb87138935b912" }],
     _index:'6193654',
-    list:[],
+    list:[], //新闻
     pagesize: 10,
-    page: 1,
-    type:1,
-    isMore:true,
+    page: 1,  
+    type:1,  //社群 街道 市
+    isMore:true, //加载动效
+    video:[] , //视频
   },
   Category(e){
     this.setData({
@@ -26,22 +27,22 @@ Page({
     })
     this.List(1)
   },
-  // 点击cover播放，其它视频结束
-  videoPlay: function (e) {
-    var _index = e.currentTarget.dataset.id
-    this.setData({
-      _index: _index
-    })
-    //停止正在播放的视频
-    var videoContextPrev = wx.createVideoContext(_index + "")
-    videoContextPrev.stop();
+  // // 点击cover播放，其它视频结束
+  // videoPlay: function (e) {
+  //   var _index = e.currentTarget.dataset.id
+  //   this.setData({
+  //     _index: _index
+  //   })
+  //   //停止正在播放的视频
+  //   var videoContextPrev = wx.createVideoContext(_index + "")
+  //   videoContextPrev.stop();
 
-    setTimeout(function () {
-      //将点击视频进行播放
-      var videoContext = wx.createVideoContext(_index + "")
-      videoContext.play();
-    }, 500)
-  },
+  //   setTimeout(function () {
+  //     //将点击视频进行播放
+  //     var videoContext = wx.createVideoContext(_index + "")
+  //     videoContext.play();
+  //   }, 500)
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -95,7 +96,8 @@ Page({
       console.log(res)
       if(res.data.list.length !== 0){
         this.setData({
-          list: this.data.list.concat(res.data.list)
+          list: this.data.list.concat(res.data.list),
+          video: res.data.video
         })
         if (res.data.list.length < 9){
           this.setData({
@@ -108,6 +110,21 @@ Page({
         })
       }
       
+    })
+  },
+  //点赞
+  Fabulous(e){
+    let id = e.currentTarget.dataset.id;
+    console.log(id)
+    _http.request({
+      url:"/api/news/articleZanDo",
+      method:"POST",
+      data:{
+        news_id:id
+      }
+    }).then(res=>{
+      console.log(res)
+    
     })
   },
   /**

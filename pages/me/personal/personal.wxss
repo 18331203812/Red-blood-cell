@@ -99,6 +99,8 @@
 
 
 
+
+
 /* picker/picker.wxss */
 .full-box{
 	position: fixed;
@@ -182,4 +184,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.li-boxs{
+  display: flex;
+  flex-wrap: wrap;
+}
+.box-li{
+  padding: 0 10rpx;
+  border: 1rpx solid #999;
+  border-radius: 5rpx;
+  font-size: 28rpx;
+  color: #999;
+  margin-right: 10rpx;
+}
+.category{
+  border: 1rpx solid #ce131b;
+  color: #ce131b;
 }

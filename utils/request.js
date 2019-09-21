@@ -18,13 +18,19 @@ class HTTP {
           if (res.data.code === 200) {
             //200: 服务端业务处理正常结束
             resolve(res.data)
-          } else {
+          } else if (res.data.code === 1003){
+            //未登录
+            wx.navigateTo({
+              url: '/pages/login/login/login',
+            })
+          }else{
             //其它错误，提示用户错误信息
 
             /*** 
              * 需要根据接口文档改！！！
             */
             reject(res)
+            // resolve(res)
           }
         }),
         fail: (err => {
