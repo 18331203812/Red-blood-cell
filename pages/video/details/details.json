@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+      "integral": "../../../component/integral/integral",
+      "page": "../../../component/page/page"
+  }
+}

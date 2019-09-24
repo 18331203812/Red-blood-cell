@@ -1,54 +1,42 @@
 <view class="main">
-  <navigator url="/pages/activity/details/details" hover-class="none">
-    <view class="li">
-      <view class="li-box">
-        <image class="li-img"  mode="aspectFill" src="https://cn.bing.com/th?id=OHR.TsavoGerenuk_ZH-CN2231549718_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
-        <view class="li-box-status">进行中</view>
-        <view class="applicant">
-          <view class="line">
-            <view class="lineAnother"></view>
+  <block wx:for='{{list}}' wx:key='index' wx:for-item='item'>
+    <navigator url="/pages/activity/details/details?id={{item.id}}" hover-class="none">
+      <view class="li">
+        <view class="li-box">
+          <image class="li-img"  mode="aspectFill" src="https://cn.bing.com/th?id=OHR.TsavoGerenuk_ZH-CN2231549718_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
+          <view class="li-box-status">{{item.status_title}}</view>
+          <view class="applicant">
+            <view class="line">
+              <view class="lineAnother" style="width:{{foo.msg(item.number)*item.enroll}}rpx"></view>
+            </view>
+            <view class="applicant-text">报名人数:{{item.enroll}}/{{item.number}}</view>
           </view>
-          <view class="applicant-text">报名人数:12/36</view>
         </view>
-      </view>
-        <view class="li-title">
-          万人爱心长江行--西西里在行动万人爱心长江行--西西里在行动
-          <view class="li-title-status">限</view>
-        </view>
-        <view class="li-text">
-          <view class="time-icon"></view>
-            2019/09/21-2019/11/31
-        </view>
-        <view class="li-text">
-          <view class="address-icon"></view>
-          西西里社区管理委员会
-        </view>
-    </view>
-  </navigator>
-  <navigator url="/pages/activity/details/details" hover-class="none">
-    <view class="li">
-      <view class="li-box">
-        <image class="li-img"  mode="aspectFill" src="https://cn.bing.com/th?id=OHR.TsavoGerenuk_ZH-CN2231549718_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
-        <view class="li-box-status">进行中</view>
-        <view class="applicant">
-          <view class="line">
-            <view class="lineAnother"></view>
+          <view class="li-title">
+            {{item.title}}
+           
           </view>
-          <view class="applicant-text">报名人数:12/36</view>
-        </view>
+          <view class="li-titles">
+           <view class="li-title-status">限</view>
+            {{item.limit_title}}
+           </view>
+          <view class="li-text">
+            <view class="time-icon"></view>
+              {{item.ranage}}
+          </view>
+          <view class="li-text">
+            <view class="address-icon"></view>
+            {{item.place}}
+          </view>
       </view>
-        <view class="li-title">
-          万人爱心长江行--西西里在行动万人爱心长江行--西西里在行动
-          <view class="li-title-status">限</view>
-        </view>
-        <view class="li-text">
-          <view class="time-icon"></view>
-            2019/09/21-2019/11/31
-        </view>
-        <view class="li-text">
-          <view class="address-icon"></view>
-          西西里社区管理委员会
-        </view>
-    </view>
-  </navigator>
+    </navigator>
+  </block>
 </view>
+<wxs module="foo">
+  var some=function(number){
+    return  108 / number
+  }
+  module.exports = {
+    msg : some,
+  }
+</wxs>

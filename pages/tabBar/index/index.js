@@ -18,6 +18,8 @@ Page({
     type:1,  //社群 街道 市
     isMore:true, //加载动效
     video:[] , //视频
+    status:false,
+    text:"",
   },
   Category(e){
     this.setData({
@@ -112,10 +114,13 @@ Page({
       
     })
   },
-  //点赞
+  //文章点赞
   Fabulous(e){
-    let id = e.currentTarget.dataset.id;
-    console.log(id)
+    let { id, zan} = e.currentTarget.dataset;
+    if (zan == 1){
+      util.showToast('您不能重复点赞','none')
+      return;
+    }
     _http.request({
       url:"/api/news/articleZanDo",
       method:"POST",
@@ -123,8 +128,60 @@ Page({
         news_id:id
       }
     }).then(res=>{
-      console.log(res)
-    
+      let { list }=this.data;
+      for(let i in list ){
+        if (list[i].id == id){
+          list[i].is_zan = list[i].is_zan== 1 ? 0 : 1
+          list[i].zan_count = list[i].is_zan == 1 ? list[i].zan_count + 1 : list[i].zan_count-1
+          this.setData({
+            status:true,
+            text: "文章点赞+" + res.data.point +"积分"
+          })
+          setTimeout(()=>{
+            this.setData({
+              status: false,
+            }) 
+          },2000)
+        }
+      }
+      this.setData({
+        list:list,
+      })
+    })
+  },
+  //视频点赞
+  FabulousV(e){
+    let { id, zan } = e.currentTarget.dataset;
+    if(zan==1){
+      util.showToast('您不能重复点赞', 'none')
+      return 
+    }
+    _http.request({
+      url: "/api/video/articleZanDo",
+      method: "POST",
+      data: {
+        video_id: id
+      }
+    }).then(res=>{
+      let { video } = this.data;
+      for (let i in video) {
+        if (video[i].id == id) {
+          video[i].is_zan = video[i].is_zan == 1 ? 0 : 1
+          video[i].zan_count = video[i].is_zan == 1 ? video[i].zan_count + 1 : video[i].zan_count - 1
+          this.setData({
+            status: true,
+            text: "视频点赞+" + res.data.point + "积分"
+          })
+          setTimeout(() => {
+            this.setData({
+              status: false,
+            })
+          }, 2000)
+        }
+      }
+      this.setData({
+        video: video,
+      })
     })
   },
   /**

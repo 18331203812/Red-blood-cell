@@ -22,12 +22,12 @@
 </view>
 
 <!-- 三张列表 -->
-<view class="li">
+<!-- <view class="li">
     <view class="li-box">
       <view class="li-con-title">
         强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海
-        <view class="heat-icon">置顶</view>
       </view>
+      <view class="heat-icon">置顶</view>
       <view class="li-time" style="padding-left: 10rpx;">17:26</view>
     </view>
     <view class="li-img">
@@ -43,16 +43,17 @@
           <view class="li-icon-list"><view class="fabulou-icons"></view>1333</view>
         </view>
       </view>
-</view>
+</view> -->
 <!-- 视频 -->
 <block wx:for='{{video}}' wx:key='index'>
   <view class="li">
-  <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
+  <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
     <view class="li-box">
       <view class="li-con-title">
         强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海
-        <view class="heat-icon">置顶</view>
+        
       </view>
+      <view class="heat-icon">置顶</view>
       <view class="li-time" style="padding-left: 10rpx;">{{item.create_time}}</view>
     </view>
     <view class="li-img">
@@ -75,8 +76,15 @@
         <view class="li-con-address">{{item.author}}</view>
         <view class="li-icon">
           <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
-          <view class="li-icon-list"><view class="message-icon"></view>1333</view>
-          <view class="li-icon-list"><view class="fabulou-icons"></view>1333</view>
+          <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
+          <view class="li-icon-list" bindtap="FabulousV" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
+                <block wx:if='{{item.is_zan == 1}}'>
+                  <view class="fabulou-icons"></view>
+                </block>
+                <block wx:else>
+                  <view class="fabulou-icon"></view>
+                </block>
+          {{item.zan_count || 0}}</view>      
         </view>
       </view>
   </view>
@@ -107,11 +115,14 @@
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
-              <view class="li-icon-list" bindtap="Fabulous" data-id="{{item.id}}">
-                <view class="fabulou-icon"></view>
-                <!-- <block wx:if='{{item.}}'>
-                </block> -->
-                1333</view>
+              <view class="li-icon-list" bindtap="Fabulous" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
+                <block wx:if='{{item.is_zan == 1}}'>
+                  <view class="fabulou-icons"></view>
+                </block>
+                <block wx:else>
+                  <view class="fabulou-icon"></view>
+                </block>
+                {{item.zan_count || 0}}</view>
             </view>
           </view>
         </view>
@@ -142,7 +153,14 @@
         <view class="li-icon">
           <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
           <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
-          <view class="li-icon-list"  bindtap="Fabulous" data-id="{{item.id}}"><view class="fabulou-icons"></view>1333</view>
+          <view class="li-icon-list"  bindtap="Fabulous" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
+                <block wx:if='{{item.is_zan == 1}}'>
+                  <view class="fabulou-icons"></view>
+                </block>
+                <block wx:else>
+                  <view class="fabulou-icon"></view>
+                </block>
+          {{item.zan_count || 0}}</view>
         </view>
       </view>
   </view>
@@ -157,3 +175,4 @@
   <loadmore isShow='{{isMore}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
 <view style="width:100%;height:100rpx;"></view>
 <tabBar  tabbar="{{tabbar}}"></tabBar>
+<integral status='{{status}}' text='{{text}}'></integral>

@@ -1,4 +1,6 @@
-// pages/activity/details/details.js
+import HTTP from "../../../utils/request.js";
+import utils from "../../../utils/util.js";
+var _http = new HTTP();
 Page({
 
   /**
@@ -7,16 +9,62 @@ Page({
   data: {
     curtain: 'curtains',
     rpx: "",
-    rpxheight: ""
+    rpxheight: "",
+    details:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+   
+    this.Details(options.id)
   },
-
+  Details(id){
+    _http.request({
+      url:"/api/activity/detail",
+      method:"GET",
+      data:{activity_id:id}
+    }).then(res=>{
+      this.setData({
+        details:res.data.list
+      })
+    })
+  },
+  //报名
+  SignUp(e){
+    let id = e.currentTarget.dataset.id;
+    _http.request({
+      url:"/api/activity/enrollDo",
+      method:"POST",
+      data: { activity_id : id}
+    }).then(res=>{
+      if(res.data.code == 7004){
+        utils.showToast('您不是本小区居民，不能参加',"none")
+      } else if (res.data.code == 7003){
+        wx.showModal({
+          title: '提示',
+          content: '请先完善个人信息',
+          success(res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '/pages/me/personal/personal',
+              })
+            } else if (res.cancel) {
+              
+            }
+          }
+        })
+      }else if(res.data.code == 7002){
+        utils.showToast('不需要重复报名','none')
+      } else if (res.data.code == 200){
+        utils.showToast('报名成功', 'none')
+        this.setData({
+          [`details.is_enroll`]: 1
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

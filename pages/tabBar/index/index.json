@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "tabBar":"../../../component/tabBar/tabBar",
-    "loadmore": "../../../component/loadmore/loadmore"
+    "loadmore": "../../../component/loadmore/loadmore",
+    "integral": "../../../component/integral/integral"
   },
   "navigationStyle": "custom"
 }

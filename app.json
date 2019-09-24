@@ -18,7 +18,8 @@
     "pages/activity/enterForSuccess/enterForSuccess",
     "pages/activity/enterFor/enterFor",
     "pages/activity/details/details",
-    "pages/tabBar/video/video"
+    "pages/tabBar/video/video",
+    "pages/video/details/details"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,15 +27,15 @@
     "navigationBarTitleText": "红细胞",
     "navigationBarTextStyle": "white"
   },
-  "tabBar":{
+  "tabBar": {
     "color": "#666666",
     "selectedColor": "#ce131b",
-    "list":[
+    "list": [
       {
-        "pagePath":"pages/tabBar/index/index",
-        "text":"首页",
-        "iconPath":"/images/tabBar/index.png",
-        "selectedIconPath":"/images/tabBar/indexs.png"
+        "pagePath": "pages/tabBar/index/index",
+        "text": "首页",
+        "iconPath": "/images/tabBar/index.png",
+        "selectedIconPath": "/images/tabBar/indexs.png"
       },
       {
         "pagePath": "pages/tabBar/video/video",
@@ -49,10 +50,10 @@
         "selectedIconPath": "/images/tabBar/activitys.png"
       },
       {
-          "pagePath": "pages/tabBar/integral/integral",
-          "text": "兑换",
-          "iconPath": "/images/tabBar/integral.png",
-          "selectedIconPath": "/images/tabBar/integrals.png"
+        "pagePath": "pages/tabBar/integral/integral",
+        "text": "兑换",
+        "iconPath": "/images/tabBar/integral.png",
+        "selectedIconPath": "/images/tabBar/integrals.png"
       },
       {
         "pagePath": "pages/tabBar/me/me",
@@ -63,5 +64,4 @@
     ]
   },
   "sitemapLocation": "sitemap.json"
-
 }

@@ -41,7 +41,7 @@
 .nav-con{
   display: flex;
   align-items: center;
-  font-size: 48rpx;
+  font-size: 42rpx;
   color: #333333;
   width: 100%;
   justify-content: space-between;

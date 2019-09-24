@@ -1,4 +1,5 @@
-<view class="main">
-  <image class="main-img" src="../../images/index/jifen.png"></image>
-  <view class="text">浏览文章+10积分</view>
+<view class="main" style="{{status ? 'display:flex;' :'display:none'}}">
+  <image class="main-img" src="../../images/index/jifen.gif"></image>
+  <view class="text">{{text}}</view>
+  <!-- 浏览文章+10积分 -->
 </view>

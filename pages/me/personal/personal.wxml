@@ -6,13 +6,13 @@
   </view>
   <view class="li">
     <view class="li-name">姓名 <text>*</text></view>
-    <input class="li-input" placeholder-style="font-size: 28rpx; color: #999999;"  bindblur="Name" placeholder="请输入姓名"></input>
+    <input class="li-input" placeholder-style="font-size: 28rpx; color: #999999;" value="{{name}}" bindblur="Name" placeholder="请输入姓名"></input>
   </view>
   <view class="li">
     <view class="li-name">手机号 <text>*</text></view>
     <!-- <navigator url="/pages/me/phone/phone" hover-class="none"> -->
       <view class="li-con">
-        <input class="li-input" placeholder-style="font-size: 28rpx; color: #999999;" bindblur="Phone" placeholder="请输入手机号"></input>
+        <input class="li-input" placeholder-style="font-size: 28rpx; color: #999999;" value="{{phone}}" bindblur="Phone" placeholder="请输入手机号"></input>
         <!-- <view class="li-con-text">
           修改手机号
           <view class="more-icon" style="transform:rotate(0deg);"></view>      

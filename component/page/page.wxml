@@ -1,0 +1,16 @@
+<view class="main">
+<!-- 没有评论 -->
+  <block wx:if='{{pageStatus == "comment"}}'>
+    <image class="main-img" mode="aspectFill" src="../../images/component/comment.png" style='width: 326rpx;height: 319rpx'></image>
+  </block>
+  <block wx:elif="{{pageStatus == 'shop'}}">
+    <image class="main-img" mode="aspectFill" src="../../images/component/shop.png" style="width: 317rpx;height: 393rpx;"></image>
+  </block>
+  <block wx:elif="{{pageStatus == 'activity'}}">
+    <image class="main-img" mode="aspectFill" src="../../images/component/activity.png" style='width: 369rpx;height: 319rpx'></image>
+  </block>
+  <block wx:elif="{{pageStatus == 'integral'}}">
+     <image class="main-img" mode="aspectFill" src="../../images/component/integral.png" style='width: 334rpx;height: 278rpx'></image>
+  </block>
+  <view class="text">{{pageText}}</view>
+</view>

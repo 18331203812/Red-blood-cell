@@ -1,49 +1,59 @@
 <view class="nav">
-
-  <!-- <image class="nav-img" src='../../../images/login/head.png' mode="aspectFill"></image> -->
-
-  <view class="head">
-    <image class="nav-imgs" src="https://cn.bing.com/th?id=OHR.Wachsenburg_ZH-CN5224299503_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" mode="aspectFill"></image>
-  </view>
-
-
+<block wx:if='{{details.headimgurl}}'>
+    <view class="head">
+      <image class="nav-imgs" src="{{details.headimgurl}}" mode="aspectFill"></image>
+    </view>
+</block>
+<block wx:else>
+  <image class="nav-img" src='../../../images/login/head.png' mode="aspectFill"></image>
+</block>
   <view style="width:78%">
     <view class="nav-con">
-      用户名
-      <view class="grant">去授权 <view class="more-icon"></view></view>
+      {{details.nickname || '用户名'}}
+      <block wx:if='{{!details.nickname}}'>
+        <navigator url="/pages/login/login/login" hover-class="none">
+          <view class="grant">去授权 <view class="more-icon"></view></view>
+        </navigator>
+      </block>
+      
     </view>
     <view class="nav-cons">
-      <image class="nav-con-img" src="../../../images/me/party.png" mode="aspectFill"></image>
-      <view class="nav-status">群众</view>
+      <block wx:if='{{details.identity == "党员"}}'>
+        <image class="nav-con-img" src="../../../images/me/party.png" mode="aspectFill"></image>
+      </block>
+      <block wx:if='{{details.identity}}'>
+        <view class="nav-status">{{details.identity}}</view>
+      </block>
+      
     </view>
     
   </view>
 </view>
 <view class="main">
-  <navigator url="/pages/integral/Mypoints/Mypoints" hover-class="none"> 
-    <view class="main-li">
+  <!-- <navigator url="/pages/integral/Mypoints/Mypoints" hover-class="none">  -->
+    <view class="main-li" bindtap="Navigators" data-id="1">
       我的积分
       <view class="go">去签到 <view class="more-icon"></view></view>
     </view>
-  </navigator>
-  <navigator url="/pages/me/ginseng/ginseng" hover-class="none">
-    <view class="main-li">
+  <!-- </navigator> -->
+  <!-- <navigator url="/pages/me/ginseng/ginseng" hover-class="none"> -->
+    <view class="main-li" bindtap="Navigators" data-id="2">
       我的参与
       <view class="go" style="color:#333;">3 <view class="more-icon"></view></view>
     </view>
-  </navigator>
-  <navigator url="/pages/me/record/record" hover-class="none">
-    <view class="main-li">
+  <!-- </navigator> -->
+  <!-- <navigator url="/pages/me/record/record" hover-class="none"> -->
+    <view class="main-li" bindtap="Navigators" data-id="3">
       兑换记录
       <view class="more-icon"></view>
     </view>
-  </navigator>
-  <navigator url="/pages/me/personal/personal" hover-class="none">
-    <view class="main-li">
+  <!-- </navigator> -->
+  <!-- <navigator url="/pages/me/personal/personal" hover-class="none"> -->
+    <view class="main-li" bindtap="Navigators" data-id="4">
       信息验证
       <view class="more-icon"></view>
     </view>
-  </navigator>
+  <!-- </navigator> -->
 </view>
-<!-- <frame status='Unauthorized'></frame> -->
+<frame status='Unauthorized' isShow='{{isShow}}' bind:_cancel='Cancel'></frame>
 <tabBar  tabbar="{{tabbar}}"></tabBar>

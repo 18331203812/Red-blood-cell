@@ -15,7 +15,19 @@
 
 <view class="main">
   <view class="main-title">积分记录</view>
-  <view class="main-li">
+  <block wx:for="{{list}}" wx:key='index' wx:for-item='item'>
+    <view class="main-li">
+      <view class="li-title">
+        {{item.title}}
+        <text class="{{item.sign == '+' ? '' : 'li-cut'}}">{{item.sign}}{{item.integral}}</text>
+      </view>
+      <view class="li-con">
+        <text style="width:65%;">{{item.subject}}</text>
+        <text>{{item.create_time}}</text>
+      </view>
+    </view>
+  </block>
+  <!-- <view class="main-li">
     <view class="li-title">
       文章点赞
       <text class="">+30</text>
@@ -34,5 +46,6 @@
       <text>《你是我的盐水箱》</text>
       <text>2019-09-21 12:23</text>
     </view>
-  </view>
+  </view> -->
 </view>
+  <loadmore isShow='{{isShow}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>

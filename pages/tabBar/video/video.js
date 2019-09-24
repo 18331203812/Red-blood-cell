@@ -1,5 +1,8 @@
-// pages/tabBar/video/video.js
+
 const app = getApp();
+import util from "../../../utils/util.js"
+import HTTP from "../../../utils/request.js"
+var _http = new HTTP();
 Page({
 
   /**
@@ -7,8 +10,13 @@ Page({
    */
   data: {
     tabbar: {},
-    dataList: [{ "id": 6193654, "content": "http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400", "cover": "http://pic.rmb.bdstatic.com/mvideo/cde67c41211d7a46c1fb87138935b912" }],
-    _index: '6193654'
+    _index: '-1',
+    list:[],
+    pagesize:10,
+    page:1,
+    isMore:true,
+    status: false,
+    text: "",
   },
   // 点击cover播放，其它视频结束
   videoPlay: function (e) {
@@ -31,6 +39,10 @@ Page({
    */
   onLoad: function (options) {
     app.editTabbar();
+    this.setData({
+      page:1
+    })
+    this.List(1);
   },
 
   /**
@@ -45,10 +57,29 @@ Page({
       }
     });
   },
-
+  List(page){
+    _http.request({
+      url:"/api/video/index",
+      method:"GET",
+      data:{
+        page:page,
+        pagesize:this.data.pagesize
+      }
+    }).then(res=>{
+      let data = res.data.list;
+      if(data.length < 10 ){
+        this.setData({
+          isMore:false
+        })
+      }
+      this.setData({
+        list:this.data.list.concat(res.data.list)
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
-   */
+   **/
   onShow: function () {
 
   },
@@ -73,12 +104,53 @@ Page({
   onPullDownRefresh: function () {
 
   },
-
+  /**
+   * 点赞
+   */
+  //视频点赞
+  FabulousV(e) {
+    let { id, zan } = e.currentTarget.dataset;
+    console.log(id,zan)
+    if (zan == 1) {
+      util.showToast('您不能重复点赞', 'none')
+      return;
+    }
+    _http.request({
+      url: "/api/video/articleZanDo",
+      method: "POST",
+      data: {
+        video_id: id
+      }
+    }).then(res => {
+      let { list } = this.data;
+      for (let i in list) {
+        if (list[i].id == id) {
+          list[i].is_zan = list[i].is_zan == 1 ? 0 : 1
+          list[i].zan_count = list[i].is_zan == 1 ? list[i].zan_count + 1 : list[i].zan_count - 1
+          this.setData({
+            status: true,
+            text: "视频点赞+" + res.data.point + "积分"
+          })
+          setTimeout(() => {
+            this.setData({
+              status: false,
+            })
+          }, 2000)
+        }
+      }
+      this.setData({
+        list: list,
+      })
+    })
+  },
   /**
    * 页面上拉触底事件的处理函数
-   */
+   **/
   onReachBottom: function () {
-
+    this.setData({
+      page: this.data.page + 1
+    })
+    this.List(this.data.page)
   },
 
   /**

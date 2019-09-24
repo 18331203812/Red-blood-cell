@@ -11,7 +11,7 @@
 }
 .main-img{
   width: 137rpx;
-  height: 106rpx;
+  height: 110rpx;
   position: absolute;
   margin:  auto;
   right: 0;

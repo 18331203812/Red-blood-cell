@@ -7,17 +7,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isShow:false,
-    details:{},
-    inputValue:"", //评论内容
-    messageList:{},
-    isContent:false,
-    status:false,
-    text:''
+    isShow: false,
+    _index: '',
+    details: {},
+    inputValue: "", //评论内容
+    messageList: {},
+    isContent: false,
+    status: false,
+    text: ''
   },
   // 点击cover播放，其它视频结束
   videoPlay: function (e) {
     var _index = e.currentTarget.dataset.id
+    console.log(_index)
     this.setData({
       _index: _index
     })
@@ -31,13 +33,13 @@ Page({
       videoContext.play();
     }, 500)
   },
-  input(e){
+  input(e) {
     this.setData({
       isShow: true,
     })
   },
   //获取发送评论
-  GetInputCon(e){
+  GetInputCon(e) {
     this.setData({
       inputValue: e.detail.value
     })
@@ -46,30 +48,33 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     this.Details(options.id)
     this.Message(options.id)
     this.setData({
       id: options.id
     })
   },
-  Details(id){
+  Details(id) {
     _http.request({
-      url:"/api/news/detail",
-      method:"GET",
-      data:{
-        news_id:id
+      url: "/api/video/detail",
+      method: "GET",
+      data: {
+        video_id: id
       }
-    }).then(res=>{
-      let data = res.data.info;
-      data.content = data.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto"');
+    }).then(res => {
+      console.log(res)
+      let data = res.data.list;
+      // data.content = data.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto"');
       this.setData({
-        details:data,
+        details: data,
+        _index:data.id
       })
-      if (data.is_give !==1){
+      if (data.is_give !== 1) {
         setTimeout(() => {
           this.setData({
             status: true,
-            text: "浏览文章+" + res.data.point + "积分"
+            text: "浏览视频+" + res.data.point + "积分"
           })
           setTimeout(() => {
             this.setData({
@@ -81,28 +86,28 @@ Page({
     })
   },
   //发送评论
-  Submit(){
-    let { inputValue , messageList}=this.data;
-    if (!inputValue){
+  Submit() {
+    let { inputValue, messageList } = this.data;
+    if (!inputValue) {
       return
     }
     _http.request({
-      url:"/api/news/commentDo",
-      data:{
-        news_id:this.data.id,
+      url: "/api/video/commentDo",
+      data: {
+        video_id: this.data.id,
         content: inputValue
       },
-      method:"POST"
-    }).then(res=>{
-      if (res.data.code == 5010){
+      method: "POST"
+    }).then(res => {
+      if (res.data.code == 5010) {
         utils.showToast('评论内容已经存在', 'none')
         return;
       }
       this.setData({
         isShow: false,
-        inputValue:"",
+        inputValue: "",
       })
-      if (messageList.is_first == 1){
+      if (messageList.is_first == 1) {
         this.setData({
           status: true,
           text: "浏览文章+" + res.data.point + "积分"
@@ -117,76 +122,74 @@ Page({
     })
   },
   //获取所有评论
-  Message(id){
+  Message(id) {
     _http.request({
-      url:"/api/news/comment",
-      method:"GET",
-      data:{
-        news_id:id,
-        page:1,
-        pagesize:10,
-      }
-    }).then(res=>{
-      if (res.data.comment.length == 0){
-        this.setData({
-          isContent:true
-        })
-      }
-      this.setData({
-        messageList:res.data
-      })
-    })
-  },
-  //文章点赞
-  Fabulous(e) {
-    let {id, zan} = e.currentTarget.dataset, { messageList } =this.data;
-    if(zan== 1){
-      utils.showToast('您不能重复点赞', 'none')
-      return;
-    }
-    _http.request({
-      url: "/api/news/articleZanDo",
-      method: "POST",
+      url: "/api/video/comment",
+      method: "GET",
       data: {
-        news_id: id
+        video_id: id,
+        page: 1,
+        pagesize: 10,
       }
     }).then(res => {
-      messageList.is_zan = messageList.is_zan == 1 ? 0 : 1;
-      messageList.zan_count = messageList.is_zan == 1 ? messageList.zan_count + 1 : messageList.zan_count - 1 ;
-      this.setData({
-        messageList: messageList,
-        status: true,
-        text: "文章点赞+" + res.data.point + "积分"
-      })
-      setTimeout(()=>{
+      if (res.data.comment.length == 0) {
         this.setData({
-          status: false,
+          isContent: true
         })
-      },2000)
+      }
+      this.setData({
+        messageList: res.data
+      })
     })
   },
   //评论点赞
-  CommentFabulous(e){
-    console.log(e)
-    let { commentid, newid, zan} = e.currentTarget.dataset, { comment } = this.data.messageList ;
-    console.log(zan)
-    if(zan==1){
+  Fabulous(e) {
+    let { id, zan } = e.currentTarget.dataset, { messageList } = this.data;
+    if (zan == 1) {
       utils.showToast('您不能重复点赞', 'none')
       return;
     }
     _http.request({
-      url:"/api/news/zanDo",
-      method:"POST",
-      data:{
-        news_id:newid,
+      url: "/api/video/articleZanDo",
+      method: "POST",
+      data: {
+        video_id: id
+      }
+    }).then(res => {
+      messageList.is_zan = messageList.is_zan == 1 ? 0 : 1;
+      messageList.zan_count = messageList.is_zan == 1 ? messageList.zan_count + 1 : messageList.zan_count - 1;
+      this.setData({
+        messageList: messageList,
+        status: true,
+        text: "视频点赞+" + res.data.point + "积分"
+      })
+      setTimeout(() => {
+        this.setData({
+          status: false,
+        })
+      }, 2000)
+    })
+  },
+  //评论点赞
+  CommentFabulous(e) {
+    let { commentid, newid, zan } = e.currentTarget.dataset, { comment } = this.data.messageList;
+    if (zan == 1) {
+      utils.showToast('您不能重复点赞', 'none')
+      return;
+    }
+    _http.request({
+      url: "/api/video/zanDo",
+      method: "POST",
+      data: {
+        video_id: newid,
         comment_id: commentid
       }
-    }).then(res=>{
-      if(res.code== 200){
-        for(let i in comment){
-          if (comment[i].comment_id == commentid){
-            comment[i].is_zan = comment[i].is_zan == 1 ? 0 :1;
-            comment[i].zan = comment[i].is_zan == 1 ? comment[i].zan + 1 : comment[i].zan-1
+    }).then(res => {
+      if (res.code == 200) {
+        for (let i in comment) {
+          if (comment[i].comment_id == commentid) {
+            comment[i].is_zan = comment[i].is_zan == 1 ? 0 : 1;
+            comment[i].zan = comment[i].is_zan == 1 ? comment[i].zan + 1 : comment[i].zan - 1
           }
         }
         this.setData({
@@ -243,14 +246,14 @@ Page({
   onReachBottom: function () {
 
   },
-  Share(id){
+  Share(id) {
     _http.request({
-      url:"/api/news/shareDo",
-      method:"POST",
-      data:{
-        news_id:id
+      url: "/api/video/shareDo",
+      method: "POST",
+      data: {
+        video_id: id
       }
-    }).then(res=>{
+    }).then(res => {
       console.log(res)
     })
   },
@@ -258,9 +261,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    
+
     console.log(res)
-    if (res.from === 'button'){
+    if (res.from === 'button') {
       let id = res.target.dataset.id;
       this.Share(id);
     }

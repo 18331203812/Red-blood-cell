@@ -1,4 +1,4 @@
-<view class="cur">
+<view class="cur" style="display :{{isShow ? 'flex' :'none'}}">
 <block wx:if='{{status == "NoOneself"}}'>
   <view class="box "style="padding-bottom: 50rpx;">
     <image class="box-img" src="../../images/component/fail.png"></image>
@@ -13,7 +13,7 @@
     <view class="title">您的积分不足</view>
     <view class="text">去做任务赚积分吧</view>
     <view class="but">
-      <button class="cancel">取消</button>
+      <button class="cancel" >取消</button>
       <button class="immediately">立即前往</button>
     </view>
   </view>
@@ -24,8 +24,10 @@
     <view class="title">未授权</view>
     <view class="text">未授权查看不来呦</view>
     <view class="but">
-      <button class="cancel">取消</button>
-      <button class="immediately">立即前往</button>
+      <button class="cancel" bindtap="_cancel">取消</button>
+      <navigator url="/pages/login/login/login" hover-class="none">
+        <button class="immediately">立即前往</button>
+      </navigator>
     </view>
   </view>
 </block>

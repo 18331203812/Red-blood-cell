@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "loadmore": "../../../component/loadmore/loadmore"
+  },
   "navigationBarTitleText": "我的积分"
 }

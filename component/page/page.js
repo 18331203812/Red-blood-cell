@@ -1,12 +1,16 @@
-// component/activity/activity.js
+// component/page/page.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    list:{
-      type:Array,
-      value:[]
+    pageText:{
+      type:String,
+      value:"没有评论"
+    },
+    pageStatus:{
+      type: String,
+      value: "comment"
     }
   },
 

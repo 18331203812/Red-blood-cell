@@ -32,7 +32,41 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.Identity()
+    this.Identity();
+    this.User();
+  },
+  //获取个人信息
+  User(){
+    _http.request({
+      url: "/api/user/profile",
+      method:"GET",
+    }).then(res=>{
+      console.log(res)
+      let data = res.data.list
+      this.setData({
+        ids: data.identity_id,
+        name: data.username,
+        phone: data.mobile
+      })
+      this.Alladdress().then(own=>{
+        console.log(own)
+        
+      })
+    })
+  },
+  Alladdress(){
+    return new Promise((resolve,reject)=>{
+      _http.request({
+        url: "/api/tag/getStreet",
+        method: "GET",
+      }).then(res => {
+        // this.setData({
+        //   listData: res.data.list
+        // })
+        resolve(res.data.list)
+      })
+    })
+    
   },
   //点击身份标题信息
   Category(e){

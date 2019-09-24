@@ -7,6 +7,10 @@ Component({
     status:{
       type:String,
       value:"NoOneself"
+    },
+    isShow:{
+      type:Boolean,
+      value:false
     }
   },
 
@@ -21,6 +25,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    //取消
+    _cancel(){
+      var myEventDetail = {} // detail对象，提供给事件监听函数
+      var myEventOption = {} // 触发事件的选项
+      this.triggerEvent('_cancel', myEventDetail, myEventOption)
+    }
   }
 })

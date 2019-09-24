@@ -1,28 +1,34 @@
 <view class="banner">
-  <image class="banner-img" mode="aspectFill" src="https://cn.bing.com/th?id=OHR.TsavoGerenuk_ZH-CN2231549718_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
+  <image class="banner-img" mode="aspectFill" src="{{details.cover}}"></image>
 </view>
 <view class="main">
   <view class="title">
-    万人爱心长江行--西西里在行动万人爱心长江行--西西里在行动
+    {{details.title}}
     <view class="shares-icon" bindtap="Share"></view>
   </view>
   <view class="con">
-    <text>90积分</text>
-    <view class="enrolment">已报名 871人 </view>
+    <text>{{details.point}}积分</text>
+    <view class="enrolment">已报名 {{details.enroll}}人 </view>
   </view>
-  <view class="time">报名期限:至2019年9月30日</view>
+  <view class="time">报名期限:{{details.ranage}}</view>
 </view>
 
 <view class="content">
-  <rich-text></rich-text>
+  <rich-text nodes='{{details.content}}'></rich-text>
 </view>
-
+<view style="width:100%;height:100rpx;"></view>
 <view class="footer">
-  <view class="footer-number">90积分</view>
-  <navigator url="/pages/activity/enterFor/enterFor" hover-class="none">
-    <button class="footer-button ">立即报名</button>
-  </navigator>
-    <!-- <button class="footer-button footer-buttons ">已报名</button> -->
+  <view class="footer-number">{{details.point}}积分</view>
+  <!-- <navigator url="/pages/activity/enterFor/enterFor" hover-class="none"> -->
+    
+  <!-- </navigator> -->
+  <block wx:if='{{details.is_enroll == 0}}'>
+    <button class="footer-button" bindtap="SignUp" data-id="{{details.id}}">立即报名</button>
+  </block>
+  <block wx:else>
+    <button class="footer-button footer-buttons ">已报名</button>
+  </block>
+    
 </view>
 
 <!-- <frame status='NoOneself'></frame> -->

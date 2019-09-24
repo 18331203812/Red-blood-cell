@@ -120,7 +120,7 @@
     
 }
 .heat-icon{
- width: 62rpx;
+ width:124rpx;
  height: 34rpx;
 }
 .li-footer{
