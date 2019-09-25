@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "picke": "../../../component/picker/picker"
+  },
   "navigationBarTitleText": "选择小区"
 }

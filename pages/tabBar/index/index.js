@@ -20,6 +20,7 @@ Page({
     video:[] , //视频
     status:false,
     text:"",
+    community:""
   },
   Category(e){
     this.setData({
@@ -92,7 +93,8 @@ Page({
       data:{
         page:page,
         pagesize: this.data.pagesize,
-        type:this.data.type
+        type:this.data.type,
+        community_id: this.data.community
       }
     }).then(res=>{
       console.log(res)
@@ -188,7 +190,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let address = wx.getStorageSync('address') ? JSON.parse(wx.getStorageSync('address')) : '';
+    console.log(address)
+    if(address){
+      if (this.data.community !== address.addressdata.id){
+        this.setData({
+          community: address.addressdata.id,
+          page:1,
+        })
+        this.List(1)
+        console.log("刷新")
+      }else{
+        console.log("不刷新")
+      }
+      
+    }
   },
 
   /**

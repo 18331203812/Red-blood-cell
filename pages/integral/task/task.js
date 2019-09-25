@@ -1,4 +1,6 @@
-// pages/integral/task/task.js
+import util from "../../../utils/util.js"
+import HTTP from "../../../utils/request.js"
+var _http = new HTTP();
 Page({
 
   /**
@@ -12,9 +14,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.Interface();
   },
-
+  //新建接口
+  Interface(){
+    _http.request({
+      url:'/api/user/signin',
+      method:"GET"
+    }).then(res=>{
+      console.log(res)
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

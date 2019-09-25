@@ -41,7 +41,10 @@ Component({
       value: "确定"
     },
     pickerHeaderStyle: String,//标题栏样式 view
-    sureStyle: String, //标题栏确定样式  text
+    sureStyle:{
+      type:String,
+      value:"color:#ce131b"
+    } , //标题栏确定样式  text
     cancelStyle: String,//标题栏取消样式 text
     titleStyle: String,//标题栏标题样式  view
     maskStyle: String,//设置蒙层的样式（详见picker-view） view
@@ -55,8 +58,9 @@ Component({
   data: {
     district:0,
     street:0,
-    index:[0,0,0,0],
-    listData:[]
+    index:[0,0],
+    listData:[],
+
   },
   pageLifetimes: {
     // 组件所在页面的生命周期函数
@@ -121,6 +125,26 @@ Component({
     },
     _bindpickend(){
       
+    },
+    //点击区
+    District(e){
+      this.setData({
+        index: [this.data.index[0], this.data.index[1], e.currentTarget.dataset.item],
+        street: e.currentTarget.dataset.item
+      })
+      console.log(this.data.index)
+    },
+    Street(e){
+      this.setData({
+        index: [this.data.index[0], this.data.index[1], this.data.index[2], e.currentTarget.dataset.item],
+        // street: e.currentTarget.dataset.item
+      })
+      console.log(this.data.index)
+    },
+    DistrictList(){
+      this.setData({
+        index: [this.data.index[0], this.data.index[1]],
+      })
     }
   }
 })

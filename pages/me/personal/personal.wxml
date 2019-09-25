@@ -10,16 +10,20 @@
   </view>
   <view class="li">
     <view class="li-name">手机号 <text>*</text></view>
-    <!-- <navigator url="/pages/me/phone/phone" hover-class="none"> -->
+  
       <view class="li-con">
         <input class="li-input" placeholder-style="font-size: 28rpx; color: #999999;" value="{{phone}}" bindblur="Phone" placeholder="请输入手机号"></input>
-        <!-- <view class="li-con-text">
-          修改手机号
-          <view class="more-icon" style="transform:rotate(0deg);"></view>      
-        </view> -->
+        <block wx:if='{{phone}}'>
+          <navigator url="/pages/me/phone/phone?phone={{phone}}" hover-class="none">
+            <view class="li-con-text">
+              修改手机号
+              <view class="more-icon" style="transform:rotate(0deg);"></view>      
+            </view>
+         </navigator>
+        </block>
       </view>
-    <!-- </navigator> -->
-    <!-- <view class="li-code">
+   <block wx:if="{{!phone}}">
+     <view class="li-code">
       <input class="li-code-input" placeholder="请输入验证码" placeholder-style="font-size: 28rpx; color: #999999;"></input>
       <block wx:if='{{disabled}}'>
         <view class="li-code-but">{{time}}</view>
@@ -27,7 +31,9 @@
       <block wx:else>
         <view class="li-code-but" bindtap="code">获取验证码</view>
       </block>
-    </view> -->
+    </view>
+   </block>
+   
   </view>
   <view class="li">
     <view class="li-name">身份 <text>*</text></view>
@@ -61,16 +67,25 @@
       <view class="more-icon"></view>
     </view>
   </view>
-  <view class="Agreement">
-    <checkbox-group bindchange="checkboxChange">
-      <checkbox  checked='{{checked}}' color='#ce131b' class="checkbox" />
-    </checkbox-group>
-    同意《用户服务协议》及《隐私协议》
-  </view>
-  <view class="li-but">
-    <button class="skip">跳过</button>
-    <button class="submit" bindtap="Submit">提交</button>
-  </view>
+  <block wx:if='{{!isBut}}'>
+     <view class="Agreement">
+        <checkbox-group bindchange="checkboxChange">
+          <checkbox  checked='{{checked}}' color='#ce131b' class="checkbox" />
+        </checkbox-group>
+        同意《用户服务协议》及《隐私协议》
+      </view>
+  </block>
+  <block wx:if='{{!isBut}}'>
+    <view class="li-but">
+      <button class="skip">跳过</button>
+      <button class="submit" bindtap="Submit">提交</button>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="li-but" style="justify-content:center;padding-top:20rpx;">
+      <button class="submit" bindtap="Submit">提交</button>
+    </view>
+  </block>
 </view>
 
 <picke

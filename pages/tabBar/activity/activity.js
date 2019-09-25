@@ -60,7 +60,7 @@ Page({
         })
       }
       this.setData({
-        list:res.data.list
+        list:this.data.list.concat(res.data.list)
       })
     })
   },

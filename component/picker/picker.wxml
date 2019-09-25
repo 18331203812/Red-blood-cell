@@ -11,8 +11,43 @@
 				<text  style="{{sureStyle}}">{{sureText}}</text>
 			</view>
 		</view>
-   
-		<picker-view
+    <view class="picker-headers" style="{{pickerHeaderStyle}}">
+			
+				<view class="item">
+          {{listData[index[0]].province_name}}
+				</view>
+        <view class="item">
+          {{listData[index[0]].city_list[index[1]].cityname}}
+				</view>
+        <view class="item" bindtap="DistrictList">
+          {{listData[index[0]].city_list[index[1]].district_list[index[2]].district_name}}
+				</view>
+        <view class="item">
+          {{listData[index[0]].city_list[index[1]].district_list[index[2]].street_list[index[3]].street_name}}
+				</view>
+		</view>
+    <scroll-view scroll-y class="scroll">
+    <block wx:if='{{index.length==2}}'>
+      <block wx:for="{{listData}}" wx:for-item='item' wx:key="indexs">
+          <block wx:for='{{item.city_list[district].district_list}}'   wx:for-item='districtitem' wx:for-index='district_index' wx:key="{{indexs}}">
+            <view class="items " bindtap="District" data-item='{{district_index}}'>
+              {{districtitem.district_name}}
+            </view>
+          </block>
+			</block>
+    </block>
+    <block wx:elif='{{index.length !==2}}'>
+     <block wx:for="{{listData}}" wx:for-item='item' wx:key="indexs">
+            <block wx:for='{{item.city_list[district].district_list[street].street_list}}' wx:for-index='street_index'  wx:for-item='streetitem' wx:key="streeindex">
+              <view class="items " bindtap="Street" data-item='{{street_index}}'>
+                {{streetitem.street_name}}
+              </view>
+            </block>
+			</block>
+    </block>
+    </scroll-view>
+    
+		<!-- <picker-view
 			value="{{value}}"
 			class="picker-content"
 			bindpickstart="_bindpickstart"
@@ -21,8 +56,8 @@
 			indicator-style="{{indicatorStyle}}"
 			mask-style="{{maskStyle}}"
       style="padding:0 20rpx;"
-		>
-			<picker-view-column wx:for="{{listData}}" wx:for-item='item' wx:key="{{index}}">
+		> -->
+			<!-- <picker-view-column wx:for="{{listData}}" wx:for-item='item' wx:key="{{index}}">
 				<view class="item">
           {{item.province_name}}
 				</view>
@@ -48,9 +83,9 @@
                 {{streetitem.street_name}}
               </view>
             </block>
-			</picker-view-column>
+			</picker-view-column> -->
       
-		</picker-view>
+		<!-- </picker-view> -->
 	</view>
 </view>
 

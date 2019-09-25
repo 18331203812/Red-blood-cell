@@ -19,19 +19,24 @@
 <view style="width:100%;height:100rpx;"></view>
 <view class="footer">
   <view class="footer-number">{{details.point}}积分</view>
-  <!-- <navigator url="/pages/activity/enterFor/enterFor" hover-class="none"> -->
+
     
-  <!-- </navigator> -->
+  
   <block wx:if='{{details.is_enroll == 0}}'>
-    <button class="footer-button" bindtap="SignUp" data-id="{{details.id}}">立即报名</button>
+    <!-- <navigator url="/pages/activity/enterFor/enterFor?id={{details.id}}&point={{details.point}}" hover-class="none"> -->
+      <button class="footer-button" bindtap="SignUp" data-id="{{details.id}}">立即报名</button>
+    <!-- </navigator> -->
+    <!-- bindtap="SignUp" data-id="{{details.id}}" -->
   </block>
   <block wx:else>
-    <button class="footer-button footer-buttons ">已报名</button>
+    
+      <button class="footer-button footer-buttons" >已报名</button>
+    
   </block>
     
 </view>
 
-<!-- <frame status='NoOneself'></frame> -->
+<frame status='{{status}}' isShow='{{isShow}}' text='{{text}}' bind:_cancel='cancel'></frame>
 
 <!-- 海报 -->
 <view class="{{curtain}}" catchtap="Cur">

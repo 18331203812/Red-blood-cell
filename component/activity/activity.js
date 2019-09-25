@@ -7,6 +7,10 @@ Component({
     list:{
       type:Array,
       value:[]
+    },
+    url:{
+      type:String,
+      value:"/pages/activity/details/details"
     }
   },
 

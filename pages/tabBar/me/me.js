@@ -75,7 +75,7 @@ Page({
         break;
         case 4:
           wx.navigateTo({
-            url: '/pages/me/personal/personal',
+            url: '/pages/me/personal/personal?isBut=true',
           })
           break;
         default:

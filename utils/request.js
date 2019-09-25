@@ -29,8 +29,8 @@ class HTTP {
             /*** 
              * 需要根据接口文档改！！！
             */
-            // reject(res)
-            resolve(res)
+            reject(res)
+            // resolve(res)
           }
         }),
         fail: (err => {

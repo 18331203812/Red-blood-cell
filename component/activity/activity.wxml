@@ -1,9 +1,10 @@
 <view class="main">
   <block wx:for='{{list}}' wx:key='index' wx:for-item='item'>
-    <navigator url="/pages/activity/details/details?id={{item.id}}" hover-class="none">
+  <!-- pages/activity/enterForSuccess/enterForSuccess -->
+    <navigator url="{{url}}?id={{item.id}}" hover-class="none">
       <view class="li">
         <view class="li-box">
-          <image class="li-img"  mode="aspectFill" src="https://cn.bing.com/th?id=OHR.TsavoGerenuk_ZH-CN2231549718_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
+          <image class="li-img"  mode="aspectFill" src="{{item.cover}}"></image>
           <view class="li-box-status">{{item.status_title}}</view>
           <view class="applicant">
             <view class="line">

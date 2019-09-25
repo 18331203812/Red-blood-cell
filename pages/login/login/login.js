@@ -40,9 +40,8 @@ Page({
             }).then(res => {
               wx.hideLoading();
               wx.setStorageSync("login", res.data)
-              wx.navigateTo({
-                url: '/pages/me/personal/personal',
-              })
+              that.User();
+             
             }).catch(res=>{
               wx.hideLoading();
             })
@@ -53,6 +52,25 @@ Page({
         wx.showToast({
           title: '授权失败',
           icon:"none"
+        })
+      }
+    })
+  },
+  //获取个人信息
+  User() {
+    console.log('2')
+    _http.request({
+      url: "/api/user/profile",
+      method: "GET",
+    }).then(res => {
+      let data = res.data.list;
+      if (data.city_name && data.mobile && data.username){
+        wx.navigateBack({
+          delta: 1
+        })
+      }else{
+        wx.navigateTo({
+          url: '/pages/me/personal/personal',
         })
       }
     })

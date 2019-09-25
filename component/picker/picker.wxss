@@ -30,7 +30,7 @@
 .picker{
 	position: absolute;
 	width: 100%;
-	height: 235px;
+	height:300px;
 	bottom: -235px;
 	left: 0;
 	background: #fff;
@@ -60,6 +60,14 @@
 	align-items: center;
 	border-bottom: 1px solid #eeeeee;
 }
+.picker-headers{
+  	height: 15%;
+	box-sizing: border-box;
+	padding: 0 20rpx;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #eeeeee;
+}
 .picker-header view {
 	height: 100%;
 	display: flex;
@@ -82,4 +90,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #d13035;
+  padding: 0 10rpx;
+}
+.items{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+  padding: 10rpx;
+}
+.scroll{
+  height: 300rpx;
+}
+.red{
+    color: #d13035;
 }

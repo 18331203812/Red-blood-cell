@@ -10,7 +10,10 @@ Page({
     curtain: 'curtains',
     rpx: "",
     rpxheight: "",
-    details:{}
+    details:{},
+    isShow:false,
+    status:"",
+    text:""
   },
 
   /**
@@ -35,34 +38,39 @@ Page({
   SignUp(e){
     let id = e.currentTarget.dataset.id;
     _http.request({
-      url:"/api/activity/enrollDo",
+      url:"/api/activity/checkEnroll",
       method:"POST",
       data: { activity_id : id}
     }).then(res=>{
-      if(res.data.code == 7004){
-        utils.showToast('您不是本小区居民，不能参加',"none")
+      if (res.data.code == 7005) {
+        this.setData({
+          isShow: true,
+          status: "Enough"
+        })
+      } else if(res.data.code == 7004){
+        this.setData({
+          isShow:true,
+          status:"NoOneself"
+        })
       } else if (res.data.code == 7003){
-        wx.showModal({
-          title: '提示',
-          content: '请先完善个人信息',
-          success(res) {
-            if (res.confirm) {
-              wx.navigateTo({
-                url: '/pages/me/personal/personal',
-              })
-            } else if (res.cancel) {
-              
-            }
-          }
+        this.setData({
+          isShow: true,
+          status: "Personal",
+          text:"才能参加活动呦"
         })
       }else if(res.data.code == 7002){
         utils.showToast('不需要重复报名','none')
-      } else if (res.data.code == 200){
-        utils.showToast('报名成功', 'none')
-        this.setData({
-          [`details.is_enroll`]: 1
+      } else if (res.code == 200){
+        wx.navigateTo({
+          url: '/pages/activity/enterFor/enterFor?id=' + id + '&point=' + this.data.details.point,
         })
       }
+    })
+  },
+  //删除弹框
+  cancel(){
+    this.setData({
+      isShow:false
     })
   },
   /**

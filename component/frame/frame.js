@@ -11,6 +11,10 @@ Component({
     isShow:{
       type:Boolean,
       value:false
+    },
+    text:{
+      type:String,
+      value:"才能兑换商品呦"
     }
   },
 

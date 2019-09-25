@@ -26,14 +26,19 @@ Page({
     categoryList:[], //身份
     ids: "", //身份id
     checked:true, //同意
+    isBut:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.Identity();
-    this.User();
+    console.log(options.isBut)
+    if (options.isBut){
+      this.setData({
+        isBut:true
+      })
+    }
   },
   //获取个人信息
   User(){
@@ -41,32 +46,21 @@ Page({
       url: "/api/user/profile",
       method:"GET",
     }).then(res=>{
-      console.log(res)
-      let data = res.data.list
+      let data = res.data.list,arr=[];
+      arr.push(
+        { province_name: data.province_name, province_id: data.province_id},
+        { cityname: data.city_name, city_id:data.datacity_id}, 
+        { district_name: data.district_name, district_id: data.district_id}, 
+        { street_name: data.street_name, street_id: data.street_id});
       this.setData({
         ids: data.identity_id,
         name: data.username,
-        phone: data.mobile
+        phone: data.mobile,
+        picker_08_data: arr,
+        addressdata: { community_name: data.community_name, community_id: data.community_id}
       })
-      this.Alladdress().then(own=>{
-        console.log(own)
-        
-      })
-    })
-  },
-  Alladdress(){
-    return new Promise((resolve,reject)=>{
-      _http.request({
-        url: "/api/tag/getStreet",
-        method: "GET",
-      }).then(res => {
-        // this.setData({
-        //   listData: res.data.list
-        // })
-        resolve(res.data.list)
-      })
-    })
     
+    })
   },
   //点击身份标题信息
   Category(e){
@@ -148,7 +142,8 @@ Page({
     let { addresstext, addresindex}=this.data;
     this.setData({
       isShowPicker:false,
-      addressdata: addresstext[addresindex]
+      addressdata: addresstext[addresindex],
+     
     })
   },
   //取消
@@ -180,6 +175,7 @@ Page({
     this.setData({
       isShow_08: false,
       picker_08_data: e.detail.choosedData,
+      addressdata: {}
     })
   },
   /**
@@ -279,7 +275,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.Identity();
+    this.User();
   },
 
   /**

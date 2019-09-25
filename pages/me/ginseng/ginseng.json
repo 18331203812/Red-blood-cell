@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "activity": "../../../component/activity/activity",
-    "loadmore": "../../../component/loadmore/loadmore"
+    "loadmore": "../../../component/loadmore/loadmore",
+    "page":"../../../component/page/page"
   },
   "navigationBarTitleText": "我的参与"
 }
