@@ -7,40 +7,42 @@
       每天签到领积分
       <view class="box-title-icon-right"></view>
     </view>
-    <view class="box-text">连续签到七天有更多惊喜呦~</view>
+    <view class="box-text">连续签到十四天有更多惊喜呦~</view>
     <view class="box-ul">
-      <view class="box-li">
-        <view class="li-radius category">+5</view>
-        <view class="li-text">第2天</view>
-      </view>
-      <view class="box-li">
-        <view class="li-radius">+5</view>
-        <view class="li-text">第2天</view>
-      </view>
-      <view class="box-li">
+    <block  wx:for='{{list}}' wx:for-index='index' wx:key='i'>
+      <block wx:if="{{index==3 || index==6}}">
+        <view class="box-li">
+          <view class="li-radius border{{item.is_sign==1 ? 'borders' :''}}">
+          <block wx:if='{{item.is_sign == 1}}'>
+            <view class="li-icons"></view>
+          </block>
+          <block wx:else>
+            <view class="li-icon"></view>
+          </block>
+          </view>
+          <view class="li-text">第{{index+listIndex}}天</view>
+        </view> 
+      </block>
+      <block wx:else>
+        <view class="box-li">
+          <view class="li-radius {{item.is_sign==1?'category':''}}">+{{item.point}}</view>
+          <view class="li-text">第{{index+listIndex}}天</view>
+        </view>
+      </block>
+      
+    </block>
+      
+      
+      <!-- <view class="box-li">
         <view class="li-radius border">
           <view class="li-icon"></view>
+          <view class="li-icons"></view>
         </view>
         <view class="li-text">第2天</view>
-      </view>
-      <view class="box-li">
-        <view class="li-radius">+5</view>
-        <view class="li-text">第2天</view>
-      </view>
-      <view class="box-li">
-        <view class="li-radius">+5</view>
-        <view class="li-text">第2天</view>
-      </view>
-      <view class="box-li">
-        <view class="li-radius">+5</view>
-        <view class="li-text">第2天</view>
-      </view>
-      <view class="box-li">
-        <view class="li-radius">+5</view>
-        <view class="li-text">第2天</view>
-      </view>
+      </view> -->
+      
     </view>
-    <button class="box-but">签到赢好礼</button>
+    <!-- <button class="box-but">签到赢好礼</button> -->
   </view>
 </view>
 
@@ -84,3 +86,4 @@
     <text>+10积分奖励</text>
    </view>
 </view>
+<frame status='{{status}}' isShow='{{isShow}}' text='{{text}}' bind:_cancel='cancel'></frame>

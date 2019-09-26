@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "frame": "../../../component/frame/frame"
+  },
   "navigationBarTitleText": "任务"
 }

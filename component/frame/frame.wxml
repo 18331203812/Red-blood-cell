@@ -46,13 +46,14 @@
     </view>
   </view>
 </block>
-<block wx:elif="{{status == 'Sign' }}">
+<block wx:elif="{{status == 'Sign'}}">
   <view class="box">
     <image class="box-img" src="../../images/component/success.png"></image>
     <view class="title">签到成功</view>
-    <view class="text">参加活动+15积分</view>
+    <view class="text">{{text}}</view>
     <view class="but">
-      <button class="immediately actiy" >确定</button>
+      <button class="immediately actiy" bindtap="_cancel">确定</button>
+      <!-- <button class="ithsuianna "></button> -->
     </view>
   </view>
 </block>

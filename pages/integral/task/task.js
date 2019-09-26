@@ -7,7 +7,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    list:[],
+    listIndex:1,
+    status:"Sign",
+    isShow:false,
+    text:"签到+5积分"
   },
 
   /**
@@ -15,6 +19,31 @@ Page({
    */
   onLoad: function (options) {
     this.Interface();
+    return;
+    this.Sign();
+  },
+  //签到
+  Sign(){
+    _http.request({
+      url:"/api/user/signinDo",
+      method:"POST"
+    }).then(res=>{
+      console.log(res)
+      if(res.data.code== 200){
+        this.setData({
+          isShow:true,
+          text: "签到+" + res.data.data.point+'积分'
+        })
+      }else if(res.data.code==1011){
+
+      }
+    })
+  },
+  //删除弹框
+  cancel() {
+    this.setData({
+      isShow: false
+    })
   },
   //新建接口
   Interface(){
@@ -22,7 +51,18 @@ Page({
       url:'/api/user/signin',
       method:"GET"
     }).then(res=>{
-      console.log(res)
+      let data=res.data.list;
+      if (data[6].is_sign == 1){
+        this.setData({
+          list: data.slice(7, 14),
+          listIndex:8
+        })
+      }else{
+        this.setData({
+          list: data.slice(0, 7),
+          listIndex: 1,
+        })
+      }
     })
   },
   /**
