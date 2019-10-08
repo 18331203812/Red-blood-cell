@@ -1,5 +1,8 @@
 // pages/tabBar/integral/integral.js
 const app = getApp();
+import util from "../../../utils/util.js";
+import HTTP from "../../../utils/request.js";
+var _http = new HTTP();
 Page({
 
   /**
@@ -7,6 +10,11 @@ Page({
    */
   data: {
     tabbar: {},
+    goodsList:[],
+    isShow:true,
+    isPage:false,
+    page:1,
+    pagesize:10
   },
 
   /**
@@ -14,6 +22,7 @@ Page({
    */
   onLoad: function (options) {
     app.editTabbar();
+    this.Goods(1);
   },
 
   /**
@@ -21,14 +30,40 @@ Page({
    */
   onReady: function () {
     wx.hideTabBar({
-      fail: function () {
+      fail: function(){
         setTimeout(function () {
           wx.hideTabBar()
         }, 500)
       }
     });
   },
-
+  Goods(page){
+    _http.request({
+      url:"/api/exchange/index",
+      method:"GET",
+      data:{
+        page:page,
+        pagesize:this.data.pagesize
+      }
+    }).then(res=>{
+      console.log(res)
+      let data=res.data.list;
+      
+      if(data.length < 9){
+        this.setData({
+          isShow:false
+        })
+      }
+      this.setData({
+        goodsList: this.data.goodsList.concat(data)
+      })
+      if (this.data.goodsList.length == 0) {
+        this.setData({
+          isPage: true
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -61,7 +96,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.setData({
+      page: this.data.page + 1
+    })
+    this.Goods(this.data.page)
   },
 
   /**

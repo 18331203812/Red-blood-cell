@@ -1,53 +1,36 @@
 <view class="nav">
-  <view class="nav-li category">全部订单</view>
-  <view class="nav-li">待核销</view>
-  <view class="nav-li">已完成</view>
+  <view class="nav-li  {{ids == 0 ? 'category' : ''}}" bindtap="Category" data-id="0">全部订单</view>
+  <view class="nav-li  {{ids == 1 ? 'category' : ''}}" bindtap="Category" data-id="1">待核销</view>
+  <view class="nav-li  {{ids == 2 ? 'category' : ''}}" bindtap="Category" data-id="2">已完成</view>
 </view>
 
 <view class="main">
-<navigator url="/pages/me/recordDetails/recordDetails" hover-class="none">
-  <view class="li">
-    <view class="li-nav">
-      <view class="li-nav-number">订单号：201909081123</view>
-      <view class="li-nav-but">待核销</view>
-    </view>
-    <view class="li-con">
-      <image class="li-con-img" src="https://cn.bing.com/th?id=OHR.SunbeamsForest_ZH-CN5358008117_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" mode="aspectFill"></image>
-      <view class="li-con-right">
-        <view class="li-title">苹果笔记本电脑太空深灰高级办公居家电脑</view>
-        <view class="li-integral">
-          <view class="li-ints"><text>6000</text>积分*1</view>
-          <view class="li-time">2019-08-06</view>
+<block wx:for='{{list}}' wx:key='index' >
+  <navigator url="/pages/me/recordDetails/recordDetails?id={{item.order_id}}" hover-class="none">
+    <view class="li">
+      <view class="li-nav">
+        <view class="li-nav-number">订单号：{{item.order_sn}}</view>
+        <view class="li-nav-but {{item.status == 1 ? 'success' : ''}}">{{item.status == 0 ? "待核销" : "已完成"}}</view>
+      </view>
+      <view class="li-con">
+        <image class="li-con-img" src="{{item.cover}}" mode="aspectFill"></image>
+        <view class="li-con-right">
+          <view class="li-title">{{item.goods_name}}</view>
+          <view class="li-integral">
+            <view class="li-ints"><text>{{item.point}}</text>积分*{{item.quantity}}</view>
+            <view class="li-time">{{item.create_time}}</view>
+          </view>
         </view>
       </view>
-    </view>
-    <view class="li-footer">
-      <text>合计:60000积分</text>
-      <text>实际价值:￥6000</text>
-    </view>
-  </view>
-</navigator>
-<navigator url="/pages/me/recordDetails/recordDetails" hover-class="none">
-  <view class="li">
-    <view class="li-nav">
-      <view class="li-nav-number">订单号：201909081123</view>
-      <view class="li-nav-but success">待核销</view>
-    </view>
-    <view class="li-con">
-      <image class="li-con-img" src="https://cn.bing.com/th?id=OHR.SunbeamsForest_ZH-CN5358008117_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" mode="aspectFill"></image>
-      <view class="li-con-right">
-        <view class="li-title">苹果笔记本电脑太空深灰高级办公居家电脑</view>
-        <view class="li-integral">
-          <view class="li-ints"><text>6000</text>积分*1</view>
-          <view class="li-time">2019-08-06</view>
-        </view>
+      <view class="li-footer">
+        <text>合计:{{item.total_point}}积分</text>
+        <text>实际价值:￥{{item.total_market_price}}</text>
       </view>
     </view>
-    <view class="li-footer">
-      <text>合计:60000积分</text>
-      <text>实际价值:￥6000</text>
-    </view>
-  </view>
-</navigator>
+  </navigator>
+</block>
 </view>
-  <loadmore isShow='true' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+<block wx:if='{{isPage}}'>
+  <page pageStatus='activity' pageText='没有兑换记录' ></page>
+</block>
+<loadmore isShow='{{isShow}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>

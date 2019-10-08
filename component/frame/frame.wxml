@@ -63,7 +63,9 @@
     <view class="title">兑换成功</view>
     <view class="text">还有更多好礼等着你</view>
     <view class="but">
-      <button class="immediately actiy" >确定</button>
+      <!-- <navigator url="/pages/me/recordDetails/recordDetails" hover-class="none"> -->
+        <button class="immediately actiy" bindtap="_confirm" >确定</button>
+      <!-- </navigator> -->
     </view>
   </view>
 </block>

@@ -1,20 +1,39 @@
-// pages/me/recordDetails/recordDetails.js
+import HTTP from "../../../utils/request.js";
+import utils from "../../../utils/util.js";
+var _http = new HTTP();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    details:{},
+    tYear:"" , //年份
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    this.Details(options.id)
+    this.doHandleDate();
   },
-
+  //详情
+  Details(id){
+    _http.request({
+      url:"/api/user/exchangeDetail",
+      method:"GET",
+      data:{
+        order_id:id
+      }
+    }).then(res=>{
+      console.log(res)
+      this.setData({
+        details:res.data.list
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -22,6 +41,22 @@ Page({
 
   },
 
+   doHandleDate() {
+     
+    var myDate = new Date();
+    var tYear = myDate.getFullYear();
+    var tMonth = myDate.getMonth();
+
+    var m = tMonth + 1;
+    if(m.toString().length == 1) {
+      m = "0" + m;
+    }
+     console.log(tYear)
+      this.setData({
+        tYear: tYear
+      })
+    },
+    
   /**
    * 生命周期函数--监听页面显示
    */

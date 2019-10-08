@@ -19,7 +19,6 @@ Page({
    */
   onLoad: function (options) {
     this.Interface();
-    return;
     this.Sign();
   },
   //签到
@@ -28,14 +27,13 @@ Page({
       url:"/api/user/signinDo",
       method:"POST"
     }).then(res=>{
-      console.log(res)
-      if(res.data.code== 200){
+      if(res.code== 200){
         this.setData({
           isShow:true,
-          text: "签到+" + res.data.data.point+'积分'
+          text: "签到+" + res.data.point+'积分'
         })
-      }else if(res.data.code==1011){
-
+      }else if(res.code==1011){
+        console.log('今日已签到')
       }
     })
   },

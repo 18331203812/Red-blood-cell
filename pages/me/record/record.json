@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "loadmore": "../../../component/loadmore/loadmore"
+    "loadmore": "../../../component/loadmore/loadmore",
+    "page":"../../../component/page/page"
   },
   "navigationBarTitleText": "兑换记录"
 }

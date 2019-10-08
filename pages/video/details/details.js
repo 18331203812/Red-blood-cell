@@ -26,7 +26,6 @@ Page({
     //停止正在播放的视频
     var videoContextPrev = wx.createVideoContext(_index + "")
     videoContextPrev.stop();
-
     setTimeout(function () {
       //将点击视频进行播放
       var videoContext = wx.createVideoContext(_index + "")

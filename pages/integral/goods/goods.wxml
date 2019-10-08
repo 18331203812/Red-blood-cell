@@ -1,24 +1,24 @@
 <swiper indicator-dots autoplay  circular class="swiper">
-  <block wx:for="{{imgUrls}}" wx:key='index'>
+  <block wx:for="{{details.swipper_data}}" wx:key='index'>
     <swiper-item class='swiper-item'>
       <image src="{{item}}" class="swiper-img" mode="aspectFill"/>
     </swiper-item>
   </block>
 </swiper>
 <view class="nav">
-  <view class="nav-title">Apple 2019款 MacBook Air 13.3 Retina屏 八代i5 8G 256G SSD 银色 笔记本电脑</view>
+  <view class="nav-title">{{details.goods_name}}</view>
   <view class="nav-con">
-    <view class="nav-price">600000积分 <text>￥12300</text></view>
-    <view class="nav-stock">库存剩余：15</view>
+    <view class="nav-price">{{details.point}}积分 <text>￥{{details.market_price}}</text></view>
+    <view class="nav-stock">库存剩余：{{details.stock}}</view>
   </view>
 </view>
 <view class="rich">
- <rich-text nodes=''></rich-text>
+ <rich-text nodes='{{details.content}}'></rich-text>
 </view>
 
 <view style="width:100%;height:100rpx;"></view>
 <view class="footer">
-  <view class="footer-number">90积分</view>
+  <view class="footer-number">{{details.point}}积分</view>
     <button class="footer-button " bindtap="Exchange">立即兑换</button>
 </view>
 <!-- 弹框 -->
@@ -28,30 +28,35 @@
     <view class="cur-nav">
       <image class="cur-nav-img" mode="aspectFill" src="https://cn.bing.com/th?id=OHR.Wachsenburg_ZH-CN5224299503_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
       <view class="cur-nav-box">
-        <view class="cur-price">600000积分</view>
-        <view class="cur-stock">库存剩余15台</view>
-        <view class="cur-category">选择颜色分类</view>
+        <view class="cur-price">{{details.point}}积分</view>
+        <view class="cur-stock">库存剩余{{details.stock}}台</view>
+        <block wx:if='{{details.goods_attr.length !== 0}}'>
+           <view class="cur-category">选择颜色分类</view>
+        </block>
       </view>
     </view>
-
-    <view class="cur-title">颜色分类</view>
+    <block wx:if='{{details.goods_attr.length !== 0}}'>
+      <view class="cur-title">颜色分类</view>
+    </block>
+    
     <view class="cur-category-ul">
-      <view class="cur-category-li category">深空灰色</view>
-      <view class="cur-category-li">灰色</view>
+      <block wx:for='{{details.goods_attr}}' wx:key='index'>
+        <view class="cur-category-li {{index == goodsAttrId ? 'category' : '' }}" catchtap="Category" data-item='{{item}}' data-index='{{index}}'>{{item}} </view>
+      </block>
     </view>
   
     <view class="cur-number">
-      <view class="cur-title">颜色分类</view>
+      <view class="cur-title">数量</view>
       <view class="cur-but">
-        <view class="cur-but-li">-</view>
-        <view class="cur-but-li">2</view>
-        <view class="cur-but-li">+</view>
+        <view class="cur-but-li" catchtap="Reduce">-</view>
+        <view class="cur-but-li">{{number}}</view>
+        <view class="cur-but-li" catchtap="Add">+</view>
       </view>
     </view>
 
-    <button class="cur-button">立即兑换</button>
+    <button class="cur-button" catchtap="Submit">立即兑换</button>
   </view>
 </view>
 <!-- Personal 需要填写个人信息 -->
 <!-- Exchange 兑换成功-->
-<!-- <frame status='Enough'></frame> -->
+<frame status='{{status}}' isShow="{{isShow}}" bind:_cancel='Cancel' bind:_confirm='Confirm'></frame>

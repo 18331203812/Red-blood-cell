@@ -12,7 +12,6 @@
 			</view>
 		</view>
     <view class="picker-headers" style="{{pickerHeaderStyle}}">
-			
 				<view class="item">
           {{listData[index[0]].province_name}}
 				</view>

@@ -51,7 +51,7 @@ Page({
         { province_name: data.province_name, province_id: data.province_id},
         { cityname: data.city_name, city_id:data.datacity_id}, 
         { district_name: data.district_name, district_id: data.district_id}, 
-        { street_name: data.street_name, street_id: data.street_id});
+        { street_name: data.street_name, id: data.street_id});
       this.setData({
         ids: data.identity_id,
         name: data.username,
