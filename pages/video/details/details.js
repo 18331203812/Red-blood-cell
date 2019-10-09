@@ -84,6 +84,7 @@ Page({
       }
     })
   },
+
   //发送评论
   Submit() {
     let { inputValue, messageList } = this.data;

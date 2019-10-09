@@ -17,6 +17,7 @@ class HTTP {
         success: (res => {
           if (res.data.code === 200) {
             //200: 服务端业务处理正常结束
+            
             resolve(res.data)
           } else if (res.data.code === 1003){
             //未登录
