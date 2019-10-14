@@ -48,7 +48,7 @@
 
 
 <view class="main">
-   <view class="main-title">积分记录</view>
+   <view class="main-title">积分说明</view>
    <view class="main-text">完成任务领取更多奖励</view>
    <view class="main-li">
     <view class="main-li-name">

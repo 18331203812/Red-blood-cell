@@ -16,8 +16,8 @@
     <view class="tabbar-li {{type == 3 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="3">市</view>
   </view>
   <view class="search">
-    <input class="input" placeholder="搜索" placeholder-class="inputs"></input>
-    <view class="search-icon" ></view>
+    <input class="input" placeholder="搜索" placeholder-class="inputs" bindinput="Search"></input>
+    <view class="search-icon"  bindtap="SearchSubmit"></view>
   </view>
 </view>
 

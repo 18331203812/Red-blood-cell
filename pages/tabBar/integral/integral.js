@@ -14,15 +14,30 @@ Page({
     isShow:true,
     isPage:false,
     page:1,
-    pagesize:10
+    pagesize:10,
+    integral:""
   },
-
+  List(page) {
+    _http.request({
+      url: "/api/user/record",
+      method: "GET",
+      data: {
+        page: page,
+        pagesize: this.data.pagesize
+      }
+    }).then(res => {
+      this.setData({
+        integral: res.data.integral
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     app.editTabbar();
     this.Goods(1);
+   
   },
 
   /**
@@ -68,7 +83,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.List(1)
   },
 
   /**

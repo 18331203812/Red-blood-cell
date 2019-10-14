@@ -1,9 +1,13 @@
 <view class="nav-integral">
   <view class="nav-text">我的积分</view>
-  <view class="nav-number">1208</view>
+  <view class="nav-number">{{integral}}</view>
   <view class="nav-but">
-    <view class="nav-but-li">积分说明</view>
-    <view class="nav-but-li">积分商城</view>
+    <navigator url="/pages/integral/task/task" hover-class="none">
+      <view class="nav-but-li">积分说明</view>
+    </navigator>
+    <navigator url="/pages/tabBar/integral/integral" hover-class="none" open-type='switchTab'>
+      <view class="nav-but-li">积分商城</view>
+    </navigator>
   </view>
   <navigator url="/pages/integral/task/task" hover-class="none">
     <view class="nav-article">
@@ -12,7 +16,6 @@
     </view>
   </navigator>
 </view>
-
 <view class="main">
   <view class="main-title">积分记录</view>
   <block wx:for="{{list}}" wx:key='index' wx:for-item='item'>

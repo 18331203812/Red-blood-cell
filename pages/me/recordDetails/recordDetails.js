@@ -16,6 +16,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    
     this.Details(options.id)
     this.doHandleDate();
   },

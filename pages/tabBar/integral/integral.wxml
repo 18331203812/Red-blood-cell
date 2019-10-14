@@ -1,6 +1,6 @@
 <view class="nav-integral">
   <view class="nav-text">我的积分</view>
-  <view class="nav-number">1208</view>
+  <view class="nav-number">{{integral || 0}}</view>
   <view class="nav-but">
     <navigator url="/pages/integral/task/task" hover-class="none">
       <view class="nav-but-li">积分说明</view>

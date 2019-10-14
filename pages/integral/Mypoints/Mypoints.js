@@ -10,7 +10,8 @@ Page({
     page:1,
     pagesize:10,
     list:[],
-    isShow:true
+    isShow:true,
+    integral:""
   },
 
   /**
@@ -37,7 +38,8 @@ Page({
         })
       }
       this.setData({
-        list:this.data.list.concat(res.data.list)
+        list:this.data.list.concat(res.data.list),
+        integral:res.data.integral
       })
     })
   },

@@ -19,13 +19,14 @@ Page({
   Category(e){
     this.setData({
       ids: e.currentTarget.dataset.id,
+      list: [],
       page:1
     })
     this.List(1);
   },
   /**
    * 生命周期函数--监听页面加载
-   */
+   **/
   onLoad: function (options) {
     app.editTabbar();
     this.List(1)

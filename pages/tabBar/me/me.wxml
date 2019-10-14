@@ -24,9 +24,7 @@
       <block wx:if='{{details.identity}}'>
         <view class="nav-status">{{details.identity}}</view>
       </block>
-      
     </view>
-    
   </view>
 </view>
 <view class="main">
@@ -39,7 +37,7 @@
   <!-- <navigator url="/pages/me/ginseng/ginseng" hover-class="none"> -->
     <view class="main-li" bindtap="Navigators" data-id="2">
       我的参与
-      <view class="go" style="color:#333;">3 <view class="more-icon"></view></view>
+      <view class="go" style="color:#333;">{{details.join_count}}<view class="more-icon"></view></view>
     </view>
   <!-- </navigator> -->
   <!-- <navigator url="/pages/me/record/record" hover-class="none"> -->

@@ -206,7 +206,14 @@ Page({
       
     }
   },
+  //获取搜索文字
+  Search(e){  
+    console.log(e)
+  },
+  //点击搜索
+  SearchSubmit(){
 
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
