@@ -17,6 +17,8 @@ Page({
     isMore:true,
     status: false,
     text: "",
+    keyword:"",
+    isPage:false
   },
   // 点击cover播放，其它视频结束
   videoPlay: function (e) {
@@ -72,8 +74,50 @@ Page({
           isMore:false
         })
       }
+      
       this.setData({
         list:this.data.list.concat(res.data.list)
+      })
+      if (this.data.list.length == 0) {
+        this.setData({
+          isMore: false,
+          isPage: true
+        })
+      }
+    })
+  },
+  //获取搜索文字
+  Search(e) {
+    console.log(e)
+    this.setData({
+      keyword: e.detail.value
+    })
+  },
+  //点击搜索
+  SearchSubmit() {
+    let { keyword } = this.data;
+    if (!keyword) {
+      return;
+    }
+    this.setData({
+      list: [], //新闻
+    })
+    _http.request({
+      url: "/api/search/index",
+      method: "GET",
+      data: {
+        type: 2,
+        keyword: keyword
+      }
+    }).then(res => {
+      console.log(res)
+      if(res.data.list.length == 0){
+        this.setData({
+          isPage:true
+        })
+      }
+      this.setData({
+        list: res.data.list
       })
     })
   },

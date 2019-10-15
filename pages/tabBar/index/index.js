@@ -20,13 +20,17 @@ Page({
     video:[] , //视频
     status:false,
     text:"",
-    community:""
+    community:"",
+    keyword:"",
+    isPage:false, //省缺页
   },
   Category(e){
     this.setData({
       type: Number(e.currentTarget.dataset.id),
       page:1,
-      list:[]
+      list:[],
+      isPage: false, //省缺页
+      keyword:""
     })
     this.List(1)
   },
@@ -101,16 +105,19 @@ Page({
       if(res.data.list.length !== 0){
         this.setData({
           list: this.data.list.concat(res.data.list),
-          video: res.data.video
+          video: res.data.video,
+          isPage: false
         })
         if (res.data.list.length < 9){
           this.setData({
-            isMore: false
+            isMore: false,
+            isPage: false
           })
         }
       }else{
         this.setData({
-          isMore:false
+          isMore:false,
+          isPage:false
         })
       }
       
@@ -209,10 +216,38 @@ Page({
   //获取搜索文字
   Search(e){  
     console.log(e)
+    this.setData({
+      keyword: e.detail.value
+    })
   },
   //点击搜索
   SearchSubmit(){
-
+    let { keyword}=this.data;
+    if (!keyword){
+      return;
+    }
+    this.setData({
+      list: [], //新闻
+      video: [], //视频
+    })
+    _http.request({
+      url:"/api/search/index",
+      method:"GET",
+      data:{
+        type:1,
+        keyword:keyword
+      }
+    }).then(res=>{
+      console.log(res)
+      if(res.data.list.length == 0){
+        this.setData({
+          isPage:true
+        })
+      }
+      this.setData({
+        list:res.data.list
+      })
+    })
   },
   /**
    * 生命周期函数--监听页面隐藏

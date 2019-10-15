@@ -14,7 +14,9 @@ Page({
     list:[],
     page:1,
     pagesize:10,
-    isShow:true
+    isShow:true,
+    keyword:"",
+    isPage:false
   },
   Category(e){
     this.setData({
@@ -57,11 +59,53 @@ Page({
       let data=res.data.list;
       if(data.length < 10){
         this.setData({
-          isShow:false
+          isShow:false,
+          isPage:false
         })
       }
       this.setData({
         list:this.data.list.concat(res.data.list)
+      })
+      if(this.data.list.length == 0){
+        this.setData({
+          isShow: false,
+          isPage: true
+        })
+      }
+    })
+  },
+  //获取搜索文字
+  Search(e) {
+    this.setData({
+      keyword: e.detail.value
+    })
+  },
+  //点击搜索
+  SearchSubmit() {
+    let { keyword } = this.data;
+    if (!keyword) {
+      return;
+    }
+    this.setData({
+      list: [], //新闻
+      video: [], //视频
+    })
+    _http.request({
+      url: "/api/search/index",
+      method: "GET",
+      data: {
+        type: 3,
+        keyword: keyword
+      }
+    }).then(res => {
+      console.log(res)
+      if(res.data.list.length == 0){
+        this.setData({
+          isPage:true
+        })
+      }
+      this.setData({
+        list: res.data.list
       })
     })
   },

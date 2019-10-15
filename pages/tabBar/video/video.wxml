@@ -1,3 +1,10 @@
+<view class="nav" >
+  <view class="search">
+    <input class="input" placeholder="搜索" placeholder-class="inputs"  bindconfirm='SearchSubmit' bindinput="Search"></input>
+    <view class="search-icon"   bindtap="SearchSubmit"></view>
+  </view>
+</view>
+<view style='width:100%;height:46px;'></view>
 <!-- 视频 -->
 <block wx:for="{{list}}" wx:key='index' wx:for-item='item'>
   <view class="li">
@@ -43,8 +50,10 @@
   </view>
 </block>
 
-
+ <block wx:if="{{isPage}}">
+      <page pageText='' pageStatus='integral'></page>
+  </block>
   <loadmore isShow='{{isMore}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
-  <view style="width:100%;height:100rpx;"></view>
-<tabBar  tabbar="{{tabbar}}"></tabBar>
+  <tabBar  tabbar="{{tabbar}}"></tabBar>
 <integral status='{{status}}' text='{{text}}'></integral>
+  <view style="width:100%;height:100rpx;"></view>

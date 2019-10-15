@@ -2,6 +2,7 @@
   "usingComponents": {
       "tabBar": "../../../component/tabBar/tabBar",
       "loadmore": "../../../component/loadmore/loadmore",
-      "integral": "../../../component/integral/integral"
+      "integral": "../../../component/integral/integral",
+      "page":"../../../component/page/page"
   }
 }

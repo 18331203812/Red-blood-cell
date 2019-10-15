@@ -13,14 +13,23 @@ Page({
     details:{},
     isShow:false,
     status:"",
-    text:""
+    text:"",
+    ids:"",
+    limit_text:"" , //仅限那个社区
+    imgshare:"", //生成海报链接
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    console.log(options.status)
+    if (options.status){
+      this.setData({
+        limit_text: options.status
+      })
+    }
+    
     this.Details(options.id)
   },
   Details(id){
@@ -30,7 +39,8 @@ Page({
       data:{activity_id:id}
     }).then(res=>{
       this.setData({
-        details:res.data.list
+        details:res.data.list,
+        ids:id
       })
     })
   },
@@ -122,6 +132,13 @@ Page({
     })
     this.generate()
   },
+  //退出海报
+  Cur(){
+    /* 该隐藏的隐藏 */
+    this.setData({
+      curtain: "curtains"
+    })
+  },
   //生成海报
   generate() {
     wx.showLoading({
@@ -132,6 +149,15 @@ Page({
     
     //二维码
     let qrcode = new Promise((reslove, sej) => {
+      _http.request({
+        url:"/api/qrcode",
+        method:"GET",
+        data:{
+          id:this.data.ids
+        }
+      }).then(res=>{
+        console.log(res)
+      })
       reslove(`../../../images/index/code.jpg`)
     });
     //背景
@@ -200,7 +226,9 @@ Page({
       ctx.setFillStyle("#d11515");
       ctx.fillText(that.data.details.point+"积分", 30 * rpx, 240 + b * 20 * rpx);
       ctx.setFontSize(14 * rpx);
-      ctx.fillText("活动仅限西西里社区居民参加", 30 * rpx, 290 + b * 20 * rpx);
+      if (that.data.limit_text){
+        ctx.fillText(that.data.limit_text, 30 * rpx, 290 + b * 20 * rpx);
+      }
       ctx.setFillStyle("#666666");
       ctx.fillText("报名期限：" + that.data.details.ranage, 30 * rpx, 270 + b * 20 * rpx);
       ctx.fillText("此产品海报由【红细胞】小程序生成", ((345 * rpx) - 220) / 2, 465 + b * 20 * rpx);
@@ -216,11 +244,39 @@ Page({
           canvasId: 'myCanvas',
           success: res => {
             wx.hideLoading();
-            console.log(res.tempFilePath)
             that.setData({ imgshare: res.tempFilePath })
           }
         }, that)
       }, 1000))
+    })
+  },
+  //下载海报
+  saveImageToPhoto(){
+    var that = this
+    wx.saveImageToPhotosAlbum({
+      filePath: that.data.imgshare,
+      success(res) {
+        console.log(res)
+        wx.showModal({
+          content: '图片已保存到相册，赶紧晒一下吧~',
+          showCancel: false,
+          confirmText: '好的',
+          confirmColor: '#333',
+          success: function (res) {
+            if (res.confirm) {
+              /* 该隐藏的隐藏 */
+              that.setData({
+                curtain: "curtains"
+              })
+            }
+          }, fail: function (res) {
+            console.log(11111)
+          }
+        })
+      },
+      fail: res => {
+        console.log(res)
+      }
     })
   },
   /**
