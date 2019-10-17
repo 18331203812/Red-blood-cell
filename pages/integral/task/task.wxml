@@ -1,6 +1,6 @@
 <view class="nav-integral">
   <view class="nav-text">我的积分</view>
-  <view class="nav-number">1208</view>
+  <view class="nav-number">{{integral}}</view>
     <view class="nav-box">
     <view class="box-title">
       <view class="box-title-icon-left"></view>
@@ -50,40 +50,26 @@
 <view class="main">
    <view class="main-title">积分说明</view>
    <view class="main-text">完成任务领取更多奖励</view>
-   <view class="main-li">
-    <view class="main-li-name">
-      <image class="main-li-img" src="../../../images/integral/wenzhang.png"></image>
-      浏览文章5分钟
-    </view>
-    <text>+10积分奖励</text>
-   </view>
-   <view class="main-li">
-    <view class="main-li-name">
-      <image class="main-li-img" src="../../../images/integral/zan.png"></image>
-      点赞
-    </view>
-    <text>+10积分奖励</text>
-   </view>
-   <view class="main-li">
-    <view class="main-li-name">
-      <image class="main-li-img" src="../../../images/integral/pingl.png"></image>
-      评论
-    </view>
-    <text>+10积分奖励</text>
-   </view>
-   <view class="main-li">
-    <view class="main-li-name">
-      <image class="main-li-img" src="../../../images/integral/fenxiang.png"></image>
-      分享
-    </view>
-    <text>+10积分奖励</text>
-   </view>
-   <view class="main-li">
-    <view class="main-li-name">
-      <image class="main-li-img" src="../../../images/integral/huodong.png"></image>
-      参加活动
-    </view>
-    <text>+10积分奖励</text>
-   </view>
+   
+   <block wx:for='{{remark}}' wx:key='index' >
+      <view class="main-li">
+      <view class="main-li-name">
+          <block wx:if='{{item.title == "浏览文章5分钟"}}'>
+            <image class="main-li-img" src="../../../images/integral/wenzhang.png"></image>
+          </block>
+          <block wx:elif='{{item.title == "点赞"}}'>
+              <image class="main-li-img" src="../../../images/integral/zan.png"></image>
+          </block>
+          <block wx:elif='{{item.title == "评论"}}'>
+             <image class="main-li-img" src="../../../images/integral/pingl.png"></image>
+          </block>
+          <block wx:elif='{{item.title == "分享"}}'>
+              <image class="main-li-img" src="../../../images/integral/fenxiang.png"></image>
+          </block>
+          {{item.title}}
+        </view>
+        <text>+{{item.integral}}积分奖励</text>
+      </view>
+   </block>
 </view>
 <frame status='{{status}}' isShow='{{isShow}}' text='{{text}}' bind:_cancel='cancel'></frame>

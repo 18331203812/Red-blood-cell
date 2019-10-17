@@ -50,7 +50,7 @@
         <view>请选择所在省份/城市/区/街道</view>
       </block>
       <block wx:else>
-         <view class="li-box-text" style="color:#333;">{{picker_08_data[0].province_name}} {{picker_08_data[1].cityname}} {{picker_08_data[2].district_name}} {{picker_08_data[3].street_name}}</view>
+         <view class="li-box-text" style="color:#333;">{{picker_08_data[0].province_name || ''}} {{picker_08_data[1].cityname || ''}} {{picker_08_data[2].district_name || ''}} {{picker_08_data[3].street_name || ''}}</view>
       </block>
       <view class="more-icon"></view>
     </view>

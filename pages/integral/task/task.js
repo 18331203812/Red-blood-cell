@@ -11,15 +11,31 @@ Page({
     listIndex:1,
     status:"Sign",
     isShow:false,
-    text:"签到+5积分"
+    text:"签到+5积分",
+    remark:[], //积分说明
+    integral:""
   },
-
+  List() {
+    _http.request({
+      url: "/api/user/record",
+      method: "GET",
+      data: {
+        page: 1,
+        pagesize: 10
+      }
+    }).then(res => {
+      this.setData({
+        integral: res.data.integral
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.Interface();
     this.Sign();
+    this.List();
   },
   //签到
   Sign(){
@@ -50,6 +66,9 @@ Page({
       method:"GET"
     }).then(res=>{
       let data=res.data.list;
+      this.setData({
+        remark: res.data.remark
+      })
       if (data[6].is_sign == 1){
         this.setData({
           list: data.slice(7, 14),
