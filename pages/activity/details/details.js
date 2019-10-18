@@ -1,6 +1,7 @@
 import HTTP from "../../../utils/request.js";
 import utils from "../../../utils/util.js";
 var _http = new HTTP();
+const app = getApp();
 Page({
 
   /**
@@ -15,18 +16,20 @@ Page({
     status:"",
     text:"",
     ids:"",
-    limit_text:"" , //仅限那个社区
+    limit_text:"", //仅限那个社区
     imgshare:"", //生成海报链接
+    status_title:"",//是否已结束
+    isIphoneX: app.globalData.systemInfo.model == "iPhone X" ? true : false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.status)
     if (options.status){
       this.setData({
-        limit_text: options.status
+        limit_text: options.status,
+        status_title: options.status_title
       })
     }
     
@@ -141,113 +144,133 @@ Page({
   },
   //生成海报
   generate() {
-    wx.showLoading({
-      title: '正在加载中...',
-      icon: 'none'
+   
+    this.gener().then(res=>{
+      console.log(res)
+      this.setData({ imgshare: res })
     })
-    let that = this;
-    
+  },
+  gener(){
+
     //二维码
-    let qrcode = new Promise((reslove, sej) => {
-      _http.request({
-        url:"/api/qrcode",
-        method:"GET",
-        data:{
-          id:this.data.ids
-        }
-      }).then(res=>{
-        console.log(res)
+    return new Promise((reslove, sej) => {
+      wx.showLoading({
+        title: '正在加载中...',
+        icon: 'none'
       })
-      reslove(`../../../images/index/code.jpg`)
-    });
-    //背景
-    let avatar = new Promise((reslove, sej) => {
-      wx.getImageInfo({
-        src: that.data.details.cover,
-        success(res) {
-          reslove(res.path)
-        },
-        fail(err) {
-          console.log(err);
-        },
+      let that = this;
+      let qrcode = new Promise((reslove, sej) => {
+        _http.request({
+          url: "/api/qrcode",
+          method: "GET",
+          data: {
+            id: that.data.ids
+          }
+        }).then(res => {
+          console.log(res)
+          wx.getImageInfo({
+            src: res.data.path,
+            success(res) {
+            
+              reslove(res.path)
+            },
+            fail(err) {
+              console.log(err);
+            },
+          });
+        })
       });
-    });
-    Promise.all([qrcode, avatar]).then((res) => {
-      const ctx = wx.createCanvasContext('myCanvas');
-      let rpx = that.data.rpx, heightrpx = that.data.rpxheight;
-      ctx.fillStyle = "#FFFFFF";
-      ctx.fillRect(0, 0, 345 * rpx, 500 * heightrpx);
-      ctx.drawImage(res[1], 0, 0, 345 * rpx, 200);
-      ctx.drawImage(res[0], ((345 * rpx) - 110) / 2, 320, 110 * rpx, 110);
-      ctx.setFontSize(18 * rpx);
-      ctx.setFillStyle("#333");
-      var text = that.data.details.title//这是要绘制的文本
-      var chr = text.split("");//这个方法是将一个字符串分割成字符串数组
-      var temp = "";
-      var row = [];
-      for (var a = 0; a < chr.length; a++) {
-        if (ctx.measureText(temp).width < 250) {
-          temp += chr[a];
-        }
-        else {
-          a--; //这里添加了a-- 是为了防止字符丢失，效果图中有对比
-          row.push(temp);
-          temp = "";
-        }
-      }
-      row.push(temp);
-      //如果数组长度大于2 则截取前两个
-      if (row.length > 2) {
-        var rowCut = row.slice(0, 2);
-        var rowPart = rowCut[1];
-        var test = "";
-        var empty = [];
-        for (var a = 0; a < rowPart.length; a++) {
-          if (ctx.measureText(test).width < 220) {
-            test += rowPart[a];
+      //背景
+      let avatar = new Promise((reslove, sej) => {
+        console.log(that.data.details.cover)
+        wx.getImageInfo({
+          src: that.data.details.cover,
+          success(res) {
+            reslove(res.path)
+          },
+          fail(err) {
+            console.log(err);
+          },
+        });
+      });
+      Promise.all([qrcode, avatar]).then((res) => {
+        const ctx = wx.createCanvasContext('myCanvas');
+        let rpx = that.data.rpx, heightrpx = that.data.rpxheight;
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillRect(0, 0, 345 * rpx, 500 * heightrpx);
+        ctx.drawImage(res[1], 0, 0, 345 * rpx, 200);
+        ctx.drawImage(res[0], ((345 * rpx) - 110) / 2, 320, 110 * rpx, 110);
+        ctx.setFontSize(18 * rpx);
+        ctx.setFillStyle("#333");
+        var text = that.data.details.title//这是要绘制的文本
+        var chr = text.split("");//这个方法是将一个字符串分割成字符串数组
+        var temp = "";
+        var row = [];
+        for (var a = 0; a < chr.length; a++) {
+          if (ctx.measureText(temp).width < 250) {
+            temp += chr[a];
           }
           else {
-            break;
+            a--; //这里添加了a-- 是为了防止字符丢失，效果图中有对比
+            row.push(temp);
+            temp = "";
           }
         }
-        empty.push(test);
-        var group = empty[0] + "..."//这里只显示两行，超出的用...表示
-        rowCut.splice(1, 1, group);
-        row = rowCut;
-      }
-      for (var b = 0; b < row.length; b++) {
-        ctx.fillText(row[b], 30 * rpx, 230 + b * 20 * rpx);
-      }
-      ctx.fillText("长按识别或扫码查看活动详情", ((345 * rpx) - 230) / 2, 440 + b * 20 * rpx);
-      ctx.setFontSize(14 * rpx);
-      ctx.setFillStyle("#999");
-      ctx.fillText("剩余名额：" + that.data.details.enroll+"人", 220 * rpx, 240 + b * 20 * rpx);
-      ctx.setFontSize(18 * rpx);
-      ctx.setFillStyle("#d11515");
-      ctx.fillText(that.data.details.point+"积分", 30 * rpx, 240 + b * 20 * rpx);
-      ctx.setFontSize(14 * rpx);
-      if (that.data.limit_text){
-        ctx.fillText(that.data.limit_text, 30 * rpx, 290 + b * 20 * rpx);
-      }
-      ctx.setFillStyle("#666666");
-      ctx.fillText("报名期限：" + that.data.details.ranage, 30 * rpx, 270 + b * 20 * rpx);
-      ctx.fillText("此产品海报由【红细胞】小程序生成", ((345 * rpx) - 220) / 2, 465 + b * 20 * rpx);
-      wx.hideLoading();
-      ctx.draw(true, setTimeout(function () {     //为什么要延迟100毫秒？大家测试一下
-        wx.canvasToTempFilePath({
-          x: 0,
-          y: 0,
-          width: 646 * rpx,
-          height: 966 * rpx,
-          destWidth: 646 * rpx,
-          destHeight: 966 * rpx,
-          canvasId: 'myCanvas',
-          success: res => {
-            wx.hideLoading();
-            that.setData({ imgshare: res.tempFilePath })
+        row.push(temp);
+        //如果数组长度大于2 则截取前两个
+        if (row.length > 2) {
+          var rowCut = row.slice(0, 2);
+          var rowPart = rowCut[1];
+          var test = "";
+          var empty = [];
+          for (var a = 0; a < rowPart.length; a++) {
+            if (ctx.measureText(test).width < 220) {
+              test += rowPart[a];
+            }
+            else {
+              break;
+            }
           }
-        }, that)
-      }, 1000))
+          empty.push(test);
+          var group = empty[0] + "..."//这里只显示两行，超出的用...表示
+          rowCut.splice(1, 1, group);
+          row = rowCut;
+        }
+        for (var b = 0; b < row.length; b++) {
+          ctx.fillText(row[b], 30 * rpx, 230 + b * 20 * rpx);
+        }
+        ctx.fillText("长按识别或扫码查看活动详情", ((345 * rpx) - 230) / 2, 440 + b * 20 * rpx);
+        ctx.setFontSize(14 * rpx);
+        ctx.setFillStyle("#999");
+        ctx.fillText("剩余名额：" + that.data.details.enroll + "人", 220 * rpx, 240 + b * 20 * rpx);
+        ctx.setFontSize(18 * rpx);
+        ctx.setFillStyle("#d11515");
+        ctx.fillText(that.data.details.point + "积分", 30 * rpx, 240 + b * 20 * rpx);
+        ctx.setFontSize(14 * rpx);
+        if (that.data.limit_text) {
+          ctx.fillText(that.data.limit_text, 30 * rpx, 290 + b * 20 * rpx);
+        }
+        ctx.setFillStyle("#666666");
+        ctx.fillText("报名期限：" + that.data.details.ranage, 30 * rpx, 270 + b * 20 * rpx);
+        ctx.fillText("此产品海报由【共益互助】小程序生成", ((345 * rpx) - 220) / 2, 465 + b * 20 * rpx);
+        wx.hideLoading();
+        ctx.draw(true, setTimeout(function () {     //为什么要延迟100毫秒？大家测试一下
+          wx.canvasToTempFilePath({
+            x: 0,
+            y: 0,
+            width: 646 * rpx,
+            height: 966 * rpx,
+            destWidth: 646 * rpx,
+            destHeight: 966 * rpx,
+            canvasId: 'myCanvas',
+            success: res => {
+              wx.hideLoading();
+              
+              reslove(res.tempFilePath)
+            }
+          }, that)
+        }, 1000))
+      })
     })
   },
   //下载海报

@@ -26,7 +26,8 @@ Page({
     categoryList:[], //身份
     ids: "", //身份id
     checked:true, //同意
-    isBut:false
+    isBut:false,
+    isPhone:false
   },
 
   /**
@@ -56,6 +57,7 @@ Page({
         ids: data.identity_id,
         name: data.username,
         phone: data.mobile,
+        isPhone: data.mobile ? true :false,
         picker_08_data: arr,
         addressdata: { community_name: data.community_name, community_id: data.community_id}
       })

@@ -1,6 +1,7 @@
 import HTTP from "../../../utils/request.js";
 import utils from "../../../utils/util.js";
 var _http = new HTTP();
+const app = getApp();
 Page({
 
   /**
@@ -13,7 +14,8 @@ Page({
     messageList:{},
     isContent:false,
     status:false,
-    text:''
+    text:'',
+    isIphoneX: app.globalData.systemInfo.model == "iPhone X" ? true : false,
   },
   // 点击cover播放，其它视频结束
   videoPlay: function (e) {
@@ -105,7 +107,7 @@ Page({
       if (messageList.is_first == 1){
         this.setData({
           status: true,
-          text: "浏览文章+" + res.data.point + "积分"
+          text: "发表评论+" + res.data.point + "积分"
         })
         setTimeout(() => {
           this.setData({

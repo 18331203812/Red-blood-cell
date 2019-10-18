@@ -1,6 +1,7 @@
 import HTTP from "../../../utils/request.js";
 import utils from "../../../utils/util.js";
 var _http = new HTTP();
+const app = getApp();
 Page({
 
   /**
@@ -14,7 +15,8 @@ Page({
     messageList: {},
     isContent: false,
     status: false,
-    text: ''
+    text: '',
+    isIphoneX: app.globalData.systemInfo.model == "iPhone X" ? true : false,
   },
   // 点击cover播放，其它视频结束
   videoPlay: function (e) {

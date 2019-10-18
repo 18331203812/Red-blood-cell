@@ -68,6 +68,7 @@ App({
     let t = this;
     wx.getSystemInfo({
       success: function (res) {
+        console.log(res)
         t.globalData.systemInfo = res;
       }
     });

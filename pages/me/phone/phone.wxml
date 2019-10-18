@@ -5,12 +5,12 @@
   </view>
   <view class="main-li">
     <view class="li-name">新手机号</view>
-    <input class="li-input" placeholder="请填写新手机号" bindblur="Phone" placeholder-style="color:#999;font-size:28rpx;"></input>
+    <input class="li-input" placeholder="请填写新手机号" bindinput="Phone" placeholder-style="color:#999;font-size:28rpx;"></input>
   </view>
   <view class="main-li">
     <view class="li-name">验证码</view>
     <view class="li-code">
-      <input class="li-code-input" placeholder="请输入验证码" bindblur="Code" placeholder-style="font-size: 28rpx; color: #999999;"></input>
+      <input class="li-code-input" placeholder="请输入验证码" bindinput="Code" placeholder-style="font-size: 28rpx; color: #999999;"></input>
       <block wx:if='{{disabled}}'>
         <view class="li-code-but">{{time}}</view>
       </block>

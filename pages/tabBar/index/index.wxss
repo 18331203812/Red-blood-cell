@@ -10,7 +10,7 @@
   align-items: center;
 }
 .Navs-title{
-  font-size: 28rpx;
+  font-size: 36rpx;
   color: #fff;
   text-align: center;
   width: 100%;
@@ -123,8 +123,9 @@
     
 }
 .heat-icon{
- width:124rpx;
+ width:80rpx;
  height: 34rpx;
+ margin:5rpx 0 0 10rpx;
 }
 .li-footer{
   display: flex;

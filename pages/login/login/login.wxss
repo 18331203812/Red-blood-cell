@@ -28,7 +28,7 @@
   margin:  32rpx auto;
 }
 .title{
-  width: 188rpx;
+  width: 243rpx;
   height: 55rpx;
   display: inherit;
   margin: 0 auto;

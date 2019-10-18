@@ -20,6 +20,7 @@
   color: #333333;
   font-weight: bold;
   overflow: hidden;
+  width: 52%;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
