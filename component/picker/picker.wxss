@@ -90,7 +90,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #d13035;
+  /* color: #d13035; */
   padding: 0 10rpx;
 }
 .items{
@@ -104,5 +104,5 @@
   height: 300rpx;
 }
 .red{
-    color: #d13035;
+    /* color: #d13035; */
 }

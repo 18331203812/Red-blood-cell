@@ -2,7 +2,7 @@
 <view class="li">
     <view class="li-nav">
       <view class="li-nav-number">订单号：{{details.order_sn}}</view>
-      <view class="li-nav-but">{{details.status == 0 ? '待核销' :'已完成'}}</view>
+      <view class="li-nav-but">{{details.status == 0 ? '待确认' :'已完成'}}</view>
     </view>
     <view class="li-con">
       <image class="li-con-img" src="{{details.cover}}" mode="aspectFill"></image>

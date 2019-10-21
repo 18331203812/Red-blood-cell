@@ -13,7 +13,9 @@
         <view class="li-con-title">
           {{item.title}}
         </view>
-        <view class="heat-icon">置顶</view>
+        <block wx:if='{{item.is_top == 1}}'>
+          <view class="heat-icon">置顶</view>
+        </block>
         <view class="li-time" style="padding-left: 10rpx;">{{item.publish_time}}</view>
       </view>
       </navigator>

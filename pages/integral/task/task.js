@@ -49,6 +49,7 @@ Page({
           text: "签到+" + res.data.point+'积分'
         })
         this.Interface();
+        this.List();
       }else if(res.code==1011){
         console.log('今日已签到')
       }

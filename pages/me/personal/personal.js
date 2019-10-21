@@ -9,7 +9,7 @@ Page({
   data: {
     currentTime:60,
     disabled:false,  //获取验证码倒计时
-    time:"60秒后可重新获取",
+    time:"60S重新获取",
 
     isShow_08: false,
     columnsData: [],    //选择省市区街道组件
@@ -23,6 +23,7 @@ Page({
 
     phone:"", //手机号码
     name:"" , //名字
+    code:"",
     categoryList:[], //身份
     ids: "", //身份id
     checked:true, //同意
@@ -50,7 +51,7 @@ Page({
       let data = res.data.list,arr=[];
       arr.push(
         { province_name: data.province_name, province_id: data.province_id},
-        { cityname: data.city_name, city_id:data.datacity_id}, 
+        { cityname: data.city_name, city_id:data.city_id}, 
         { district_name: data.district_name, district_id: data.district_id}, 
         { street_name: data.street_name, id: data.street_id});
       this.setData({
@@ -82,27 +83,47 @@ Page({
     })
   },
   //发送验证码
-  code(){
+  codes(){
+    if (! /^1\d{10}$/.test(this.data.phone)) {
+      utils.showToast("请输入正确的手机号", 'none')
+      return;
+    };
     this.setData({
       disabled: true
     })
-    // 设置发送验证码按钮样式
-    let interval = null , _this=this;
-    let currentTime = _this.data.currentTime;
-    interval = setInterval(function () {
-      currentTime--;
-      _this.setData({
-        time: currentTime + '秒后可重新获取',
-      })
-      if (currentTime <= 0) {
-        clearInterval(interval)
-        _this.setData({
-          time: '60秒后可重新获取',
-          currentTime: 60,
-          disabled: false
+    _http.request({
+      url: "/api/user/send",
+      data: {
+        mobile: this.data.phone
+      },
+      method: "POST"
+    }).then(res => {
+      console.log(res)
+      if (res.code == 200) {
+        this.setData({
+          disabled: true
         })
+        // 设置发送验证码按钮样式
+        let interval = null, _this = this;
+        let currentTime = _this.data.currentTime;
+        interval = setInterval(function () {
+          currentTime--;
+          _this.setData({
+            time: currentTime + 'S重新获取',
+          })
+          if (currentTime <= 0) {
+            clearInterval(interval)
+            _this.setData({
+              time: '60重新获取',
+              currentTime: 60,
+              disabled: false
+            })
+          }
+        }, 1000)
+      } else {
+        utils.showToast(res.code, 'none')
       }
-    }, 1000)
+    })
     
   },
  /**
@@ -200,13 +221,18 @@ Page({
       phone: e.detail.value
     })
   },
-
+  //获取验证码
+  code(e){
+    this.setData({
+      code: e.detail.value
+    })
+  },
 
   /**
    * 提交
    */
   Submit(){
-    let { name, phone, ids, picker_08_data, addressdata, checked}=this.data;
+    let { name, phone, code, isPhone,ids, picker_08_data, addressdata, checked}=this.data;
     if(!name){
       utils.showToast('请输入姓名', 'none');
       return;
@@ -214,6 +240,12 @@ Page({
     if(!phone){
       utils.showToast('请输入手机号', 'none');
       return;
+    }
+    if (!isPhone){
+      if (code.length !== 6){
+        utils.showToast('请输入正确的验证码', 'none');
+        return;
+      }
     }
     if (!utils.isPhoneAvailable(phone)){
       utils.showToast('请输入正确的手机号', 'none');
@@ -241,6 +273,7 @@ Page({
       data:{
         username:name,
         mobile: phone,
+        code:code,
         identity_id:ids,
         province_id: picker_08_data[0].province_id,
         city_id: picker_08_data[1].city_id,
@@ -249,15 +282,25 @@ Page({
         community_id: addressdata.id
       }
     }).then(res=>{
-      wx.showToast({
-        title: '提交成功',
-        icon:"none"
-      })
-      setTimeout(function(){
-        wx.navigateBack({
-          delta:2
+      console.log(res)
+      if (res.data.code == 200){
+        wx.showToast({
+          title: '提交成功',
+          icon:"none"
         })
-      },1000)
+        setTimeout(function(){
+          wx.navigateBack({
+            delta:2
+          })
+        },1000)
+      }else{
+        wx.showToast({
+          title: res.data.message,
+          icon:"none"
+        })
+        return;
+      }
+      
     })
   },
   //勾选框

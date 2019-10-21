@@ -98,5 +98,5 @@
   color: #999999;
 }
 .li-cut{
-  color: #1e49b7 !important;
+  color: #999 !important;
 }

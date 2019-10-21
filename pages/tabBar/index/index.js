@@ -2,6 +2,10 @@ const app = getApp();
 import util from "../../../utils/util.js"
 import HTTP from "../../../utils/request.js"
 var _http = new HTTP();
+var time = 0;
+var touchDot = 0;//触摸时的原点
+var interval = "";
+var flag_hd = true;
 Page({
 
   /**
@@ -34,22 +38,81 @@ Page({
     })
     this.List(1)
   },
-  // // 点击cover播放，其它视频结束
-  // videoPlay: function (e) {
-  //   var _index = e.currentTarget.dataset.id
-  //   this.setData({
-  //     _index: _index
-  //   })
-  //   //停止正在播放的视频
-  //   var videoContextPrev = wx.createVideoContext(_index + "")
-  //   videoContextPrev.stop();
-
-  //   setTimeout(function () {
-  //     //将点击视频进行播放
-  //     var videoContext = wx.createVideoContext(_index + "")
-  //     videoContext.play();
-  //   }, 500)
-  // },
+  // 触摸开始事件
+  touchStart: function (e) {
+    touchDot = e.touches[0].pageX; // 获取触摸时的原点
+    // 使用js计时器记录时间    
+    interval = setInterval(function () {
+      time++;
+    }, 2000);
+  },
+  // 触摸结束事件
+  touchEnd: function (e) {
+    var touchMove = e.changedTouches[0].pageX;
+    console.log(touchMove)
+    console.log(touchDot)
+    // 向左滑动   
+    if (touchMove - touchDot <= -80 && time < 10 && flag_hd == true) {
+      flag_hd = false;
+      console.log("向右滑动");
+      this.Switch('right')
+    }
+    // 向右滑动   
+    if (touchMove - touchDot >= 80 && time < 10 && flag_hd == true) {
+      flag_hd = false;
+      console.log("向左滑动");
+      this.Switch('left')
+    }
+    clearInterval(interval); // 清除setInterval
+    time = 0;
+    flag_hd = true;
+  },
+  /**
+   * 切换tabBar
+   */
+  Switch(status){
+    let { type }  = this.data;
+    this.setData({
+      page: 1,
+      list: [],
+      isPage: false, //省缺页
+      keyword: ""
+    })
+    
+    if(status == 'left'){
+      switch (type) {
+        case 3:
+          this.setData({
+            type: 2,
+          })
+          this.List(1)
+          break;
+        case 2:
+          this.setData({
+            type: 1,
+          })
+          this.List(1)
+          break;
+        default:
+      }
+    }else if(status == 'right'){
+      switch (type) {
+        case 1:
+          this.setData({
+            type:2,
+          })
+          this.List(1)
+        break;
+        case 2:
+          this.setData({
+            type:3,
+          })
+          this.List(1)
+        break;
+        default:
+      }
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -197,6 +260,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    flag_hd = true;    //重新进入页面之后，可以再次执行滑动切换页面代码
+    clearInterval(interval); // 清除setInterval
+    time = 0;
     let address = wx.getStorageSync('address') ? JSON.parse(wx.getStorageSync('address')) : '';
     console.log(address)
     if(address){

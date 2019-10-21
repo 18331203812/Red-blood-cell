@@ -62,18 +62,17 @@ Page({
       utils.showToast("请输入正确的手机号", 'none')
       return;
     };
-    if(!code){
-      utils.showToast("请输入验证码", 'none')
-    }
-    if (code.length!==6) {
-      utils.showToast("请输入正确的验证码", 'none')
-    }
+    // if(!code){
+    //   utils.showToast("请输入验证码", 'none')
+    // }
+    // if (code.length!==6) {
+    //   utils.showToast("请输入正确的验证码", 'none')
+    // }
     _http.request({
       url:"/api/user/bindphone",
       method:"POST",
       data:{
         mobile: phone,
-        code:code
       }
     }).then(res=>{
       console.log(res)

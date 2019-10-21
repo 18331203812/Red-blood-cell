@@ -4,5 +4,6 @@
   </block>
 
   <loadmore isShow='{{isShow}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
-
-  
+<!-- 参与时间
+把进行中放到上面 
+   -->

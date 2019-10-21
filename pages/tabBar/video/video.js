@@ -41,10 +41,7 @@ Page({
    */
   onLoad: function (options) {
     app.editTabbar();
-    this.setData({
-      page:1
-    })
-    this.List(1);
+    
   },
 
   /**
@@ -125,7 +122,11 @@ Page({
    * 生命周期函数--监听页面显示
    **/
   onShow: function () {
-
+    this.setData({
+      page: 1,
+      list:[]
+    })
+    this.List(1);
   },
 
   /**

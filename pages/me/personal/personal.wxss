@@ -79,7 +79,8 @@
 .li-code{
   display: flex;
   justify-content: space-between;
-  padding-top: 10rpx;
+  padding-top: 35rpx;
+  border-top: 1rpx solid #f2f3f5;
 }
 .li-code-but{
   font-size: 28rpx;

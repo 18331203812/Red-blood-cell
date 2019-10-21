@@ -13,7 +13,7 @@
   <view class="tabbar">
     <view class="tabbar-li {{type == 1 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="1">社群</view>
     <view class="tabbar-li {{type == 2 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="2">街道</view>
-    <view class="tabbar-li {{type == 3 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="3">市</view>
+    <view class="tabbar-li {{type == 3 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="3">同城</view>
   </view>
   <view class="search">
     <input class="input" placeholder="搜索" placeholder-class="inputs" value="{{keyword}}" bindconfirm='SearchSubmit' bindinput="Search"></input>
@@ -21,30 +21,7 @@
   </view>
 </view>
 <view style="width:100%;height:{{navHeight+46}}px;"></view>
-<!-- 三张列表 -->
-<!-- <view class="li">
-    <view class="li-box">
-      <view class="li-con-title">
-        强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海
-      </view>
-      <view class="heat-icon">置顶</view>
-      <view class="li-time" style="padding-left: 10rpx;">17:26</view>
-    </view>
-    <view class="li-img">
-      <image mode="aspectFill"  src="https://cn.bing.com/th?id=OHR.MountFanjing_ZH-CN1999613800_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
-      <image mode="aspectFill"  src="https://cn.bing.com/th?id=OHR.MountFanjing_ZH-CN1999613800_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
-      <image mode="aspectFill"  src="https://cn.bing.com/th?id=OHR.MountFanjing_ZH-CN1999613800_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
-    </view>
-      <view class="li-footer">
-        <view class="li-con-address">西西里小区管理委员会</view>
-        <view class="li-icon">
-          <view class="li-icon-list"><view class="see-icon"></view>1333</view>
-          <view class="li-icon-list"><view class="message-icon"></view>1333</view>
-          <view class="li-icon-list"><view class="fabulou-icons"></view>1333</view>
-        </view>
-      </view>
-</view> -->
-<!-- 视频 -->
+<view bindtouchstart="touchStart" bindtouchend="touchEnd">
 <block wx:for='{{video}}' wx:key='index'>
   <view class="li">
   <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
@@ -131,7 +108,6 @@
 </block>
 <block wx:else>
     <!-- 三张列表 -->
-
   <view class="li">
     <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
       <view class="li-box">
@@ -167,9 +143,8 @@
   </view>
 
 </block>
-  
 </block>
-
+</view>
  <block wx:if="{{isPage}}">
       <page pageText='' pageStatus='integral'></page>
   </block>

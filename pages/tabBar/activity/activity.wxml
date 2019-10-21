@@ -2,7 +2,7 @@
   <view class="tabbar">
     <view class="tabbar-li  {{ids == 1 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="1">社群</view>
     <view class="tabbar-li  {{ids == 2 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="2">街道</view>
-    <view class="tabbar-li  {{ids == 3 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="3">市</view>
+    <view class="tabbar-li  {{ids == 3 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="3">同城</view>
   </view>
   <view class="search">
     <input class="input" placeholder="搜索" placeholder-class="inputs"  bindconfirm='SearchSubmit' bindinput="Search"></input>
@@ -10,10 +10,13 @@
   </view>
 </view>
 <view style='width:100%;height:46px;'></view>
-<activity list='{{list}}'></activity>
- <block wx:if="{{isPage}}">
+<view bindtouchstart="touchStart" bindtouchend="touchEnd">
+  <activity list='{{list}}'></activity>
+   <block wx:if="{{isPage}}">
       <page pageText='' pageStatus='integral'></page>
   </block>
+</view>
+
   <loadmore isShow='{{isShow}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
 <view style="width:100%;height:100rpx;"></view>
 <tabBar  tabbar="{{tabbar}}"></tabBar>

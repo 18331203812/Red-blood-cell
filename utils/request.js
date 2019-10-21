@@ -1,13 +1,13 @@
 class HTTP {
   request(param) {
     let _this = this;
-    let baseUrl = 'https://mininews.51asx.com';
+    let baseUrl = 'https://www.redxibao.com';
     return new Promise((resolve, reject) => {
       let access_token = wx.getStorageSync('login').token || '';
       wx.request({
         method: param.method || 'get',
         url: baseUrl + param.url || '',
-        data: param.data || null,
+        data: param.data || null, 
         header: access_token ? {
           'content-type': 'application/x-www-form-urlencoded',
           "Authorization": `${access_token}`
