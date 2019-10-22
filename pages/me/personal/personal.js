@@ -276,9 +276,11 @@ Page({
       utils.showToast('请选择社区', 'none');
       return;
     }
-    if (!checked){
-      utils.showToast('请勾选用户服务协议、隐私协议', 'none');
-      return;
+    if (!isPhone) {
+      if (!checked) {
+        utils.showToast('请勾选用户服务协议、隐私协议', 'none');
+        return;
+      }
     }
     _http.request({
       url:"/api/user/perfectInformation",

@@ -61,7 +61,7 @@
   <view class="footer" style="{{isIphoneX ? 'padding-bottom:66rpx;' : ''}}">
     <view class="footer-box">
       <view class="writing-icon"></view>
-      <input class="footer-input" bindfocus='input' bindblur='inputs' bindinput="GetInputCon" placeholder="我来说两句"  placeholder-class="footer-inputs"  value="{{inputValue}}"></input>
+      <input class="footer-input" cursor-spacing='20' adjust-position bindfocus='input' bindblur='inputs' bindinput="GetInputCon" placeholder="我来说两句"  placeholder-class="footer-inputs"  value="{{inputValue}}"></input>
     </view>
     <view class="footer-ul">
     <block wx:if="{{isShow}}">

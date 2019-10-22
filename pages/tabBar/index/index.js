@@ -49,18 +49,14 @@ Page({
   // 触摸结束事件
   touchEnd: function (e) {
     var touchMove = e.changedTouches[0].pageX;
-    console.log(touchMove)
-    console.log(touchDot)
     // 向左滑动   
     if (touchMove - touchDot <= -80 && time < 10 && flag_hd == true) {
       flag_hd = false;
-      console.log("向右滑动");
       this.Switch('right')
     }
     // 向右滑动   
     if (touchMove - touchDot >= 80 && time < 10 && flag_hd == true) {
       flag_hd = false;
-      console.log("向左滑动");
       this.Switch('left')
     }
     clearInterval(interval); // 清除setInterval
@@ -72,24 +68,27 @@ Page({
    */
   Switch(status){
     let { type }  = this.data;
-    this.setData({
-      page: 1,
-      list: [],
-      isPage: false, //省缺页
-      keyword: ""
-    })
+
     
     if(status == 'left'){
       switch (type) {
         case 3:
           this.setData({
             type: 2,
+            page: 1,
+            list: [],
+            isPage: false, //省缺页
+            keyword: ""
           })
           this.List(1)
           break;
         case 2:
           this.setData({
             type: 1,
+            page: 1,
+            list: [],
+            isPage: false, //省缺页
+            keyword: ""
           })
           this.List(1)
           break;
@@ -100,12 +99,20 @@ Page({
         case 1:
           this.setData({
             type:2,
+            page: 1,
+            list: [],
+            isPage: false, //省缺页
+            keyword: ""
           })
           this.List(1)
         break;
         case 2:
           this.setData({
             type:3,
+            page: 1,
+            list: [],
+            isPage: false, //省缺页
+            keyword: ""
           })
           this.List(1)
         break;
@@ -130,7 +137,6 @@ Page({
         let statusBarHeight = res.statusBarHeight,
           navTop = menuButtonObject.top,//胶囊按钮与顶部的距离
           navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;//导航高度
-        console.log(statusBarHeight, navTop, navHeight)
         this.setData({
           navHeight: navHeight
         })
@@ -165,6 +171,7 @@ Page({
       }
     }).then(res=>{
       console.log(res)
+      console.log(res.data.list.length)
       if(res.data.list.length !== 0){
         this.setData({
           list: this.data.list.concat(res.data.list),
@@ -177,6 +184,7 @@ Page({
             isPage: false
           })
         }
+        console.log('/')
       }else{
         this.setData({
           isMore:false,
@@ -264,7 +272,6 @@ Page({
     clearInterval(interval); // 清除setInterval
     time = 0;
     let address = wx.getStorageSync('address') ? JSON.parse(wx.getStorageSync('address')) : '';
-    console.log(address)
     if(address){
       if (this.data.community !== address.addressdata.id){
         this.setData({
@@ -281,7 +288,6 @@ Page({
   },
   //获取搜索文字
   Search(e){  
-    console.log(e)
     this.setData({
       keyword: e.detail.value
     })

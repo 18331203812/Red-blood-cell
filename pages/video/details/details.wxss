@@ -87,6 +87,7 @@
   box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.2);
   width: 100%;
   display: flex;
+  z-index: 99;
 }
 .footer-box{
   display: flex;
