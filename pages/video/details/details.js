@@ -38,6 +38,24 @@ Page({
     this.setData({
       isShow: true,
     })
+
+    const query = wx.createSelectorQuery()
+    query.select('#main').boundingClientRect()
+    query.selectViewport().scrollOffset()
+    query.exec(height => {
+      console.log(height)
+      height[0].top       // #the-id节点的上边界坐标
+      height[1].scrollTop // 显示区域的竖直滚动位置
+      wx.pageScrollTo({
+        scrollTop: height[0].height,
+        duration: 300
+      });
+    })
+  },
+  inputs(){
+    this.setData({
+      isShow: false,
+    })
   },
   //获取发送评论
   GetInputCon(e) {
@@ -120,6 +138,18 @@ Page({
           })
         }, 2000)
       }
+      const query = wx.createSelectorQuery()
+      query.select('#main').boundingClientRect()
+      query.selectViewport().scrollOffset()
+      query.exec(height => {
+        console.log(height)
+        height[0].top       // #the-id节点的上边界坐标
+        height[1].scrollTop // 显示区域的竖直滚动位置
+        wx.pageScrollTo({
+          scrollTop: height[0].height,
+          duration: 300
+        });
+      })
       this.Message(this.data.id)
     })
   },
@@ -146,7 +176,7 @@ Page({
   },
   //评论点赞
   Fabulous(e) {
-    let { id, zan } = e.currentTarget.dataset, { messageList } = this.data;
+    let { id, zan } = e.currentTarget.dataset, { messageList, details} = this.data;
     if (zan == 1) {
       utils.showToast('您不能重复点赞', 'none')
       return;
@@ -158,9 +188,10 @@ Page({
         video_id: id
       }
     }).then(res => {
-      messageList.is_zan = messageList.is_zan == 1 ? 0 : 1;
-      messageList.zan_count = messageList.is_zan == 1 ? messageList.zan_count + 1 : messageList.zan_count - 1;
+      details.is_zan = details.is_zan == 1 ? 0 : 1;
+      messageList.zan_count = details.is_zan == 1 ? messageList.zan_count + 1 : messageList.zan_count - 1;
       this.setData({
+        details: details,
         messageList: messageList,
         status: true,
         text: "视频点赞+" + res.data.point + "积分"
@@ -256,7 +287,21 @@ Page({
         video_id: id
       }
     }).then(res => {
-      console.log(res)
+      if(res.data.code == 200){
+        this.setData({
+          [`messageList.share_count`]: this.data.messageList.share_count+1
+        })
+      } else if (res.data.code == 5017){
+        wx.showToast({
+          title: '当前视频已经分享过了',
+          icon:"none"
+        })
+      }else{
+        wx.showToast({
+          title: res.data.message,
+          icon: "none"
+        })
+      }
     })
   },
   /**

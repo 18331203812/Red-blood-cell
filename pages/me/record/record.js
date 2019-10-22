@@ -1,6 +1,11 @@
 import HTTP from "../../../utils/request.js";
 import utils from "../../../utils/util.js";
 var _http = new HTTP();
+
+var time = 0;
+var touchDot = 0;//触摸时的原点
+var interval = "";
+var flag_hd = true;
 Page({
 
   /**
@@ -54,6 +59,85 @@ Page({
       isPage: false,
     })
     this.List(1);
+  },
+  // 触摸开始事件
+  touchStart: function (e) {
+    touchDot = e.touches[0].pageX; // 获取触摸时的原点
+    // 使用js计时器记录时间    
+    interval = setInterval(function () {
+      time++;
+    }, 2000);
+  },
+  // 触摸结束事件
+  touchEnd: function (e) {
+    var touchMove = e.changedTouches[0].pageX;
+    // 向左滑动   
+    if (touchMove - touchDot <= -80 && time < 10 && flag_hd == true) {
+      flag_hd = false;
+      console.log("向右滑动");
+      this.Switch('right')
+    }
+    // 向右滑动   
+    if (touchMove - touchDot >= 80 && time < 10 && flag_hd == true) {
+      flag_hd = false;
+      console.log("向左滑动");
+      this.Switch('left')
+    }
+    clearInterval(interval); // 清除setInterval
+    time = 0;
+    flag_hd = true;
+  },
+  /**
+   * 切换tabBar
+   */
+  Switch(status) {
+    let { ids } = this.data;
+    this.setData({
+      page: 1,
+     
+    })
+
+    if (status == 'left') {
+      switch (ids) {
+        case 2:
+          this.setData({
+            ids: 1,
+            list: [],
+            isPage: false, //省缺页
+          })
+          this.List(1)
+          break;
+        case 1:
+          this.setData({
+            ids: 0,
+            list: [],
+            isPage: false, //省缺页
+          })
+          this.List(1)
+          break;
+        default:
+      }
+    } else if (status == 'right') {
+      switch (ids) {
+        case 0:
+          this.setData({
+            ids: 1,
+            list: [],
+            isPage: false, //省缺页
+          })
+          this.List(1)
+          break;
+        case 1:
+          this.setData({
+            ids: 2,
+            list: [],
+            isPage: false, //省缺页
+          })
+          this.List(1)
+          break;
+        default:
+      }
+    }
   },
   /**
    * 生命周期函数--监听页面加载

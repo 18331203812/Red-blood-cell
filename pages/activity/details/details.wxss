@@ -115,3 +115,7 @@ page{
   display: block;
   margin-right: 10rpx;
 }
+.but{
+  margin-top: 20rpx;
+  
+}

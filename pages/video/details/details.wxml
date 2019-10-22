@@ -1,32 +1,34 @@
-<view class="li-img">
-      <view class="item-box " >
-        <!-- 视频图片层 -->
-        <view data-id="{{details.id}}" class="video-image-box" style="display: {{ _index == details.id ? 'none' : 'block' }};" bindtap="videoPlay">
-          <view class="video-cover-box">
-            <image class="video-image" src="{{details.cover}}" mode="aspectFit">
-            </image>
+<view id="main">
+  <view class="li-img">
+        <view class="item-box " >
+          <!-- 视频图片层 -->
+          <view data-id="{{details.id}}" class="video-image-box" style="display: {{ _index == details.id ? 'none' : 'block' }};" bindtap="videoPlay">
+            <view class="video-cover-box">
+              <image class="video-image" src="{{details.cover}}" mode="aspectFit">
+              </image>
+            </view>
+            <!-- 视频按钮 -->
+            <image class="video-image-play" src="../../../images/icon_short.png" mode="scaleToFill"></image>
           </view>
-          <!-- 视频按钮 -->
-          <image class="video-image-play" src="../../../images/icon_short.png" mode="scaleToFill"></image>
-        </view>
-        <!-- 视频播放层 -->
-        <video src="{{details.path}}" data-id="{{details.id}}" class='video' wx:if="{{_index == details.id}}" objectFit='contain' autoplay='true' controls></video>
+          <!-- 视频播放层 -->
+          <video src="{{details.path}}" data-id="{{details.id}}" class='video' wx:if="{{_index == details.id}}" objectFit='contain' autoplay='true' controls></video>
 
-        </view>
-</view>
-<view class="main">
-
-  <view class="title">{{details.title}}</view>
-  <view class="nav">
-    <image class="nav-head" src="{{details.headimgurl}}"></image>
-    <view class="nav-con">
-      <view class="nav-title">{{details.street_title || "暂 无"}}</view>
-      <view class="nav-time">{{details.publish_time}}</view>
-    </view>
+          </view>
   </view>
-  <!-- <view class="text">
-    <rich-text nodes='{{details.content}}'></rich-text>
-  </view> -->
+  <view class="main">
+
+    <view class="title">{{details.title}}</view>
+    <view class="nav">
+      <image class="nav-head" src="{{details.headimgurl}}"></image>
+      <view class="nav-con">
+        <view class="nav-title">{{details.street_title || "暂 无"}}</view>
+        <view class="nav-time">{{details.publish_time}}</view>
+      </view>
+    </view>
+    <!-- <view class="text">
+      <rich-text nodes='{{details.content}}'></rich-text>
+    </view> -->
+  </view>
 </view>
 <view class="message-title">{{messageList.comment_count}}个人评价</view>
   <block wx:for='{{messageList.comment}}' wx:key='index' wx:for-item='item'>
@@ -34,7 +36,7 @@
       <image class="message-head" src="{{item.avatar}}"></image>
       <view class="message-con">
         <view class="con-title">
-          {{item.nickname}}
+          {{item.nickname || '暂无'}}
           <view class="con-zan zan" bindtap="CommentFabulous" data-zan='{{item.is_zan}}' data-commentid="{{item.comment_id}}"  data-newid="{{details.id}}">
             <block wx:if='{{item.is_zan == 1}}'>
               <view class="fabulou-icons"></view>
@@ -59,7 +61,7 @@
   <view class="footer" style="{{isIphoneX ? 'padding-bottom:66rpx;' : ''}}">
     <view class="footer-box">
       <view class="writing-icon"></view>
-      <input class="footer-input" bindfocus='input' bindblur="GetInputCon" placeholder="我来说两句"  placeholder-class="footer-inputs"  value="{{inputValue}}"></input>
+      <input class="footer-input" bindfocus='input' bindblur='inputs' bindinput="GetInputCon" placeholder="我来说两句"  placeholder-class="footer-inputs"  value="{{inputValue}}"></input>
     </view>
     <view class="footer-ul">
     <block wx:if="{{isShow}}">

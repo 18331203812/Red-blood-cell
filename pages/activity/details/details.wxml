@@ -40,7 +40,17 @@
 
 <!-- 海报 -->
 <view class="{{curtain}}" catchtap="Cur">
-  <view class="curtain-box"  catchlongtap="saveImageToPhoto">
-     <canvas  canvas-id="myCanvas" class="canvas"></canvas>
+  <view style="width:100%;">
+    <view style='display:flex;justify-content:center;'>
+      <view class="curtain-box" >
+        <canvas  canvas-id="myCanvas" class="canvas"></canvas>
+      </view>
+    </view>
+    <block wx:if='{{imgshareBut}}'>
+      <view style='display:flex;justify-content:center;'>
+        <button class="footer-button but" bindtap="saveImageToPhoto" >下载保存</button>
+      </view>
+    </block>
+    
   </view>
 </view>

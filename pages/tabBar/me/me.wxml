@@ -48,7 +48,7 @@
   <!-- </navigator> -->
   <!-- <navigator url="/pages/me/personal/personal" hover-class="none"> -->
     <view class="main-li" bindtap="Navigators" data-id="4">
-      信息验证
+      我的信息
       <view class="more-icon"></view>
     </view>
   <!-- </navigator> -->

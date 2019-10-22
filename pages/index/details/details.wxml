@@ -1,19 +1,5 @@
-<!-- <view class="li-img">
-      <view class="item-box " wx:for="{{dataList}}" wx:key="item"> -->
-        <!-- 视频图片层 -->
-        <!-- <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
-          <view class="video-cover-box">
-            <image class="video-image" src="{{item.cover}}" mode="aspectFit">
-            </image>
-          </view> -->
-          <!-- 视频按钮 -->
-          <!-- <image class="video-image-play" src="../../../images/icon_short.png" mode="scaleToFill"></image> -->
-        <!-- </view> -->
-        <!-- 视频播放层 -->
-        <!-- <video src="{{item.content}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='true' controls></video> -->
-        <!-- </view> -->
-<!-- </view> -->
-<view class="main">
+
+<view class="main" id="main">
 
   <view class="title">{{details.title}}</view>
   <view class="nav">
@@ -33,7 +19,7 @@
       <image class="message-head" src="{{item.avatar}}"></image>
       <view class="message-con">
         <view class="con-title">
-          {{item.nickname}}
+          {{item.nickname || '暂无'}}
           <view class="con-zan zan" bindtap="CommentFabulous" data-zan='{{item.is_zan}}' data-commentid="{{item.comment_id}}"  data-newid="{{details.id}}">
           <block wx:if='{{item.is_zan == 1}}'>
             <view class="fabulou-icons"></view>
@@ -58,7 +44,7 @@
   <view class="footer" style="{{isIphoneX ? 'padding-bottom:66rpx;' : ''}}">
     <view class="footer-box">
       <view class="writing-icon"></view>
-      <input class="footer-input" bindfocus='input' bindblur="GetInputCon" placeholder="我来说两句"  placeholder-class="footer-inputs"  value="{{inputValue}}"></input>
+      <input class="footer-input" bindfocus='input' bindblur="inputs" bindinput="GetInputCon" placeholder="我来说两句"  placeholder-class="footer-inputs"  value="{{inputValue}}"></input>
     </view>
     <view class="footer-ul">
     <block wx:if="{{isShow}}">
@@ -69,8 +55,8 @@
         <button open-type='share' data-id="{{details.id}}" class="share-but">
           <view class="footer-li"><view class="share-icon"></view>{{messageList.share_count}}</view>
         </button>
-      <view class="footer-li" bindtap="Fabulous" data-id="{{details.id}}" data-zan='{{messageList.is_zan}}'>
-        <block wx:if='{{messageList.is_zan == 1}}'>
+      <view class="footer-li" bindtap="Fabulous" data-id="{{details.id}}" data-zan='{{details.is_zan}}'>
+        <block wx:if='{{details.is_zan == 1}}'>
           <view class="fabulou-icons"></view>
         </block>
         <block wx:else>

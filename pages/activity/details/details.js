@@ -20,6 +20,7 @@ Page({
     imgshare:"", //生成海报链接
     status_title:"",//是否已结束
     isIphoneX: app.globalData.systemInfo.model == "iPhone X" ? true : false,
+    imgshareBut:false
   },
 
   /**
@@ -139,14 +140,14 @@ Page({
   Cur(){
     /* 该隐藏的隐藏 */
     this.setData({
-      curtain: "curtains"
+      curtain: "curtains",
+      imgshareBut:false
     })
   },
   //生成海报
   generate() {
    
     this.gener().then(res=>{
-      console.log(res)
       this.setData({ imgshare: res })
     })
   },
@@ -253,6 +254,7 @@ Page({
         ctx.setFillStyle("#666666");
         ctx.fillText("报名期限：" + that.data.details.ranage, 30 * rpx, 270 + b * 20 * rpx);
         ctx.fillText("此产品海报由【共益互助】小程序生成", ((345 * rpx) - 220) / 2, 465 + b * 20 * rpx);
+        that.setData({ imgshareBut :true })
         wx.hideLoading();
         ctx.draw(true, setTimeout(function () {     //为什么要延迟100毫秒？大家测试一下
           wx.canvasToTempFilePath({
@@ -265,7 +267,6 @@ Page({
             canvasId: 'myCanvas',
             success: res => {
               wx.hideLoading();
-              
               reslove(res.tempFilePath)
             }
           }, that)

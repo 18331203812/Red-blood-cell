@@ -58,7 +58,7 @@ Component({
   data: {
     district:0,
     street:0,
-    index:[0,0],
+    index:[0,0,0,0],
     listData:[],
 
   },
@@ -93,6 +93,8 @@ Component({
     sure(){
       let { listData, index}=this.data;
       let array=[];
+      console.log(listData)
+      console.log(index)
       array.push(
         {
           province_id: listData[index[0]].province_id,

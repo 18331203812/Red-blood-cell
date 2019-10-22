@@ -57,7 +57,7 @@ Page({
   },
   //完成
   Sumbit(){
-    let { phone ,code} = this.data;
+    let { phone } = this.data;
     if (! /^1\d{10}$/.test(phone)) {
       utils.showToast("请输入正确的手机号", 'none')
       return;

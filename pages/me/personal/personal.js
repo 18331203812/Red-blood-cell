@@ -26,7 +26,7 @@ Page({
     code:"",
     categoryList:[], //身份
     ids: "", //身份id
-    checked:true, //同意
+    checked:false, //同意
     isBut:false,
     isPhone:false
   },
@@ -49,6 +49,7 @@ Page({
       method:"GET",
     }).then(res=>{
       let data = res.data.list,arr=[];
+      console.log(data)
       arr.push(
         { province_name: data.province_name, province_id: data.province_id},
         { cityname: data.city_name, city_id:data.city_id}, 
@@ -62,7 +63,19 @@ Page({
         picker_08_data: arr,
         addressdata: { community_name: data.community_name, community_id: data.community_id}
       })
-    
+      if (!data.mobile){
+        let users = wx.getStorageSync('user');
+          if (users){
+            let { name, phone, ids, picker_08_data, addressdata } = users
+            this.setData({
+              ids,
+              name,
+              phone,
+              picker_08_data,
+              addressdata,
+            })
+          }
+      }
     })
   },
   //点击身份标题信息
@@ -335,7 +348,19 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    console.log('卸载')
+    let { isPhone, name, phone, ids, picker_08_data, addressdata}=this.data ;
+    if (!isPhone){
+      let obj={
+        name,
+        phone,
+        ids,
+        picker_08_data,
+        addressdata,
+      }
+      console.log(obj)
+      wx.setStorageSync('user', obj)
+    }
   },
 
   /**

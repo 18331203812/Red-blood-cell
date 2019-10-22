@@ -4,33 +4,34 @@
   <view class="nav-li  {{ids == 2 ? 'category' : ''}}" bindtap="Category" data-id="2">已完成</view>
 </view>
 
-<view class="main">
-<block wx:for='{{list}}' wx:key='index' >
-  <navigator url="/pages/me/recordDetails/recordDetails?id={{item.order_id}}" hover-class="none">
-    <view class="li">
-      <view class="li-nav">
-        <view class="li-nav-number">订单号：{{item.order_sn}}</view>
-        <view class="li-nav-but {{item.status == 1 ? 'success' : ''}}">{{item.status == 0 ? "待确认" : "已完成"}}</view>
-      </view>
-      <view class="li-con">
-        <image class="li-con-img" src="{{item.cover}}" mode="aspectFill"></image>
-        <view class="li-con-right">
-          <view class="li-title">{{item.goods_name}}</view>
-          <view class="li-integral">
-            <view class="li-ints"><text>{{item.point}}</text>积分*{{item.quantity}}</view>
-            <view class="li-time">{{item.create_time}}</view>
+<view class="main" bindtouchstart="touchStart" bindtouchend="touchEnd">
+  <block wx:for='{{list}}' wx:key='index' >
+    <navigator url="/pages/me/recordDetails/recordDetails?id={{item.order_id}}" hover-class="none">
+      <view class="li">
+        <view class="li-nav">
+          <view class="li-nav-number">订单号：{{item.order_sn}}</view>
+          <view class="li-nav-but {{item.status == 1 ? 'success' : ''}}">{{item.status == 0 ? "待确认" : "已完成"}}</view>
+        </view>
+        <view class="li-con">
+          <image class="li-con-img" src="{{item.cover}}" mode="aspectFill"></image>
+          <view class="li-con-right">
+            <view class="li-title">{{item.goods_name}}</view>
+            <view class="li-integral">
+              <view class="li-ints"><text>{{item.point}}</text>积分*{{item.quantity}}</view>
+              <view class="li-time">{{item.create_time}}</view>
+            </view>
           </view>
         </view>
+        <view class="li-footer">
+          <text>合计:{{item.total_point}}积分</text>
+          <text>实际价值:￥{{item.total_market_price}}</text>
+        </view>
       </view>
-      <view class="li-footer">
-        <text>合计:{{item.total_point}}积分</text>
-        <text>实际价值:￥{{item.total_market_price}}</text>
-      </view>
-    </view>
-  </navigator>
-</block>
+    </navigator>
+  </block>
+  <block wx:if='{{isPage}}'>
+    <page pageStatus='activity' pageText='没有兑换记录' ></page>
+  </block>
 </view>
-<block wx:if='{{isPage}}'>
-  <page pageStatus='activity' pageText='没有兑换记录' ></page>
-</block>
+
 <loadmore isShow='{{isShow}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
