@@ -16,7 +16,7 @@ Page({
     isContent: false,
     status: false,
     text: '',
-    isIphoneX: app.globalData.systemInfo.model == "iPhone X" ? true : false,
+    isIphoneX: app.globalData.systemInfo.models  ? true : false,
   },
   // 点击cover播放，其它视频结束
   videoPlay: function (e) {
