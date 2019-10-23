@@ -87,7 +87,7 @@
   </block>
   <block wx:else>
     <view class="li-but" style="justify-content:center;padding-top:20rpx;">
-      <button class="submit" bindtap="Submit">提交</button>
+      <button class="submit" bindtap="Submit">修改保存</button>
     </view>
   </block>
 </view>
