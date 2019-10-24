@@ -69,4 +69,15 @@
     </view>
   </view>
 </block>
+<block wx:elif="{{status == 'Perfect' }}">
+  <view class="box">
+    <image class="box-img" src="../../images/component/success.png"></image>
+    <view class="title">完善信息得积分</view>
+    <view class="text">完善信息后可得1000积分</view>
+    <view class="but">
+      <button class="cancel" bindtap="_cancel">取消</button>
+        <button class="immediately" bindtap="_confirm">立即前往</button>
+    </view>
+  </view>
+</block>
 </view> 

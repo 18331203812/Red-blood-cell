@@ -165,3 +165,4 @@
     }
      module.exports.str= str
   </wxs>
+  <frame status='Perfect' isShow='{{isShow}}' bind:_confirm='Confirm' bind:_cancel='Cancel'></frame>

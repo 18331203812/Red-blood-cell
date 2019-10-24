@@ -27,6 +27,20 @@ Page({
     community:"",
     keyword:"",
     isPage:false, //省缺页
+    isShow:false,
+  },
+  Confirm(){
+    wx.navigateTo({
+      url: '/pages/me/personal/personal',
+    })
+    this.setData({
+      isShow: false
+    })
+  },
+  Cancel() {
+    this.setData({
+      isShow: false
+    })
   },
   Category(e){
     this.setData({
@@ -118,6 +132,34 @@ Page({
       }
     }
   },
+  //获取个人信息
+  User() {
+    return new Promise((resj,sej)=>{
+      let access_token = wx.getStorageSync('login').token || '';
+      wx.request({
+        url: "https://www.redxibao.com/api/user/profile",
+        method: "GET",
+        header: access_token ? {
+          'content-type': 'application/x-www-form-urlencoded',
+          "Authorization": `${access_token}`
+        } : {
+            'content-type': 'application/x-www-form-urlencoded',
+          },
+        success:res=>{
+          console.log(res)
+          if (res.data.code == 1003){
+            // resj(false)
+          }else if(res.data.code == 200){
+            let isPhone = res.data.data.list.mobile ? true : false;
+            resj(isPhone)
+          }else{
+            // resj(false)
+          }
+          
+        }
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -125,7 +167,8 @@ Page({
     app.editTabbar();
     //导航高度
     this.Nav();
-  
+    
+   
   },
   //计算导航高度
   Nav() {
@@ -266,6 +309,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let perfect = wx.getStorageSync('perfect');
+    this.User().then(res => {
+      console.log(res)
+      if (!res) {
+        if (!perfect) {
+          this.setData({
+            isShow: true
+          })
+          wx.setStorageSync('perfect', true);
+        }
+      }
+    })
+    
     flag_hd = true;    //重新进入页面之后，可以再次执行滑动切换页面代码
     clearInterval(interval); // 清除setInterval
     time = 0;
