@@ -26,6 +26,7 @@
           <image class="main-li-img" mode="aspectFill" src="{{item.cover}}"></image>
           <view class="main-li-title">{{item.goods_name}}</view>
           <view class="main-integral"><text>{{item.point}}</text>积分</view>
+           <view class="main-volume">兑换量{{item.redemption}}</view>
         </navigator>
       </view>
     </block>

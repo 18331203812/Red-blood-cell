@@ -5,7 +5,8 @@
       <view class="li">
         <view class="li-box">
           <image class="li-img"  mode="aspectFill" src="{{item.cover}}"></image>
-          <view class="li-box-status">{{item.status_title}}</view>
+          <image class="li-status" src="../../images/me/status.png"></image>
+          <view class="li-box-status" style="{{item.status_title == '已结束' ? 'background:#333333' : ''}}">{{item.status_title}}</view>
           <view class="applicant">
             <view class="line">
               <view class="lineAnother" style="width:{{foo.msg(item.number)*item.enroll}}rpx"></view>
@@ -15,7 +16,6 @@
         </view>
           <view class="li-title">
             {{item.title}}
-           
           </view>
           <view class="li-titles">
            <view class="li-title-status">限</view>

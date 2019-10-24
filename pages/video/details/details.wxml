@@ -59,27 +59,29 @@
   
   <view style="width:100%;height:100rpx;"></view>
   <view class="footer" style="{{isIphoneX ? 'padding-bottom:66rpx;' : ''}}">
-    <view class="footer-box">
+    <view class="footer-box" style="{{isShow ? 'height: 150rpx;width:80%;' :''}}">
       <view class="writing-icon"></view>
-      <input class="footer-input" cursor-spacing='20' adjust-position bindfocus='input' bindblur='inputs' bindinput="GetInputCon" placeholder="我来说两句"  placeholder-class="footer-inputs"  value="{{inputValue}}"></input>
+      <textarea class="footer-input" 	 adjust-position	 cursor-spacing='18' bindfocus='input' bindblur='inputs' bindinput="GetInputCon" placeholder="我来说两句"  placeholder-class="footer-inputs"  value="{{inputValue}}"></textarea>
     </view>
     <view class="footer-ul">
     <block wx:if="{{isShow}}">
       <button class="submit" bindtap="Submit">发送</button>
     </block>
     <block wx:else>
-      <view class="footer-li"><view class="comment-icon"></view>{{messageList.comment_count}}</view>
-        <button open-type='share' data-id="{{details.id}}" class="share-but">
-          <view class="footer-li"><view class="share-icon"></view>{{messageList.share_count}}</view>
-        </button>
+      <view class="footer-li" bindtap="input" data-id='1'><view class="comment-icon"></view>{{messageList.comment_count}}</view>
+        
       <view class="footer-li" bindtap="Fabulous" data-id="{{details.id}}" data-zan='{{details.is_zan}}'>
       <block wx:if='{{details.is_zan == 1}}'>
           <view class="fabulou-icons"></view>
-      </block>
+      </block> 
       <block wx:else>
         <view class="fa-icon"></view>
       </block>
       {{messageList.zan_count}}</view>
+      <button open-type='share' data-id="{{details.id}}" class="share-but">
+          <!-- <view class="footer-li"><view class="share-icon"></view>{{messageList.share_count}}</view> -->
+            <image class="footer-img" src="../../../images/me/weixin.png" style="width:47rpx;height:40rpx;display:block;"></image>
+        </button>
     </block>
     </view>
   </view>

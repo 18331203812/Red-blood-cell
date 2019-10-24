@@ -3,7 +3,7 @@
   <view class='li'>
     <view class="li-title">请填写以下个人信息</view>
     <block wx:if='{{!isPhone}}'>
-      <!-- <view class="li-text">填写以下信息，获得1000积分。</view> -->
+      <view class="li-text">填写以下信息，获得1000积分。</view>
     </block>
   </view>
   <view class="li">

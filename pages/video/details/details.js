@@ -35,10 +35,13 @@ Page({
     }, 500)
   },
   input(e) {
-    this.setData({
-      isShow: true,
-    })
-
+    console.log(e.currentTarget.dataset.id)
+    if (e.currentTarget.dataset.id != 1){
+      this.setData({
+        isShow: true,
+      })
+    }
+    
     const query = wx.createSelectorQuery()
     query.select('#main').boundingClientRect()
     query.selectViewport().scrollOffset()
@@ -287,18 +290,20 @@ Page({
         video_id: id
       }
     }).then(res => {
-      if(res.data.code == 200){
+      console.log(res)
+      if(res.code == 200){
         this.setData({
           [`messageList.share_count`]: this.data.messageList.share_count+1
         })
       } else if (res.data.code == 5017){
         wx.showToast({
           title: '当前视频已经分享过了',
-          icon:"none"
+          icon:"none",
+          duration:4000
         })
       }else{
         wx.showToast({
-          title: res.data.message,
+          title: res.data.message || '',
           icon: "none"
         })
       }

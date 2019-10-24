@@ -1,0 +1,50 @@
+.tabBar{
+  width: 100%;
+  height: 70rpx;
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+  position:fixed;
+  left: 0;
+  z-index: 99;
+  top: 0;
+}
+.tabBar-li{
+  height: 100%;
+  position: relative;
+  font-size: 30rpx;
+  color: #333333;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+.category{
+  color: #ce131b;
+}
+.category::after{
+  content:"";
+  width: 100%;
+  height: 4rpx;
+  background:#ce131b;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.main{
+  background: #f4f4f4;
+  padding-top: 70rpx;
+}
+/* 时间 */
+.time-icon{
+  width: 28rpx;
+  height: 100%;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAMAAABhEH5lAAAAXVBMVEUAAADOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExsMqNPTAAAAH3RSTlMAcPXBlQG2c0KITTIc8NcW5eTSnDn8raOETkwgDqQUEPCTtwAAAK1JREFUGNNNj1kOhDAMQ910hUKBsi8z9z/mNFRMyYcjPTmRjWulFv9pab3wkf5EZ02IxnY4vRxBHhAkbV1bSQLwhLbRY+8ArQHXKzT8RgxN0m1L0gwCab6t46UUq6OOTRIFQbLNiDcSJkmsM4pVVXnUEUDIaKoyCuUQKIdWvpG0STpyheQQsByVh6Pae+dCABcaNTJLtcVxiFRbP/59XkwIZpn3h0yk9O1WNAH4AYvaBjK3U4bYAAAAAElFTkSuQmCC) no-repeat center / 28rpx auto ;
+  margin: 0 10rpx;
+}
+/* 地点 */
+.address-icon{
+  width: 27rpx;
+  height: 100%;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAVCAMAAACXIvXeAAAAY1BMVEUAAADOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExvOExuR+XMZAAAAIHRSTlMAMkQhEQ3SSvfWy3hYPBmTU+TevJGNiXJgAvPowK6BdZMQ6BIAAACBSURBVBjTnZBLDoMwDEQn2BRCU6Cl0NIP+P6nxFkAVhYseIuR/GRZ8iBCXSn3NwxVFdqnuF3kkmk+XtvMJAUz+0kjV/EXy6cGpMkMvldTwBDKOjGj7xOD+ZuaS5OYNt4ZnEFX0IlFVzASOQlE5AcNXv+6xZtXKGeN7eeoQ9BP9p4XNPEKWcsGBZ0AAAAASUVORK5CYII=) no-repeat center / 27rpx auto ;
+  margin: 0 10rpx;
+}

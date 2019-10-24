@@ -117,5 +117,34 @@ page{
 }
 .but{
   margin-top: 20rpx;
-  
+}
+
+.footer-img{
+  display: inherit;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+.footer-content{
+  width: 48%;
+  display:flex;
+  padding-left: 30rpx;
+  justify-content: space-around;
+}
+.footer-text{
+  font-size: 22rpx;
+  color: #999999;
+  padding-top: 5rpx;
+}
+.share-but{
+  background: #fff;
+}
+.share-but::after{
+  background: #fff;
+  position: static;
+  top: 0rpx;
+  left: 0rpx;
+}
+button{
+  line-height: normal;
 }
