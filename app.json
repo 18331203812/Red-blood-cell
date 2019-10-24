@@ -10,6 +10,7 @@
     "pages/me/recordDetails/recordDetails",
     "pages/me/record/record",
     "pages/me/ginseng/ginseng",
+    "pages/me/about/about",
     "pages/me/agreement/agreement",
     "pages/tabBar/integral/integral",
     "pages/integral/task/task",

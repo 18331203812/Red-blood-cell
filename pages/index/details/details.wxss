@@ -111,7 +111,8 @@ margin-right: 10rpx;
   display: block;
   box-sizing: border-box;
   top: 0;
-  padding-left: 72rpx;
+    padding:18rpx 0 10rpx 72rpx;
+  font-size: 28rpx;
 }
 .footer-ul{
   display: flex;
