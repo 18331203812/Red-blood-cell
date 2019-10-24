@@ -19,7 +19,9 @@
 
     <view class="title">{{details.title}}</view>
     <view class="nav">
-      <image class="nav-head" src="{{details.headimgurl}}"></image>
+      <navigator url="/pages/activity/socialDetails/socialDetails" hover-class="none">
+        <image class="nav-head" src="{{details.headimgurl}}"></image>
+      </navigator>
       <view class="nav-con">
         <view class="nav-title">{{details.street_title || "暂 无"}}</view>
         <view class="nav-time">{{details.publish_time}}</view>
@@ -35,7 +37,7 @@
     <view class="message-li">
       <image class="message-head" src="{{item.avatar}}"></image>
       <view class="message-con">
-        <view class="con-title">
+        <view class="con-title" nav>
           {{item.nickname || '暂无'}}
           <view class="con-zan zan" bindtap="CommentFabulous" data-zan='{{item.is_zan}}' data-commentid="{{item.comment_id}}"  data-newid="{{details.id}}">
             <block wx:if='{{item.is_zan == 1}}'>
