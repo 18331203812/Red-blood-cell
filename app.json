@@ -21,7 +21,6 @@
     "pages/activity/details/details",
     "pages/tabBar/video/video",
     "pages/video/details/details",
-    "pages/activity/socialDetails/socialDetails"
   ],
   "usingComponents": {
     "frame": "component/frame/frame"
