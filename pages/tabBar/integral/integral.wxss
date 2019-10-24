@@ -95,3 +95,9 @@
   font-size: 28rpx;
   color: #ce131b;
 }
+.main-li-number{
+  font-size: 23rpx;
+  color: #999999;
+  text-align: center;
+  line-height: 54rpx;
+}

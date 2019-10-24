@@ -23,31 +23,30 @@
 }
 .li-title{
   position: relative;
-  width: 100%;
-  padding: 10rpx 30rpx 10rpx 30rpx;
-  font-size: 32rpx;
+  width: 571rpx;
+  font-size: 30rpx;
   color: #333333;
   font-weight: bold;
   display: flex;
   align-items: center;
+  line-height: 36rpx;
 }
 .li-title-status{
-  font-size: 24rpx;
+  height: 100%;
+  font-size: 18rpx;
   color: #ce131b;
   border-radius: 10rpx;
   border: 1rpx solid #ce131b;
-  padding: 0 5rpx;
   display: flex;
-  margin-right: 10rpx;
-  align-items: center;
+  margin: 3rpx 30rpx 0 0;
+  padding: 0 4rpx;
 }
 .li-text{
   display: flex;
-  align-items: center;
-  font-size: 28rpx;
-  height:50rpx;
-  padding: 10rpx 20rpx;
+  font-size: 20rpx;
   color: #666;
+  height: 41rpx;
+  align-items: center;
 }
 .li-box-status{
   font-size: 24rpx;
@@ -83,7 +82,23 @@
 }
 .li-titles{
   display: flex;
-  padding: 0 30rpx;
-  font-size: 28rpx;
-  color: #666;
+  font-size: 20rpx;
+  color: #ce131b;
+}
+
+.titile-top{
+  width: 100%;
+  display: flex;
+  justify-content:space-between;
+}
+.titile-box{
+  display: flex;
+  padding: 0 18rpx 0 30rpx;
+  margin-top: 24rpx;
+  flex-direction:column;
+}
+.bottom-box{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
 }
