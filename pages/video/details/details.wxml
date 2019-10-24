@@ -19,9 +19,9 @@
 
     <view class="title">{{details.title}}</view>
     <view class="nav">
-      <navigator url="/pages/activity/socialDetails/socialDetails" hover-class="none">
+      <!-- <navigator url="/pages/activity/socialDetails/socialDetails" hover-class="none"> -->
         <image class="nav-head" src="{{details.headimgurl}}"></image>
-      </navigator>
+      <!-- </navigator> -->
       <view class="nav-con">
         <view class="nav-title">{{details.street_title || "暂 无"}}</view>
         <view class="nav-time">{{details.publish_time}}</view>
@@ -63,7 +63,7 @@
   <view class="footer" style="{{isIphoneX ? 'padding-bottom:66rpx;' : ''}}">
     <view class="footer-box" style="{{isShow ? 'height: 150rpx;width:80%;' :''}}">
       <view class="writing-icon"></view>
-      <textarea class="footer-input" 	fixed adjust-position	 cursor-spacing='18' bindfocus='input' bindblur='inputs' bindinput="GetInputCon" placeholder="我来说两句"  placeholder-class="footer-inputs"  value="{{inputValue}}"></textarea>
+      <textarea class="footer-input" 	fixed adjust-position	 cursor-spacing='16' bindfocus='input' bindblur='inputs' bindinput="GetInputCon" placeholder="我来说两句"  placeholder-class="footer-inputs"  value="{{inputValue}}"></textarea>
     </view>
     <view class="footer-ul">
     <block wx:if="{{isShow}}">

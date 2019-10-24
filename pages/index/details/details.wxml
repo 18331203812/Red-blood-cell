@@ -42,9 +42,9 @@
   
   <view style="width:100%;height:100rpx;"></view>
   <view class="footer" style="{{isIphoneX ? 'padding-bottom:66rpx;' : ''}}">
-    <view class="footer-box">
+    <view class="footer-box" style="{{isShow ? 'height: 150rpx;width:80%;' :''}}">
       <view class="writing-icon"></view>
-      <input class="footer-input" bindfocus='input' bindblur="inputs" bindinput="GetInputCon" placeholder="我来说两句"  placeholder-class="footer-inputs" cursor-spacing='18' value="{{inputValue}}"></input>
+      <textarea class="footer-input" fixed adjust-position bindfocus='input' bindblur="inputs" bindinput="GetInputCon" placeholder="我来说两句"  placeholder-class="footer-inputs" cursor-spacing='16' value="{{inputValue}}"></textarea>
     </view>
     <view class="footer-ul">
     <block wx:if="{{isShow}}">
