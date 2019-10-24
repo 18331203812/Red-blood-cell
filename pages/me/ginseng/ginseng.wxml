@@ -1,9 +1,16 @@
-<activity list='{{list}}' url='/pages/activity/enterForSuccess/enterForSuccess'></activity>
-  <block wx:if="{{isPage}}">
-      <page pageText='没有我的参与' pageStatus='activity'></page>
-  </block>
+  <view class="tabBar">
+    <view class="tabBar-li category">已报名</view>
+    <view class="tabBar-li">已完成</view>
+    <view class="tabBar-li">已收藏</view>
+  </view>
+  <view class="main">
+  <activity list='{{list}}' url='/pages/activity/enterForSuccess/enterForSuccess'></activity>
+    <block wx:if="{{isPage}}">
+        <page pageText='没有我的参与' pageStatus='activity'></page>
+    </block>
 
-  <loadmore isShow='{{isShow}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+    <loadmore isShow='{{isShow}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+    </view>
 <!-- 参与时间
 把进行中放到上面 
    -->

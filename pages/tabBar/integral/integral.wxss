@@ -95,9 +95,9 @@
   font-size: 28rpx;
   color: #ce131b;
 }
-.main-li-number{
-  font-size: 23rpx;
+.main-volume{
+  font-size: 24rpx;
   color: #999999;
+  padding: 5rpx 0 0 0;
   text-align: center;
-  line-height: 54rpx;
 }

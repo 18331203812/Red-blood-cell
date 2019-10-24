@@ -39,7 +39,7 @@ Page({
       this.setData({
         list:this.data.list.concat(data)
       })
-      if(data.length == 0){
+      if (this.data.list.length == 0){
         this.setData({
           isPage:true,
           isShow: false
@@ -178,17 +178,18 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.setData({
-      page: this.data.page + 1
-    })
-    this.List(this.data.page)
+    
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log('/')
+    this.setData({
+      page: this.data.page + 1
+    })
+    this.List(this.data.page)
   },
 
   /**

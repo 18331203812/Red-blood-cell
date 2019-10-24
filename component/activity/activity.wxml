@@ -5,7 +5,8 @@
       <view class="li">
         <view class="li-box">
           <image class="li-img"  mode="aspectFill" src="{{item.cover}}"></image>
-          <view class="li-box-status">{{item.status_title}}</view>
+          <image class="li-status" src="../../images/me/status.png"></image>
+          <view class="li-box-status" style="{{item.status_title == '已结束' ? 'background:#333333' : ''}}">{{item.status_title}}</view>
           <view class="applicant">
             <view class="line">
               <view class="lineAnother" style="width:{{foo.msg(item.number)*item.enroll}}rpx"></view>
@@ -13,30 +14,21 @@
             <view class="applicant-text">报名人数:{{item.enroll}}/{{item.number}}</view>
           </view>
         </view>
-
-        <view class="titile-box">
-          <view class="titile-top">
-            <view class="li-title">
-              {{item.title}}
-              <!-- 万人爱心长江行--西西里在行动万人爱心长江行--西西里在行动 -->
-            </view>
-            <view class="li-title-status">限</view>
+          <view class="li-title">
+            {{item.title}}
           </view>
+          <view class="li-titles">
+           <view class="li-title-status">限</view>
+            {{item.limit_title}}
+           </view>
           <view class="li-text">
             <view class="time-icon"></view>
-            {{item.ranage}}
+              {{item.ranage}}
           </view>
-          <view class="bottom-box">
-            <view class="li-text">
-              <view class="address-icon"></view>
-              {{item.place}}
-            </view>
-            <view class="li-titles">
-              {{item.limit_title}}
-            </view>
+          <view class="li-text">
+            <view class="address-icon"></view>
+            {{item.place}}
           </view>
-        </view>
-
       </view>
     </navigator>
   </block>

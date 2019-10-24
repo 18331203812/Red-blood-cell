@@ -4,7 +4,7 @@
   <view class="nav-li  {{ids == 2 ? 'category' : ''}}" bindtap="Category" data-id="2">已完成</view>
 </view>
 
-<view class="main" bindtouchstart="touchStart" bindtouchend="touchEnd">
+<view class="main" bindtouchstart="touchStart" bindtouchend="touchEnd" style="min-height:80vh;">
   <block wx:for='{{list}}' wx:key='index' >
     <navigator url="/pages/me/recordDetails/recordDetails?id={{item.order_id}}" hover-class="none">
       <view class="li">

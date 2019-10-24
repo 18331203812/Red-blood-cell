@@ -19,7 +19,7 @@ Page({
     limit_text:"", //仅限那个社区
     imgshare:"", //生成海报链接
     status_title:"",//是否已结束
-    isIphoneX: app.globalData.systemInfo.model == "iPhone X" ? true : false,
+    isIphoneX: app.globalData.systemInfo.models ? true : false,
     imgshareBut:false
   },
 

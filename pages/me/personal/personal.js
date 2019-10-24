@@ -61,7 +61,7 @@ Page({
         phone: data.mobile,
         isPhone: data.mobile ? true :false,
         picker_08_data: arr,
-        addressdata: { community_name: data.community_name, community_id: data.community_id}
+        addressdata: { community_name: data.community_name, id: data.community_id}
       })
       if (!data.mobile){
         let users = wx.getStorageSync('user');
@@ -298,7 +298,7 @@ Page({
       }
     }).then(res=>{
       console.log(res)
-      if (res.data.code == 200){
+      if (res.code == 200){
         wx.showToast({
           title: '提交成功',
           icon:"none"
@@ -343,7 +343,19 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    console.log('页面隐藏')
+    let { isPhone, name, phone, ids, picker_08_data, addressdata } = this.data;
+    if (!isPhone) {
+      let obj = {
+        name,
+        phone,
+        ids,
+        picker_08_data,
+        addressdata,
+      }
+      console.log(obj)
+      wx.setStorageSync('user', obj)
+    }
   },
 
   /**

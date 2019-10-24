@@ -8,7 +8,6 @@ var touchDot = 0;//触摸时的原点
 var interval = "";
 var flag_hd = true;
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -64,40 +63,50 @@ Page({
    */
   Switch(status) {
     let { ids } = this.data;
-    this.setData({
-      page: 1,
-      list: [],
-      isPage: false, //省缺页
-      keyword: ""
-    })
-
     if (status == 'left') {
-      switch (ids) {
+      switch (Number(ids)) {
         case 3:
           this.setData({
             ids: 2,
+            page: 1,
+            list: [],
+            isPage: false, //省缺页
+            keyword: ""
           })
           this.List(1)
           break;
         case 2:
           this.setData({
             ids: 1,
+            page: 1,
+            list: [],
+            isPage: false, //省缺页
+            keyword: ""
           })
           this.List(1)
           break;
         default:
       }
     } else if (status == 'right') {
-      switch (ids) {
+      
+      switch (Number(ids)) {
         case 1:
           this.setData({
             ids: 2,
+            page: 1,
+            list: [],
+            isPage: false, //省缺页
+            keyword: ""
           })
           this.List(1)
           break;
         case 2:
           this.setData({
             ids: 3,
+            page: 1,
+            list: [],
+            isPage: false, //省缺页
+            keyword: ""
           })
           this.List(1)
           break;

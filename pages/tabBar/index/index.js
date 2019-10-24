@@ -68,8 +68,6 @@ Page({
    */
   Switch(status){
     let { type }  = this.data;
-
-    
     if(status == 'left'){
       switch (type) {
         case 3:
@@ -127,7 +125,7 @@ Page({
     app.editTabbar();
     //导航高度
     this.Nav();
-    this.List(1);
+  
   },
   //计算导航高度
   Nav() {
@@ -271,6 +269,17 @@ Page({
     flag_hd = true;    //重新进入页面之后，可以再次执行滑动切换页面代码
     clearInterval(interval); // 清除setInterval
     time = 0;
+    this.setData({
+      list: [], //新闻
+      pagesize: 10,
+      page: 1,
+      isMore: true, //加载动效
+      video: [], //视频
+      status: false,
+      keyword: "",
+      isPage: false, //省缺页
+    })
+    this.List(1);
     let address = wx.getStorageSync('address') ? JSON.parse(wx.getStorageSync('address')) : '';
     if(address){
       if (this.data.community !== address.addressdata.id){
@@ -321,6 +330,8 @@ Page({
       })
     })
   },
+
+  
   /**
    * 生命周期函数--监听页面隐藏
    */
