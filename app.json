@@ -21,7 +21,7 @@
     "pages/activity/enterFor/enterFor",
     "pages/activity/details/details",
     "pages/tabBar/video/video",
-    "pages/video/details/details",
+    "pages/video/details/details"
   ],
   "usingComponents": {
     "frame": "component/frame/frame"
