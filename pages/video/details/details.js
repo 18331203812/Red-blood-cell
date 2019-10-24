@@ -42,18 +42,18 @@ Page({
       })
     }
     
-    const query = wx.createSelectorQuery()
-    query.select('#main').boundingClientRect()
-    query.selectViewport().scrollOffset()
-    query.exec(height => {
-      console.log(height)
-      height[0].top       // #the-id节点的上边界坐标
-      height[1].scrollTop // 显示区域的竖直滚动位置
-      wx.pageScrollTo({
-        scrollTop: height[0].height,
-        duration: 300
-      });
-    })
+    // const query = wx.createSelectorQuery()
+    // query.select('#main').boundingClientRect()
+    // query.selectViewport().scrollOffset()
+    // query.exec(height => {
+    //   console.log(height)
+    //   height[0].top       // #the-id节点的上边界坐标
+    //   height[1].scrollTop // 显示区域的竖直滚动位置
+    //   wx.pageScrollTo({
+    //     scrollTop: height[0].height,
+    //     duration: 300
+    //   });
+    // })
   },
   inputs(){
     this.setData({
