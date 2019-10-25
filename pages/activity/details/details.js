@@ -119,12 +119,12 @@ Page({
     }).then(e => {
       if(e.data.code == 200){
         this.setData({
-          [`details.is_collect`]:1
+          [`details.is_collect`] : 1
         })
       }else{
         wx.showToast({
-          title: e.data.message,
-          icon:"none"
+          title: is_collect,
+          icon: "none"
         })
       }
     })
