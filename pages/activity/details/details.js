@@ -110,6 +110,26 @@ Page({
     })
   },
 
+  isCollection(e) {
+    let id = e.currentTarget.dataset.id;
+    _http.request({
+      url: "/api/activity/collectDo",
+      method: "POST",
+      data: { activity_id: id }
+    }).then(e => {
+      if(e.data.code == 200){
+        this.setData({
+          [`details.is_collect`]:1
+        })
+      }else{
+        wx.showToast({
+          title: e.data.message,
+          icon:"none"
+        })
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */

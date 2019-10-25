@@ -148,3 +148,8 @@ page{
 button{
   line-height: normal;
 }
+
+.footer-img{
+  width:36rpx;
+  height:36rpx;
+}
