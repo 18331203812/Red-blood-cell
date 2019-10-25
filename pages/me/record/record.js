@@ -96,7 +96,6 @@ Page({
       page: 1,
      
     })
-
     if (status == 'left') {
       switch (ids) {
         case 2:

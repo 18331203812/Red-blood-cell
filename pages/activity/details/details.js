@@ -126,10 +126,10 @@ Page({
           icon: "none"
         })
       }else{
-        wx.showToast({
-          title: is_collect,
-          icon: "none"
-        })
+        // wx.showToast({
+        //   title: is_collect,
+        //   icon: "none"
+        // })
       }
     })
   },
