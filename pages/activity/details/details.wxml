@@ -20,16 +20,20 @@
 <view class="footer" style="{{isIphoneX ? 'padding-bottom:66rpx;' : ''}}">
   <!-- <view class="footer-number">{{details.point}}积分</view> -->
   <view class="footer-content" >
-    <view class="footer-li" bindtap="isCollection" data-id='{{details.id}}'>
+    
       <block wx:if='{{details.is_collect == 1}}'>
+        <view class="footer-li" >
           <image class="footer-img" mode="aspectFill" src="../../../images/me/show.png" style="width:36rpx;height:36rpx;"></image>
+        <view class="footer-text" style="padding-top: 8rpx;font-size: 24rpx;">收藏</view>
+         </view>
       </block>
       <block wx:else>
-          <image class="footer-img" mode="aspectFill" src="../../../images/me/shows.png" style="width:36rpx;height:36rpx;"></image>
+          <view class="footer-li" bindtap="isCollection" data-id='{{details.id}}'>
+            <image class="footer-img" mode="aspectFill" src="../../../images/me/shows.png" style="width:36rpx;height:36rpx;"></image>
+           <view class="footer-text" style="padding-top: 8rpx;font-size: 24rpx;">收藏</view>
+            </view>
       </block>
-      <view class="footer-text" style="padding-top: 8rpx;font-size: 24rpx;">收藏</view>
-    </view>
-    
+  
       <view class="footer-li">
         <button open-type='share'  class="share-but">
         <image class="footer-img" src="../../../images/me/weixin.png" style="width:47rpx;height:40rpx;"></image>
