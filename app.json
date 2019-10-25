@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/tabBar/index/index",
     "pages/login/login/login",
     "pages/index/address/address",
@@ -21,7 +22,9 @@
     "pages/activity/enterFor/enterFor",
     "pages/activity/details/details",
     "pages/tabBar/video/video",
-    "pages/video/details/details"
+    "pages/video/details/details",
+    "pages/address/address",
+    "pages/addresses/addresses"
   ],
   "usingComponents": {
     "frame": "component/frame/frame"

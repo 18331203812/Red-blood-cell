@@ -119,17 +119,17 @@ Page({
     }).then(e => {
       if(e.code == 200){
         this.setData({
-          [`details.is_collect`]:1
+          [`details.is_collect`] : 1
         })
         wx.showToast({
           title: '收藏成功',
           icon: "none"
         })
       }else{
-        wx.showToast({
-          title: e.data.message,
-          icon:"none"
-        })
+        // wx.showToast({
+        //   title: is_collect,
+        //   icon: "none"
+        // })
       }
     })
   },
