@@ -11,6 +11,10 @@ Component({
     url:{
       type:String,
       value:"/pages/activity/details/details"
+    },
+    type:{
+      type:Boolean,
+      value:false
     }
   },
 

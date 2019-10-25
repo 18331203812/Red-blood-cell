@@ -5,8 +5,10 @@
       <view class="li">
         <view class="li-box">
           <image class="li-img"  mode="aspectFill" src="{{item.cover}}"></image>
-          <image class="li-status" src="../../images/me/status.png"></image>
-          <view class="li-box-status" style="{{item.status_title == '已结束' ? 'background:#333333' : ''}}">{{item.status_title}}</view>
+          <block wx:if='{{type}}'>
+            <image class="li-status" src="../../images/me/status.png"></image>
+          </block>
+          <view class="li-box-status" style="{{type ? 'background:#333333' : (item.status_title == '已结束' ? 'background:#333333' : '')}}">{{type ? '已结束' : item.status_title}}</view>
           <view class="applicant">
             <view class="line">
               <view class="lineAnother" style="width:{{foo.msg(item.number)*item.enroll}}rpx"></view>

@@ -272,25 +272,25 @@ Page({
       })
       let that = this;
       let qrcode = new Promise((reslove, sej) => {
-        // _http.request({
-        //   url: "/api/qrcode",
-        //   method: "GET",
-        //   data: {
-        //     id: that.data.ids
-        //   }
-        // }).then(res => {
-        //   console.log(res)
-        //   wx.getImageInfo({
-        //     src: res.data.path,
-        //     success(res) {
+        _http.request({
+          url: "/api/qrcode/news",
+          method: "GET",
+          data: {
+            id: that.data.id
+          }
+        }).then(res => {
+          console.log(res)
+          // wx.getImageInfo({
+          //   src: res.data.path,
+          //   success(res) {
 
-        //       reslove(res.path)
-        //     },
-        //     fail(err) {
-        //       console.log(err);
-        //     },
-        //   });
-        // })
+          //     reslove(res.path)
+          //   },
+          //   fail(err) {
+          //     console.log(err);
+          //   },
+          // });
+        })
         reslove('https://www.redxibao.com/activity/20191024/undefined.png')
       });
       //背景
