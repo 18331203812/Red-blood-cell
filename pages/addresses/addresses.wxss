@@ -1,0 +1,38 @@
+/* pages/addresses/addresses.wxss */
+.main{
+  padding: 0 30rpx;
+}
+.li{
+  padding: 25rpx 0 ;
+  width: 100%;
+  border-bottom: 1rpx solid #f2f3f5;
+}
+.li-name{
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+  padding-bottom: 10rpx;
+}
+.li-box{
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #999;
+}
+.more-icon{
+  transform:rotate(90deg);
+  margin: 0 10rpx;
+}
+.submit{
+  width: 457rpx;
+  height: 100rpx;
+  background: linear-gradient(to right ,#f82633,#ce141c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36rpx;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  margin-left: 120rpx;
+}

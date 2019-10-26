@@ -1,0 +1,80 @@
+/* pages/address/address.wxss */
+.li-box{
+  width: 100%;
+  padding: 30rpx;
+  box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.12);
+  border-top: 8rpx solid #ebebeb;
+}
+.name-number{
+  display: flex;
+  align-items: center;
+  justify-content:space-between; 
+}
+.name{
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+}
+.number{
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+}
+.address{
+  font-size: 28rpx;
+  color: #333333;
+    font-weight: bold;
+    padding: 25rpx 0 30rpx 0;
+}
+.check-choose{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.choose-left{
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #2369ea;
+  font-weight: bold;
+}
+.edit{
+  font-size: 26rpx;
+  color: #2369ea;
+  line-height: 34rpx;
+  display: flex;
+  padding: 0 20rpx;
+}
+.edit-icon{
+  width: 30rpx;
+  height: 30rpx;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAMAAABhTZc9AAAAZlBMVEUAAAAjaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaerB2q+UAAAAIXRSTlMAzNL69z9IUlhaOd3GvRriqdiiY0Tpwbm2jmpLNC0gETAV34ywAAAA00lEQVQoz3XMW46DMBBE0YK2kwA2hEdek0lmav+bTFuWkJyG+3tUBfggLHoDOAzDAq0VjlVRr+hId1CNbFCWUOZZErtuC4/AUdwC1hYZoP2wU7XLgedV7W3fcUIjzqsaBPqRMaGqReWBilkN5ttCDfZvVYunvKy5qsFCDRbqC/zWwAJL9eR5RaPxUilnNOrZ/Ck3Ca3GK6BMRautvID5wmuLDb098B94S0OrLduH3PPO6kTef4EdbaZsVkV1p05QcdnBEwOeZF1tNVI88KyEW7n4wgf24BSjz2JxFgAAAABJRU5ErkJggg==) no-repeat center / 100% auto;
+display: block;
+margin-right: 10rpx;
+}
+.delete-icon{
+  width: 24rpx;
+  height: 30rpx;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAdCAMAAACHZFx5AAAAXVBMVEUAAAAjaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaeojaerm6DFNAAAAHnRSTlMAtC2IvPBLzXcRZvUEUEAz49VtJAvu6NGwln97XByEMIw2AAAAqElEQVQoz+XQSxKCMBBF0auJoiYx8vEPb//LNFBYGqDKBXgmSfedNaOu0KDoyBm5InEy5O4KJEF3Rj4celamf4zsMAbPTYtuSGY3YyR08cz4i3Aq7UwpR+W0wFUQZfcTVhFYa8XESuufoTkCdQ0cmyw8lcrplPZ6ZsFoC5sNbGX+Kzw+J3m8Qy0LTfAQI/jQgFVN+p5dJBPd2ZNU0rX4cpUqBm2pTNkCL+ixGRlQdk+UAAAAAElFTkSuQmCC) no-repeat center / 100% auto;
+  display: block;
+margin-right: 10rpx;
+}
+icon{
+  margin-right: 10rpx;
+}
+.choose-right{
+  display: flex;
+}
+.add-address-input{
+  width: 690rpx;
+  height: 88rpx;
+  background: #2369ea;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  font-size: 36rpx;
+  color: #fff;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+}

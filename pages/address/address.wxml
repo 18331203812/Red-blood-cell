@@ -1,0 +1,20 @@
+<!--pages/address/address.wxml-->
+<view class="li-box">
+  <view class="address">地址地址地址地址地址地址</view>
+  <view class="check-choose">
+    <view class="choose-left">
+      <icon class="weui-icon-checkbox_circle" type="circle" size="23"></icon>默认地址
+    </view>
+    <view class="choose-right">
+      <view class="edit">
+        <image class="edit-icon"></image>编辑
+      </view>
+      <view class="edit">
+        <image class="delete-icon"></image>删除
+      </view>
+    </view>
+  </view>
+</view>
+<navigator url="/pages/addresses/addresses">
+  <button class="add-address-input">添加新地址</button>
+</navigator>

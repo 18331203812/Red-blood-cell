@@ -1,0 +1,31 @@
+<!--pages/addresses/addresses.wxml-->
+<view class="main">
+  <view class="li" bindtap="showPicker">
+    <view class="li-name">省/市/区/街道 <text>*</text></view>
+    <view class="li-box">
+      <block wx:if='{{picker_08_data.length == 0}}'>
+        <view>请选择所在省/市/区/街道</view>
+      </block>
+      <block wx:else>
+         <view class="li-box-text" style="color:#333;">{{picker_08_data[0].province_name || ''}} {{picker_08_data[1].cityname || ''}} {{picker_08_data[2].district_name || ''}} {{picker_08_data[3].street_name || ''}}</view>
+      </block>
+      <view class="more-icon"></view>
+    </view>
+  </view>
+  <view class="li" bindtap="AddressPicker">
+    <view class="li-name">所在社区 <text>*</text></view>
+    <view class="li-box">
+      <block wx:if='{{addressdata.community_name}}'>
+        <view class="li-box-text" style="color:#333;">{{addressdata.community_name}}</view>
+      </block>
+      <block wx:else>
+        <view class="li-box-text">社区</view>
+      </block>
+      <view class="more-icon"></view>
+    </view>
+  </view>
+
+  <view class="li-but" style="justify-content:center;padding-top:20rpx;">
+    <button class="submit" bindtap="Submit">修改保存</button>
+  </view>
+</view>
