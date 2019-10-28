@@ -21,7 +21,7 @@
   </view>
 </view>
 <view style="width:100%;height:{{navHeight+46}}px;"></view>
-<view bindtouchstart="touchStart" bindtouchend="touchEnd">
+<view bindtouchstart="touchStart" bindtouchend="touchEnd" style='min-height:50vh;'>
 <block wx:for='{{video}}' wx:key='index'>
   <view class="li">
   <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
@@ -144,13 +144,14 @@
 
 </block>
 </block>
-</view>
  <block wx:if="{{isPage}}">
       <page pageText='' pageStatus='integral'></page>
   </block>
 
   <!-- 加载... -->
   <loadmore isShow='{{isMore}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+</view>
+
 
 <!-- tabBar -->
 <tabBar  tabbar="{{tabbar}}"></tabBar>

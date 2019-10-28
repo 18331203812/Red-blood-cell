@@ -219,7 +219,9 @@ Page({
           video: res.data.video,
           isPage: false
         })
+        console.log('/')
         if (res.data.list.length < 9){
+          console.log('///')
           this.setData({
             isMore: false,
             isPage: false
@@ -229,7 +231,7 @@ Page({
       }else{
         this.setData({
           isMore:false,
-          isPage:false
+          isPage:true
         })
       }
       
