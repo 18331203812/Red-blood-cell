@@ -23,8 +23,8 @@
     "pages/activity/details/details",
     "pages/tabBar/video/video",
     "pages/video/details/details",
-    "pages/address/address",
-    "pages/addresses/addresses"
+    "pages/addresses/addresses",
+    "pages/address/address"
   ],
   "usingComponents": {
     "frame": "component/frame/frame"
