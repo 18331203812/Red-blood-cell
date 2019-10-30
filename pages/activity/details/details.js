@@ -222,9 +222,9 @@ Page({
         const ctx = wx.createCanvasContext('myCanvas');
         let rpx = that.data.rpx, heightrpx = that.data.rpxheight;
         ctx.fillStyle = "#FFFFFF";
-        ctx.fillRect(0, 0, 345 * rpx, 500 * heightrpx);
+        ctx.fillRect(0, 0, 345 * rpx, 520 * heightrpx);
         ctx.drawImage(res[1], 0, 0, 345 * rpx, 200);
-        ctx.drawImage(res[0], ((345 * rpx) - 110) / 2, 320, 110 * rpx, 110);
+        
         ctx.setFontSize(18 * rpx);
         ctx.setFillStyle("#333");
         var text = that.data.details.title//这是要绘制的文本
@@ -264,6 +264,8 @@ Page({
         for (var b = 0; b < row.length; b++) {
           ctx.fillText(row[b], 30 * rpx, 230 + b * 20 * rpx);
         }
+        ctx.drawImage(res[0], ((345 * rpx) - 110) / 2, 320+b*10, 110 * rpx, 110);
+        console.log(b)
         ctx.fillText("长按识别或扫码查看活动详情", ((345 * rpx) - 230) / 2, 440 + b * 20 * rpx);
         ctx.setFontSize(14 * rpx);
         ctx.setFillStyle("#999");

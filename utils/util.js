@@ -32,7 +32,7 @@ function showToast(msg, icon , duration = 2000){
 }
 module.exports = {
   formatTime: formatTime,
-  url:" https://mininews.51asx.com",
+  url:"https://www.redxibao.com",
   isPhoneAvailable: isPhoneAvailable,
   showToast: showToast
 }

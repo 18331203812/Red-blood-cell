@@ -91,7 +91,7 @@
   justify-content: center;
   align-items: center;
   /* color: #d13035; */
-  padding: 0 10rpx;
+  /* padding: 0 10rpx; */
 }
 .items{
   display: flex;

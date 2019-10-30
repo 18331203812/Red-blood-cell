@@ -9,7 +9,7 @@
       <view class="li-con-right">
         <view class="li-title">{{details.goods_name}}</view>
         <view class="li-integral">
-          <view class="li-ints"><text>{{details.quantity}}</text>积分*{{details.quantity}}</view>
+          <view class="li-ints"><text>{{details.point}}</text>积分*{{details.quantity}}</view>
           <view class="li-time">{{details.create_time}}</view>
         </view>
       </view>

@@ -18,17 +18,19 @@ Page({
     integral:""
   },
   List(page) {
-    _http.request({
-      url: "/api/user/record",
+    wx.request({
+      url: util.url+"/api/user/record",
       method: "GET",
       data: {
         page: page,
         pagesize: this.data.pagesize
+      },
+      success:res=>{
+        console.log(res)
+        this.setData({
+          integral: res.data.integral
+        })
       }
-    }).then(res => {
-      this.setData({
-        integral: res.data.integral
-      })
     })
   },
   /**
@@ -61,9 +63,7 @@ Page({
         pagesize:this.data.pagesize
       }
     }).then(res=>{
-      console.log(res)
       let data=res.data.list;
-      
       if(data.length < 9){
         this.setData({
           isShow:false

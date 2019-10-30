@@ -99,7 +99,7 @@ page{
 }
 .curtain-box{
   width: 92%;
-  height: 83vh;
+  height: 86vh;
 }
 .canvas{
   width: 100%;

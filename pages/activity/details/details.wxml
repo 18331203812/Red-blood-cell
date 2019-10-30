@@ -49,11 +49,11 @@
     
   
   <block wx:if='{{details.is_enroll == 0}}'>
-      <block wx:if='{{status_title == "已结束"}}'>
-        <button class="footer-button footer-buttons" >已结束</button>
+      <block wx:if='{{status_title == "进行中"}}'>
+        <button class="footer-button" bindtap="SignUp" data-id="{{details.id}}">立即报名</button>
       </block>
       <block wx:else>
-        <button class="footer-button" bindtap="SignUp" data-id="{{details.id}}">立即报名</button>
+        <button class="footer-button footer-buttons" >{{status_title}}</button>
       </block>
   </block>
   <block wx:else>
