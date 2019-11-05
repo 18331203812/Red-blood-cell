@@ -1,4 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "loadmore": "../../../component/loadmore/loadmore",
+    "integral": "../../../component/integral/integral",
+    "page": "../../../component/page/page"
+  },
   "navigationBarTitleText": "主页"
 }

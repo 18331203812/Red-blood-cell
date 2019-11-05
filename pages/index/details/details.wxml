@@ -2,6 +2,7 @@
 <view class="main" id="main">
 
   <view class="title">{{details.title}}</view>
+  <navigator url="/pages/me/homepage/homepage?action_id={{details.action_id}}" hover-class="none">
   <view class="nav">
     <image class="nav-head" src="{{details.avatar}}"></image>
     <view class="nav-con">
@@ -9,6 +10,7 @@
       <view class="nav-time">{{details.create_time}}</view>
     </view>
   </view>
+  </navigator>
   <view class="text">
     <rich-text nodes='{{details.content}}'></rich-text>
   </view>

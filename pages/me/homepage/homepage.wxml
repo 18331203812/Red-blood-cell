@@ -1,16 +1,120 @@
 <view class='nav'>
-  <view class="nav-box">
+  <image class="nav-background" mode='aspectFill'  src="{{details.bg_pic || 'https://cn.bing.com/th?id=OHR.ChandraTal_ZH-CN2809744505_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp'}}"></image>
+   <view class="nav-box">
     <view class="nav-box-head">
-      <image class="nav-head" src="https://cn.bing.com/th?id=OHR.ChandraTal_ZH-CN2809744505_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
+      <image class="nav-head"  mode='aspectFill' src="{{details.avatar || 'https://cn.bing.com/th?id=OHR.ChandraTal_ZH-CN2809744505_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp'}}"></image>
     </view>
     <view class="nav-con">
       <view class="nav-title">西里里社区管理委员会</view>
       <view class="nav-text">西里里社区管理委员会是你想吃啥的防护你超度法会拿得出手见客户</view>
     </view>
   </view>
-  <view class="nav-radius"></view>
 </view>
-<view class="tabBar">
+ 
+<!-- <view class="tabBar">
   <view class="tabBar-li category">信息</view>
   <view class="tabBar-li ">视频</view>
-</view>
+</view> -->
+<block wx:for='{{list}}' wx:key='index'>
+<!-- list 一张列表 -->
+<block wx:if='{{!item.cover2}}'>
+    <view class="li" style="padding-bottom:20rpx;">
+      <view class="li-box">
+        <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none" >
+          <image class="li-box-img" style='height:190rpx;' mode="aspectFill" src="{{item.cover}}"></image>
+         </navigator>
+        <view class="li-con">
+          <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
+              <view style="display:flex;">
+                <view class="li-con-title" style="{{item.is_top == 1 ? 'width:80%;' : ''}}">
+                  {{item.title}}
+                </view>
+                <block wx:if='{{item.is_top == 1}}'>
+                  <view class="heat-icon">置顶</view>
+                </block>
+              </view>
+            <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
+          </navigator>
+          <view class="li-footer">
+            <view class="li-time"  style=" {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.publish_time}}</view>
+            <view class="li-icon">
+              <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
+              <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
+              <view class="li-icon-list" bindtap="Fabulous" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
+                <block wx:if='{{item.is_zan == 1}}'>
+                  <view class="fabulou-icons"></view>
+                </block>
+                <block wx:else>
+                  <view class="fabulou-icon"></view>
+                </block>
+                {{item.zan_count || 0}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+ 
+</block>
+<block wx:else>
+    <!-- 三张列表 -->
+  <view class="li">
+    <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
+      <view class="li-box">
+        <view style="display:flex;">
+          <view class="li-con-title" style="width:80%;">
+            {{item.title}}
+          </view>
+          <view class="heat-icon">置顶</view>
+        </view>
+        <view class="li-time" style="padding-left: 10rpx; {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.publish_time}}</view>
+      </view>
+      <view class="li-img">
+        <image mode="aspectFill"  src="{{item.cover}}"></image>
+        <image mode="aspectFill"  src="{{item.cover2}}"></image>
+        <image mode="aspectFill"  src="{{item.cover3}}"></image>
+      </view>
+    </navigator>
+      <view class="li-footer">
+        <view class="li-con-address">{{item.street_title}}</view>
+        <view class="li-icon">
+          <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
+          <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
+          <view class="li-icon-list"  bindtap="Fabulous" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
+                <block wx:if='{{item.is_zan == 1}}'>
+                  <view class="fabulou-icons"></view>
+                </block>
+                <block wx:else>
+                  <view class="fabulou-icon"></view>
+                </block>
+          {{item.zan_count || 0}}</view>
+        </view>
+      </view>
+  </view>
+
+</block>
+
+</block>
+
+ <block wx:if="{{isPage}}">
+      <page pageText='' pageStatus='integral'></page>
+  </block>
+
+  <!-- 加载... -->
+  <loadmore isShow='{{isMore}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+
+
+
+<!-- tabBar -->
+<tabBar  tabbar="{{tabbar}}"></tabBar>
+<!-- 积分 -->
+<integral status='{{status}}' text='{{text}}'></integral>
+ 
+  <view style="width:100%;height:100rpx;"></view>
+
+  <wxs module="m1">
+   var str = function (strs){
+      return strs.length
+    }
+     module.exports.str= str
+  </wxs>
+  <frame status='Perfect' isShow='{{isShow}}' bind:_confirm='Confirm' bind:_cancel='Cancel'></frame>
