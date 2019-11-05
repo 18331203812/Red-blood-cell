@@ -1,0 +1,16 @@
+<view class='nav'>
+  <view class="nav-box">
+    <view class="nav-box-head">
+      <image class="nav-head" src="https://cn.bing.com/th?id=OHR.ChandraTal_ZH-CN2809744505_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"></image>
+    </view>
+    <view class="nav-con">
+      <view class="nav-title">西里里社区管理委员会</view>
+      <view class="nav-text">西里里社区管理委员会是你想吃啥的防护你超度法会拿得出手见客户</view>
+    </view>
+  </view>
+  <view class="nav-radius"></view>
+</view>
+<view class="tabBar">
+  <view class="tabBar-li category">信息</view>
+  <view class="tabBar-li ">视频</view>
+</view>

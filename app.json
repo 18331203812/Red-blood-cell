@@ -1,6 +1,6 @@
 {
   "pages": [
-    
+   
     "pages/tabBar/index/index",
     "pages/login/login/login",
     "pages/index/address/address",
@@ -24,7 +24,8 @@
     "pages/tabBar/video/video",
     "pages/video/details/details",
     "pages/addresses/addresses",
-    "pages/address/address"
+    "pages/address/address",
+    "pages/me/homepage/homepage"
   ],
   "usingComponents": {
     "frame": "component/frame/frame"

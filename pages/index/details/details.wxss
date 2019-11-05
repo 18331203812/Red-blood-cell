@@ -3,7 +3,7 @@
 }
 .title{
   padding: 20rpx 0;
-  font-size: 32rpx;
+  font-size: 38rpx;
   color: #333333;
   font-weight: bold;
 }
@@ -29,7 +29,7 @@
   color: #999;
 }
 .text{
-  padding: 30rpx;
+  padding: 30rpx 0;
 }
 .message-title{
   font-size: 30rpx;
