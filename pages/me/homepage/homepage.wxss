@@ -16,6 +16,7 @@
 }
 .nav-con{
   width: 70%;
+  padding-left: 10rpx;
 }
 .nav-box-head{
   width: 160rpx;

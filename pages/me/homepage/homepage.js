@@ -12,7 +12,6 @@ Page({
     list:[],
     pagesize: 10,
     page: 1,
-    type: 1,  //社群 街道 市
     isMore: true, //加载动效
     video: [], //视频
     status: false,
@@ -21,17 +20,65 @@ Page({
     keyword: "",
     isPage: false, //省缺页
     isShow: false,
-    ids:""
+    ids:"",
+    categoryid:1,
+    name:""
   },
-
+  Category(e){
+    let id = e.currentTarget.dataset.id;
+    this.setData({
+      categoryid: id,
+      list: [],
+      pagesize: 10,
+      page: 1,
+      isMore: true, //加载动效
+      isPage: false, //省缺页
+      isShow: false,
+      video:[]
+    })
+    if (id == 1){
+      this.List(1, this.data.ids)
+    }else{
+      this.videoList(1,this.data.ids)
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     this.List(1,options.action_id)
     this.setData({
-      ids: options.action_id
+      ids: options.action_id,
+      iSstatus: options.status,
+      name: options.name
+    })
+  },
+  videoList(page,id){
+    _http.request({
+      url:'/api/video/filter',
+      method:'get',
+      data:{
+        page: page,
+        pagesize: 10,
+        action_id:id
+      }
+    }).then(res=>{
+      console.log(res)
+      this.setData({
+        video: this.data.video.concat(res.data.list)
+      })
+      if (res.data.list.length < 9) {
+        this.setData({
+          isMore: false,
+          isPage: false
+        })
+      }
+      if (this.data.video.length == 0) {
+        this.setData({
+          isMore: false,
+          isPage: true
+        })
+      }
     })
   },
   List(page,id){
@@ -153,9 +200,6 @@ Page({
 
   },
 
-
-
-
   /**
    * 生命周期函数--监听页面显示
    */
@@ -191,7 +235,12 @@ Page({
     this.setData({
       page: this.data.page + 1
     })
-    this.List(this.data.ids,this.data.page)
+    if (this.data.categoryid == 1){
+      this.List(this.data.ids, this.data.page)
+    }else{
+      this.videoList(this.data.page, this.data.ids)
+    }
+   
   },
 
   /**

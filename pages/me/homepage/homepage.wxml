@@ -5,16 +5,18 @@
       <image class="nav-head"  mode='aspectFill' src="{{details.avatar || 'https://cn.bing.com/th?id=OHR.ChandraTal_ZH-CN2809744505_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp'}}"></image>
     </view>
     <view class="nav-con">
-      <view class="nav-title">西里里社区管理委员会</view>
-      <view class="nav-text">西里里社区管理委员会是你想吃啥的防护你超度法会拿得出手见客户</view>
+      <view class="nav-title" style="color:{{details.color}}">{{name || '暂无'}}</view>
+      <view class="nav-text" style="color:{{details.color}}">{{details.words || '暂无'}}</view>
     </view>
   </view>
 </view>
- 
-<!-- <view class="tabBar">
-  <view class="tabBar-li category">信息</view>
-  <view class="tabBar-li ">视频</view>
-</view> -->
+ <block wx:if='{{iSstatus == "video"}}'>
+  <view class="tabBar">
+    <view class="tabBar-li {{ categoryid == 1 ? 'category' : '' }}" bindtap="Category" data-id="1">信息</view>
+    <view class="tabBar-li {{ categoryid == 2 ? 'category' : '' }}" bindtap="Category" data-id="2">视频</view>
+  </view>
+ </block>
+
 <block wx:for='{{list}}' wx:key='index'>
 <!-- list 一张列表 -->
 <block wx:if='{{!item.cover2}}'>
@@ -94,7 +96,49 @@
 </block>
 
 </block>
-
+<block wx:for='{{video}}' wx:key='index'>
+  <view class="li">
+  <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
+    <view class="li-box">
+      <view class="li-con-title" style="width:70%;">
+        强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海
+      </view>
+      <view class="heat-icon">置顶</view>
+      <view class="li-time"  style="padding-left: 10rpx; {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.create_time}}</view>
+    </view>
+    <view class="li-img">
+      <view class="item-box ">
+        <!-- 视频图片层 -->
+        <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
+          <view class="video-cover-box">
+            <image class="video-image" src="{{item.cover}}" mode="aspectFit">
+            </image>
+          </view>
+          <!-- 视频按钮 -->
+          <!-- <image class="video-image-play" src="../../../images/icon_short.png" mode="scaleToFill"></image> -->
+        </view>
+        <!-- 视频播放层 -->
+        <!-- <video src="{{item.content}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='true' controls></video> -->
+        </view>
+    </view>
+  </navigator>
+      <view class="li-footer">
+        <view class="li-con-address">{{item.author}}</view>
+        <view class="li-icon">
+          <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
+          <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
+          <view class="li-icon-list" bindtap="FabulousV" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
+                <block wx:if='{{item.is_zan == 1}}'>
+                  <view class="fabulou-icons"></view>
+                </block>
+                <block wx:else>
+                  <view class="fabulou-icon"></view>
+                </block>
+          {{item.zan_count || 0}}</view>      
+        </view>
+      </view>
+  </view>
+</block>
  <block wx:if="{{isPage}}">
       <page pageText='' pageStatus='integral'></page>
   </block>
