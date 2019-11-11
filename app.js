@@ -100,12 +100,12 @@ App({
           "iconPath": "../../images/tabBar/index.png",
           "selectedIconPath": "../../images/tabBar/indexs.png"
         },
-        // {
-        //   "pagePath": "/pages/tabBar/video/video",
-        //   "text": "视频",
-        //   "iconPath": "/images/tabBar/video.png",
-        //   "selectedIconPath": "/images/tabBar/videos.png"
-        // },
+        {
+          "pagePath": "/pages/tabBar/video/video",
+          "text": "学习",
+          "iconPath": "/images/tabBar/video.png",
+          "selectedIconPath": "/images/tabBar/videos.png"
+        },
         {
           "pagePath": "/pages/tabBar/activity/activity",
           "text": "活动",
