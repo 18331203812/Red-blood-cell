@@ -22,7 +22,7 @@
   <view class="footer-content" >
     
       <block wx:if='{{details.is_collect == 1}}'>
-        <view class="footer-li" >
+        <view class="footer-li" bindtap="cancelCollection" data-id='{{details.id}}'>
           <image class="footer-img" mode="aspectFill" src="../../../images/me/show.png" style="width:36rpx;height:36rpx;"></image>
         <view class="footer-text" style="padding-top: 8rpx;font-size: 24rpx;">收藏</view>
          </view>

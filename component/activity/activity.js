@@ -15,6 +15,10 @@ Component({
     type:{
       type:Boolean,
       value:false
+    },
+    statusurl:{
+      type:Boolean,
+      value:false
     }
   },
 

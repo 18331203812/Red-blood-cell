@@ -4,7 +4,7 @@
     <view class="tabBar-li {{ids == 3 ? 'category' : '' }}" bindtap="Category" data-id="3">已收藏</view>
   </view>
   <view class="main"  bindtouchstart="touchStart" bindtouchend="touchEnd">
-    <activity list='{{list}}' type='{{ids == 2 ? true : false}}' url='/pages/activity/enterForSuccess/enterForSuccess'></activity>
+    <activity list='{{list}}' statusurl='true' type='{{ids == 2 ? true : false}}' url='{{ids ==3 ? "/pages/activity/details/details" : "/pages/activity/enterForSuccess/enterForSuccess" }}'></activity>
     <block wx:if="{{isPage}}">
         <page pageText='没有我的参与' pageStatus='activity'></page>
     </block>

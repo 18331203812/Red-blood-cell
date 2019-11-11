@@ -18,19 +18,18 @@ Page({
     integral:""
   },
   List(page) {
-    wx.request({
-      url: util.url+"/api/user/record",
+    _http.request({
+      url: "/api/user/record",
       method: "GET",
       data: {
         page: page,
         pagesize: this.data.pagesize
       },
-      success:res=>{
-        console.log(res)
-        this.setData({
-          integral: res.data.integral
-        })
-      }
+    }).then(res=>{
+      console.log(res)
+      this.setData({
+        integral: res.data.integral
+      })
     })
   },
   /**
@@ -38,7 +37,7 @@ Page({
    */
   onLoad: function (options) {
     app.editTabbar();
-    this.Goods(1);
+   
    
   },
 
@@ -83,7 +82,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.List(1)
+    let token = wx.getStorageSync('login').token || '';
+    if (token){
+      this.List(1)
+      this.setData({
+        goodsList:[],
+        page:1
+      })
+      this.Goods(1);
+    }
   },
 
   /**

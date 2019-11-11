@@ -87,6 +87,30 @@ Page({
       isShow:false
     })
   },
+  // 取消收藏
+  cancelCollection(e){
+    let id = e.currentTarget.dataset.id
+    _http.request({
+      url:"/api/activity/unCollectDo",
+      method:"get",
+      data:{ activity_id: id }
+    }).then(res=>{
+      if (res.code == 200) {
+        this.setData({
+          [`details.is_collect`]: 0
+        })
+        wx.showToast({
+          title: '取消收藏成功',
+          icon: "none"
+        })
+      } else {
+        // wx.showToast({
+        //   title: is_collect,
+        //   icon: "none"
+        // })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
