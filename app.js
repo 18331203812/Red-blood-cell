@@ -71,15 +71,12 @@ App({
         console.log(res.model)
         if (res.model.indexOf('iPhone X') != -1){
           console.log(res.model.indexOf('iPhone X'))
-          console.log('//')
           res.models=true
         }
         if (res.model.indexOf('iPhone XS Max') != -1) {
-          console.log('//')
           res.models = true
         }
         if (res.model.indexOf('iPhone XR') != -1) {
-          console.log('//')
           res.models = false
         }
         t.globalData.systemInfo = res;
