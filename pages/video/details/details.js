@@ -41,7 +41,6 @@ Page({
         isShow: true,
       })
     }
-    
     const query = wx.createSelectorQuery()
     query.select('#main').boundingClientRect()
     query.selectViewport().scrollOffset()
@@ -90,7 +89,7 @@ Page({
       // data.content = data.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto"');
       this.setData({
         details: data,
-        _index:data.id
+        // _index:data.id
       })
       if (data.is_give !== 1) {
         setTimeout(() => {
@@ -107,7 +106,6 @@ Page({
       }
     })
   },
-
   //发送评论
   Submit() {
     let { inputValue, messageList } = this.data;

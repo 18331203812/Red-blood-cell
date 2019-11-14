@@ -7,8 +7,8 @@
 <view style='width:100%;height:46px;'></view>
 <!-- 视频 -->
 <block wx:for="{{list}}" wx:key='index' wx:for-item='item'>
+<navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
   <view class="li">
-      <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
       <view class="li-box">
         <view class="li-con-title">
           {{item.title}}
@@ -18,7 +18,7 @@
         </block>
         <view class="li-time" style="padding-left: 10rpx;">{{item.publish_time}}</view>
       </view>
-      </navigator>
+      
       <view class="li-img">
         <view class="item-box " >
           <!-- 视频图片层 -->
@@ -34,6 +34,7 @@
           <video src="{{item.path}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='true' controls></video>
           </view>
       </view>
+      
         <view class="li-footer">
           <view class="li-con-address">{{item.author}}</view>
           <view class="li-icon">
@@ -50,6 +51,7 @@
           </view>
         </view>
   </view>
+  </navigator>
 </block>
 
  <block wx:if="{{isPage}}">

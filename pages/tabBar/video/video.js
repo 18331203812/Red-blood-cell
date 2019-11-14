@@ -24,7 +24,7 @@ Page({
   videoPlay: function (e) {
     var _index = e.currentTarget.dataset.id
     this.setData({
-      _index: _index
+      // _index: _index
     })
     //停止正在播放的视频
     var videoContextPrev = wx.createVideoContext(_index + "")
