@@ -10,15 +10,12 @@
 <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
   <view class="li">
       <view class="li-box">
-        <view class="li-con-title">
-          {{item.title}}
-        </view>
+        <view class="li-con-title">{{item.title}}</view>
         <block wx:if='{{item.is_top == 1}}'>
-          <view class="heat-icon">置顶</view>
+          <!-- <view class="heat-icon">置顶</view> -->
         </block>
         <view class="li-time" style="padding-left: 10rpx;">{{item.publish_time}}</view>
       </view>
-      
       <view class="li-img">
         <view class="item-box " >
           <!-- 视频图片层 -->

@@ -10,14 +10,41 @@
   </view>
 </view>
 <view style='width:100%;height:46px;'></view>
-<view bindtouchstart="touchStart" bindtouchend="touchEnd">
-  <activity list='{{list}}'></activity>
-   <block wx:if="{{isPage}}">
-      <page pageText='' pageStatus='integral'></page>
-  </block>
-   <loadmore isShow='{{isShow}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+<view>
+<swiper style='height:90vh;overflow:scroll;position:relative' duration='500'  bindchange="bindChange" current='{{currentTab}}'>
+  <swiper-item style='height:100%;'>
+    <scroll-view  scroll-y="true" style="display: flex; z-index: 100; height: 100%;position: absolute;" bindscrolltolower="lower"  >
+      <activity list='{{list}}'></activity>
+      <block wx:if="{{isPage}}">
+          <page pageText='' pageStatus='integral'></page>
+      </block>
+      <loadmore isShow='{{isShow}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+    </scroll-view>
+  </swiper-item>
+  <swiper-item style='height:100%;'>
+    <scroll-view  scroll-y="true" style="display: flex; z-index: 100; height: 100%;position: absolute;" bindscrolltolower="lower"  >
+      <activity list='{{list}}'></activity>
+      <block wx:if="{{isPage}}">
+          <page pageText='' pageStatus='integral'></page>
+      </block>
+      <loadmore isShow='{{isShow}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+    </scroll-view>
+  </swiper-item>
+  <swiper-item style='height:100%;'>
+    <scroll-view  scroll-y="true" style="display: flex; z-index: 100; height: 100%;position: absolute;" bindscrolltolower="lower"  >
+      <activity list='{{list}}'></activity>
+      <block wx:if="{{isPage}}">
+          <page pageText='' pageStatus='integral'></page>
+      </block>
+      <loadmore isShow='{{isShow}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+    </scroll-view>
+  </swiper-item>
+</swiper>
 </view>
-
+<!-- 遮罩 -->
+<block wx:if="{{!iSPagesed}}">
+  <view style="width:100%;height:95vh;  position: fixed;left:0;top:0;"></view>
+</block>
  
 <view style="width:100%;height:100rpx;"></view>
 <tabBar  tabbar="{{tabbar}}"></tabBar>

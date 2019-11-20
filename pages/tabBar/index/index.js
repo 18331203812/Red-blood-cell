@@ -2,10 +2,6 @@ const app = getApp();
 import util from "../../../utils/util.js"
 import HTTP from "../../../utils/request.js"
 var _http = new HTTP();
-var time = 0;
-var touchDot = 0;//触摸时的原点
-var interval = "";
-var flag_hd = true;
 Page({
 
   /**
@@ -28,7 +24,32 @@ Page({
     keyword:"",
     isPage:false, //省缺页
     isShow:false,
+    iSPagesed:true,
+    currentTab:0,
+    scrollTop:0,
   },
+  bindChange(e){
+    console.log(e)
+    if (e.detail.source == "touch" || e.detail.source == '') {
+      if (this.data.iSPagesed) {
+        this.setData({
+          type: Number(e.detail.current) + 1,
+          currentTab: Number(e.detail.current),
+          page: 1,
+          list: [],
+          video: [],
+          isPage: false, //省缺页
+          keyword: "",
+          isMore: true
+        })
+        let status = true
+        this.List(1, status)
+      } else {
+
+      }
+    }
+  },
+  
   Confirm(){
     wx.navigateTo({
       url: '/pages/me/personal/personal',
@@ -45,92 +66,8 @@ Page({
   Category(e){
     this.setData({
       type: Number(e.currentTarget.dataset.id),
-      page:1,
-      list:[],
-      isPage: false, //省缺页
-      keyword:""
+      currentTab: Number(e.currentTarget.dataset.id)-1,
     })
-    this.List(1)
-  },
-  // 触摸开始事件
-  touchStart: function (e) {
-    touchDot = e.touches[0].pageX; // 获取触摸时的原点
-    // 使用js计时器记录时间    
-    interval = setInterval(function () {
-      time++;
-    }, 2000);
-  },
-  // 触摸结束事件
-  touchEnd: function (e) {
-    var touchMove = e.changedTouches[0].pageX;
-    // 向左滑动   
-    if (touchMove - touchDot <= -80 && time < 10 && flag_hd == true) {
-      flag_hd = false;
-      this.Switch('right')
-    }
-    // 向右滑动   
-    if (touchMove - touchDot >= 80 && time < 10 && flag_hd == true) {
-      flag_hd = false;
-      this.Switch('left')
-    }
-    clearInterval(interval); // 清除setInterval
-    time = 0;
-    flag_hd = true;
-  },
-  /**
-   * 切换tabBar
-   */
-  Switch(status){
-    let { type }  = this.data;
-    if(status == 'left'){
-      switch (type) {
-        case 3:
-          this.setData({
-            type: 2,
-            page: 1,
-            list: [],
-            isPage: false, //省缺页
-            keyword: ""
-          })
-          this.List(1)
-          break;
-        case 2:
-          this.setData({
-            type: 1,
-            page: 1,
-            list: [],
-            isPage: false, //省缺页
-            keyword: ""
-          })
-          this.List(1)
-          break;
-        default:
-      }
-    }else if(status == 'right'){
-      switch (type) {
-        case 1:
-          this.setData({
-            type:2,
-            page: 1,
-            list: [],
-            isPage: false, //省缺页
-            keyword: ""
-          })
-          this.List(1)
-        break;
-        case 2:
-          this.setData({
-            type:3,
-            page: 1,
-            list: [],
-            isPage: false, //省缺页
-            keyword: ""
-          })
-          this.List(1)
-        break;
-        default:
-      }
-    }
   },
   //获取个人信息
   User() {
@@ -209,7 +146,10 @@ Page({
     });
   },
   //列表
-  List(page){
+  List(page, status = false){
+    this.setData({
+      iSPagesed:false
+    })
     _http.request({
       url:"/api/news/index",
       method:"GET",
@@ -220,11 +160,18 @@ Page({
         community_id: this.data.community
       }
     }).then(res=>{
+      if(status){
         this.setData({
-          list: this.data.list.concat(res.data.list),
-          video: res.data.video,
-          isPage: false
+          list: [],
+          video: [],
         })
+      }
+      this.setData({
+        list: this.data.list.concat(res.data.list),
+        video: res.data.video,
+        isPage: false,
+        iSPagesed:true
+      })
         if (res.data.list.length < 9){
           this.setData({
             isMore: false,
@@ -232,7 +179,6 @@ Page({
           })
         }
       if (this.data.list.length == 0 && this.data.video.length == 0){
-        console.log('///')
         this.setData({
           isMore: false,
           isPage: true
@@ -314,6 +260,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      scrollTop:0
+    })
     let perfect = wx.getStorageSync('perfect');
     this.User().then(res => {
       console.log(res)
@@ -326,11 +275,6 @@ Page({
         }
       }
     })
-    
-    flag_hd = true;    //重新进入页面之后，可以再次执行滑动切换页面代码
-    clearInterval(interval); // 清除setInterval
-    time = 0;
-    
     let address = wx.getStorageSync('address') ? JSON.parse(wx.getStorageSync('address')) : '';
     if(address){
       if (this.data.community !== address.addressdata.id){
@@ -407,7 +351,15 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
+  lower(){
+    console.log('////')
+    this.setData({
+      page: this.data.page + 1
+    })
+    this.List(this.data.page)
+  },
   onReachBottom: function () {
+    console.log('/')
     this.setData({
       page:this.data.page+1
     })

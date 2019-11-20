@@ -3,14 +3,40 @@
     <view class="tabBar-li {{ids == 2 ? 'category' : '' }}" bindtap="Category" data-id="2">已完成</view>
     <view class="tabBar-li {{ids == 3 ? 'category' : '' }}" bindtap="Category" data-id="3">已收藏</view>
   </view>
-  <view class="main"  bindtouchstart="touchStart" bindtouchend="touchEnd">
-    <activity list='{{list}}' statusurl='true' type='{{ids == 2 ? true : false}}' url='{{ids ==3 ? "/pages/activity/details/details" : "/pages/activity/enterForSuccess/enterForSuccess" }}'></activity>
+  <!-- bindtouchstart="touchStart" bindtouchend="touchEnd" -->
+  <view  style="padding-top:100rpx;">
+   <swiper style='height:96vh;overflow:scroll;position:relative' duration='500'  bindchange="bindChange" current='{{currentTab}}'>
+    <swiper-item style='height:100%;'>
+      <scroll-view  scroll-y="true" style="display: flex; z-index: 100; height: 100%;position: absolute;" bindscrolltolower="lower"  >        <activity list='{{list}}' statusurl='true' type='{{ids == 2 ? true : false}}' url='{{ids ==3 ? "/pages/activity/details/details" : "/pages/activity/enterForSuccess/enterForSuccess" }}'></activity>
     <block wx:if="{{isPage}}">
         <page pageText='没有我的参与' pageStatus='activity'></page>
     </block>
-
     <loadmore isShow='{{isShow}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+      </scroll-view>
+     </swiper-item>
+     <swiper-item style='height:100%;'>
+      <scroll-view  scroll-y="true" style="display: flex; z-index: 100; height: 100%;position: absolute;" bindscrolltolower="lower"  >        <activity list='{{list}}' statusurl='true' type='{{ids == 2 ? true : false}}' url='{{ids ==3 ? "/pages/activity/details/details" : "/pages/activity/enterForSuccess/enterForSuccess" }}'></activity>
+    <block wx:if="{{isPage}}">
+        <page pageText='没有我的参与' pageStatus='activity'></page>
+    </block>
+    <loadmore isShow='{{isShow}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+      </scroll-view>
+     </swiper-item>
+     <swiper-item style='height:100%;'>
+      <scroll-view  scroll-y="true" style="display: flex; z-index: 100; height: 100%;position: absolute;" bindscrolltolower="lower"  >        <activity list='{{list}}' statusurl='true' type='{{ids == 2 ? true : false}}' url='{{ids ==3 ? "/pages/activity/details/details" : "/pages/activity/enterForSuccess/enterForSuccess" }}'></activity>
+    <block wx:if="{{isPage}}">
+        <page pageText='没有我的参与' pageStatus='activity'></page>
+    </block>
+    <loadmore isShow='{{isShow}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+      </scroll-view>
+     </swiper-item>
+    </swiper>
+    
   </view>
+  <!-- 遮罩 -->
+<block wx:if="{{!iSPagesed}}">
+  <view style="width:100%;height:95vh;  position: fixed;left:0;top:0;"></view>
+</block>
 <!-- 参与时间
 把进行中放到上面 
    -->

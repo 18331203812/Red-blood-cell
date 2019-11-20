@@ -16,21 +16,11 @@
             <view class="applicant-text">报名人数:{{item.enroll}}/{{item.number}}</view>
           </view>
         </view>
-          <view class="li-title">
-            {{item.title}}
-          </view>
+          <view class="li-title">{{item.title}}</view>
           <view class="li-titles">
-           <view class="li-title-status">限</view>
-            {{item.limit_title}}
-           </view>
-          <view class="li-text">
-            <view class="time-icon"></view>
-              {{item.ranage}}
-          </view>
-          <view class="li-text">
-            <view class="address-icon"></view>
-            {{item.place}}
-          </view>
+           <view class="li-title-status">限</view>{{item.limit_title}}</view>
+          <view class="li-text"><view class="time-icon"></view>{{item.ranage}}</view>
+          <view class="li-text"><view class="address-icon"></view>{{item.place}}</view>
       </view>
     </navigator>
   </block>

@@ -21,144 +21,376 @@
   </view>
 </view>
 <view style="width:100%;height:{{navHeight+46}}px;"></view>
-<view bindtouchstart="touchStart" bindtouchend="touchEnd" style='min-height:50vh;'>
-<block wx:for='{{video}}' wx:key='index'>
-  <view class="li">
-  <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
-    <view class="li-box">
-      <view class="li-con-title" style="width:70%;">
-        强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海
-      </view>
-      <view class="heat-icon">置顶</view>
-      <view class="li-time"  style="padding-left: 10rpx; {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.create_time}}</view>
-    </view>
-    <view class="li-img">
-      <view class="item-box ">
-        <!-- 视频图片层 -->
-        <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
-          <view class="video-cover-box">
-            <image class="video-image" src="{{item.cover}}" mode="aspectFit">
-            </image>
-          </view>
-          <!-- 视频按钮 -->
-          <!-- <image class="video-image-play" src="../../../images/icon_short.png" mode="scaleToFill"></image> -->
-        </view>
-        <!-- 视频播放层 -->
-        <!-- <video src="{{item.content}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='true' controls></video> -->
-        </view>
-    </view>
-  </navigator>
-      <view class="li-footer">
-        <view class="li-con-address">{{item.author}}</view>
-        <view class="li-icon">
-          <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
-          <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
-          <view class="li-icon-list" bindtap="FabulousV" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
-                <block wx:if='{{item.is_zan == 1}}'>
-                  <view class="fabulou-icons"></view>
-                </block>
-                <block wx:else>
-                  <view class="fabulou-icon"></view>
-                </block>
-          {{item.zan_count || 0}}</view>      
-        </view>
-      </view>
-  </view>
-</block>
 
-<block wx:for='{{list}}' wx:key='index'>
-<!-- list 一张列表 -->
-<block wx:if='{{!item.cover2}}'>
-    <view class="li">
-      <view class="li-box">
-        <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none" >
-          <image class="li-box-img" style='height:190rpx;' mode="aspectFill" src="{{item.cover}}"></image>
-         </navigator>
-        <view class="li-con">
-          <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
-              <view style="display:flex;">
-                <view class="li-con-title" style="{{item.is_top == 1 ? 'width:80%;' : ''}}">
-                  {{item.title}}
-                </view>
-                <block wx:if='{{item.is_top == 1}}'>
-                  <view class="heat-icon">置顶</view>
-                </block>
+<!-- bindtouchstart="touchStart" bindtouchend="touchEnd" -->
+<view  >
+<swiper style='height:78vh;overflow:scroll;position:relative' duration='500'  bindchange="bindChange" current='{{currentTab}}'>
+  <swiper-item style='height:100%;'>
+    <scroll-view scroll-top='{{scrollTop}}'	 scroll-y="true" style="white-space: nowrap;width:100%;height:100%" bindscrolltolower="lower"  >
+    <block wx:for='{{video}}' wx:key='index'>
+      <view class="li">
+      <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
+        <view class="li-box">
+          <view class="li-con-title" style="width:80%;">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海
+</view>
+          <!-- <view class="heat-icon">置顶</view> -->
+          <view class="li-time"  style="padding-left: 10rpx; {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.create_time}}</view>
+        </view>
+        <view class="li-img">
+          <view class="item-box ">
+            <!-- 视频图片层 -->
+            <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
+              <view class="video-cover-box">
+                <image class="video-image" src="{{item.cover}}" mode="aspectFit">
+                </image>
               </view>
-            <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
-          </navigator>
+              <!-- 视频按钮 -->
+              <!-- <image class="video-image-play" src="../../../images/icon_short.png" mode="scaleToFill"></image> -->
+            </view>
+            <!-- 视频播放层 -->
+            <!-- <video src="{{item.content}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='true' controls></video> -->
+            </view>
+        </view>
+      </navigator>
           <view class="li-footer">
-            <view class="li-time"  style=" {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.publish_time}}</view>
+            <view class="li-con-address">{{item.author}}</view>
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
-              <view class="li-icon-list" bindtap="Fabulous" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
-                <block wx:if='{{item.is_zan == 1}}'>
-                  <view class="fabulou-icons"></view>
-                </block>
-                <block wx:else>
-                  <view class="fabulou-icon"></view>
-                </block>
-                {{item.zan_count || 0}}</view>
+              <view class="li-icon-list" bindtap="FabulousV" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
+                    <block wx:if='{{item.is_zan == 1}}'>
+                      <view class="fabulou-icons"></view>
+                    </block>
+                    <block wx:else>
+                      <view class="fabulou-icon"></view>
+                    </block>
+              {{item.zan_count || 0}}</view>      
+            </view>
+          </view>
+      </view>
+    </block>
+    <block wx:for='{{list}}' wx:key='index'>
+    <!-- list 一张列表 -->
+    <block wx:if='{{!item.cover2}}'>
+        <view class="li">
+          <view class="li-box">
+            <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none" >
+              <image class="li-box-img" style='height:190rpx;' mode="aspectFill" src="{{item.cover}}"></image>
+            </navigator>
+            <view class="li-con">
+              <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
+                    <view class="li-con-title" style="width:80%;">{{item.title}}</view>
+                <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
+              </navigator>
+              <view class="li-footer">
+                <view class="li-time"  style=" {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.publish_time}}</view>
+                <view class="li-icon">
+                  <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
+                  <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
+                  <view class="li-icon-list" bindtap="Fabulous" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
+                    <block wx:if='{{item.is_zan == 1}}'>
+                      <view class="fabulou-icons"></view>
+                    </block>
+                    <block wx:else>
+                      <view class="fabulou-icon"></view>
+                    </block>
+                    {{item.zan_count || 0}}</view>
+                </view>
+              </view>
             </view>
           </view>
         </view>
-      </view>
-    </view>
- 
-</block>
-<block wx:else>
-    <!-- 三张列表 -->
-  <view class="li">
-    <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
-      <view class="li-box">
-        <view style="display:flex;">
-          <view class="li-con-title" style="width:80%;">
-            {{item.title}}
+    
+    </block>
+    <block wx:else>
+        <!-- 三张列表 -->
+      <view class="li">
+        <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
+          <view class="li-box">
+              <view class="li-con-title" style="width:80%;text-indent: -10rpx;">{{item.title}}</view>
+            <view class="li-time" style="padding-left: 10rpx; {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.publish_time}}</view>
           </view>
-          <view class="heat-icon">置顶</view>
-        </view>
-        <view class="li-time" style="padding-left: 10rpx; {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.publish_time}}</view>
+          <view class="li-img">
+            <image mode="aspectFill"  src="{{item.cover}}"></image>
+            <image mode="aspectFill"  src="{{item.cover2}}"></image>
+            <image mode="aspectFill"  src="{{item.cover3}}"></image>
+          </view>
+        </navigator>
+          <view class="li-footer">
+            <view class="li-con-address">{{item.street_title}}</view>
+            <view class="li-icon">
+              <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
+              <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
+              <view class="li-icon-list"  bindtap="Fabulous" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
+                    <block wx:if='{{item.is_zan == 1}}'>
+                      <view class="fabulou-icons"></view>
+                    </block>
+                    <block wx:else>
+                      <view class="fabulou-icon"></view>
+                    </block>
+              {{item.zan_count || 0}}</view>
+            </view>
+          </view>
       </view>
-      <view class="li-img">
-        <image mode="aspectFill"  src="{{item.cover}}"></image>
-        <image mode="aspectFill"  src="{{item.cover2}}"></image>
-        <image mode="aspectFill"  src="{{item.cover3}}"></image>
-      </view>
-    </navigator>
-      <view class="li-footer">
-        <view class="li-con-address">{{item.street_title}}</view>
-        <view class="li-icon">
-          <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
-          <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
-          <view class="li-icon-list"  bindtap="Fabulous" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
-                <block wx:if='{{item.is_zan == 1}}'>
-                  <view class="fabulou-icons"></view>
-                </block>
-                <block wx:else>
-                  <view class="fabulou-icon"></view>
-                </block>
-          {{item.zan_count || 0}}</view>
-        </view>
-      </view>
-  </view>
 
-</block>
-</block>
- <block wx:if="{{isPage}}">
-      <page pageText='' pageStatus='integral'></page>
-  </block>
+    </block>
+    </block>
+    <block wx:if="{{isPage}}">
+          <page pageText='' pageStatus='integral'></page>
+      </block>
+      <!-- 加载... -->
+      <loadmore isShow='{{isMore}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+      </scroll-view>
+  </swiper-item>
+   <swiper-item  style='height:100%;'>
+    <scroll-view scroll-top='{{scrollTop}}'	  scroll-y="true" style="white-space: nowrap;width:100%;height:100%" bindscrolltolower="lower"  >
+    <block wx:for='{{video}}' wx:key='index'>
+      <view class="li">
+      <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
+        <view class="li-box">
+          <view class="li-con-title" style="width:80%;">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海
+          </view>
+          <!-- <view class="heat-icon">置顶</view> -->
+          <view class="li-time"  style="padding-left: 10rpx; {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.create_time}}</view>
+        </view>
+        <view class="li-img">
+          <view class="item-box ">
+            <!-- 视频图片层 -->
+            <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
+              <view class="video-cover-box">
+                <image class="video-image" src="{{item.cover}}" mode="aspectFit">
+                </image>
+              </view>
+              <!-- 视频按钮 -->
+              <!-- <image class="video-image-play" src="../../../images/icon_short.png" mode="scaleToFill"></image> -->
+            </view>
+            <!-- 视频播放层 -->
+            <!-- <video src="{{item.content}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='true' controls></video> -->
+            </view>
+        </view>
+      </navigator>
+          <view class="li-footer">
+            <view class="li-con-address">{{item.author}}</view>
+            <view class="li-icon">
+              <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
+              <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
+              <view class="li-icon-list" bindtap="FabulousV" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
+                    <block wx:if='{{item.is_zan == 1}}'>
+                      <view class="fabulou-icons"></view>
+                    </block>
+                    <block wx:else>
+                      <view class="fabulou-icon"></view>
+                    </block>
+              {{item.zan_count || 0}}</view>      
+            </view>
+          </view>
+      </view>
+    </block>
+    <block wx:for='{{list}}' wx:key='index'>
+    <!-- list 一张列表 -->
+    <block wx:if='{{!item.cover2}}'>
+        <view class="li">
+          <view class="li-box">
+            <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none" >
+              <image class="li-box-img" style='height:190rpx;' mode="aspectFill" src="{{item.cover}}"></image>
+            </navigator>
+            <view class="li-con">
+              <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
+                    <view class="li-con-title" style="width:80%;">{{item.title}}</view>
+                <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
+              </navigator>
+              <view class="li-footer">
+                <view class="li-time"  style=" {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.publish_time}}</view>
+                <view class="li-icon">
+                  <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
+                  <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
+                  <view class="li-icon-list" bindtap="Fabulous" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
+                    <block wx:if='{{item.is_zan == 1}}'>
+                      <view class="fabulou-icons"></view>
+                    </block>
+                    <block wx:else>
+                      <view class="fabulou-icon"></view>
+                    </block>
+                    {{item.zan_count || 0}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+    
+    </block>
+    <block wx:else>
+        <!-- 三张列表 -->
+      <view class="li">
+        <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
+          <view class="li-box">
+            
+              <view class="li-con-title" style="width:80%;">{{item.title}}</view>
+             
+            <view class="li-time" style="padding-left: 10rpx; {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.publish_time}}</view>
+          </view>
+          <view class="li-img">
+            <image mode="aspectFill"  src="{{item.cover}}"></image>
+            <image mode="aspectFill"  src="{{item.cover2}}"></image>
+            <image mode="aspectFill"  src="{{item.cover3}}"></image>
+          </view>
+        </navigator>
+          <view class="li-footer">
+            <view class="li-con-address">{{item.street_title}}</view>
+            <view class="li-icon">
+              <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
+              <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
+              <view class="li-icon-list"  bindtap="Fabulous" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
+                    <block wx:if='{{item.is_zan == 1}}'>
+                      <view class="fabulou-icons"></view>
+                    </block>
+                    <block wx:else>
+                      <view class="fabulou-icon"></view>
+                    </block>
+              {{item.zan_count || 0}}</view>
+            </view>
+          </view>
+      </view>
 
-  <!-- 加载... -->
-  <loadmore isShow='{{isMore}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+    </block>
+    </block>
+    <block wx:if="{{isPage}}">
+          <page pageText='' pageStatus='integral'></page>
+      </block>
+      <!-- 加载... -->
+      <loadmore isShow='{{isMore}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+      </scroll-view>
+  </swiper-item>
+   <swiper-item style='height:100%;'>
+    <scroll-view scroll-top='{{scrollTop}}'	 scroll-y="true" style="white-space: nowrap;width:100%;height:100%" bindscrolltolower="lower"  >
+    <block wx:for='{{video}}' wx:key='index'>
+      <view class="li">
+      <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
+        <view class="li-box">
+          <view class="li-con-title" style="width:80%;">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海
+</view>
+          <!-- <view class="heat-icon">置顶</view> -->
+          <view class="li-time"  style="padding-left: 10rpx; {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.create_time}}</view>
+        </view>
+        <view class="li-img">
+          <view class="item-box ">
+            <!-- 视频图片层 -->
+            <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
+              <view class="video-cover-box">
+                <image class="video-image" src="{{item.cover}}" mode="aspectFit">
+                </image>
+              </view>
+              <!-- 视频按钮 -->
+              <!-- <image class="video-image-play" src="../../../images/icon_short.png" mode="scaleToFill"></image> -->
+            </view>
+            <!-- 视频播放层 -->
+            <!-- <video src="{{item.content}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='true' controls></video> -->
+            </view>
+        </view>
+      </navigator>
+          <view class="li-footer">
+            <view class="li-con-address">{{item.author}}</view>
+            <view class="li-icon">
+              <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
+              <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
+              <view class="li-icon-list" bindtap="FabulousV" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
+                    <block wx:if='{{item.is_zan == 1}}'>
+                      <view class="fabulou-icons"></view>
+                    </block>
+                    <block wx:else>
+                      <view class="fabulou-icon"></view>
+                    </block>
+              {{item.zan_count || 0}}</view>      
+            </view>
+          </view>
+      </view>
+    </block>
+    <block wx:for='{{list}}' wx:key='index'>
+    <!-- list 一张列表 -->
+    <block wx:if='{{!item.cover2}}'>
+        <view class="li">
+          <view class="li-box">
+            <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none" >
+              <image class="li-box-img" style='height:190rpx;' mode="aspectFill" src="{{item.cover}}"></image>
+            </navigator>
+            <view class="li-con">
+              <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
+                    <view class="li-con-title" style="width:80%;">{{item.title}}</view>
+                <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
+              </navigator>
+              <view class="li-footer">
+                <view class="li-time"  style=" {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.publish_time}}</view>
+                <view class="li-icon">
+                  <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
+                  <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
+                  <view class="li-icon-list" bindtap="Fabulous" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
+                    <block wx:if='{{item.is_zan == 1}}'>
+                      <view class="fabulou-icons"></view>
+                    </block>
+                    <block wx:else>
+                      <view class="fabulou-icon"></view>
+                    </block>
+                    {{item.zan_count || 0}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+    
+    </block>
+    <block wx:else>
+        <!-- 三张列表 -->
+      <view class="li">
+        <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
+          <view class="li-box">
+              <view class="li-con-title" style="width:80%;">{{item.title}}</view>
+            <view class="li-time" style="padding-left: 10rpx; {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.publish_time}}</view>
+          </view>
+          <view class="li-img">
+            <image mode="aspectFill"  src="{{item.cover}}"></image>
+            <image mode="aspectFill"  src="{{item.cover2}}"></image>
+            <image mode="aspectFill"  src="{{item.cover3}}"></image>
+          </view>
+        </navigator>
+          <view class="li-footer">
+            <view class="li-con-address">{{item.street_title}}</view>
+            <view class="li-icon">
+              <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
+              <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
+              <view class="li-icon-list"  bindtap="Fabulous" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
+                    <block wx:if='{{item.is_zan == 1}}'>
+                      <view class="fabulou-icons"></view>
+                    </block>
+                    <block wx:else>
+                      <view class="fabulou-icon"></view>
+                    </block>
+              {{item.zan_count || 0}}</view>
+            </view>
+          </view>
+      </view>
+
+    </block>
+    </block>
+    <block wx:if="{{isPage}}">
+          <page pageText='' pageStatus='integral'></page>
+      </block>
+      <!-- 加载... -->
+      <loadmore isShow='{{isMore}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+      </scroll-view>
+  </swiper-item>
+</swiper>
 </view>
 
-
+<!-- 遮罩 -->
+<block wx:if="{{!iSPagesed}}">
+  <view style="width:100%;height:95vh;  position: fixed;left:0;top:0;"></view>
+</block>
 <!-- tabBar -->
 <tabBar  tabbar="{{tabbar}}"></tabBar>
 <!-- 积分 -->
 <integral status='{{status}}' text='{{text}}'></integral>
  
-  <view style="width:100%;height:100rpx;"></view>
+  <view style="width:100%;height:98rpx;"></view>
 
   <wxs module="m1">
    var str = function (strs){

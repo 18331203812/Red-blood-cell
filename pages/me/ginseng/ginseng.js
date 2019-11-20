@@ -1,10 +1,6 @@
 import HTTP from "../../../utils/request.js";
 import utils from "../../../utils/util.js";
 var _http = new HTTP();
-var time = 0;
-var touchDot = 0;//触摸时的原点
-var interval = "";
-var flag_hd = true;
 Page({
 
   /**
@@ -16,103 +12,35 @@ Page({
     isPage:false,
     isShow:true,
     ids:'1',
-    list:[]
+    list:[],
+    iSPagesed: true
   },
-  // 触摸开始事件
-  touchStart: function (e) {
-    touchDot = e.touches[0].pageX; // 获取触摸时的原点
-    // 使用js计时器记录时间    
-    interval = setInterval(function () {
-      time++;
-    }, 2000);
-  },
-  // 触摸结束事件
-  touchEnd: function (e) {
-    var touchMove = e.changedTouches[0].pageX;
-    console.log(touchMove)
-    console.log(touchDot)
-    // 向左滑动   
-    if (touchMove - touchDot <= -80 && time < 10 && flag_hd == true) {
-      flag_hd = false;
-      console.log("向右滑动");
-      this.Switch('right')
-    }
-    // 向右滑动   
-    if (touchMove - touchDot >= 80 && time < 10 && flag_hd == true) {
-      flag_hd = false;
-      console.log("向左滑动");
-      this.Switch('left')
-    }
-    clearInterval(interval); // 清除setInterval
-    time = 0;
-    flag_hd = true;
-  },
-  /**
-   * 切换tabBar
-   */
-  Switch(status) {
-    let { ids } = this.data;
-    if (status == 'left') {
-      switch (Number(ids)) {
-        case 3:
-          this.setData({
-            ids: 2,
-            page: 1,
-            list: [],
-            isPage: false, //省缺页
-            isShow:true
-          })
-          this.List(1)
-          break;
-        case 2:
-          this.setData({
-            ids: 1,
-            page: 1,
-            list: [],
-            isPage: false, //省缺页
-            isShow: true
-          })
-          this.List(1)
-          break;
-        default:
-      }
-    } else if (status == 'right') {
+  bindChange(e) {
+    if (e.detail.source == "touch" || e.detail.source == '') {
+      if (this.data.iSPagesed) {
+        this.setData({
+          ids: Number(e.detail.current) + 1,
+          currentTab: Number(e.detail.current),
+          page: 1,
+          list: [],
+          video: [],
+          isPage: false, //省缺页
+          keyword: "",
+          isShow: true
+        })
+        let status = true
+        this.List(1, status)
+      } else {
 
-      switch (Number(ids)) {
-        case 1:
-          this.setData({
-            ids: 2,
-            page: 1,
-            list: [],
-            isPage: false, //省缺页
-            isShow: true
-          })
-          this.List(1)
-          break;
-        case 2:
-          this.setData({
-            ids: 3,
-            page: 1,
-            list: [],
-            isPage: false, //省缺页
-            isShow: true
-          })
-          this.List(1)
-          break;
-        default:
       }
     }
   },
   //点击tabBar
   Category(e){
     this.setData({
-      ids: e.currentTarget.dataset.id,
-      page:1,
-      list:[],
-      isPage: false,
-      isShow: true,
+      ids: Number(e.currentTarget.dataset.id),
+      currentTab: Number(e.currentTarget.dataset.id) - 1,
     })
-    this.List(1);
   },
   /**
    * 生命周期函数--监听页面加载
@@ -121,7 +49,10 @@ Page({
     this.List(1);
   },
   //列表
-  List(page){
+  List(page, status = false){
+    this.setData({
+      iSPagesed: false
+    })
     _http.request({
       url:"/api/activity/join",
       method:"GET",
@@ -142,7 +73,8 @@ Page({
         })
       }
       this.setData({
-        list:res.data.list
+        list:res.data.list,
+        iSPagesed: true
       })
     })
   },

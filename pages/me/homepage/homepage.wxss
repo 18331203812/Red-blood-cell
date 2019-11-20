@@ -28,7 +28,7 @@
   align-items: center;
 }
 .nav-title{
-  font-size: 32rpx;
+  font-size: 48rpx;
   color: #fff;
   font-weight: bold;
   padding-bottom: 10rpx;
@@ -45,7 +45,7 @@
   padding:  30rpx; 
   position: absolute;
   left: 0;
-  bottom: -122rpx;
+  bottom: -104rpx;
   z-index: 10;
 }
 .nav-radius{

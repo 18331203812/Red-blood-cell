@@ -76,6 +76,16 @@ Page({
     this.setData({
       id: options.id
     })
+    wx.getSystemInfo({
+      success: res => {
+        let rpx = res.windowWidth / 375;
+        let rpxheight = res.windowHeight / 603
+        this.setData({
+          rpx: rpx,
+          rpxheight: rpxheight
+        })
+      },
+    })
   },
   Details(id){
     _http.request({
@@ -424,16 +434,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.getSystemInfo({
-      success: res => {
-        let rpx = res.windowWidth / 375;
-        let rpxheight = res.windowHeight / 603
-        this.setData({
-          rpx: rpx,
-          rpxheight: rpxheight
-        })
-      },
-    })
+    
   },
 
   /**

@@ -32,7 +32,7 @@
                   {{item.title}}
                 </view>
                 <block wx:if='{{item.is_top == 1}}'>
-                  <view class="heat-icon">置顶</view>
+                  <!-- <view class="heat-icon">置顶</view> -->
                 </block>
               </view>
             <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
@@ -66,7 +66,7 @@
           <view class="li-con-title" style="width:80%;">
             {{item.title}}
           </view>
-          <view class="heat-icon">置顶</view>
+          <!-- <view class="heat-icon">置顶</view> -->
         </view>
         <view class="li-time" style="padding-left: 10rpx; {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.publish_time}}</view>
       </view>
@@ -103,7 +103,7 @@
       <view class="li-con-title" style="width:70%;">
         强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海
       </view>
-      <view class="heat-icon">置顶</view>
+      <!-- <view class="heat-icon">置顶</view> -->
       <view class="li-time"  style="padding-left: 10rpx; {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.create_time}}</view>
     </view>
     <view class="li-img">

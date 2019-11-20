@@ -1,11 +1,6 @@
 import HTTP from "../../../utils/request.js";
 import utils from "../../../utils/util.js";
 var _http = new HTTP();
-
-var time = 0;
-var touchDot = 0;//触摸时的原点
-var interval = "";
-var flag_hd = true;
 Page({
 
   /**
@@ -17,9 +12,13 @@ Page({
     isShow:true,
     isPage:false,
     page:1,
-    pagesize:10
+    pagesize:10,
+    iSPagesed: true
   },
-  List(page){
+  List(page,status = false){
+    this.setData({
+      iSPagesed: false
+    })
     _http.request({
       url:"/api/user/exchange",
       method:"GET",
@@ -37,7 +36,8 @@ Page({
         })
       }
       this.setData({
-        list:this.data.list.concat(data)
+        list:this.data.list.concat(data),
+        iSPagesed: true
       })
       if (this.data.list.length == 0){
         this.setData({
@@ -50,91 +50,27 @@ Page({
   //分类
   Category(e){
     this.setData({
-      ids: e.currentTarget.dataset.id
+      ids: Number(e.currentTarget.dataset.id),
+      currentTab: Number(e.currentTarget.dataset.id) ,
     })
-    this.setData({
-      list:[],
-      page:1,
-      isShow: true,
-      isPage: false,
-    })
-    this.List(1);
   },
-  // 触摸开始事件
-  touchStart: function (e) {
-    touchDot = e.touches[0].pageX; // 获取触摸时的原点
-    // 使用js计时器记录时间    
-    interval = setInterval(function () {
-      time++;
-    }, 2000);
-  },
-  // 触摸结束事件
-  touchEnd: function (e) {
-    var touchMove = e.changedTouches[0].pageX;
-    // 向左滑动   
-    if (touchMove - touchDot <= -80 && time < 10 && flag_hd == true) {
-      flag_hd = false;
-      console.log("向右滑动");
-      this.Switch('right')
-    }
-    // 向右滑动   
-    if (touchMove - touchDot >= 80 && time < 10 && flag_hd == true) {
-      flag_hd = false;
-      console.log("向左滑动");
-      this.Switch('left')
-    }
-    clearInterval(interval); // 清除setInterval
-    time = 0;
-    flag_hd = true;
-  },
-  /**
-   * 切换tabBar
-   */
-  Switch(status) {
-    let { ids } = this.data;
-    this.setData({
-      page: 1,
-     
-    })
-    if (status == 'left') {
-      switch (ids) {
-        case 2:
-          this.setData({
-            ids: 1,
-            list: [],
-            isPage: false, //省缺页
-          })
-          this.List(1)
-          break;
-        case 1:
-          this.setData({
-            ids: 0,
-            list: [],
-            isPage: false, //省缺页
-          })
-          this.List(1)
-          break;
-        default:
-      }
-    } else if (status == 'right') {
-      switch (ids) {
-        case 0:
-          this.setData({
-            ids: 1,
-            list: [],
-            isPage: false, //省缺页
-          })
-          this.List(1)
-          break;
-        case 1:
-          this.setData({
-            ids: 2,
-            list: [],
-            isPage: false, //省缺页
-          })
-          this.List(1)
-          break;
-        default:
+  bindChange(e) {
+    if (e.detail.source == "touch" || e.detail.source == '') {
+      if (this.data.iSPagesed) {
+        this.setData({
+          ids: Number(e.detail.current) ,
+          currentTab: Number(e.detail.current),
+          page: 1,
+          list: [],
+          video: [],
+          isPage: false, //省缺页
+          keyword: "",
+          isShow: true
+        })
+        let status = true
+        this.List(1, status)
+      } else {
+
       }
     }
   },
@@ -183,12 +119,17 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-    console.log('/')
+  lower() {
     this.setData({
       page: this.data.page + 1
     })
     this.List(this.data.page)
+  },
+  onReachBottom: function () {
+    // this.setData({
+    //   page: this.data.page + 1
+    // })
+    // this.List(this.data.page)
   },
 
   /**

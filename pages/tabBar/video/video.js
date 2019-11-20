@@ -122,11 +122,16 @@ Page({
    * 生命周期函数--监听页面显示
    **/
   onShow: function () {
-    this.setData({
-      page: 1,
-      list:[]
-    })
-    this.List(1);
+    let returns = wx.getStorageSync('returns')
+    if (!returns) {
+      this.setData({
+        page: 1,
+        list: []
+      })
+      this.List(1);
+    } else {
+      wx.setStorageSync("returns", false)
+    }
   },
 
   /**

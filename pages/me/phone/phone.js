@@ -64,9 +64,11 @@ Page({
     };
     if(!code){
       utils.showToast("请输入验证码", 'none')
+      return
     }
     if (code.length!==6) {
       utils.showToast("请输入正确的验证码", 'none')
+      return
     }
     _http.request({
       url:"/api/user/bindphone",

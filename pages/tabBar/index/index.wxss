@@ -8,6 +8,7 @@
   padding: 40rpx 0 0 0;
   display: flex;
   align-items: center;
+
 }
 .Navs-title{
   font-size: 36rpx;

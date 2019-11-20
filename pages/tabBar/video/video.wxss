@@ -138,7 +138,7 @@
   height: 92rpx;
    position: fixed;
   left: 0;
-  z-index: 99;
+  z-index: 101;
 }
 .search{
   width: 100%;

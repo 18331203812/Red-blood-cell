@@ -106,6 +106,7 @@ Page({
   onShow: function () {
     let login = wx.getStorageSync('login')
     if (login) {
+      console.log('////')
       this.Details().then(res => {
         this.Category(res.identity_id);
       });

@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/tabBar/index/index",
     "pages/login/login/login",
     "pages/index/address/address",
@@ -34,7 +33,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ce131b",
     "navigationBarTitleText": "共益互助",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "onReachBottomDistance": 200
   },
   "tabBar": {
     "color": "#666666",
