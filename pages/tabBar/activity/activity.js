@@ -18,7 +18,7 @@ Page({
     isPage:false,
     currentTab:0,
     iSPagesed:true,
-    scrollTop:0
+    height:0
   },
   Category(e){
     this.setData({
@@ -68,6 +68,13 @@ Page({
     });
   },
   List(page, status = false){
+    wx.getSystemInfo({
+      success: (res) => {
+        this.setData({
+          height: res.windowHeight
+        })
+      }
+    })
     this.setData({
       iSPagesed: false
     })
@@ -143,9 +150,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      scrollTop:0
-    })
     let returns = wx.getStorageSync('returns')
     if (!returns){
       this.setData({

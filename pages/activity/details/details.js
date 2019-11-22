@@ -42,6 +42,7 @@ Page({
       method:"GET",
       data:{activity_id:id}
     }).then(res=>{
+      res.data.list.content = res.data.list.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto"')
       this.setData({
         details:res.data.list,
         ids:id

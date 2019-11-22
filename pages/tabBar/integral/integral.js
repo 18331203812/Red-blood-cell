@@ -90,6 +90,12 @@ Page({
         page:1
       })
       this.Goods(1);
+    }else{
+      this.setData({
+        goodsList: [],
+        page: 1
+      })
+      this.Goods(1);
     }
   },
 

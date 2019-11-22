@@ -12,9 +12,8 @@
   </view>
   <view class="li">
     <view class="li-name">手机号 <text>*</text></view>
-  
       <view class="li-con">
-        <input class="li-input" placeholder-style="font-size: 28rpx; color: #999999;" value="{{phone}}" bindinput="Phone" placeholder="请输入手机号"></input>
+        <input class="li-input" placeholder-style="font-size: 28rpx; color: #999999;" disabled="{{isPhone ? true : false}}" value="{{phone}}" bindinput="Phone" placeholder="请输入手机号"></input>
         <block wx:if='{{isPhone}}'>
           <navigator url="/pages/me/phone/phone?phone={{phone}}" hover-class="none">
             <view class="li-con-text">

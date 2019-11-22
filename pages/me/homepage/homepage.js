@@ -91,10 +91,30 @@ Page({
         action_id:id
       }
     }).then(res=>{
+      console.log(res)
+      if(res.data.code == 5011){
+        wx.showModal({
+          title: '提示',
+          content: '您暂无权限查看,请切换相应的小区',
+          success(res) {
+            if (res.confirm) {
+              wx.navigateBack({
+                delta: 1
+              })
+            } else if (res.cancel) {
+              wx.navigateBack({
+                delta: 1
+              })
+            }
+          }
+        })
+        return
+      }
       this.setData({
         list: this.data.list.concat(res.data.list),
         details: res.data.top_header
       })
+
       if (res.data.list.length < 9) {
         this.setData({
           isMore: false,

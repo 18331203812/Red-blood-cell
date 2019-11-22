@@ -26,13 +26,12 @@
 <view  >
 <swiper style='height:78vh;overflow:scroll;position:relative' duration='500'  bindchange="bindChange" current='{{currentTab}}'>
   <swiper-item style='height:100%;'>
-    <scroll-view scroll-top='{{scrollTop}}'	 scroll-y="true" style="white-space: nowrap;width:100%;height:100%" bindscrolltolower="lower"  >
+    <scroll-view style='height:{{height}}px'	 scroll-y="true" style="width:100%;height:100%" bindscrolltolower="lower"  >
     <block wx:for='{{video}}' wx:key='index'>
       <view class="li">
       <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
         <view class="li-box">
-          <view class="li-con-title" style="width:80%;">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海
-</view>
+          <view class="li-con-title" style="width:80%;">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海</view>
           <!-- <view class="heat-icon">置顶</view> -->
           <view class="li-time"  style="padding-left: 10rpx; {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.create_time}}</view>
         </view>
@@ -143,7 +142,7 @@
       </scroll-view>
   </swiper-item>
    <swiper-item  style='height:100%;'>
-    <scroll-view scroll-top='{{scrollTop}}'	  scroll-y="true" style="white-space: nowrap;width:100%;height:100%" bindscrolltolower="lower"  >
+    <scroll-view  style='height:{{height}}px'	  scroll-y="true" style="width:100%;height:100%" bindscrolltolower="lower"  >
     <block wx:for='{{video}}' wx:key='index'>
       <view class="li">
       <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
@@ -262,7 +261,7 @@
       </scroll-view>
   </swiper-item>
    <swiper-item style='height:100%;'>
-    <scroll-view scroll-top='{{scrollTop}}'	 scroll-y="true" style="white-space: nowrap;width:100%;height:100%" bindscrolltolower="lower"  >
+    <scroll-view  style='height:{{height}}px'	 scroll-y="true" style="width:100%;height:100%" bindscrolltolower="lower"  >
     <block wx:for='{{video}}' wx:key='index'>
       <view class="li">
       <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">

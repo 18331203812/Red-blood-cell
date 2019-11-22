@@ -26,7 +26,7 @@ Page({
     isShow:false,
     iSPagesed:true,
     currentTab:0,
-    scrollTop:0,
+    height:0,
   },
   bindChange(e){
     console.log(e)
@@ -103,18 +103,6 @@ Page({
     app.editTabbar();
     //导航高度
     this.Nav();
-    
-    this.setData({
-      list: [], //新闻
-      pagesize: 10,
-      page: 1,
-      isMore: true, //加载动效
-      video: [], //视频
-      status: false,
-      keyword: "",
-      isPage: false, //省缺页
-    })
-    this.List(1);
   },
   //计算导航高度
   Nav() {
@@ -147,6 +135,13 @@ Page({
   },
   //列表
   List(page, status = false){
+    wx.getSystemInfo({
+      success: (res) => {
+        this.setData({
+          height: res.windowHeight
+        })
+      }
+    })
     this.setData({
       iSPagesed:false
     })
@@ -260,9 +255,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      scrollTop:0
-    })
     let perfect = wx.getStorageSync('perfect');
     this.User().then(res => {
       console.log(res)
@@ -287,8 +279,24 @@ Page({
       }else{
         console.log("不刷新")
       }
-      
     }
+    let returns = wx.getStorageSync('returnsIndex')
+    if (!returns) {
+      this.setData({
+        list: [], //新闻
+        pagesize: 10,
+        page: 1,
+        isMore: true, //加载动效
+        video: [], //视频
+        status: false,
+        keyword: "",
+        isPage: false, //省缺页
+      })
+      this.List(1);
+    } else {
+      wx.setStorageSync("returnsIndex", false)
+    }
+    
   },
   //获取搜索文字
   Search(e){  
@@ -331,7 +339,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+   
   },
 
   /**
@@ -359,11 +367,11 @@ Page({
     this.List(this.data.page)
   },
   onReachBottom: function () {
-    console.log('/')
-    this.setData({
-      page:this.data.page+1
-    })
-    this.List(this.data.page)
+    // console.log('/')
+    // this.setData({
+    //   page:this.data.page+1
+    // })
+    // this.List(this.data.page)
   },
 
   /**
