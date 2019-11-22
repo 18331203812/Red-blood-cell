@@ -30,11 +30,10 @@ Page({
     if (options.status){
       this.setData({
         limit_text: options.status,
-        status_title: options.status_title
+        status_title: options.status_title || ''
       })
     }
-    
-    this.Details(options.id)
+    this.Details(options.scene)
   },
   Details(id){
     _http.request({
@@ -221,7 +220,6 @@ Page({
           wx.getImageInfo({
             src: res.data.path,
             success(res) {
-            
               reslove(res.path)
             },
             fail(err) {
@@ -249,7 +247,6 @@ Page({
         ctx.fillStyle = "#FFFFFF";
         ctx.fillRect(0, 0, 345 * rpx, 520 * heightrpx);
         ctx.drawImage(res[1], 0, 0, 345 * rpx, 200);
-        
         ctx.setFontSize(18 * rpx);
         ctx.setFillStyle("#333");
         var text = that.data.details.title//这是要绘制的文本
@@ -290,7 +287,6 @@ Page({
           ctx.fillText(row[b], 30 * rpx, 230 + b * 20 * rpx);
         }
         ctx.drawImage(res[0], ((345 * rpx) - 110) / 2, 320+b*10, 110 * rpx, 110);
-        console.log(b)
         ctx.fillText("长按识别或扫码查看活动详情", ((345 * rpx) - 230) / 2, 440 + b * 20 * rpx);
         ctx.setFontSize(14 * rpx);
         ctx.setFillStyle("#999");
@@ -299,9 +295,9 @@ Page({
         ctx.setFillStyle("#d11515");
         ctx.fillText(that.data.details.point + "积分", 30 * rpx, 240 + b * 20 * rpx);
         ctx.setFontSize(14 * rpx);
-        if (that.data.limit_text) {
-          ctx.fillText(that.data.limit_text, 30 * rpx, 290 + b * 20 * rpx);
-        }
+        // if (that.data.limit_text) {
+        //   ctx.fillText(that.data.limit_text, 30 * rpx, 290 + b * 20 * rpx);
+        // }
         ctx.setFillStyle("#666666");
         ctx.fillText("报名期限：" + that.data.details.ranage, 30 * rpx, 270 + b * 20 * rpx);
         ctx.fillText("此产品海报由【共益互助】小程序生成", ((345 * rpx) - 220) / 2, 465 + b * 20 * rpx);

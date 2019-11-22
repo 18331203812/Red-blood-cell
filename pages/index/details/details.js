@@ -273,7 +273,6 @@ Page({
     })
   },
   gener() {
-
     //二维码
     return new Promise((reslove, sej) => {
       wx.showLoading({
@@ -290,24 +289,23 @@ Page({
           }
         }).then(res => {
           console.log(res)
-          // wx.getImageInfo({
-          //   src: res.data.path,
-          //   success(res) {
-
-          //     reslove(res.path)
-          //   },
-          //   fail(err) {
-          //     console.log(err);
-          //   },
-          // });
+          wx.getImageInfo({
+            src: res.data.path,
+            success(res) {
+              reslove(res.path)
+            },
+            fail(err) {
+              console.log(err);
+            },
+          });
         })
-        reslove('https://www.redxibao.com/activity/20191024/undefined.png')
+        // reslove('https://www.redxibao.com/activity/20191024/undefined.png')
       });
       //背景
       let avatar = new Promise((reslove, sej) => {
-        console.log(that.data.details.avatar)
+        console.log(that.data.details.cover)
         wx.getImageInfo({
-          src: that.data.details.avatar,
+          src: that.data.details.cover,
           success(res) {
             reslove(res.path)
           },
@@ -320,12 +318,12 @@ Page({
         const ctx = wx.createCanvasContext('myCanvas');
         let rpx = that.data.rpx, heightrpx = that.data.rpxheight;
         ctx.fillStyle = "#FFFFFF";
-        ctx.fillRect(0, 0, 345 * rpx, 500 * heightrpx);
+        ctx.fillRect(0, 0, 345 * rpx, 520 * heightrpx);
         ctx.drawImage(res[1], 0, 0, 345 * rpx, 200);
-        ctx.drawImage(res[0], 30, 280, 70 * rpx, 70);
-        ctx.setFontSize(18 * rpx);
+        ctx.drawImage(res[0], ((345 * rpx) - 110) / 2, 300, 110 * rpx, 110);
+        ctx.setFontSize(16 * rpx);
         ctx.setFillStyle("#333");
-        var text = that.data.details.title//这是要绘制的文本
+        var text = that.data.details.title //这是要绘制的文本
         var chr = text.split("");//这个方法是将一个字符串分割成字符串数组
         var temp = "";
         var row = [];
@@ -368,22 +366,22 @@ Page({
         ctx.setFontSize(18 * rpx);
         ctx.setFillStyle("#d11515");
         ctx.setFontSize(16 * rpx);
-        if (that.data.limit_text) {
-          ctx.fillText(that.data.limit_text, 30 * rpx, 290 + b * 20 * rpx);
-        }
+        // if (that.data.limit_text) {
+        //   ctx.fillText(that.data.limit_text, 30 * rpx, 290 + b * 20 * rpx);
+        // }
         ctx.setFillStyle("#666666");
-        ctx.fillText("报名期限：20", 110 * rpx, 270 + b * 20 * rpx);
-        ctx.fillText("报名期限：20", 110 * rpx, 295 + b * 20 * rpx);
+        // ctx.fillText("报名期限：20", 110 * rpx, 270 + b * 20 * rpx);
+        // ctx.fillText("报名期限：20", 110 * rpx, 295 + b * 20 * rpx);
         that.setData({ imgshareBut: true })
         wx.hideLoading();
         ctx.draw(true, setTimeout(function () {     //为什么要延迟100毫秒？大家测试一下
           wx.canvasToTempFilePath({
             x: 0,
             y: 0,
-            width: 612 * rpx,
-            height: 687 * rpx,
-            destWidth: 612 * rpx,
-            destHeight: 687 * rpx,
+            width: 646 * rpx,
+            height: 966 * rpx,
+            destWidth: 646 * rpx,
+            destHeight: 966 * rpx,
             canvasId: 'myCanvas',
             success: res => {
               wx.hideLoading();

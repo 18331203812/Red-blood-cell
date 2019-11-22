@@ -255,7 +255,7 @@ button{
 }
 .curtain-box{
   width: 92%;
-  height: 63vh;
+  height: 70vh;
 }
 .canvas{
   width: 100%;
