@@ -71,6 +71,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.scene){
+      options.id = options.scene
+    }
     this.Details(options.id)
     this.Message(options.id)
     this.setData({
@@ -370,8 +373,8 @@ Page({
         //   ctx.fillText(that.data.limit_text, 30 * rpx, 290 + b * 20 * rpx);
         // }
         ctx.setFillStyle("#666666");
-        // ctx.fillText("报名期限：20", 110 * rpx, 270 + b * 20 * rpx);
-        // ctx.fillText("报名期限：20", 110 * rpx, 295 + b * 20 * rpx);
+        ctx.fillText(that.data.details.street_title, 30 * rpx, 235 + b * 20 * rpx);
+        ctx.fillText(that.data.details.create_time, 30 * rpx, 255 + b * 20 * rpx);
         that.setData({ imgshareBut: true })
         wx.hideLoading();
         ctx.draw(true, setTimeout(function () {     //为什么要延迟100毫秒？大家测试一下

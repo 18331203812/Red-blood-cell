@@ -33,7 +33,7 @@
         <view class="li-box">
           <view class="li-con-title" style="width:66%;">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海</view>
           <!-- <view class="heat-icon">置顶</view> -->
-          <view class="li-time"  style="padding-left: 10rpx; width:34%">{{item.create_time}}</view>
+          <view class="li-time"  style="padding:5rpx 0 0 10rpx; width:34%">{{item.create_time}}</view>
         </view>
         <view class="li-img">
           <view class="item-box ">
@@ -107,7 +107,7 @@
         <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
           <view class="li-box">
               <view class="li-con-title" style="width:66%;text-indent: -10rpx;">{{item.title}}</view>
-            <view class="li-time" style="padding-left: 10rpx; width:34%">{{item.publish_time}}</view>
+            <view class="li-time" style="padding:5rpx 0 0 10rpx; width:34%">{{item.publish_time}}</view>
           </view>
           <view class="li-img">
             <image mode="aspectFill"  src="{{item.cover}}"></image>
@@ -147,10 +147,10 @@
       <view class="li">
       <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
         <view class="li-box">
-          <view class="li-con-title" style="width:80%;">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海
+          <view class="li-con-title" style="width:66%;">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海
           </view>
           <!-- <view class="heat-icon">置顶</view> -->
-          <view class="li-time"  style="padding-left: 10rpx; {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.create_time}}</view>
+          <view class="li-time"  style="padding:5rpx 0 0 10rpx; width:34%">{{item.create_time}}</view>
         </view>
         <view class="li-img">
           <view class="item-box ">
@@ -224,9 +224,9 @@
         <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
           <view class="li-box">
             
-              <view class="li-con-title" style="width:80%;">{{item.title}}</view>
+              <view class="li-con-title" style="width:66%;">{{item.title}}</view>
              
-            <view class="li-time" style="padding-left: 10rpx; {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.publish_time}}</view>
+            <view class="li-time" style="padding:5rpx 0 0 10rpx; width:34%">{{item.publish_time}}</view>
           </view>
           <view class="li-img">
             <image mode="aspectFill"  src="{{item.cover}}"></image>
@@ -266,10 +266,10 @@
       <view class="li">
       <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
         <view class="li-box">
-          <view class="li-con-title" style="width:80%;">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海
+          <view class="li-con-title" style="width:66%;">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海
 </view>
           <!-- <view class="heat-icon">置顶</view> -->
-          <view class="li-time"  style="padding-left: 10rpx; {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.create_time}}</view>
+          <view class="li-time"  style="padding:5rpx 0 0 10rpx; width:34%">{{item.create_time}}</view>
         </view>
         <view class="li-img">
           <view class="item-box ">
@@ -342,8 +342,8 @@
       <view class="li">
         <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
           <view class="li-box">
-              <view class="li-con-title" style="width:80%;">{{item.title}}</view>
-            <view class="li-time" style="padding-left: 10rpx; {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.publish_time}}</view>
+              <view class="li-con-title" style="width:66%;">{{item.title}}</view>
+            <view class="li-time" style="padding:5rpx 0 0 10rpx;width:34%">{{item.publish_time}}</view>
           </view>
           <view class="li-img">
             <image mode="aspectFill"  src="{{item.cover}}"></image>

@@ -256,7 +256,7 @@ Page({
       page: this.data.page + 1
     })
     if (this.data.categoryid == 1){
-      this.List(this.data.ids, this.data.page)
+      this.List(this.data.page,this.data.ids)
     }else{
       this.videoList(this.data.page, this.data.ids)
     }
