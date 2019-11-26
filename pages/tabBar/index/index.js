@@ -184,6 +184,10 @@ Page({
   //文章点赞
   Fabulous(e){
     let { id, zan} = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: '/pages/index/details/details?id='+id,
+    })
+    return
     if (zan == 1){
       util.showToast('您不能重复点赞','none')
       return;
@@ -219,6 +223,10 @@ Page({
   //视频点赞
   FabulousV(e){
     let { id, zan } = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: '/pages/video/details/details?id='+id,
+    })
+    return
     if(zan==1){
       util.showToast('您不能重复点赞', 'none')
       return 
