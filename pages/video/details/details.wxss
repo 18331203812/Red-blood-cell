@@ -103,7 +103,7 @@
   /* align-items: center; */
   padding: 15rpx 23rpx;
   background: #f2f3f5;
-  width: 65%;
+  width: 55%;
   border-radius: 10rpx;
   position: relative;
   overflow: hidden;
@@ -117,6 +117,8 @@ margin-right: 10rpx;
 .footer-ul{
   display: flex;
   align-items: center;
+  width: 45%;
+  justify-content: space-around;
 }
 .footer-li{
   height: 100%;

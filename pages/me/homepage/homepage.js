@@ -133,6 +133,10 @@ Page({
   //文章点赞
   Fabulous(e) {
     let { id, zan } = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: '/pages/index/details/details?id=' + id,
+    }) 
+    return
     if (zan == 1) {
       util.showToast('您不能重复点赞', 'none')
       return;
@@ -168,6 +172,10 @@ Page({
   //视频点赞
   FabulousV(e) {
     let { id, zan } = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: '/pages/video/details/details?id=' + id,
+    })
+    return
     if (zan == 1) {
       util.showToast('您不能重复点赞', 'none')
       return
@@ -224,7 +232,34 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1]; //当前页面
+    let { fabulousStatus, fabulousid } = currPage.data;
+    if (fabulousid) {
+      if (fabulousStatus == 'list') {
+        let { list } = this.data;
+        for (let i in list) {
+          if (list[i].id == fabulousid) {
+            list[i].is_zan = list[i].is_zan == 1 ? 0 : 1
+            list[i].zan_count = list[i].is_zan == 1 ? list[i].zan_count + 1 : list[i].zan_count - 1
+          }
+        }
+        this.setData({
+          list,
+        })
+      } else if (fabulousStatus == 'video') {
+        let { video } = this.data;
+        for (let i in video) {
+          if (video[i].id == id) {
+            video[i].is_zan = video[i].is_zan == 1 ? 0 : 1
+            video[i].zan_count = video[i].is_zan == 1 ? video[i].zan_count + 1 : video[i].zan_count - 1
+          }
+        }
+        this.setData({
+          video: video,
+        })
+      }
+    }
   },
 
   /**

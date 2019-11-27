@@ -231,6 +231,12 @@ Page({
           status: true,
           text: "评论点赞+" + res.data.point + "积分"
         })
+        var pages = getCurrentPages();
+        var prevPage = pages[pages.length - 2]; //上一个页面
+        prevPage.setData({
+          fabulousid: id,
+          fabulousStatus: "video"
+        })
         setTimeout(() => {
           this.setData({
             status: false,
@@ -250,7 +256,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2]; //上一个页面
+    prevPage.setData({
+      fabulousid: '',
+      fabulousStatus: ""
+    })
   },
 
   /**

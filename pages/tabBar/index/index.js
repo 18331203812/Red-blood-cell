@@ -304,7 +304,34 @@ Page({
     } else {
       wx.setStorageSync("returnsIndex", false)
     }
-    
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1]; //当前页面
+    let { fabulousStatus, fabulousid} = currPage.data;
+    if (fabulousid){
+      if (fabulousStatus == 'list'){
+        let { list } = this.data;
+        for (let i in list) {
+          if (list[i].id == fabulousid) {
+            list[i].is_zan = list[i].is_zan == 1 ? 0 : 1
+            list[i].zan_count = list[i].is_zan == 1 ? list[i].zan_count + 1 : list[i].zan_count - 1
+          }
+        }
+        this.setData({
+          list,
+        })
+      } else if (fabulousStatus == 'video'){
+        let { video } = this.data;
+        for (let i in video) {
+          if (video[i].id == id) {
+            video[i].is_zan = video[i].is_zan == 1 ? 0 : 1
+            video[i].zan_count = video[i].is_zan == 1 ? video[i].zan_count + 1 : video[i].zan_count - 1
+          }
+        }
+        this.setData({
+          video: video,
+        })
+      }
+    }
   },
   //获取搜索文字
   Search(e){  

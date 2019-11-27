@@ -67,7 +67,7 @@
       <view class="writing-icon"></view>
       <textarea class="footer-input" 	fixed adjust-position	 cursor-spacing='16' bindfocus='input' bindblur='inputs' bindinput="GetInputCon" placeholder="我来说两句"  placeholder-class="footer-inputs"  value="{{inputValue}}"></textarea>
     </view>
-    <view class="footer-ul">
+    <view class="footer-ul" style="{{isShow  ? 'width:20%;' : ''}}">
     <block wx:if="{{isShow}}">
       <button class="submit" bindtap="Submit">发送</button>
     </block>

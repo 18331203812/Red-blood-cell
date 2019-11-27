@@ -117,6 +117,8 @@ margin-right: 10rpx;
 .footer-ul{
   display: flex;
   align-items: center;
+  width: 45%;
+  justify-content: space-around;
 }
 .footer-li{
   height: 100%;

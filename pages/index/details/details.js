@@ -209,6 +209,12 @@ Page({
         status: true,
         text: "文章点赞+" + res.data.point + "积分"
       })
+      var pages = getCurrentPages();
+      var prevPage = pages[pages.length - 2]; //上一个页面
+      prevPage.setData({
+        fabulousid: id,
+        fabulousStatus: "list"
+      })
       setTimeout(()=>{
         this.setData({
           status: false,
@@ -435,7 +441,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2]; //上一个页面
+    prevPage.setData({
+      fabulousid: '',
+      fabulousStatus: ""
+    })
   },
 
   /**
@@ -449,7 +460,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    console.log('.')
     wx.setStorageSync("returnsIndex", true)
   },
 
