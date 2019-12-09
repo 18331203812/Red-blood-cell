@@ -99,7 +99,7 @@ App({
         },
         {
           "pagePath": "/pages/tabBar/video/video",
-          "text": "学习",
+          "text": "视频",
           "iconPath": "/images/tabBar/video.png",
           "selectedIconPath": "/images/tabBar/videos.png"
         },

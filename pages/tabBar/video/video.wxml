@@ -10,11 +10,8 @@
 <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
   <view class="li">
       <view class="li-box">
-        <view class="li-con-title">{{item.title}}</view>
-        <block wx:if='{{item.is_top == 1}}'>
-          <!-- <view class="heat-icon">置顶</view> -->
-        </block>
-        <view class="li-time" style="padding-left: 10rpx;">{{item.publish_time}}</view>
+        <view class="li-con-title" style="width:100%">{{item.title}}</view>
+       
       </view>
       <view class="li-img">
         <view class="item-box " >
@@ -34,6 +31,7 @@
       
         <view class="li-footer">
           <view class="li-con-address">{{item.author}}</view>
+           <view class="li-time" style="padding-left: 10rpx;">{{item.publish_time}}</view>
           <view class="li-icon">
             <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
             <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>

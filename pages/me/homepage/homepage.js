@@ -22,7 +22,9 @@ Page({
     isShow: false,
     ids:"",
     categoryid:1,
-    name:""
+    name:"",
+    newsid:"",
+    videoid:""
   },
   Category(e){
     let id = e.currentTarget.dataset.id;
@@ -46,12 +48,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.List(1,options.action_id)
     this.setData({
       ids: options.action_id,
       iSstatus: options.status,
-      name: options.name
+      name: options.name,
+      newsid: options.newid,
+      videoid: options.videoid
     })
+    this.List(1,options.action_id)
+    
   },
   videoList(page,id){
     _http.request({
@@ -60,7 +65,8 @@ Page({
       data:{
         page: page,
         pagesize: 10,
-        action_id:id
+        action_id:id,
+        video_id: this.data.videoid
       }
     }).then(res=>{
       console.log(res)
@@ -88,7 +94,8 @@ Page({
       data:{
         page: page,
         pagesize:10,
-        action_id:id
+        action_id:id,
+        news_id: this.data.newsid
       }
     }).then(res=>{
       console.log(res)

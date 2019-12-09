@@ -76,7 +76,7 @@ Page({
         utils.showToast('不需要重复报名','none')
       } else if (res.code == 200){
         wx.navigateTo({
-          url: '/pages/activity/enterFor/enterFor?id=' + id + '&point=' + this.data.details.point,
+          url: '/pages/activity/enterFor/enterFor?scene=' + id + '&point=' + this.data.details.point,
         })
       }
     })

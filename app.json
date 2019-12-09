@@ -1,30 +1,52 @@
 {
   "pages": [
     "pages/tabBar/index/index",
-    "pages/login/login/login",
-    "pages/index/address/address",
-    "pages/index/details/details",
-    "pages/tabBar/me/me",
-    "pages/me/personal/personal",
-    "pages/me/phone/phone",
-    "pages/me/recordDetails/recordDetails",
-    "pages/me/record/record",
-    "pages/me/ginseng/ginseng",
-    "pages/me/about/about",
-    "pages/me/agreement/agreement",
-    "pages/tabBar/integral/integral",
-    "pages/integral/task/task",
-    "pages/integral/Mypoints/Mypoints",
-    "pages/integral/goods/goods",
-    "pages/tabBar/activity/activity",
-    "pages/activity/enterForSuccess/enterForSuccess",
-    "pages/activity/enterFor/enterFor",
-    "pages/activity/details/details",
     "pages/tabBar/video/video",
+    "pages/login/login/login",
+    "pages/tabBar/me/me",
+    "pages/tabBar/integral/integral",
+    "pages/tabBar/activity/activity",
     "pages/video/details/details",
     "pages/addresses/addresses",
-    "pages/address/address",
-    "pages/me/homepage/homepage"
+    "pages/address/address"
+  ],
+  "subpackages": [
+    {
+      "root": "pages/index",
+      "pages": [
+        "address/address",
+        "details/details"
+      ]
+    },
+    {
+      "root": "pages/me",
+      "pages": [
+        "personal/personal",
+        "phone/phone",
+        "recordDetails/recordDetails",
+        "record/record",
+        "ginseng/ginseng",
+        "about/about",
+        "agreement/agreement",
+        "homepage/homepage"
+      ]
+    },
+    {
+      "root": "pages/integral",
+      "pages": [
+        "task/task",
+        "Mypoints/Mypoints",
+        "goods/goods"
+      ]
+    },
+    {
+      "root": "pages/activity",
+      "pages": [
+        "enterForSuccess/enterForSuccess",
+        "enterFor/enterFor",
+        "details/details"
+      ]
+    }
   ],
   "usingComponents": {
     "frame": "component/frame/frame"

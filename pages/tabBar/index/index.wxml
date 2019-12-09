@@ -3,7 +3,7 @@
   <view class="Navs-title">首页</view>
   <navigator url="/pages/index/address/address" hover-class="none">
    <view class="address">
-       <image class="address-img" mode="aspectFill" src="../../../images/index/address.png"></image>
+       <image class="address-img" lazy-load	 mode="aspectFill" src="../../../images/index/address.png"></image>
        苏州
     </view>
   </navigator>
@@ -31,16 +31,17 @@
       <view class="li">
       <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
         <view class="li-box">
-          <view class="li-con-title" style="width:66%;">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海</view>
+          <view class="li-con-title" style="width:100%">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海</view>
           <!-- <view class="heat-icon">置顶</view> -->
-          <view class="li-time"  style="padding:5rpx 0 0 10rpx; width:34%">{{item.create_time}}</view>
+          
+
         </view>
         <view class="li-img">
           <view class="item-box ">
             <!-- 视频图片层 -->
             <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
               <view class="video-cover-box">
-                <image class="video-image" src="{{item.cover}}" mode="aspectFit">
+                <image class="video-image" lazy-load	 src="{{item.cover}}" mode="aspectFit">
                 </image>
               </view>
               <!-- 视频按钮 -->
@@ -53,6 +54,7 @@
       </navigator>
           <view class="li-footer">
             <view class="li-con-address">{{item.author}}</view>
+            <view class="li-time"  style="padding:5rpx 0 0 10rpx; width:{{m1.str(item.create_time) < 3 ? '10%;' :'34%'}}">{{item.create_time}}</view>
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
@@ -74,11 +76,11 @@
         <view class="li">
           <view class="li-box">
             <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none" >
-              <image class="li-box-img" style='height:190rpx;' mode="aspectFill" src="{{item.cover}}"></image>
+              <image class="li-box-img" lazy-load	 style='height:190rpx;' mode="aspectFill" src="{{item.cover}}"></image>
             </navigator>
             <view class="li-con">
               <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
-                    <view class="li-con-title" style="width:80%;">{{item.title}}</view>
+                    <view class="li-con-title" style="width:100%;">{{item.title}}</view>
                 <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
               </navigator>
               <view class="li-footer">
@@ -106,17 +108,17 @@
       <view class="li">
         <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
           <view class="li-box">
-              <view class="li-con-title" style="width:66%;text-indent: -10rpx;">{{item.title}}</view>
-            <view class="li-time" style="padding:5rpx 0 0 10rpx; width:34%">{{item.publish_time}}</view>
+             <view class="li-con-title" style="width:100%">{{item.title}}</view>
           </view>
           <view class="li-img">
-            <image mode="aspectFill"  src="{{item.cover}}"></image>
-            <image mode="aspectFill"  src="{{item.cover2}}"></image>
-            <image mode="aspectFill"  src="{{item.cover3}}"></image>
+            <image mode="aspectFill" lazy-load	 src="{{item.cover}}"></image>
+            <image mode="aspectFill" lazy-load	 src="{{item.cover2}}"></image>
+            <image mode="aspectFill" lazy-load	 src="{{item.cover3}}"></image>
           </view>
         </navigator>
           <view class="li-footer">
             <view class="li-con-address">{{item.street_title}}</view>
+            <view class="li-time" style="padding:5rpx 0 0 10rpx; width:{{m1.str(item.publish_time) < 3 ? '10%;' :'34%'}}">{{item.publish_time}}</view>
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
@@ -147,17 +149,15 @@
       <view class="li">
       <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
         <view class="li-box">
-          <view class="li-con-title" style="width:66%;">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海
-          </view>
+         <view class="li-con-title" style="width:100%">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海</view>
           <!-- <view class="heat-icon">置顶</view> -->
-          <view class="li-time"  style="padding:5rpx 0 0 10rpx; width:34%">{{item.create_time}}</view>
         </view>
         <view class="li-img">
           <view class="item-box ">
             <!-- 视频图片层 -->
             <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
               <view class="video-cover-box">
-                <image class="video-image" src="{{item.cover}}" mode="aspectFit">
+                <image class="video-image" lazy-load	 src="{{item.cover}}" mode="aspectFit">
                 </image>
               </view>
               <!-- 视频按钮 -->
@@ -170,6 +170,7 @@
       </navigator>
           <view class="li-footer">
             <view class="li-con-address">{{item.author}}</view>
+            <view class="li-time"  style="padding:5rpx 0 0 10rpx; width:{{m1.str(item.create_time) < 3 ? '10%;' :'34%'}}">{{item.create_time}}</view>
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
@@ -191,11 +192,11 @@
         <view class="li">
           <view class="li-box">
             <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none" >
-              <image class="li-box-img" style='height:190rpx;' mode="aspectFill" src="{{item.cover}}"></image>
+              <image class="li-box-img" lazy-load	 style='height:190rpx;' mode="aspectFill" src="{{item.cover}}"></image>
             </navigator>
             <view class="li-con">
               <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
-                    <view class="li-con-title" style="width:80%;">{{item.title}}</view>
+                <view class="li-con-title" style="width:100%;">{{item.title}}</view>
                 <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
               </navigator>
               <view class="li-footer">
@@ -223,19 +224,17 @@
       <view class="li">
         <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
           <view class="li-box">
-            
-              <view class="li-con-title" style="width:66%;">{{item.title}}</view>
-             
-            <view class="li-time" style="padding:5rpx 0 0 10rpx; width:34%">{{item.publish_time}}</view>
+            <view class="li-con-title" style="width:100%">{{item.title}}</view>
           </view>
           <view class="li-img">
-            <image mode="aspectFill"  src="{{item.cover}}"></image>
-            <image mode="aspectFill"  src="{{item.cover2}}"></image>
-            <image mode="aspectFill"  src="{{item.cover3}}"></image>
+            <image mode="aspectFill" lazy-load	 src="{{item.cover}}"></image>
+            <image mode="aspectFill" lazy-load	 src="{{item.cover2}}"></image>
+            <image mode="aspectFill"  lazy-load	 src="{{item.cover3}}"></image>
           </view>
         </navigator>
           <view class="li-footer">
             <view class="li-con-address">{{item.street_title}}</view>
+            <view class="li-time" style="padding:5rpx 0 0 10rpx; width:{{m1.str(item.publish_time) < 3 ? '10%;' :'34%'}}">{{item.publish_time}}</view>
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
@@ -266,17 +265,16 @@
       <view class="li">
       <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
         <view class="li-box">
-          <view class="li-con-title" style="width:66%;">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海
-</view>
+          <view class="li-con-title" style="width:100%">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海</view>
           <!-- <view class="heat-icon">置顶</view> -->
-          <view class="li-time"  style="padding:5rpx 0 0 10rpx; width:34%">{{item.create_time}}</view>
+          
         </view>
         <view class="li-img">
           <view class="item-box ">
             <!-- 视频图片层 -->
             <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
               <view class="video-cover-box">
-                <image class="video-image" src="{{item.cover}}" mode="aspectFit">
+                <image class="video-image" lazy-load	 src="{{item.cover}}" mode="aspectFit">
                 </image>
               </view>
               <!-- 视频按钮 -->
@@ -289,6 +287,7 @@
       </navigator>
           <view class="li-footer">
             <view class="li-con-address">{{item.author}}</view>
+            <view class="li-time"  style="padding:5rpx 0 0 10rpx; width:{{m1.str(item.create_time) < 3 ? '10%;' :'34%'}}">{{item.create_time}}</view>
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
@@ -310,11 +309,11 @@
         <view class="li">
           <view class="li-box">
             <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none" >
-              <image class="li-box-img" style='height:190rpx;' mode="aspectFill" src="{{item.cover}}"></image>
+              <image class="li-box-img" lazy-load	 style='height:190rpx;' mode="aspectFill" src="{{item.cover}}"></image>
             </navigator>
             <view class="li-con">
               <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
-                    <view class="li-con-title" style="width:80%;">{{item.title}}</view>
+                    <view class="li-con-title" style="width:95%;">{{item.title}}</view>
                 <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
               </navigator>
               <view class="li-footer">
@@ -342,17 +341,17 @@
       <view class="li">
         <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
           <view class="li-box">
-              <view class="li-con-title" style="width:66%;">{{item.title}}</view>
-            <view class="li-time" style="padding:5rpx 0 0 10rpx;width:34%">{{item.publish_time}}</view>
+              <view class="li-con-title" style="width:100%">{{item.title}}</view>
           </view>
           <view class="li-img">
-            <image mode="aspectFill"  src="{{item.cover}}"></image>
-            <image mode="aspectFill"  src="{{item.cover2}}"></image>
-            <image mode="aspectFill"  src="{{item.cover3}}"></image>
+            <image mode="aspectFill" lazy-load	 src="{{item.cover}}"></image>
+            <image mode="aspectFill" lazy-load	 src="{{item.cover2}}"></image>
+            <image mode="aspectFill" lazy-load	 src="{{item.cover3}}"></image>
           </view>
         </navigator>
           <view class="li-footer">
             <view class="li-con-address">{{item.street_title}}</view>
+            <view class="li-time" style="padding:5rpx 0 0 10rpx; width:{{m1.str(item.publish_time) < 3 ? '10%;' :'34%'}}">{{item.publish_time}}</view>
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>

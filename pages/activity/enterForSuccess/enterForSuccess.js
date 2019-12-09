@@ -16,8 +16,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.DetailsSuccess(options.id)
-    this.Details(options.id)
+    console.log(options)
+    this.DetailsSuccess(options.scene)
+    this.Details(options.scene)
     this.User();
   },
   Details(id) {

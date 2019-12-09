@@ -28,31 +28,23 @@
   </view>
 </view>
 <view class="main">
-  <!-- <navigator url="/pages/integral/Mypoints/Mypoints" hover-class="none">  -->
     <view class="main-li" bindtap="Navigators" data-id="1">
       我的积分
       <view class="go">去签到 <view class="more-icon"></view></view>
     </view>
-  <!-- </navigator> -->
-  <!-- <navigator url="/pages/me/ginseng/ginseng" hover-class="none"> -->
     <view class="main-li" bindtap="Navigators" data-id="2">
       我的参与
       <!-- {{details.join_count}} -->
       <view class="go" style="color:#333;"><view class="more-icon"></view></view>
     </view>
-  <!-- </navigator> -->
-  <!-- <navigator url="/pages/me/record/record" hover-class="none"> -->
-    <view class="main-li" bindtap="Navigators" data-id="3">
+    <!-- <view class="main-li" bindtap="Navigators" data-id="3">
       兑换记录
       <view class="more-icon"></view>
-    </view>
-  <!-- </navigator> -->
-  <!-- <navigator url="/pages/me/personal/personal" hover-class="none"> -->
+    </view> -->
     <view class="main-li" bindtap="Navigators" data-id="4">
       我的信息
       <view class="more-icon"></view>
     </view>
-  <!-- </navigator> -->
 </view>
 <frame status='Unauthorized' isShow='{{isShow}}' bind:_cancel='Cancel'></frame>
 <tabBar  tabbar="{{tabbar}}"></tabBar>
