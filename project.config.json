@@ -47,6 +47,10 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 3,
 			"list": [
@@ -75,6 +79,14 @@
 					"id": -1,
 					"name": "视频",
 					"pathName": "pages/tabBar/video/video",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/me/homepage/homepage",
+					"pathName": "pages/me/homepage/homepage",
+					"query": "action_id=10010&newid=36&status=new&name=吴门桥街道",
 					"scene": null
 				}
 			]

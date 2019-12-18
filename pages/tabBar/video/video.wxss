@@ -1,6 +1,7 @@
 .li{
   width: 100%;
   padding: 35rpx  33rpx 0 33rpx;
+  border-bottom: 1rpx solid #e3e3e3;
 }
 .li-box{
   display: flex;

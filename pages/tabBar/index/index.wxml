@@ -76,11 +76,11 @@
         <view class="li">
           <view class="li-box">
             <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none" >
-              <image class="li-box-img" lazy-load	 style='height:190rpx;' mode="aspectFill" src="{{item.cover}}"></image>
+              <image class="li-box-img" lazy-load style='height:190rpx;' mode="aspectFill" src="{{item.cover}}"></image>
             </navigator>
             <view class="li-con">
               <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
-                    <view class="li-con-title" style="width:100%;">{{item.title}}</view>
+                <view class="li-con-title" style="width:100%;">{{item.title}}</view>
                 <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
               </navigator>
               <view class="li-footer">

@@ -7,7 +7,7 @@
   <view  style="padding-top:100rpx;">
    <swiper style='height:96vh;overflow:scroll;position:relative' duration='500'  bindchange="bindChange" current='{{currentTab}}'>
     <swiper-item style='height:100%;'>
-      <scroll-view  scroll-y="true" style="display: flex; z-index: 100; height: 100%;position: absolute;" bindscrolltolower="lower"  >        <activity list='{{list}}' statusurl='true' type='{{ids == 2 ? true : false}}' url='{{ids ==3 ? "/pages/activity/details/details" : "/pages/activity/enterForSuccess/enterForSuccess" }}'></activity>
+      <scroll-view  scroll-y="true" style="display: flex; z-index: 100; height: 100%;position: absolute;" bindscrolltolower="lower"  >        <activity list='{{list}}' type='{{ids == 2 ? true : false}}' url='{{ids ==3 ? "/pages/activity/details/details" : "/pages/activity/enterForSuccess/enterForSuccess" }}'></activity>
     <block wx:if="{{isPage}}">
         <page pageText='没有我的参与' pageStatus='activity'></page>
     </block>
@@ -15,7 +15,7 @@
       </scroll-view>
      </swiper-item>
      <swiper-item style='height:100%;'>
-      <scroll-view  scroll-y="true" style="display: flex; z-index: 100; height: 100%;position: absolute;" bindscrolltolower="lower"  >        <activity list='{{list}}' statusurl='true' type='{{ids == 2 ? true : false}}' url='{{ids ==3 ? "/pages/activity/details/details" : "/pages/activity/enterForSuccess/enterForSuccess" }}'></activity>
+      <scroll-view  scroll-y="true" style="display: flex; z-index: 100; height: 100%;position: absolute;" bindscrolltolower="lower"  >        <activity list='{{list}}'  type='{{ids == 2 ? true : false}}' url='{{ids ==3 ? "/pages/activity/details/details" : "/pages/activity/enterForSuccess/enterForSuccess" }}'></activity>
     <block wx:if="{{isPage}}">
         <page pageText='没有我的参与' pageStatus='activity'></page>
     </block>
@@ -23,7 +23,7 @@
       </scroll-view>
      </swiper-item>
      <swiper-item style='height:100%;'>
-      <scroll-view  scroll-y="true" style="display: flex; z-index: 100; height: 100%;position: absolute;" bindscrolltolower="lower"  >        <activity list='{{list}}' statusurl='true' type='{{ids == 2 ? true : false}}' url='{{ids ==3 ? "/pages/activity/details/details" : "/pages/activity/enterForSuccess/enterForSuccess" }}'></activity>
+      <scroll-view  scroll-y="true" style="display: flex; z-index: 100; height: 100%;position: absolute;" bindscrolltolower="lower"  >        <activity list='{{list}}' statusurl  type='{{ids == 2 ? true : false}}' url='{{ids ==3 ? "/pages/activity/details/details" : "/pages/activity/enterForSuccess/enterForSuccess" }}'></activity>
     <block wx:if="{{isPage}}">
         <page pageText='没有我的参与' pageStatus='activity'></page>
     </block>

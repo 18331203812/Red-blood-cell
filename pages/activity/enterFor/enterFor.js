@@ -10,7 +10,8 @@ Page({
     data:{},
     point:"",
     activity_id:"",
-    isBut:true
+    isBut:true,
+    obj:{}
   },
 
   /**
@@ -21,7 +22,8 @@ Page({
     this.User();
     this.setData({
       point: options.point,
-      activity_id: options.id
+      activity_id: options.scene,
+      obj: JSON.parse(options.data)
     })
   },
   //获取个人信息
@@ -86,7 +88,7 @@ Page({
           isBut: false
         })
         wx.navigateTo({
-          url: '/pages/activity/enterForSuccess/enterForSuccess?id=' + this.data.activity_id,
+          url: '/pages/activity/enterForSuccess/enterForSuccess?scene=' + this.data.activity_id + '&cover=' + this.data.obj.cover +'&num='+this.data.obj.num,
         })
       }
     })

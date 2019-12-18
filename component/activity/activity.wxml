@@ -1,7 +1,7 @@
 <view class="main">
   <block wx:for='{{list}}' wx:key='index' wx:for-item='item'>
   <!-- pages/activity/enterForSuccess/enterForSuccess -->
-    <navigator url="{{url}}?scene={{statusurl ? item.activity_id : item.id}}&status={{item.limit_title}}&status_title={{item.status_title}}" hover-class="none">
+    <navigator url="{{url}}?scene={{statusurl ? item.activity_id : item.id}}&status={{item.limit_title}}&num={{item.number - item.enroll}}&status_title={{item.status_title}}&cover={{item.cover}}" hover-class="none">
       <view class="li">
         <view class="li-box">
           <image class="li-img"  mode="aspectFill" src="{{item.cover}}"></image>

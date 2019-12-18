@@ -18,7 +18,11 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.DetailsSuccess(options.scene)
-    this.Details(options.scene)
+    // this.Details(options.scene)
+    this.setData({
+      [`details.cover`]: options.cover,
+      [`details.enroll`]: options.num
+    })
     this.User();
   },
   Details(id) {

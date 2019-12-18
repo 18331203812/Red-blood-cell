@@ -20,7 +20,8 @@ Page({
     imgshare:"", //生成海报链接
     status_title:"",//是否已结束
     isIphoneX: app.globalData.systemInfo.models ? true : false,
-    imgshareBut:false
+    imgshareBut:false,
+    scene:""
   },
 
   /**
@@ -30,10 +31,11 @@ Page({
     if (options.status){
       this.setData({
         limit_text: options.status,
-        status_title: options.status_title || ''
+        status_title: options.status_title || '',
+        scene: options.scene
       })
     }
-    this.Details(options.scene)
+    
   },
   Details(id){
     _http.request({
@@ -75,8 +77,11 @@ Page({
       }else if(res.data.code == 7002){
         utils.showToast('不需要重复报名','none')
       } else if (res.code == 200){
+        let obj={}
+        obj.cover = this.data.details.cover 
+        obj.num = this.data.details.number - this.data.details.enroll
         wx.navigateTo({
-          url: '/pages/activity/enterFor/enterFor?scene=' + id + '&point=' + this.data.details.point,
+          url: '/pages/activity/enterFor/enterFor?scene=' + id + '&point=' + this.data.details.point + '&data='+JSON.stringify(obj),
         })
       }
     })
@@ -132,6 +137,7 @@ Page({
         })
       },
     })
+    this.Details(this.data.scene)
   },
   //收藏
   isCollection(e) {
