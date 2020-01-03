@@ -11,8 +11,8 @@
 <!-- tabbar -->
 <view class="nav" style="top:{{navHeight}}px;">
   <view class="tabbar">
-    <view class="tabbar-li {{type == 1 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="1">社群</view>
-    <view class="tabbar-li {{type == 2 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="2">街道</view>
+    <view class="tabbar-li {{type == 1 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="1">街道</view>
+    <view class="tabbar-li {{type == 2 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="2">社群</view>
     <view class="tabbar-li {{type == 3 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="3">同城</view>
   </view>
   <view class="search">

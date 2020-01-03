@@ -111,12 +111,12 @@
   height: 100%;
 }
 .li-box-img{
-  width: 230rpx;
+  width: 220rpx;
   height: auto;
   display: block;
 }
 .li-con{
-  width: 62%;
+  width: 65%;
 }
 .li-con-title{
   font-size: 30rpx;

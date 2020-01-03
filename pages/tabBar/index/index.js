@@ -151,7 +151,7 @@ Page({
       data:{
         page:page,
         pagesize: this.data.pagesize,
-        type:this.data.type,
+        type: this.data.type == '1' ? '2' : (this.data.type == '2' ? '1' : this.data.type),
         community_id: this.data.community
       }
     }).then(res=>{
@@ -281,9 +281,13 @@ Page({
         this.setData({
           community: address.addressdata.id,
           page:1,
+          list: [], //新闻
+          pagesize: 10,
+          video: [], //视频
         })
         this.List(1)
         console.log("刷新")
+        return
       }else{
         console.log("不刷新")
       }

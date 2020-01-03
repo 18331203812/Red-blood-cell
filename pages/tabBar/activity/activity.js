@@ -84,7 +84,7 @@ Page({
       data:{
         page:page,
         pagesize:this.data.pagesize,
-        type:this.data.ids
+        type: this.data.ids == '1' ? '2' : (this.data.ids == '2' ? '1' : this.data.ids)
       }
     }).then(res=>{
       let data=res.data.list;

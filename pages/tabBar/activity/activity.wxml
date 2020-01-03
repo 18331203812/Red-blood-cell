@@ -1,7 +1,7 @@
 <view class="nav" >
   <view class="tabbar">
-    <view class="tabbar-li  {{ids == 1 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="1">社群</view>
-    <view class="tabbar-li  {{ids == 2 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="2">街道</view>
+    <view class="tabbar-li  {{ids == 1 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="1">街道</view>
+    <view class="tabbar-li  {{ids == 2 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="2">社群</view>
     <view class="tabbar-li  {{ids == 3 ? 'tabBar-category' : ''}}" bindtap="Category" data-id="3">同城</view>
   </view>
   <view class="search">
