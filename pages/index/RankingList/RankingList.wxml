@@ -1,0 +1,70 @@
+<view class='nav'>
+  <view class="nav-tabBar">
+    <view class="nav-tabBar-li category">月度排名</view>
+    <view class="nav-tabBar-li">年度排名</view>
+    <view class="nav-tabBar-li">累计排名</view>
+  </view>
+  <view class="ranking">
+      <view class="ranking-box">
+        <view class="ranking-box-li">
+          <view class="ranking-li-img">
+            <image class="ranking-li-img-head" lazy-load	 src="https://image.redxibao.com/49dcf32311dd3c43/c96025ffdab1e521.jpg?x-oss-process=image/resize,h_500" mode="aspectFill"></image>
+            <image class="ranking-li-img-footer" src="../../../images/index/no2.png"></image>
+          </view>
+          <view class="ranking-box-li-title">吴门桥社区吴门桥社区吴门桥社区</view>
+          <view class="ranking-box-li-text">月发123篇</view>
+        </view>
+        <view class="ranking-box-li ranking-box-position">
+          <view class="ranking-li-img">
+            <image class="ranking-li-img-head" lazy-load style="width:100rpx;height:100rpx;"	 src="https://image.redxibao.com/49dcf32311dd3c43/c96025ffdab1e521.jpg?x-oss-process=image/resize,h_500" mode="aspectFill"></image>
+            <image class="ranking-li-img-footer" style="width:130rpx;height:40rpx;" src="../../../images/index/no1.png"></image>
+          </view>
+          <view class="ranking-box-li-title">吴门桥社区吴门桥社区吴门桥社区</view>
+          <view class="ranking-box-li-text">月发123篇</view>
+        </view>
+        <view class="ranking-box-li">
+          <view class="ranking-li-img">
+            <image class="ranking-li-img-head" lazy-load	 src="https://image.redxibao.com/49dcf32311dd3c43/c96025ffdab1e521.jpg?x-oss-process=image/resize,h_500" mode="aspectFill"></image>
+            <image class="ranking-li-img-footer" src="../../../images/index/no3.png"></image>
+          </view>
+          <view class="ranking-box-li-title">吴门桥社区吴门桥社区吴门桥社区</view>
+          <view class="ranking-box-li-text">月发123篇</view>
+        </view>
+      </view>
+    </view>
+    <view class="nav-footer"></view>
+</view>
+<view class="main">
+  <view class="main-box">
+    <view class="box-li">
+      <view class="box-num">4</view>
+      <view class="box-con">
+        <image class="box-con-img" lazy-load	   src="https://image.redxibao.com/49dcf32311dd3c43/c96025ffdab1e521.jpg?x-oss-process=image/resize,h_500"></image>
+        <view class="box-head">
+          <view class="box-name">唏哩吧啦社区</view>
+          <view class="box-text">月发布文章96篇</view>
+        </view>
+      </view>
+    </view>
+    <view class="box-li">
+      <view class="box-num">4</view>
+      <view class="box-con">
+        <image class="box-con-img" lazy-load	   src="https://image.redxibao.com/49dcf32311dd3c43/c96025ffdab1e521.jpg?x-oss-process=image/resize,h_500"></image>
+        <view class="box-head">
+          <view class="box-name">唏哩吧啦社区</view>
+          <view class="box-text">月发布文章96篇</view>
+        </view>
+      </view>
+    </view>
+    <view class="box-li">
+      <view class="box-num">4</view>
+      <view class="box-con">
+        <image class="box-con-img" lazy-load	   src="https://image.redxibao.com/49dcf32311dd3c43/c96025ffdab1e521.jpg?x-oss-process=image/resize,h_500"></image>
+        <view class="box-head">
+          <view class="box-name">唏哩吧啦社区</view>
+          <view class="box-text">月发布文章96篇</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

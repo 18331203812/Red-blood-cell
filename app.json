@@ -15,7 +15,8 @@
       "root": "pages/index",
       "pages": [
         "address/address",
-        "details/details"
+        "details/details",
+        "RankingList/RankingList"
       ]
     },
     {

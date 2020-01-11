@@ -33,8 +33,6 @@
         <view class="li-box">
           <view class="li-con-title" style="width:100%">强国图志——中国经济是一片中国经济是一片大海强国图志——中国经济是一片中国经济是一片大海</view>
           <!-- <view class="heat-icon">置顶</view> -->
-          
-
         </view>
         <view class="li-img">
           <view class="item-box ">
@@ -70,6 +68,40 @@
           </view>
       </view>
     </block>
+    <view class="ranking">
+      <view class="ranking-head">
+        <view class="ranking-name">信息排行榜</view>
+        <navigator url="/pages/index/RankingList/RankingList" hover-class="none">
+          <view class="ranking-more">查看更多社区排名 <view class="more-icon" style="margin-bottom:4rpx;"></view></view>
+        </navigator>
+      </view>
+      <view class="ranking-box">
+        <view class="ranking-box-li">
+          <view class="ranking-li-img">
+            <image class="ranking-li-img-head" lazy-load	 src="https://image.redxibao.com/49dcf32311dd3c43/c96025ffdab1e521.jpg?x-oss-process=image/resize,h_500" mode="aspectFill"></image>
+            <image class="ranking-li-img-footer" src="../../../images/index/no2.png"></image>
+          </view>
+          <view class="ranking-box-li-title">吴门桥社区吴门桥社区吴门桥社区</view>
+          <view class="ranking-box-li-text">月发123篇</view>
+        </view>
+        <view class="ranking-box-li ranking-box-position">
+          <view class="ranking-li-img">
+            <image class="ranking-li-img-head" lazy-load style="width:100rpx;height:100rpx;"	 src="https://image.redxibao.com/49dcf32311dd3c43/c96025ffdab1e521.jpg?x-oss-process=image/resize,h_500" mode="aspectFill"></image>
+            <image class="ranking-li-img-footer" style="width:130rpx;height:40rpx;" src="../../../images/index/no1.png"></image>
+          </view>
+          <view class="ranking-box-li-title">吴门桥社区吴门桥社区吴门桥社区</view>
+          <view class="ranking-box-li-text">月发123篇</view>
+        </view>
+        <view class="ranking-box-li">
+          <view class="ranking-li-img">
+            <image class="ranking-li-img-head" lazy-load	 src="https://image.redxibao.com/49dcf32311dd3c43/c96025ffdab1e521.jpg?x-oss-process=image/resize,h_500" mode="aspectFill"></image>
+            <image class="ranking-li-img-footer" src="../../../images/index/no3.png"></image>
+          </view>
+          <view class="ranking-box-li-title">吴门桥社区吴门桥社区吴门桥社区</view>
+          <view class="ranking-box-li-text">月发123篇</view>
+        </view>
+      </view>
+    </view>
     <block wx:for='{{list}}' wx:key='index'>
     <!-- list 一张列表 -->
     <block wx:if='{{!item.cover2}}'>

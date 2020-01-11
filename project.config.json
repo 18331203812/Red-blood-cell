@@ -88,6 +88,12 @@
 					"pathName": "pages/me/homepage/homepage",
 					"query": "action_id=10010&newid=36&status=new&name=吴门桥街道",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "排行榜",
+					"pathName": "pages/index/RankingList/RankingList",
+					"scene": null
 				}
 			]
 		}
