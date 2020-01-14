@@ -24,8 +24,8 @@
 
 <!-- bindtouchstart="touchStart" bindtouchend="touchEnd" -->
 <view  >
-<swiper style='height:78vh;overflow:scroll;position:relative' duration='500'  bindchange="bindChange" current='{{currentTab}}'>
-  <swiper-item style='height:100%;'>
+<swiper style='height:78vh;overflow:scroll;position:relative'  duration='500'  bindchange="bindChange" current='{{currentTab}}'>
+  <swiper-item style='height:100%;' catchtouchmove='{{iSswiperList ? "catchTouchMove" :""}}'>
     <scroll-view style='height:{{height}}px'	 scroll-y="true" style="width:100%;height:100%" bindscrolltolower="lower"  >
     <block wx:for='{{video}}' wx:key='index'>
       <view class="li">
@@ -68,43 +68,11 @@
           </view>
       </view>
     </block>
-    <view class="ranking">
-      <view class="ranking-head">
-        <view class="ranking-name">信息排行榜</view>
-        <navigator url="/pages/index/RankingList/RankingList" hover-class="none">
-          <view class="ranking-more">查看更多社区排名 <view class="more-icon" style="margin-bottom:4rpx;"></view></view>
-        </navigator>
-      </view>
-      <view class="ranking-box">
-        <view class="ranking-box-li">
-          <view class="ranking-li-img">
-            <image class="ranking-li-img-head" lazy-load	 src="https://image.redxibao.com/49dcf32311dd3c43/c96025ffdab1e521.jpg?x-oss-process=image/resize,h_500" mode="aspectFill"></image>
-            <image class="ranking-li-img-footer" src="../../../images/index/no2.png"></image>
-          </view>
-          <view class="ranking-box-li-title">吴门桥社区吴门桥社区吴门桥社区</view>
-          <view class="ranking-box-li-text">月发123篇</view>
-        </view>
-        <view class="ranking-box-li ranking-box-position">
-          <view class="ranking-li-img">
-            <image class="ranking-li-img-head" lazy-load style="width:100rpx;height:100rpx;"	 src="https://image.redxibao.com/49dcf32311dd3c43/c96025ffdab1e521.jpg?x-oss-process=image/resize,h_500" mode="aspectFill"></image>
-            <image class="ranking-li-img-footer" style="width:130rpx;height:40rpx;" src="../../../images/index/no1.png"></image>
-          </view>
-          <view class="ranking-box-li-title">吴门桥社区吴门桥社区吴门桥社区</view>
-          <view class="ranking-box-li-text">月发123篇</view>
-        </view>
-        <view class="ranking-box-li">
-          <view class="ranking-li-img">
-            <image class="ranking-li-img-head" lazy-load	 src="https://image.redxibao.com/49dcf32311dd3c43/c96025ffdab1e521.jpg?x-oss-process=image/resize,h_500" mode="aspectFill"></image>
-            <image class="ranking-li-img-footer" src="../../../images/index/no3.png"></image>
-          </view>
-          <view class="ranking-box-li-title">吴门桥社区吴门桥社区吴门桥社区</view>
-          <view class="ranking-box-li-text">月发123篇</view>
-        </view>
-      </view>
-    </view>
+    
     <block wx:for='{{list}}' wx:key='index'>
     <!-- list 一张列表 -->
     <block wx:if='{{!item.cover2}}'>
+
         <view class="li">
           <view class="li-box">
             <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none" >
@@ -175,8 +143,61 @@
       <loadmore isShow='{{isMore}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
       </scroll-view>
   </swiper-item>
-   <swiper-item  style='height:100%;'>
+   <swiper-item  style='height:100%;' catchtouchmove='{{iSswiperList ? "catchTouchMove" :""}}'>
     <scroll-view  style='height:{{height}}px'	  scroll-y="true" style="width:100%;height:100%" bindscrolltolower="lower"  >
+      <view class="ranking">
+      <view class="ranking-head">
+        <view class="ranking-name">信息排行榜</view>
+        <navigator url="/pages/index/RankingList/RankingList" hover-class="none">
+          <view class="ranking-more">查看更多社区排名 <view class="more-icon" style="margin-bottom:4rpx;"></view></view>
+        </navigator>
+      </view>
+      <view class="ranking-box">
+         <view class="tower-swiper" bindtouchmove="towerMove" bindtouchstart="towerStart" bindtouchend="towerEnd">
+          <view class="tower-item " wx:for="{{swiperList}}" wx:key='index' style="--index:{{item.zIndex}};--left:{{item.mLeft}}">
+            <view class="swiper-item">
+              
+              <block wx:if='{{item.mLeft == 0}}'>
+                          <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
+                            <view class="ranking-box-li">
+                              <view class="ranking-li-img">
+                                <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
+                              </view>
+                              <view class="ranking-box-li-title">{{item.community_name}}</view>
+                              <view class="ranking-box-li-text">发{{item.count}}篇</view>
+                            </view>
+                          </navigator>
+              </block>
+              <block wx:if='{{item.zIndex == -1}}'>
+                          <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
+                            <view class="ranking-box-li">
+                              <view class="ranking-li-img">
+                                <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
+                              </view>
+                              <view class="ranking-box-li-title">{{item.community_name}}</view>
+                              <view class="ranking-box-li-text">发{{item.count}}篇</view>
+                            </view>
+                          </navigator>
+              </block>
+              <block wx:if='{{item.zIndex == 1}}'>
+                          <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
+                            <view class="ranking-box-li">
+                              <view class="ranking-li-img">
+                                <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
+                              </view>
+                              <view class="ranking-box-li-title">{{item.community_name}}</view>
+                              <view class="ranking-box-li-text">发{{item.count}}篇</view>
+                            </view>
+                          </navigator>
+              </block>      
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
     <block wx:for='{{video}}' wx:key='index'>
       <view class="li">
       <navigator url="/pages/video/details/details?id={{item.id}}" hover-class="none">
@@ -291,7 +312,7 @@
       <loadmore isShow='{{isMore}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
       </scroll-view>
   </swiper-item>
-   <swiper-item style='height:100%;'>
+   <swiper-item style='height:100%;' catchtouchmove='{{iSswiperList ? "catchTouchMove" :""}}'>
     <scroll-view  style='height:{{height}}px'	 scroll-y="true" style="width:100%;height:100%" bindscrolltolower="lower"  >
     <block wx:for='{{video}}' wx:key='index'>
       <view class="li">

@@ -27,6 +27,104 @@ Page({
     iSPagesed:true,
     currentTab:0,
     height:0,
+    ranlist:[],
+    swiperList: [],
+    iSswiperList:false
+  },
+  towerSwiper(name) {
+    let list = this.data[name];
+    for (let i = 0; i < list.length; i++) {
+      // list[i].zIndex = parseInt(list.length / 2) + 1 - Math.abs(i - parseInt(list.length / 2))
+      // list[i].mLeft = i == 0 ? i - parseInt(list.length / 2):0
+
+      if (i == 0) {
+        list[i].zIndex = 2
+        list[i].mLeft = 0
+      } else if (i == 1) {
+        list[i].zIndex = 1
+        list[i].mLeft = -1
+      } else if (i == 2) {
+        list[i].zIndex = 1
+        list[i].mLeft = 1
+      }
+      list[i].sort = i + 1
+    }
+    console.log(list)
+    this.setData({
+      swiperList: list
+    })
+  },
+  // towerSwiper计算方向
+  towerMove(e) {
+    this.setData({
+      direction: e.touches[0].pageX - this.data.towerStart > 0 ? 'right' : 'left'
+    })
+  },
+  // 截获竖向滑动
+  catchTouchMove: function (res) {
+    return false
+  },
+  // towerSwiper触摸开始
+  towerStart(e) {
+    this.setData({
+      towerStart: e.touches[0].pageX,
+      iSswiperList:true
+    })
+  },
+  // towerSwiper计算滚动
+  towerEnd(e) {
+    let direction = this.data.direction;
+    let list = this.data.swiperList;
+    if (direction == 'right') {
+      let mLeft = list[0].mLeft;
+      let zIndex = list[0].zIndex;
+      for (let i = 1; i < list.length; i++) {
+        list[i - 1].mLeft = list[i].mLeft
+        list[i - 1].zIndex = list[i].zIndex
+      }
+      list[list.length - 1].mLeft = mLeft;
+      list[list.length - 1].zIndex = zIndex;
+      this.setData({
+        swiperList: list,
+      })
+      setTimeout(()=>{
+        this.setData({
+          iSswiperList: false,
+        })
+      },10000)
+    } else {
+      let mLeft = list[list.length - 1].mLeft;
+      let zIndex = list[list.length - 1].zIndex;
+      for (let i = list.length - 1; i > 0; i--) {
+        list[i].mLeft = list[i - 1].mLeft
+        list[i].zIndex = list[i - 1].zIndex
+      }
+      list[0].mLeft = mLeft;
+      list[0].zIndex = zIndex;
+      this.setData({
+        swiperList: list,
+      })
+      setTimeout(() => {
+        this.setData({
+          iSswiperList: false,
+        })
+      }, 10000)
+    }
+  },
+  // 信息排行榜
+  RankingList(){
+    _http.request({
+      url:"/api/news/rank",
+      method:'get',
+      data:{
+        type:1
+      }
+    }).then(res=>{
+      this.setData({
+        swiperList: res.data.list.slice(0,3)
+      })
+      this.towerSwiper('swiperList');
+    })
   },
   bindChange(e){
     console.log(e)
@@ -101,6 +199,7 @@ Page({
    */
   onLoad: function (options) {
     app.editTabbar();
+    this.RankingList()
     //导航高度
     this.Nav();
   },

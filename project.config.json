@@ -93,6 +93,13 @@
 					"id": -1,
 					"name": "排行榜",
 					"pathName": "pages/index/RankingList/RankingList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/RankingList/RankingList",
+					"pathName": "pages/index/RankingList/RankingList",
 					"scene": null
 				}
 			]
