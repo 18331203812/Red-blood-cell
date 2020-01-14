@@ -37,6 +37,9 @@ Page({
       url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big25011.jpg'
     }],
     cardCur: 0,
+    currentTab: 0,
+    iSswiperList: false,
+    isMore:true
   },
   // 信息排行榜
   RankingList() {
@@ -49,7 +52,8 @@ Page({
     }).then(res => {
       this.setData({
         swiperList:res.data.list.slice(0,3),
-        ranlist: res.data.list
+        ranlist: res.data.list,
+        isMore:false
       })
       this.towerSwiper('swiperList');
     })
@@ -57,16 +61,19 @@ Page({
   Category(e){
     this.setData({
       ids: e.currentTarget.dataset.id,
-      ranlist:[]
+      ranlist:[],
+      currentTab: e.currentTarget.dataset.id - 1,
+      isMore:true
     })
     this.RankingList()
+    this.towerSwiper('swiperList');
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.RankingList()
-    
+    this.towerSwiper('swiperList');
   },
   towerSwiper(name) {
     let list = this.data[name];
@@ -132,6 +139,44 @@ Page({
         swiperList: list
       })
     }
+  },
+  bindChange(e) {
+    console.log(e)
+    if (e.detail.source == "touch" || e.detail.source == '') {
+        this.setData({
+          ids: Number(e.detail.current) + 1,
+          currentTab: Number(e.detail.current),
+          swiperList: [{
+            id: 0,
+            type: 'image',
+            url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
+          }, {
+              id: 1,
+              type: 'image',
+              url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg',
+            }, {
+              id: 2,
+              type: 'image',
+              url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
+            }, {
+              id: 3,
+              type: 'image',
+              url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
+            }, {
+              id: 4,
+              type: 'image',
+              url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big25011.jpg'
+            }],
+          ranlist: [],
+          isMore:true
+        })
+        this.RankingList()
+      this.towerSwiper('swiperList');
+    }
+  },
+  // 截获竖向滑动
+  catchTouchMove: function (res) {
+    return false
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

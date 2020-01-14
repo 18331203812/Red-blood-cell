@@ -4,74 +4,235 @@
     <view class="nav-tabBar-li {{ids == '2' ? 'category' : ''}}" bindtap="Category" data-id="2">年度排名</view>
     <view class="nav-tabBar-li {{ids == '3' ? 'category' : ''}}" bindtap="Category" data-id="3">累计排名</view>
   </view>
-  <view class="ranking">
-      <view class="ranking-box">
-         <view class="tower-swiper" bindtouchmove="towerMove" bindtouchstart="towerStart" bindtouchend="towerEnd">
-          <view class="tower-item " wx:for="{{swiperList}}" wx:key='index' style="--index:{{item.zIndex}};--left:{{item.mLeft}}">
-            <view class="swiper-item">
-              
-              <block wx:if='{{item.mLeft == 0}}'>
-                          <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
-                            <view class="ranking-box-li">
-                              <view class="ranking-li-img">
-                                <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
-                                <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
-                              </view>
-                              <view class="ranking-box-li-title">{{item.community_name}}</view>
-                              <view class="ranking-box-li-text">发{{item.count}}篇</view>
-                            </view>
-                          </navigator>
-              </block>
-              <block wx:if='{{item.zIndex == -1}}'>
-                          <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
-                            <view class="ranking-box-li">
-                              <view class="ranking-li-img">
-                                <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
-                                <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
-                              </view>
-                              <view class="ranking-box-li-title">{{item.community_name}}</view>
-                              <view class="ranking-box-li-text">发{{item.count}}篇</view>
-                            </view>
-                          </navigator>
-              </block>
-              <block wx:if='{{item.zIndex == 1}}'>
-                          <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
-                            <view class="ranking-box-li">
-                              <view class="ranking-li-img">
-                                <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
-                                <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
-                              </view>
-                              <view class="ranking-box-li-title">{{item.community_name}}</view>
-                              <view class="ranking-box-li-text">发{{item.count}}篇</view>
-                            </view>
-                          </navigator>
-              </block>      
+</view>
+
+ <swiper style='height:90vh;overflow:scroll;position:relative'  duration='500'  bindchange="bindChange" current='{{currentTab}}'>
+  <swiper-item style='height:100%;' catchtouchmove='{{iSswiperList ? "catchTouchMove" :""}}'>
+    <scroll-view style='height:{{height}}px'	 scroll-y="true" style="width:100%;height:100%" bindscrolltolower="lower"  >
+        <view class="ranking nav">
+          <view class="ranking-box">
+          <!-- bindtouchmove="towerMove" bindtouchstart="towerStart" bindtouchend="towerEnd" -->
+            <view class="tower-swiper">
+              <view class="tower-item " wx:for="{{swiperList}}" wx:key='index' style="--index:{{item.zIndex}};--left:{{item.mLeft}}">
+                <view class="swiper-item">
+                  
+                  <block wx:if='{{item.mLeft == 0}}'>
+                              <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
+                                <view class="ranking-box-li">
+                                  <view class="ranking-li-img">
+                                    <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                    <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
+                                  </view>
+                                  <view class="ranking-box-li-title">{{item.community_name}}</view>
+                                  <view class="ranking-box-li-text">发{{item.count}}篇</view>
+                                </view>
+                              </navigator>
+                  </block>
+                  <block wx:if='{{item.zIndex == -1}}'>
+                              <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
+                                <view class="ranking-box-li">
+                                  <view class="ranking-li-img">
+                                    <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                    <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
+                                  </view>
+                                  <view class="ranking-box-li-title">{{item.community_name}}</view>
+                                  <view class="ranking-box-li-text">发{{item.count}}篇</view>
+                                </view>
+                              </navigator>
+                  </block>
+                  <block wx:if='{{item.zIndex == 1}}'>
+                              <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
+                                <view class="ranking-box-li">
+                                  <view class="ranking-li-img">
+                                    <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                    <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
+                                  </view>
+                                  <view class="ranking-box-li-title">{{item.community_name}}</view>
+                                  <view class="ranking-box-li-text">发{{item.count}}篇</view>
+                                </view>
+                              </navigator>
+                  </block>      
+                </view>
+              </view>
             </view>
           </view>
+          <view class="nav-footer"></view>
+        </view>
+      
+
+      <view class="main">
+        <view class="main-box">
+        <block wx:for='{{ranlist}}' wx:key='index'>
+          <block wx:if='{{index > 2}}'>
+          <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
+            <view class="box-li">
+              <view class="box-num">{{index + 1}}</view>
+              <view class="box-con">
+                <image class="box-con-img" lazy-load	src="{{item.headimgurl}}"></image>
+                <view class="box-head">
+                  <view class="box-name">{{item.community_name}}</view>
+                  <view class="box-text">发布文章{{item.count}}篇</view>
+                </view>
+              </view>
+            </view>
+            </navigator>
+          </block>
+        </block>
         </view>
       </view>
-    </view>
-    <view class="nav-footer"></view>
-</view>
-<view class="main">
-  <view class="main-box">
-  <block wx:for='{{ranlist}}' wx:key='index'>
-    <block wx:if='{{index > 2}}'>
-    <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
-      <view class="box-li">
-        <view class="box-num">{{index + 1}}</view>
-        <view class="box-con">
-          <image class="box-con-img" lazy-load	src="{{item.headimgurl}}"></image>
-          <view class="box-head">
-            <view class="box-name">{{item.community_name}}</view>
-            <view class="box-text">发布文章{{item.count}}篇</view>
+    <loadmore isShow='{{isMore}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+    </scroll-view>
+  </swiper-item>
+  <swiper-item style='height:100%;' catchtouchmove='{{iSswiperList ? "catchTouchMove" :""}}'>
+    <scroll-view style='height:{{height}}px'	 scroll-y="true" style="width:100%;height:100%" bindscrolltolower="lower"  >
+        <view class="ranking nav">
+          <view class="ranking-box">
+          <!-- bindtouchmove="towerMove" bindtouchstart="towerStart" bindtouchend="towerEnd" -->
+            <view class="tower-swiper">
+              <view class="tower-item " wx:for="{{swiperList}}" wx:key='index' style="--index:{{item.zIndex}};--left:{{item.mLeft}}">
+                <view class="swiper-item">
+                  
+                  <block wx:if='{{item.mLeft == 0}}'>
+                              <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
+                                <view class="ranking-box-li">
+                                  <view class="ranking-li-img">
+                                    <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                    <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
+                                  </view>
+                                  <view class="ranking-box-li-title">{{item.community_name}}</view>
+                                  <view class="ranking-box-li-text">发{{item.count}}篇</view>
+                                </view>
+                              </navigator>
+                  </block>
+                  <block wx:if='{{item.zIndex == -1}}'>
+                              <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
+                                <view class="ranking-box-li">
+                                  <view class="ranking-li-img">
+                                    <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                    <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
+                                  </view>
+                                  <view class="ranking-box-li-title">{{item.community_name}}</view>
+                                  <view class="ranking-box-li-text">发{{item.count}}篇</view>
+                                </view>
+                              </navigator>
+                  </block>
+                  <block wx:if='{{item.zIndex == 1}}'>
+                              <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
+                                <view class="ranking-box-li">
+                                  <view class="ranking-li-img">
+                                    <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                    <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
+                                  </view>
+                                  <view class="ranking-box-li-title">{{item.community_name}}</view>
+                                  <view class="ranking-box-li-text">发{{item.count}}篇</view>
+                                </view>
+                              </navigator>
+                  </block>      
+                </view>
+              </view>
+            </view>
           </view>
+          <view class="nav-footer"></view>
+        </view>
+      
+
+      <view class="main">
+        <view class="main-box">
+        <block wx:for='{{ranlist}}' wx:key='index'>
+          <block wx:if='{{index > 2}}'>
+          <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
+            <view class="box-li">
+              <view class="box-num">{{index + 1}}</view>
+              <view class="box-con">
+                <image class="box-con-img" lazy-load	src="{{item.headimgurl}}"></image>
+                <view class="box-head">
+                  <view class="box-name">{{item.community_name}}</view>
+                  <view class="box-text">发布文章{{item.count}}篇</view>
+                </view>
+              </view>
+            </view>
+            </navigator>
+          </block>
+        </block>
         </view>
       </view>
-      </navigator>
-    </block>
-  </block>
-  </view>
-</view>
- <loadmore isShow='{{isMore}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
- 
+    <loadmore isShow='{{isMore}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+    </scroll-view>
+    </swiper-item>
+ <swiper-item style='height:100%;' catchtouchmove='{{iSswiperList ? "catchTouchMove" :""}}'>
+    <scroll-view style='height:{{height}}px'	 scroll-y="true" style="width:100%;height:100%" bindscrolltolower="lower"  >
+        <view class="ranking nav">
+          <view class="ranking-box">
+          <!-- bindtouchmove="towerMove" bindtouchstart="towerStart" bindtouchend="towerEnd" -->
+            <view class="tower-swiper">
+              <view class="tower-item " wx:for="{{swiperList}}" wx:key='index' style="--index:{{item.zIndex}};--left:{{item.mLeft}}">
+                <view class="swiper-item">
+                  
+                  <block wx:if='{{item.mLeft == 0}}'>
+                              <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
+                                <view class="ranking-box-li">
+                                  <view class="ranking-li-img">
+                                    <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                    <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
+                                  </view>
+                                  <view class="ranking-box-li-title">{{item.community_name}}</view>
+                                  <view class="ranking-box-li-text">发{{item.count}}篇</view>
+                                </view>
+                              </navigator>
+                  </block>
+                  <block wx:if='{{item.zIndex == -1}}'>
+                              <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
+                                <view class="ranking-box-li">
+                                  <view class="ranking-li-img">
+                                    <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                    <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
+                                  </view>
+                                  <view class="ranking-box-li-title">{{item.community_name}}</view>
+                                  <view class="ranking-box-li-text">发{{item.count}}篇</view>
+                                </view>
+                              </navigator>
+                  </block>
+                  <block wx:if='{{item.zIndex == 1}}'>
+                              <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
+                                <view class="ranking-box-li">
+                                  <view class="ranking-li-img">
+                                    <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                    <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
+                                  </view>
+                                  <view class="ranking-box-li-title">{{item.community_name}}</view>
+                                  <view class="ranking-box-li-text">发{{item.count}}篇</view>
+                                </view>
+                              </navigator>
+                  </block>      
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="nav-footer"></view>
+        </view>
+      
+
+      <view class="main">
+        <view class="main-box">
+        <block wx:for='{{ranlist}}' wx:key='index'>
+          <block wx:if='{{index > 2}}'>
+          <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
+            <view class="box-li">
+              <view class="box-num">{{index + 1}}</view>
+              <view class="box-con">
+                <image class="box-con-img" lazy-load	src="{{item.headimgurl}}"></image>
+                <view class="box-head">
+                  <view class="box-name">{{item.community_name || ''}}</view>
+                  <view class="box-text">发布文章{{item.count}}篇</view>
+                </view>
+              </view>
+            </view>
+            </navigator>
+          </block>
+        </block>
+        </view>
+      </view>
+    <loadmore isShow='{{isMore}}' page='page' page__bd='page__bd' weui-loadmore='weui-loadmore' weui-loading='weui-loading' weui-loadmore__tips='weui-loadmore__tips'></loadmore>
+    </scroll-view>
+    </swiper-item>
+  </swiper>

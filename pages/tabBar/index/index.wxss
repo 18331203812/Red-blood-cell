@@ -280,6 +280,7 @@
   justify-content: space-between;
   padding: 60rpx 0 0 0;
   position: relative;
+  height: 300rpx;
 }
 .ranking-box-li{
   width: 233rpx;
@@ -346,9 +347,12 @@ position: relative;
   height: auto;
 }
 .tower-swiper {
-height: 400rpx;
+height: 420rpx;
 position: unset;
 max-width: 750rpx;
 overflow: hidden;
-
+}
+.tower-swiper .tower-item {
+  height: auto;
+  padding-top: 30rpx;
 }

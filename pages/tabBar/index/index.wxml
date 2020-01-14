@@ -153,7 +153,8 @@
         </navigator>
       </view>
       <view class="ranking-box">
-         <view class="tower-swiper" bindtouchmove="towerMove" bindtouchstart="towerStart" bindtouchend="towerEnd">
+      <!-- bindtouchmove="towerMove" bindtouchstart="towerStart" bindtouchend="towerEnd" -->
+         <view class="tower-swiper" >
           <view class="tower-item " wx:for="{{swiperList}}" wx:key='index' style="--index:{{item.zIndex}};--left:{{item.mLeft}}">
             <view class="swiper-item">
               

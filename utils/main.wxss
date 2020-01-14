@@ -28,7 +28,7 @@ page {
 	--black: #333333;
 	--darkGray: #666666;
 	--gray: #aaaaaa;
-	--ghostWhite: #f1f1f1;
+	--ghostWhite: #ffffff;
 	--white: #ffffff;
 	/* 浅色 */
 	--redLight: #fadbd9;
@@ -67,7 +67,7 @@ page {
 	--grayShadow: rgba(114, 130, 138, 0.2);
 	--blackShadow: rgba(26, 26, 26, 0.2);
 
-	background-color: var(--ghostWhite);
+	/* background-color: var(--ghostWhite); */
 	font-size: 28rpx;
 	color: var(--black);
 	font-family: Helvetica Neue, Helvetica, sans-serif;
