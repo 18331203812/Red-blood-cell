@@ -158,11 +158,13 @@
           <view class="tower-item " wx:for="{{swiperList}}" wx:key='index' style="--index:{{item.zIndex}};--left:{{item.mLeft}}">
             <view class="swiper-item">
               
-              <block wx:if='{{item.mLeft == 0}}'>
+              <block wx:if='{{item.sort == 1}}'>
                           <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
                             <view class="ranking-box-li">
+                              <view class="ranking-box-li-line" style="background: #d69810;"></view>
                               <view class="ranking-li-img">
-                                <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d69810;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                <image src="../../../images/index/nos1.png" class="ranking-li-img-headersone" style='width:50rpx;height:32rpx;'></image>
                                 <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
                               </view>
                               <view class="ranking-box-li-title">{{item.community_name}}</view>
@@ -170,11 +172,13 @@
                             </view>
                           </navigator>
               </block>
-              <block wx:if='{{item.zIndex == -1}}'>
+              <block wx:if='{{item.sort == 2}}'>
                           <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
                             <view class="ranking-box-li">
+                            <view class="ranking-box-li-line" style="background: #818080;"></view>
                               <view class="ranking-li-img">
-                                <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #818080;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                <image src="../../../images/index/nos2.png" class="ranking-li-img-headersone" style='width:50rpx;height:32rpx;top: -19rpx;right:69rpx;'></image>
                                 <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
                               </view>
                               <view class="ranking-box-li-title">{{item.community_name}}</view>
@@ -182,11 +186,13 @@
                             </view>
                           </navigator>
               </block>
-              <block wx:if='{{item.zIndex == 1}}'>
+              <block wx:if='{{item.sort == 3}}'>
                           <navigator url="/pages/me/homepage/homepage?action_id={{item.action_id}}&status=new&name={{item.community_name}}" hover-class="none">
                             <view class="ranking-box-li">
+                              <view class="ranking-box-li-line" style="background: #9b5226;"></view>
                               <view class="ranking-li-img">
-                                <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #d42f36;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                <image class="ranking-li-img-head" style="width: 90rpx;height: 90rpx;border-radius: 50%;border: 4rpx solid #9b5226;" lazy-load	 src="{{item.headimgurl}}" mode="aspectFill"></image>
+                                <image src="../../../images/index/nos3.png" class="ranking-li-img-headersone" style='width:50rpx;height:32rpx;top: -19rpx;right:71rpx;'></image>
                                 <image class="ranking-li-img-footer" style="width: 100rpx;height: 30rpx;position: absolute;bottom: -10rpx;left: 0;right: 0;margin: 0 auto;" src="../../../images/index/no{{item.sort}}.png"></image>
                               </view>
                               <view class="ranking-box-li-title">{{item.community_name}}</view>

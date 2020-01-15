@@ -285,9 +285,19 @@
 .ranking-box-li{
   width: 233rpx;
   border-radius: 20rpx;
-  box-shadow: 5rpx 0 8rpx rgba(112, 17, 21, 0.3);
-  padding: 30rpx 0;
+box-shadow: 0 0 19rpx rgba(112, 17, 21, 0.3);
+  padding: 35rpx 0;
   background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.ranking-box-li-line{
+  width: 100%;
+  height: 20rpx;
+ 
+  position: absolute;
+  top: -12rpx;
+  left: 0;
 }
 .ranking-box-position{
   position: absolute;left: 0;right: 0;margin: 0 auto;
@@ -345,6 +355,7 @@ position: relative;
   display: flex;
   justify-content: center;
   height: auto;
+  padding: 15rpx 0;
 }
 .tower-swiper {
 height: 420rpx;
@@ -355,4 +366,14 @@ overflow: hidden;
 .tower-swiper .tower-item {
   height: auto;
   padding-top: 30rpx;
+}
+.ranking-li-img-headersone{
+  width: 50rpx;
+  height: 32rpx;
+  display: block;
+  position: absolute;
+right: 79rpx;
+top: -22rpx;
+
+
 }
