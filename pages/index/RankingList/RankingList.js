@@ -47,7 +47,7 @@ Page({
       url: "/api/news/rank",
       method: 'get',
       data: {
-        type: this.data.ids
+        type: this.data.ids == 2 ? 3 :this.data.ids
       }
     }).then(res => {
       this.setData({
