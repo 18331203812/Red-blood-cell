@@ -392,6 +392,7 @@ Page({
       }
     }
     let returns = wx.getStorageSync('returnsIndex')
+    console.log(returns)
     if (!returns) {
       this.setData({
         list: [], //新闻
@@ -405,6 +406,19 @@ Page({
       })
       this.List(1);
     } else {
+      if(this.data.list.length == 0){
+        this.setData({
+          list: [], //新闻
+          pagesize: 10,
+          page: 1,
+          isMore: true, //加载动效
+          video: [], //视频
+          status: false,
+          keyword: "",
+          isPage: false, //省缺页
+        })
+        this.List(1);
+      }
       wx.setStorageSync("returnsIndex", false)
     }
     var pages = getCurrentPages();

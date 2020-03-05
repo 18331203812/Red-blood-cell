@@ -69,11 +69,21 @@ App({
     wx.getSystemInfo({
       success: function (res) {
         console.log(res.model)
+        // wx.showModal({
+        //   title: res.model,
+        //   content: '',
+        // })
         if (res.model.indexOf('iPhone X') != -1){
           console.log(res.model.indexOf('iPhone X'))
           res.models=true
         }
+        if (res.model.indexOf('iPhone 11') != -1) {
+          res.models = true
+        }
         if (res.model.indexOf('iPhone XS Max') != -1) {
+          res.models = true
+        }
+        if (/iphone\sx/i.test(res.model) || (/iphone/i.test(res.model) && /unknown/.test(res.model)) || /iphone\s11/i.test(res.model)) {
           res.models = true
         }
         if (res.model.indexOf('iPhone XR') != -1) {
