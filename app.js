@@ -69,15 +69,16 @@ App({
     wx.getSystemInfo({
       success: function (res) {
         console.log(res.model)
-        // wx.showModal({
-        //   title: res.model,
-        //   content: '',
-        // })
-        if (res.model.indexOf('iPhone X') != -1){
-          console.log(res.model.indexOf('iPhone X'))
-          res.models=true
+        if (res.model.indexOf('iPhone X') != -1) {
+          res.models = true
         }
         if (res.model.indexOf('iPhone 11') != -1) {
+          res.models = true
+        }
+        if (res.model.indexOf('iPhone 11 max pro') != -1) {
+          res.models = true
+        }
+        if (res.model.indexOf('iPhone 11 max') != -1) {
           res.models = true
         }
         if (res.model.indexOf('iPhone XS Max') != -1) {

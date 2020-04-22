@@ -24,7 +24,7 @@
           <image class="nav-head" src="{{details.headimgurl}}"></image>
         <!-- </navigator> -->
         <view class="nav-con">
-          <view class="nav-title">{{details.street_title || "暂 无"}}</view>
+          <view class="nav-title">{{details.author || "暂 无"}}</view>
           <view class="nav-time">{{details.publish_time}}</view>
         </view>
       </view>
