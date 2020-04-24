@@ -58,7 +58,6 @@ Page({
   },
   //获取个人信息
   User() {
-    console.log('2')
     _http.request({
       url: "/api/user/profile",
       method: "GET",

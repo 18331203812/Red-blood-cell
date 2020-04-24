@@ -17,11 +17,9 @@ Page({
     status: false,
     text: '',
     isIphoneX: app.globalData.systemInfo.models  ? true : false,
+    data:{}, //观看扣除的积分
   },
-  // 点击cover播放，其它视频结束
-  videoPlay: function (e) {
-    var _index = e.currentTarget.dataset.id
-    console.log(_index)
+  VideoPlayS(_index){
     this.setData({
       _index: _index
     })
@@ -33,6 +31,51 @@ Page({
       var videoContext = wx.createVideoContext(_index + "")
       videoContext.play();
     }, 500)
+  },
+  // 点击cover播放，其它视频结束
+  videoPlay: function (e) {
+    var _index = e.currentTarget.dataset.id
+    if (this.data.data.status == 1 && this.data.details.point != 0){
+      _http.request({
+        url: "/api/video/play",
+        method: 'get',
+        data: {
+          video_id: this.data.details.id
+        }
+      }).then(res => {
+        console.log(res)
+        if(res.data.status == 1){
+           this.setData({
+              status: true,
+             text: "浏览视频消耗-" + this.data.details.point + "积分"
+            })
+            setTimeout(() => {
+              this.setData({
+                status: false,
+              })
+            }, 3000)
+          this.VideoPlayS(_index)
+        }else{
+          wx.showModal({
+            title: '提示',
+            content: '您的积分不足，不能观看',
+            success(res) {
+              if (res.confirm) {
+                
+              } else if (res.cancel) {
+               
+              }
+            }
+          })
+          return
+        }
+      })
+     
+    }else{
+      this.VideoPlayS(_index)
+    }
+         
+    
   },
   input(e) {
     console.log(e.currentTarget.dataset.id)
@@ -76,6 +119,7 @@ Page({
       id: options.id
     })
   },
+ 
   Details(id) {
     _http.request({
       url: "/api/video/detail",
@@ -89,20 +133,21 @@ Page({
       // data.content = data.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto"');
       this.setData({
         details: data,
+        data: res.data
         // _index:data.id
       })
       if (data.is_give !== 1) {
-        setTimeout(() => {
-          this.setData({
-            status: true,
-            text: "浏览视频+" + res.data.point + "积分"
-          })
-          setTimeout(() => {
-            this.setData({
-              status: false,
-            })
-          }, 2000)
-        }, 300000)
+        // setTimeout(() => {
+        //   this.setData({
+        //     status: true,
+        //     text: "浏览视频+" + res.data.point + "积分"
+        //   })
+        //   setTimeout(() => {
+        //     this.setData({
+        //       status: false,
+        //     })
+        //   }, 2000)
+        // }, 300000)
       }
     })
   },
@@ -129,15 +174,15 @@ Page({
         inputValue: "",
       })
       if (messageList.is_first == 1) {
-        this.setData({
-          status: true,
-          text: "浏览文章+" + res.data.point + "积分"
-        })
-        setTimeout(() => {
-          this.setData({
-            status: false,
-          })
-        }, 2000)
+        // this.setData({
+        //   status: true,
+        //   text: "浏览文章+" + res.data.point + "积分"
+        // })
+        // setTimeout(() => {
+        //   this.setData({
+        //     status: false,
+        //   })
+        // }, 2000)
       }
       const query = wx.createSelectorQuery()
       query.select('#main').boundingClientRect()

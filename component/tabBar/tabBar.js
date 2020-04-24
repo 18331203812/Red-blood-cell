@@ -1,4 +1,7 @@
 // tabBarComponent/tabBar.js
+import HTTP from "../../utils/request.js";
+import utils from "../../utils/util.js";
+var _http = new HTTP();
 const app = getApp();
 Component({
   /**
@@ -52,6 +55,37 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    
+    Nav(){
+      _http.request({
+        url: "/api/user/profile",
+        method: "GET",
+      }).then(res => {
+        let data = res.data.list;
+        if (data.city_name && data.mobile && data.username) {
+          wx.switchTab({
+            url: '/pages/tabBar/video/video'
+          })
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: '您还没有完善个人信息不行观看视频！',
+            confirmText: "去完善",
+            success(res) {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url: '/pages/me/personal/personal',
+                })
+              } else if (res.cancel) {
+                
+              }
+            }
+          })
+         
+        }
+      })
+      // wx.navigateTo({
+      //   url:"/pages/login/login/login"
+      // })
+    },
   }
 })
