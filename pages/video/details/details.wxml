@@ -26,6 +26,7 @@
         <view class="nav-con">
           <view class="nav-title">{{details.author || "暂 无"}}</view>
           <view class="nav-time">{{details.publish_time}}</view>
+          <view class="nav-title nanPo">观看视频扣除{{details.point}}积分</view>
         </view>
       </view>
     </navigator>

@@ -110,6 +110,9 @@
 }
 .li-con{
   width: 62%;
+  display: flex;
+flex-wrap: wrap;
+align-items: space-between;
 }
 .li-con-title{
   font-size: 30rpx;
@@ -152,7 +155,7 @@
   color: #999999;
   display: flex;
   align-items: stretch;
-  width: 100rpx;
+  width: 220rpx !important;
 }
 .li-img{
   display: flex;

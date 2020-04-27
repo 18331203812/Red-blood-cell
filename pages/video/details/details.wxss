@@ -14,6 +14,11 @@
 }
 .nav-con{
   width: 86%;
+  position: relative;
+}
+.nanPo{
+  position: absolute;
+  right: 0;top: 6rpx;
 }
 .nav-head{
   width: 80rpx;

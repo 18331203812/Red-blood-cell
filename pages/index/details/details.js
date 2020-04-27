@@ -104,11 +104,13 @@ Page({
         details:data,
       })
       if (data.is_give !==1){
+        console.log('/////')
         setTimeout(() => {
           this.setData({
             status: true,
             text: "浏览文章+" + res.data.point + "积分"
           })
+          console.log('///')
           setTimeout(() => {
             this.setData({
               status: false,

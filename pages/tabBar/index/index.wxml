@@ -52,7 +52,7 @@
       </navigator>
           <view class="li-footer">
             <view class="li-con-address">{{item.author}}</view>
-            <view class="li-time"  style="padding:5rpx 0 0 10rpx; width:{{m1.str(item.create_time) < 3 ? '10%;' :'34%'}}">{{item.create_time}}</view>
+            <view class="li-time"  style="padding:5rpx 0 0 10rpx; width:{{m1.str(item.create_time) < 3 ? '14%;' :'40%'}}">{{item.create_time}}</view>
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
@@ -79,6 +79,7 @@
               <image class="li-box-img" lazy-load style='height:190rpx;' mode="aspectFill" src="{{item.cover}}"></image>
             </navigator>
             <view class="li-con">
+      
               <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
                 <view class="li-con-title" style="width:100%;">{{item.title}}</view>
                 <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
@@ -98,7 +99,8 @@
                     {{item.zan_count || 0}}</view>
                 </view>
               </view>
-            </view>
+              </view>
+           
           </view>
         </view>
     
@@ -118,7 +120,7 @@
         </navigator>
           <view class="li-footer">
             <view class="li-con-address">{{item.street_title}}</view>
-            <view class="li-time" style="padding:5rpx 0 0 10rpx; width:{{m1.str(item.publish_time) < 3 ? '10%;' :'34%'}}">{{item.publish_time}}</view>
+            <view class="li-time" style=" width:{{m1.str(item.publish_time) < 3 ? '14%;' :'40%'}}">{{item.publish_time}}</view>
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
@@ -230,7 +232,7 @@
       </navigator>
           <view class="li-footer">
             <view class="li-con-address">{{item.author}}</view>
-            <view class="li-time"  style="padding:5rpx 0 0 10rpx; width:{{m1.str(item.create_time) < 3 ? '10%;' :'34%'}}">{{item.create_time}}</view>
+            <view class="li-time"  style="padding:5rpx 0 0 10rpx; width:{{m1.str(item.create_time) < 3 ? '14%;' :'40%'}}">{{item.create_time}}</view>
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
@@ -294,7 +296,7 @@
         </navigator>
           <view class="li-footer">
             <view class="li-con-address">{{item.street_title}}</view>
-            <view class="li-time" style="padding:5rpx 0 0 10rpx; width:{{m1.str(item.publish_time) < 3 ? '10%;' :'34%'}}">{{item.publish_time}}</view>
+            <view class="li-time" style=" width:{{m1.str(item.publish_time) < 3 ? '14%;' :'40%'}}">{{item.publish_time}}</view>
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
@@ -347,7 +349,7 @@
       </navigator>
           <view class="li-footer">
             <view class="li-con-address">{{item.author}}</view>
-            <view class="li-time"  style="padding:5rpx 0 0 10rpx; width:{{m1.str(item.create_time) < 3 ? '10%;' :'34%'}}">{{item.create_time}}</view>
+            <view class="li-time"  style="padding:5rpx 0 0 10rpx; width:{{m1.str(item.create_time) < 3 ? '14%;' :'40%'}}">{{item.create_time}}</view>
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
@@ -411,7 +413,7 @@
         </navigator>
           <view class="li-footer">
             <view class="li-con-address">{{item.street_title}}</view>
-            <view class="li-time" style="padding:5rpx 0 0 10rpx; width:{{m1.str(item.publish_time) < 3 ? '10%;' :'34%'}}">{{item.publish_time}}</view>
+            <view class="li-time" style=" width:{{m1.str(item.publish_time) < 3 ? '14%;' :'40%'}}">{{item.publish_time}}</view>
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
