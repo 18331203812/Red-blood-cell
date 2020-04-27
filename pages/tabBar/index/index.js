@@ -272,6 +272,7 @@ Page({
             isPage: false
           })
         }
+      console.log(this.data.list)
       if (this.data.list.length == 0 && this.data.video.length == 0){
         this.setData({
           isMore: false,
@@ -477,7 +478,14 @@ Page({
       console.log(res)
       if(res.data.list.length == 0){
         this.setData({
-          isPage:true
+          isPage:true,
+          isMore:false
+        })
+      }
+      if (res.data.list.length < 9) {
+        this.setData({
+          isPage: false,
+          isMore: false
         })
       }
       this.setData({

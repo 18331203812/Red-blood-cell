@@ -137,17 +137,17 @@ Page({
         // _index:data.id
       })
       if (data.is_give !== 1) {
-        // setTimeout(() => {
-        //   this.setData({
-        //     status: true,
-        //     text: "浏览视频+" + res.data.point + "积分"
-        //   })
-        //   setTimeout(() => {
-        //     this.setData({
-        //       status: false,
-        //     })
-        //   }, 2000)
-        // }, 300000)
+        setTimeout(() => {
+          this.setData({
+            status: true,
+            text: "浏览视频+" + res.data.point + "积分"
+          })
+          setTimeout(() => {
+            this.setData({
+              status: false,
+            })
+          }, 2000)
+        }, 300000)
       }
     })
   },
@@ -174,15 +174,15 @@ Page({
         inputValue: "",
       })
       if (messageList.is_first == 1) {
-        this.setData({
-          status: true,
-          text: "浏览文章+" + res.data.point + "积分"
-        })
-        setTimeout(() => {
-          this.setData({
-            status: false,
-          })
-        }, 2000)
+        // this.setData({
+        //   status: true,
+        //   text: "浏览文章+" + res.data.point + "积分"
+        // })
+        // setTimeout(() => {
+        //   this.setData({
+        //     status: false,
+        //   })
+        // }, 2000)
       }
       const query = wx.createSelectorQuery()
       query.select('#main').boundingClientRect()
