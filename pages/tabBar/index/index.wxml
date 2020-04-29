@@ -21,7 +21,6 @@
   </view>
 </view>
 <view style="width:100%;height:{{navHeight+46}}px;"></view>
-
 <!-- bindtouchstart="touchStart" bindtouchend="touchEnd" -->
 <view  >
 <swiper style='height:78vh;overflow:scroll;position:relative'  duration='500'  bindchange="bindChange" current='{{currentTab}}'>
@@ -85,7 +84,7 @@
                 <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
               </navigator>
               <view class="li-footer">
-                <view class="li-time"  style=" {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.publish_time}}</view>
+                <view class="li-time"  style="">{{item.publish_time}}</view>
                 <view class="li-icon">
                   <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
                   <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
@@ -262,7 +261,7 @@
                 <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
               </navigator>
               <view class="li-footer">
-                <view class="li-time"  style=" {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.publish_time}}</view>
+                <view class="li-time"  style="">{{item.publish_time}}</view>
                 <view class="li-icon">
                   <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
                   <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
@@ -379,7 +378,7 @@
                 <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
               </navigator>
               <view class="li-footer">
-                <view class="li-time"  style=" {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.publish_time}}</view>
+                <view class="li-time"  style="">{{item.publish_time}}</view>
                 <view class="li-icon">
                   <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
                   <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
@@ -456,6 +455,7 @@
    var str = function (strs){
       return strs.length
     }
+    
      module.exports.str= str
   </wxs>
   <frame status='Perfect' isShow='{{isShow}}' bind:_confirm='Confirm' bind:_cancel='Cancel'></frame>

@@ -31,6 +31,10 @@
 .li-con-address{
   font-size: 24rpx;
   color: #666666;
+  width: 25%;
+   overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
 }
 .heat-icon{
  max-width:124rpx;

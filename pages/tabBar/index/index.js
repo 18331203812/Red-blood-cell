@@ -260,6 +260,11 @@ Page({
           video: [],
         })
       }
+      for (let i in res.data.list){
+        if (res.data.list[i].publish_time.length != 2){
+          res.data.list[i].publish_time = res.data.list[i].publish_time.substr(5)
+        }
+      }
       this.setData({
         list: this.data.list.concat(res.data.list),
         video: res.data.video,

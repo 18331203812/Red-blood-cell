@@ -28,7 +28,6 @@
           <video src="{{item.path}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='true' controls></video>
           </view>
       </view>
-      
         <view class="li-footer">
           <view class="li-con-address">{{item.author}}</view>
            <view class="li-time" style="padding-left: 10rpx;">{{item.publish_time}}</view>

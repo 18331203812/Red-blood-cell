@@ -152,8 +152,11 @@ align-items: space-between;
 }
 .li-footer{
   display: flex;
-  justify-content: space-between;
+  justify-content:space-between;
+  
   align-items: center;
+  position: relative;
+  width: 100%;
 }
 .li-icon{
   display: flex;
@@ -169,11 +172,20 @@ align-items: space-between;
 .li-time{
   font-size: 26rpx;
   color: #999999;
-  display: flex;
-  align-items: stretch;
-  width: 220rpx !important;
-
+  text-align: center;
+  /* display: flex;
+  align-items: center; */
+  width: 150rpx ;
 }
+.li-times{
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  display: flex;
+  align-items: center;
+} 
 .li-img{
   display: flex;
   justify-content: space-between;

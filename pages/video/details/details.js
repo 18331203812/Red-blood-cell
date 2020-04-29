@@ -18,6 +18,7 @@ Page({
     text: '',
     isIphoneX: app.globalData.systemInfo.models  ? true : false,
     data:{}, //观看扣除的积分
+    page:1,
   },
   VideoPlayS(_index){
     this.setData({
@@ -206,18 +207,26 @@ Page({
       method: "GET",
       data: {
         video_id: id,
-        page: 1,
+        page: this.data.page,
         pagesize: 10,
       }
     }).then(res => {
-      if (res.data.comment.length == 0) {
+      let data = this.data.messageList.comment
+      if (data){
+        data = data.concat(res.data.comment)
+        this.setData({
+          [`messageList.comment`]: data
+        })
+      }else{
+        this.setData({
+          messageList: res.data
+        })
+      }
+      if (this.data.messageList.comment.length == 0) {
         this.setData({
           isContent: true
         })
       }
-      this.setData({
-        messageList: res.data
-      })
     })
   },
   //评论点赞
@@ -334,7 +343,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.setData({
+      page: this.data.page + 1
+    })
+    this.Message(this.data.id)
   },
   Share(id) {
     _http.request({

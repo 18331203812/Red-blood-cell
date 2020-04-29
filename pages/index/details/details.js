@@ -19,6 +19,7 @@ Page({
     curtain: 'curtains',
     rpx: "",
     rpxheight: "",
+    page:1
   },
   // 点击cover播放，其它视频结束
   videoPlay: function (e) {
@@ -175,18 +176,34 @@ Page({
       method:"GET",
       data:{
         news_id:id,
-        page:1,
+        page:this.data.page,
         pagesize:10,
       }
     }).then(res=>{
-      if (res.data.comment.length == 0){
+      // if (res.data.comment.length == 0){
+      //   this.setData({
+      //     isContent:true
+      //   })
+      // }
+      // this.setData({
+      //   messageList:res.data
+      // })
+      let data = this.data.messageList.comment
+      if (data) {
+        data = data.concat(res.data.comment)
         this.setData({
-          isContent:true
+          [`messageList.comment`]: data
+        })
+      } else {
+        this.setData({
+          messageList: res.data
         })
       }
-      this.setData({
-        messageList:res.data
-      })
+      if (this.data.messageList.comment.length == 0) {
+        this.setData({
+          isContent: true
+        })
+      }
     })
   },
   //文章点赞
@@ -476,7 +493,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.setData({
+      page: this.data.page + 1
+    })
+    this.Message(this.data.id)
   },
   Share(id){
     _http.request({
