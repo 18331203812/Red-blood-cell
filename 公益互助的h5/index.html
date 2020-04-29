@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, aximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>首页</title>
+    <script src="js/rem.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" type="text/css" href="css/swipeslider.css">
+    
+</head>
+<body>
+    <div class="nav">首页</div>
+    <section>
+        <figure id="responsiveness" class="swipslider">
+          <ul class="sw-slides" >
+            <li class="sw-slide">
+              <img src="https://image.redxibao.com/6979e034d0428e66/a98508a42f3c4f68.jpg?x-oss-process=image/resize,h_500" alt="Concept for children game">
+            </li>
+            <li class="sw-slide">
+              <img   src="https://image.redxibao.com/6979e034d0428e66/a98508a42f3c4f68.jpg?x-oss-process=image/resize,h_500" alt="Another Concept for children game">
+            </li>
+          </ul>
+        </figure>
+    </section>
+    <div class="li">
+        <div class="li-box">
+          <a href="details.html" hover-class="none" >
+            <img class="li-box-img" lazy-load style='height:100px;' mode="aspectFill" src="https://image.redxibao.com/6979e034d0428e66/a98508a42f3c4f68.jpg?x-oss-process=image/resize,h_500"></img>
+          </a>
+          <div class="li-con">
+            <a href="details.html"  hover-class="none">
+              <div class="li-con-title" style="width:100%;">吴门桥街道建立防控工作机制保障辖区学校有序复学“1+8+10”</div>
+              <div class="li-con-address" style="padding: 20px 0 4px 0">吴门桥街道</div>
+            </a>
+            <div class="li-footer">
+              <div class="li-time">2020.04.21.16:41</div>
+              <div class="li-icon">
+                <div class="li-icon-list"><div class="see-icon"></div>2</div>
+                <div class="li-icon-list"><div class="message-icon"></div>5</div>
+                <div class="li-icon-list" bindtap="Fabulous" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
+                    <div class="fabulou-icons"></div>
+                    <!-- <div class="fabulou-icon"></div> -->
+                  10</div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="li">
+        <a href="details.html"  hover-class="none">
+          <div class="li-box">
+             <div class="li-con-title" style="width:100%">吴门桥街道建立防控工作机制保障辖区学校有序复学“1+8+10”</div>
+          </div>
+          <div class="li-img">
+            <img mode="aspectFill" lazy-load  src="https://image.redxibao.com/6979e034d0428e66/a98508a42f3c4f68.jpg?x-oss-process=image/resize,h_500"></img>
+            <img mode="aspectFill" lazy-load  src="https://image.redxibao.com/6979e034d0428e66/a98508a42f3c4f68.jpg?x-oss-process=image/resize,h_500"></img>
+            <img mode="aspectFill" lazy-load  src="https://image.redxibao.com/6979e034d0428e66/a98508a42f3c4f68.jpg?x-oss-process=image/resize,h_500"></img>
+          </div>
+        </a>
+          <div class="li-footer">
+            <div class="li-con-address">吴门桥街道</div>
+            <div class="li-time" style="">2020.04.21.16:41</div>
+            <div class="li-icon">
+              <div class="li-icon-list"><div class="see-icon"></div>20</div>
+              <div class="li-icon-list"><div class="message-icon"></div>20</div>
+              <div class="li-icon-list"  bindtap="Fabulous" data-id="{{item.id}}" data-zan='{{item.is_zan}}'>
+                      <!-- <view class="fabulou-icons"></view> -->
+                      <div class="fabulou-icon"></div>
+              20</div>
+            </div>
+          </div>
+      </div>
+</body>
+
+<style>
+    .nav{
+        width: 100%;
+        height: 44px;
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        font-size: 14px;
+        color: #333;
+    }
+    .li{
+        width: 100%;
+        padding: 17px  16px 0 16px;
+        border-bottom: 1px solid #e3e3e3;
+    }
+    .li-box{
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+    }
+    .li-box-img{
+        width:110px;
+        height: 120px;
+        height: auto;
+        display: block;
+        margin-bottom: 15px;
+        object-fit: cover;
+    }
+    .li-con{
+    width: 65%;
+    }
+    .li-con-title{
+    font-size: 16px;
+    color: #333333;
+    font-weight: bold;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    }
+    .li-con-address{
+    font-size: 12px;
+    color: #666666;
+        
+    }
+    .li-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.li-icon{
+  display: flex;
+  align-items: center;
+}
+.li-icon-list{
+  font-size: 14px;
+  color: #999999;
+  display: flex;
+  align-items: center;
+  height: 37px;
+}
+.li-time{
+  font-size: 14px;
+  color: #999999;
+  display: flex;
+  align-items: stretch;
+  /* width: 50px; */
+}
+.li-img{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 0 0 0;
+}
+.li-img img{
+  width: 32.4%;
+  height: 86px;
+  display: block;
+  object-fit: cover;
+}
+/* 评论首页 */
+.message-icon{
+  width: 15px;
+  height: 100%;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAaCAMAAACTisy7AAAARVBMVEUAAACZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZkBVNYgAAAAFnRSTlMA5jH6SZ3IkjiLDfQHsFQfv6zaz29SoGyeAAAAAKJJREFUKM+FkkkOAyEMBG08wzprlv7/UyMCB5AJqQNClECmbcqYYBMakg2GKisGrMXtEOcjNUTvBHu5x4YUhvNdA8lOW4GhAEdDHAJZ+LH0sCTYxnKDEJB3C/PSr0RAlQxwt/6X02d/FxSRpl+ZhjCNbxb8rGVts0tmd9fsOiZFRqvGJPOV5wPPkzRZesZVnJbvhHuc1oWXYKUxR1ugtu5QZx+fDA23cWfavQAAAABJRU5ErkJggg==) no-repeat center / 15px auto;
+  margin:  0 5px;
+}
+
+/* 未点赞 */
+.fabulou-icon{
+  width: 14px;
+  height: 100%;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAiCAMAAADmrkDzAAAAUVBMVEUAAACZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmcFIQ5AAAAGnRSTlMACN3I74L3J0YdEDLjPRbTZOqmkq5wtJx2WPCICiEAAAEGSURBVDjLhZJbcoMwDEUl4SeYd0nSu/+FVtA2TFqjnA/s0RxkjX3pH2nLZDIBrjMNQYPRNAKyIFlGQfZYDYEDuEdjGD1GahEM4w5PNGO4FHJAJBL9XLHgg0zjEyGSdUp02HQZ4K6GKHqGMuFWF4YRY6srC5w0yigy36IWvATxvP8qw9EiACcNcfO9YcJzPs6xU2LOHWbykMRJ4NWohEV7CPrjsqVqPLBqnfe+QNVYMP3WL4wRnW20CGwax6C2scK/MQp62+gxs20sWMk0IhAN4xk4406PwCmCVH+XFLAdG4+SOJU/b8vdHVraecmHc6U4BTtu+rHPjDmcuOZRizu3bc6t8lL9ArVdF9ehWFXaAAAAAElFTkSuQmCC) no-repeat center / 14px auto;
+  margin:  0 5px;
+}
+/* 未点赞（评论） */
+.fa-icon{
+  width: 14px;
+  height: 100%;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAiCAMAAADmrkDzAAAAflBMVEUAAAAzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzNFhIEgAAAAKXRSTlMA3e+BJBALxjIdCAP4RNNk9erZzRbk4KaSOyvxrnBMQL+GdlgYtJ6afv5oQO4AAAEZSURBVDjLfZPXbsMwDAApb3nbiRPHaXbX/f8PVlVQNG1s3oNEEKcBkZInjgcrKg3sM9XYkFIXmtFiDZW+h/1kVISiJN+xUowdtcS0ykU+CEU61ouCLYlEejcsseVFVONGG4l2yrTn4KY1+6VLDP4MaXibF9Y1dezmvCfoV47amO48uURoShPm30v7V79FywOpJOk9SASc4ElslDmmKMroJMRUSWUIBeSJirMYTv6xzaxxZRTIXVTArLGl+ckvGDWZbsSUhW4cSUU3Ri66UQycdGNHV+jGllFUIyqZdOPecMqb3ih9M94/2Om5LseWgw9CNq62m3+1TbJ3uPjwT38EwTAEDp8JGvE89FjAL0F6nWv3JI6tjR3yyBcWVCYIK3YvmwAAAABJRU5ErkJggg==) no-repeat center / 14px auto;
+  margin:  0 5px;
+}
+/* 点赞成功 */
+.fabulou-icons{
+  height: 100%;
+  width: 14px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAeCAMAAAB+ITwmAAAAk1BMVEUAAACoQgCoQgCoQgCoQgCoQgCoQgCoQgCoQgCoQgCoQgCoQgCoQgCoQgCoQgCoQgCoQgCoQgCoQgCoQgCoQgCoQgCoQgD+2aioQgDpcijZZh2uTAvzxZG2WRnsuoX50Z/2y5jncCawSAX71KLmrnjHdzuxUhKsSAbuvIfqtYDcnWXYll3TjlTLf0TEcjXhpW+3XR5YFoCvAAAAF3RSTlMA3YISCcb47yfTzJUc6WPiuKs9L3duWhv2lmkAAAEJSURBVDjLhdNtd4IgGMZx8QFymj1t41IhLVNr1bbv/+l2s15UJ4H/Kw/nd4ADGLy0QHtBFrji6E5IXWINLRtwF8lwkbJGZBc5h5JSY2YnK3xLN/nEqKRzoY3AmUQLYd3IgpahvrC0iCjFb0Oi0xDpG5UyNl/SruKQcRbGRAro9n+SEQ8lQZzcPsgARpgapbbUUakj5kGIfbWr9ggNkS8daBaGqizLCmyanJHR+K6kgGnSo6Dx0kU0Nh7SgMceYnbrIVeEPjJg7SEnOjgP6ZF5iAJmHtJjRcJ1uj/gZhLHHR1GfBhhu+luewWNmZ7fS10PQ03BJIqbeHx1AvdE8j75E8RRlOcR9TT6B+aUOutBfLSwAAAAAElFTkSuQmCC) no-repeat center / 14px auto;
+   margin:  0 5px;
+}
+/* 查看 */
+.see-icon{
+  width: 17px;
+  height: 100%;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAXCAMAAABd273TAAAAYFBMVEUAAACZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZnx1IImAAAAH3RSTlMA99KealkhCNzHsaeZlDwwEWD0u7iHhXdMSz427mLtrQIm9AAAAMhJREFUKM+FklcSgzAMRLENNi2U9FDy7n/LEEwdmJF+eELj9cpSsAkbZrFScRba4CyalCXS5lB2Bq5ZZJ2zUXYF4/b1UqOe1ZxVT4Uut/UIEruzk0C0pjlcPLV13Xq6QL6phyMUGkAXYxJCvujXI3wUiTEJ6jOm9XRLMZ+vOsz/a/hWs8Yg5mIeXulF6iHl5eFB7AYzt8nKnbeHN/fp120wr5kaXqlEBwuJCqKH0y66tQvpHcSXPM6i7zezkKcp74O8UfJOilv9AxV+Flvdvq8YAAAAAElFTkSuQmCC) no-repeat center / 17px auto;
+  margin:  0 5px;
+}
+
+</style>
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="js/swipeslider.min.js"></script>
+<script type="text/javascript">
+    $(window).load(function() {
+        $('#responsiveness').swipeslider({
+            sliderHeight: '150px'
+            });
+        })
+</script>
+</html>
