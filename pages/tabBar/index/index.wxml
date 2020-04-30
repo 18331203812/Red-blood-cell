@@ -81,7 +81,7 @@
       
               <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
                 <view class="li-con-title" style="width:100%;">{{item.title}}</view>
-                <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
+                <view class="li-con-address" style="padding: 20rpx 0 0 0;width:100%;">{{item.street_title}}</view>
               </navigator>
               <view class="li-footer">
                 <view class="li-time"  style="">{{item.publish_time}}</view>
@@ -119,7 +119,7 @@
         </navigator>
           <view class="li-footer">
             <view class="li-con-address">{{item.street_title}}</view>
-           <view class="li-time" style=" width:{{m1.str(item.publish_time) < 3 ? '14%;' :'40%'}};padding-left: 21px;text-align: center;">{{item.publish_time}}</view>
+           <view class="li-time" style=" width:{{m1.str(item.publish_time) < 3 ? '14%;' :'32%'}};">{{item.publish_time}}</view>
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
@@ -258,7 +258,7 @@
             <view class="li-con">
               <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
                 <view class="li-con-title" style="width:100%;">{{item.title}}</view>
-                <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
+                <view class="li-con-address" style="padding: 20rpx 0 0 0;width:100%;">{{item.street_title}}</view>
               </navigator>
               <view class="li-footer">
                 <view class="li-time"  style="">{{item.publish_time}}</view>
@@ -295,7 +295,7 @@
         </navigator>
           <view class="li-footer">
             <view class="li-con-address">{{item.street_title}}</view>
-            <view class="li-time" style=" width:{{m1.str(item.publish_time) < 3 ? '14%;' :'40%'}};padding-left: 21px;text-align: center;">{{item.publish_time}}</view>
+            <view class="li-time" style=" width:{{m1.str(item.publish_time) < 3 ? '14%;' :'32%'}};">{{item.publish_time}}</view>
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
@@ -375,7 +375,7 @@
             <view class="li-con">
               <navigator url="/pages/index/details/details?id={{item.id}}" hover-class="none">
                     <view class="li-con-title" style="width:95%;">{{item.title}}</view>
-                <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
+                <view class="li-con-address" style="padding: 20rpx 0 0 0;width:100%;">{{item.street_title}}</view>
               </navigator>
               <view class="li-footer">
                 <view class="li-time"  style="">{{item.publish_time}}</view>
@@ -412,7 +412,7 @@
         </navigator>
           <view class="li-footer">
             <view class="li-con-address">{{item.street_title}}</view>
-            <view class="li-time" style=" width:{{m1.str(item.publish_time) < 3 ? '14%;' :'40%'}};padding-left: 12px;text-align: center;">{{item.publish_time}}</view>
+            <view class="li-time" style=" width:{{m1.str(item.publish_time) < 3 ? '14%;' :'32%'}};">{{item.publish_time}}</view>
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>

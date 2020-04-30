@@ -127,7 +127,10 @@ align-items: space-between;
 .li-con-address{
   font-size: 24rpx;
   color: #666666;
-    
+   width: 232rpx;
+ overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
 }
 .heat-icon{
  width:80rpx;
