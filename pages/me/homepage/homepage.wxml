@@ -32,7 +32,7 @@
             <view class="li-con-address" style="padding: 20rpx 0 0 0;">{{item.street_title}}</view>
           </navigator>
           <view class="li-footer">
-            <view class="li-time"  style=" {{m1.str(item.publish_time) >5 ? 'width:200rpx' :'' }}">{{item.publish_time}}</view>
+            <view class="li-time" >{{item.publish_time}}</view>
             <view class="li-icon">
               <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
               <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>
@@ -73,7 +73,7 @@
     </navigator>
       <view class="li-footer">
         <view class="li-con-address">{{item.street_title}}</view>
-        <view class="li-time" style="padding:5rpx 0 0 10rpx; width:{{m1.str(item.publish_time) < 3 ? '10%;' :'34%'}}">{{item.publish_time}}</view>
+        <view class="li-time" style="padding:5rpx 0 0 10rpx; width:{{m1.str(item.publish_time) < 3 ? '14%;' :'40%'}};padding-left:30px;text-align: center;">{{item.publish_time}}</view>
         <view class="li-icon">
           <view class="li-icon-list"><view class="see-icon"></view>{{item.view}}</view>
           <view class="li-icon-list"><view class="message-icon"></view>{{item.comment_count}}</view>

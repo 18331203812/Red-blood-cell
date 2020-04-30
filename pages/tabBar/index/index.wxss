@@ -172,10 +172,9 @@ align-items: space-between;
 .li-time{
   font-size: 26rpx;
   color: #999999;
-  text-align: center;
   /* display: flex;
   align-items: center; */
-  width: 150rpx ;
+  width: 40% ;
 }
 .li-times{
   position: absolute;

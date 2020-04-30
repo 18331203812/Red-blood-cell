@@ -138,6 +138,7 @@ align-items: space-between;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 .li-icon{
   display: flex;
@@ -153,9 +154,11 @@ align-items: space-between;
 .li-time{
   font-size: 26rpx;
   color: #999999;
-  display: flex;
+ 
+  /* display: flex;
   align-items: stretch;
-  width: 220rpx !important;
+  width: 220rpx !important; */
+  width: 40% ;
 }
 .li-img{
   display: flex;
