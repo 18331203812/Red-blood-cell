@@ -104,20 +104,47 @@ Page({
       this.setData({
         details:data,
       })
+      
       if (data.is_give !==1){
-        console.log('/////')
         setTimeout(() => {
+          // this.setData({
+          //   status: true,
+          //   text: "浏览文章+" + res.data.point + "积分"
+          // })
+          // setTimeout(() => {
+          //   this.setData({
+          //     status: false,
+          //   })
+          // }, 2000)
+          this.SendPoints(id,res.data.point)
+        }, 500000)
+      }
+    })
+  },
+  // 请求是否送积分
+  SendPoints(id,point){
+    _http.request({
+      url:"/api/news/give",
+      method:"get",
+      data:{
+        news_id:id
+      }
+    }).then(res=>{
+      // console.log(res)
+      if(res.code == 200){
           this.setData({
             status: true,
-            text: "浏览文章+" + res.data.point + "积分"
+            text: "浏览文章+" + point + "积分"
           })
-          console.log('///')
           setTimeout(() => {
             this.setData({
               status: false,
             })
           }, 2000)
-        }, 300000)
+      }else if(res.code == 5012){
+        console.log('已经获取过了')
+      }else{
+        console.log('报错的')
       }
     })
   },

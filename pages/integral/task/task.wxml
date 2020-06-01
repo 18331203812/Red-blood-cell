@@ -54,7 +54,7 @@
    <block wx:for='{{remark}}' wx:key='index' >
       <view class="main-li">
       <view class="main-li-name">
-          <block wx:if='{{item.title == "浏览文章5分钟"}}'>
+          <block wx:if='{{item.title == "每日浏览文章5篇"}}'>
             <image class="main-li-img" src="../../../images/integral/wenzhang.png"></image>
           </block>
           <block wx:elif='{{item.title == "点赞"}}'>
