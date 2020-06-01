@@ -68,6 +68,17 @@ Page({
       method:"GET"
     }).then(res=>{
       let data=res.data.list;
+      for(let i in res.data.remark){
+        if(res.data.remark[i].title == '浏览文章5分钟'){
+         let str = res.data.remark[i].title.split('浏览文章')[1],strs=''
+         if(str){
+            strs = str.split('分钟')[0]
+         }
+         if(strs){
+          res.data.remark[i].title = `每日浏览文章${strs}篇`
+         }
+        }
+      }
       this.setData({
         remark: res.data.remark
       })
